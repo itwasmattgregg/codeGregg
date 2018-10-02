@@ -1,0 +1,26 @@
+@import 'variables';
+
+@font-face {
+  font-family: 'Monad';
+  src: url('../../static/fonts/Monad.otf') format('otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: $link_color;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-color: $background;
+}

@@ -1,0 +1,28 @@
+@import '../../scss/variables';
+
+.featureBox {
+  flex: 1;
+  background: $dark_blue;
+  height: 80vh;
+  display: flex;
+  justify-content: flex-end;
+  color: white;
+  padding: 40px 0;
+
+  &.rightBox {
+    justify-content: flex-start;
+  }
+
+  &.darkBlue {
+    background-color: $dark_blue;
+  }
+  &.lightBlue {
+    background-color: $light_blue;
+  }
+}
+
+.featureBoxContent {
+  max-width: 540px;
+  flex: 1;
+  padding: 0px 1.0875rem;
+}

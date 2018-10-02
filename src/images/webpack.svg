@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="87px" height="100px" viewBox="0 0 87 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>webpack</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(-809.000000, -1044.000000)" fill-rule="nonzero">
+            <g id="Group-3" transform="translate(0.000000, 587.000000)">
+                <g id="webpack" transform="translate(809.000000, 457.000000)">
+                    <polygon id="Shape" fill="#A2BDE9" points="43.4999224 0 0 24.9999614 0 74.9998842 43.4999224 100 87 74.9998842 87 24.9999614"></polygon>
+                    <polygon id="Shape" fill="#6F95DB" points="43.4998454 26 22 38.2499237 22 62.7499237 43.4998454 75 65 62.7499237 65 38.2499237"></polygon>
+                    <g id="Group" opacity="0.0588" fill="#FFFFFF">
+                        <g id="Shape">
+                            <polygon points="43.5 0 0 25.2753165 43.5 49 87 25.4303797"></polygon>
+                        </g>
+                    </g>
+                    <g id="Group" opacity="0.0588" transform="translate(0.000000, 52.000000)" fill="#FFFFFF">
+                        <g id="Shape">
+                            <polygon points="43.5775401 0 0 22.9967846 43.5775401 48 87 22.8424437"></polygon>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

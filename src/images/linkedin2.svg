@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="26px" viewBox="0 0 28 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>linkedin2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(-824.000000, -1585.000000)" fill="#000000" fill-rule="nonzero">
+            <g id="Group-3" transform="translate(0.000000, 587.000000)">
+                <g id="linkedin2" transform="translate(824.000000, 998.000000)">
+                    <path d="M10,8 L15.535,8 L15.535,10.837 L15.614,10.837 C16.384,9.456 18.269,8 21.078,8 C26.92,8 28,11.637 28,16.367 L28,26 L22.231,26 L22.231,17.46 C22.231,15.423 22.189,12.803 19.23,12.803 C16.225,12.803 15.767,15.021 15.767,17.312 L15.767,26 L10,26 L10,8 Z" id="Shape"></path>
+                    <polygon id="Shape" points="0 8 6 8 6 26 0 26"></polygon>
+                    <path d="M6,3 C6,4.657 4.657,6 3,6 C1.343,6 0,4.657 0,3 C0,1.343 1.343,0 3,0 C4.657,0 6,1.343 6,3 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
