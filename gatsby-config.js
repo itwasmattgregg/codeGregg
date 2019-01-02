@@ -6,12 +6,12 @@ module.exports = {
     siteUrl: 'https://codegregg.com',
     menuLinks: [
       {
-        "name": "Home",
-        "link": "/"
-      },
-      {
         "name": "Blog",
         "link": "/blog"
+      },
+      {
+        "name": "Contact",
+        "link": "#contact"
       }
     ],
   },

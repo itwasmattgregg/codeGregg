@@ -6,7 +6,7 @@ const Tech = () => (
       display: 'flex',
     }}
   >
-  Yo Yo Yo
+  Some of the technologies I work with:
   </div>
 )
 

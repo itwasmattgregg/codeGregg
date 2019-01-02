@@ -15,7 +15,7 @@ class BlogPostTemplate extends React.Component {
     const { previous, next } = this.props.pageContext
 
     return (
-      <Layout location={this.props.location}>
+      <Layout>
         <Helmet
           htmlAttributes={{ lang: 'en' }}
           meta={[{ name: 'description', content: siteDescription }]}
@@ -23,6 +23,7 @@ class BlogPostTemplate extends React.Component {
         />
         <Container>
           <h1>{post.frontmatter.title}</h1>
+          <Link to={`/category/${post.frontmatter.category}`}>#{post.frontmatter.category}</Link>
           <p
             style={{
               display: 'block',

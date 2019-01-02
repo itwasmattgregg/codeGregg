@@ -1,19 +1,40 @@
 import React from "react";
 import Helmet from "react-helmet";
 import get from 'lodash/get'
-
+import { Link } from 'gatsby';
+import Layout from '../components/layout/layout';
+import Container from '../components/container';
 
 class CategoryTemplate extends React.Component {
   render() {
     const category = this.props.pathContext.category;
     const siteTitle = get(this.props, 'data.site.siteMetadata.title');
+    const posts = get(this.props, 'data.allMarkdownRemark.edges');
+    const postCount = get(this.props, 'data.allMarkdownRemark.totalCount');
     return (
-      <div className="category-container">
+      <Layout>
         <Helmet
           title={`Posts in category "${category}" | ${siteTitle}`}
         />
-        hey there
-      </div>
+        <Container>
+          <h1 class="text_center">The {category} Category</h1>
+          <h5>Total Posts: {postCount}</h5>
+          {posts.map(({ node }) => {
+            const title = get(node, 'frontmatter.title') || node.fields.slug
+            return (
+              <div key={node.fields.slug}>
+                <h3>
+                  <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
+                    {title}
+                  </Link>
+                </h3>
+                <small>{node.frontmatter.date}</small>
+                <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+              </div>
+            )
+          })}
+        </Container>
+      </Layout>
     );
   }
 }
@@ -42,7 +63,7 @@ export const pageQuery = graphql`
           timeToRead
           frontmatter {
             title
-            date
+            date(formatString: "MMMM DD, YYYY h:mm A")
           }
         }
       }

@@ -12,7 +12,7 @@ class Blog extends React.Component {
     return (
       <Layout>
         <Container>
-          <Link to="/">Go back to the homepage</Link>
+          <h1 class="text_center">The Blog</h1>
           {posts.map(({ node }) => {
             const title = get(node, 'frontmatter.title') || node.fields.slug
             return (
@@ -51,7 +51,7 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
-            date(formatString: "DD MMMM, YYYY")
+            date(formatString: "DD MMMM, YYYY h:mm A")
             title
             category
           }
