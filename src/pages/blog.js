@@ -5,7 +5,6 @@ import get from 'lodash/get'
 import Layout from '../components/layout/layout'
 import Container from '../components/container';
 
-
 class Blog extends React.Component {
   render() {
     const posts = get(this, 'props.data.allMarkdownRemark.edges')
@@ -13,8 +12,6 @@ class Blog extends React.Component {
     return (
       <Layout>
         <Container>
-          <h1>Hi from the second page</h1>
-          <p>Welcome to page 2</p>
           <Link to="/">Go back to the homepage</Link>
           {posts.map(({ node }) => {
             const title = get(node, 'frontmatter.title') || node.fields.slug

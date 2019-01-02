@@ -6,7 +6,6 @@ const typography = new Typography({
   scaleRatio: 2.5,
   headerFontFamily: [
     "Monad",
-    "Abril Fatface",
     "Helvetica",
     "Arial",
     "sans-serif",
@@ -16,12 +15,6 @@ const typography = new Typography({
       name: 'Montserrat',
       styles: [
         '700',
-      ],
-    },
-    {
-      name: 'Abril Fatface',
-      styles: [
-        '400',
       ],
     }
    ],

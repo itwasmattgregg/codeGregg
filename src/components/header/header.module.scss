@@ -1,7 +1,7 @@
 @import '../../scss/variables';
 
 .headerContainer {
-  position: fixed;
+  position: sticky;
   height: 80px;
   display: flex;
   top: 0;

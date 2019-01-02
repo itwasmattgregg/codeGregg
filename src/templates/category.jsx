@@ -6,15 +6,13 @@ import get from 'lodash/get'
 class CategoryTemplate extends React.Component {
   render() {
     const category = this.props.pathContext.category;
-    const siteTitle = get(this.props, 'data.site.siteMetadata.title')
-    const postEdges = this.props.data.allMarkdownRemark.edges;
+    const siteTitle = get(this.props, 'data.site.siteMetadata.title');
     return (
       <div className="category-container">
         <Helmet
           title={`Posts in category "${category}" | ${siteTitle}`}
         />
         hey there
-        {/* <PostListing postEdges={postEdges} /> */}
       </div>
     );
   }
