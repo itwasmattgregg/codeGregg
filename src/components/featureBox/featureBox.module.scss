@@ -3,7 +3,7 @@
 .featureBox {
   flex: 1;
   background: $dark_blue;
-  height: 80vh;
+  min-height: 500px;
   display: flex;
   justify-content: flex-end;
   color: white;
@@ -12,7 +12,6 @@
   &.rightBox {
     justify-content: flex-start;
   }
-
   &.darkBlue {
     background-color: $dark_blue;
   }

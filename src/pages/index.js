@@ -8,6 +8,8 @@ import get from 'lodash/get';
 import Tech from '../components/tech/tech';
 import Container from '../components/container';
 
+import shape from '../images/shape.svg';
+
 class IndexPage extends React.Component {
   render() {
     const latestPost = get(this, 'props.data.allMarkdownRemark.edges[0].node');
@@ -17,6 +19,7 @@ class IndexPage extends React.Component {
       <Layout>
         <div style={{
           display: 'flex',
+          position: 'relative',
         }}>
           <FeatureBox side="left" backgroundColor="darkBlue">
             <h1 className="h3">Minneapolis Web Developer</h1>
@@ -29,6 +32,15 @@ class IndexPage extends React.Component {
             <h3>Latest Blog Post</h3>
             <h2><Link to={latestPost.fields.slug}>{latestPost.frontmatter.title}</Link></h2>
           </FeatureBox>
+          <img
+            src={shape}
+            style={{
+              position: 'absolute',
+              bottom: 0,
+              left: '50%',
+              transform: 'translateX(-50%)'
+            }}
+          />
         </div>
         <Container>
           <Tech></Tech>

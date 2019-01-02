@@ -10,47 +10,65 @@ import sass from '../../images/sass.svg'
 import vue from '../../images/vue.svg'
 import webpack from '../../images/webpack.svg'
 import styles from './tech.module.scss'
+import posed from 'react-pose';
+
+const Icon = posed.div({
+  hoverable: true,
+  pressable: true,
+  init: {
+    scale: 1,
+    rotateY: 0,
+  },
+  hover: {
+    scale: 1.1,
+  },
+  press: {
+    rotateY: 30,
+    scale: 1.1,
+  }
+});
 
 const Tech = () => (
   <div className="text_center">
     <p>Some of the technologies I work with:</p>
     <div style={{
       display: 'grid',
-      gridTemplateColumns: 'repeat(5, 150px)',
-      gridGap: '30px',
-      gridAutoRows: '150px',
+      gridTemplateColumns: 'repeat(5, minmax(min-content, 150px))',
+      gridGap: '20px',
+      gridAutoRows: '1fr',
       justifyContent: 'center',
+      perspective: '1000px'
     }}>
-      <div className={styles.techLogo}>
-        <img src={firebase} alt="firebase"></img>
-      </div>
-      <div className={styles.techLogo}>
-        <img src={gatsby} alt="gatsby"></img>
-      </div>
-      <div className={styles.techLogo}>
-        <img src={javascript} alt="javascript"></img>
-      </div>
-      <div className={styles.techLogo}>
-        <img src={laravel} alt="laravel"></img>
-      </div>
-      <div className={styles.techLogo}>
-        <img src={nodejs} alt="nodejs"></img>
-      </div>
-      <div className={styles.techLogo}>
-        <img src={react} alt="react"></img>
-      </div>
-      <div className={styles.techLogo}>
-        <img src={redux} alt="redux"></img>
-      </div>
-      <div className={styles.techLogo}>
-        <img src={sass} alt="sass"></img>
-      </div>
-      <div className={styles.techLogo}>
-        <img src={vue} alt="vue"></img>
-      </div>
-      <div className={styles.techLogo}>
-        <img src={webpack} alt="webpack"></img>
-      </div>
+      <Icon className={styles.techLogo}>
+        <img src={firebase} alt="firebase" title="firebase"></img>
+      </Icon>
+      <Icon className={styles.techLogo}>
+        <img src={gatsby} alt="gatsby" title="gatsby"></img>
+      </Icon>
+      <Icon className={styles.techLogo}>
+        <img src={javascript} alt="javascript" title="javascript"></img>
+      </Icon>
+      <Icon className={styles.techLogo}>
+        <img src={laravel} alt="laravel" title="laravel"></img>
+      </Icon>
+      <Icon className={styles.techLogo}>
+        <img src={nodejs} alt="nodejs" title="nodejs"></img>
+      </Icon>
+      <Icon className={styles.techLogo}>
+        <img src={react} alt="react" title="react"></img>
+      </Icon>
+      <Icon className={styles.techLogo}>
+        <img src={redux} alt="redux" title="redux"></img>
+      </Icon>
+      <Icon className={styles.techLogo}>
+        <img src={sass} alt="sass" title="sass"></img>
+      </Icon>
+      <Icon className={styles.techLogo}>
+        <img src={vue} alt="vue" title="vue"></img>
+      </Icon>
+      <Icon className={styles.techLogo}>
+        <img src={webpack} alt="webpack" title="webpack"></img>
+      </Icon>
     </div>
   </div>
 )
