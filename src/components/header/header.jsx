@@ -14,7 +14,7 @@ const Header = ({ siteTitle, menuLinks }) => (
             textDecoration: 'none',
           }}
         >
-          <img src={logo}/>
+          <img src={logo} alt="codegregg logo"/>
         </Link>
       </h1>
       <nav

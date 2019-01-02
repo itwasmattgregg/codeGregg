@@ -17,7 +17,7 @@ class CategoryTemplate extends React.Component {
           title={`Posts in category "${category}" | ${siteTitle}`}
         />
         <Container>
-          <h1 class="text_center">The {category} Category</h1>
+          <h1 className="text_center">The {category} Category</h1>
           <h5>Total Posts: {postCount}</h5>
           {posts.map(({ node }) => {
             const title = get(node, 'frontmatter.title') || node.fields.slug

@@ -12,7 +12,7 @@ class Blog extends React.Component {
     return (
       <Layout>
         <Container>
-          <h1 class="text_center">The Blog</h1>
+          <h1 className="text_center">The Blog</h1>
           {posts.map(({ node }) => {
             const title = get(node, 'frontmatter.title') || node.fields.slug
             return (

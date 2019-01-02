@@ -7,6 +7,7 @@ import Header from '../header/header'
 import '../../scss/main.scss'
 
 import styles from './layout.module.scss'
+import Footer from '../footer';
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -24,7 +25,7 @@ const Layout = ({ children }) => (
       }
     `}
     render={data => (
-      <>
+      <div className={styles.appLayout}>
         <Helmet
           title={data.site.siteMetadata.title}
           meta={[
@@ -38,12 +39,11 @@ const Layout = ({ children }) => (
           siteTitle={data.site.siteMetadata.title}
           menuLinks={data.site.siteMetadata.menuLinks}
         />
-        <div
-          className={styles.appLayout}
-        >
+        <div className={styles.appContainer}>
           {children}
         </div>
-      </>
+        <Footer></Footer>
+      </div>
     )}
   />
 )

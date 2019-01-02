@@ -5,7 +5,7 @@ import Layout from '../components/layout/layout'
 import FeatureBox from '../components/featureBox/featureBox'
 import { Link } from 'gatsby';
 import get from 'lodash/get';
-import Tech from '../components/Tech';
+import Tech from '../components/tech/tech';
 import Container from '../components/container';
 
 class IndexPage extends React.Component {
@@ -19,9 +19,11 @@ class IndexPage extends React.Component {
           display: 'flex',
         }}>
           <FeatureBox side="left" backgroundColor="darkBlue">
-            <h1 class="h3">Minneapolis Web Developer</h1>
+            <h1 className="h3">Minneapolis Web Developer</h1>
             <h2>Matt Gregg</h2>
-            <Img fixed={profileImg.childImageSharp.fixed} />
+            <Img alt="matt gregg" fixed={profileImg.childImageSharp.fixed} />
+            <p>I’m a full stack web engineer and I want to help you craft amazing, modern web experiences.</p>
+            <Link href="">Contact me</Link>
           </FeatureBox>
           <FeatureBox side="right" backgroundColor="lightBlue">
             <h3>Latest Blog Post</h3>
