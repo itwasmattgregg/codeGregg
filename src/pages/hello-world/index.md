@@ -8,6 +8,26 @@ This is my first post on my new fake blog! How exciting!
 
 I'm sure I'll write a lot more interesting things in the future.
 
+Here's a link "[Code and Syntax Highlighting with PrismJS](/second-post)"
+
+External: Also, let's link to "[Google](https://google.com/)" article using an absolute path.
+
+Another internal [Home](https://codegregg.com)
+
+```javascript{numberLines: true}
+// In your gatsby-config.js
+plugins: [
+  {
+    resolve: `gatsby-transformer-remark`,
+    options: {
+      plugins: [
+        `gatsby-remark-prismjs`,
+      ]
+    }
+  }
+]
+```
+
 Oh, and here's a great quote from this Wikipedia on
 [salted duck eggs](http://en.wikipedia.org/wiki/Salted_duck_egg).
 
