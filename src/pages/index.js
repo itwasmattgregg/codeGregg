@@ -71,7 +71,7 @@ class IndexPage extends React.Component {
           style={{
             backgroundColor: 'white',
             padding: '50px 0',
-            borderTop: '2px solid gray',
+            boxShadow: '0px 0px 3px 0 rgba(0,0,0,0.4)',
           }}
         >
           <Container>
