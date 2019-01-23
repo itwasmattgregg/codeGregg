@@ -33,9 +33,10 @@ class IndexPage extends React.Component {
             <p>I’m a full stack web engineer and I want to help you craft amazing, modern web experiences.</p>
           </FeatureBox>
           <FeatureBox side="right" backgroundColor="lightBlue">
+            <h1>Note: Site Under Construction!</h1>
             <h3>Latest Blog Post</h3>
             <h2>
-              <Link to={latestPost.fields.slug}>{latestPost.frontmatter.title}</Link>
+              <Link to={latestPost.fields.slug} style={{color: 'white'}}>{latestPost.frontmatter.title}</Link>
             </h2>
           </FeatureBox>
           <img
