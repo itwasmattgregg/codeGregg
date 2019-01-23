@@ -37,7 +37,8 @@ const Tech = () => (
       gridGap: '20px',
       gridAutoRows: '1fr',
       justifyContent: 'center',
-      perspective: '1000px'
+      perspective: '1000px',
+      marginBottom: '50px',
     }}>
       <Icon className={styles.techLogo}>
         <img src={firebase} alt="firebase" title="firebase"></img>

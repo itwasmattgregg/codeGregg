@@ -31,7 +31,6 @@ class IndexPage extends React.Component {
             <h2>Matt Gregg</h2>
             <Img alt="matt gregg" fixed={profileImg.childImageSharp.fixed}/>
             <p>I’m a full stack web engineer and I want to help you craft amazing, modern web experiences.</p>
-            <Link href="">Contact me</Link>
           </FeatureBox>
           <FeatureBox side="right" backgroundColor="lightBlue">
             <h3>Latest Blog Post</h3>
@@ -76,6 +75,7 @@ class IndexPage extends React.Component {
           }}
         >
           <Container>
+            <h2 style={{textAlign: 'center'}}>Contact Me</h2>
             <ContactForm></ContactForm>
           </Container>
         </div>
