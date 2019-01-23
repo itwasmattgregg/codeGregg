@@ -1,3 +1,36 @@
 .contactForm {
+  display: grid;
+  max-width: 600px;
+  margin: 0 auto;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
 
+  input, textarea {
+    width: 100%;
+  }
+}
+
+.nameField {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.emailField {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.messageField {
+  grid-row: 1 / 3;
+  display: flex;
+  flex-direction: column;
+
+  textarea {
+    flex: 1;
+  }
+}
+
+.buttonColumn {
+  grid-column: 1 / 3;
+  text-align: center;
 }

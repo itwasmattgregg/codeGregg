@@ -41,6 +41,7 @@ class IndexPage extends React.Component {
           </FeatureBox>
           <img
             src={shape}
+            alt="logo"
             style={{
               position: 'absolute',
               bottom: 0,
@@ -49,15 +50,22 @@ class IndexPage extends React.Component {
             }} />
         </div>
         <Container>
-          <h2>Clarity</h2>
-          <h2>Efficiency</h2>
-          <h2>Consistency</h2>
-          <h2>Beauty</h2>
-          <p>
-            The web is an amazing tool for bringing ideas to life and making them accessible to everyone.
-            I believe in creating pragmatic, performant solutions to every day problems through beautiful
-            and simple web interfaces.
-          </p>
+          <div style={{
+            textAlign: 'center'
+          }}>
+            <h2>Clarity</h2>
+            <h2>Efficiency</h2>
+            <h2>Consistency</h2>
+            <h2>Beauty</h2>
+            <p style={{
+              maxWidth: '525px',
+              margin: 'auto'
+            }}>
+              The web is an incredible tool for bringing ideas to life and making them accessible to everyone.
+              I believe in creating pragmatic, performant solutions to everyday problems through beautiful
+              and simple web interfaces.
+            </p>
+          </div>
           <Tech></Tech>
         </Container>
         <div
