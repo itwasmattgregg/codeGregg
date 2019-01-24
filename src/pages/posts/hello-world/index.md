@@ -40,5 +40,3 @@ Oh, and here's a great quote from this Wikipedia on
 > firm-textured, round yolk that is bright orange-red in color.
 
 ![Chinese Salty Egg](./salty_egg.jpg)
-
-![Pic](https://images.unsplash.com/photo-1538337104786-7f9ff74bdf6a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5a21cf442ec2c3f44db7eb437792732d)
