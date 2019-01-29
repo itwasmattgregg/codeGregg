@@ -3,7 +3,7 @@ import Img from "gatsby-image"
 
 import Layout from '../components/layout/layout'
 import FeatureBox from '../components/featureBox/featureBox'
-import {Link} from 'gatsby';
+import {graphql, Link} from 'gatsby';
 import get from 'lodash/get';
 import Tech from '../components/tech/tech';
 import Container from '../components/container';
@@ -21,37 +21,63 @@ class IndexPage extends React.Component {
     );
 
     return (
-      <Layout>
+      <Layout paddingTop={false}>
         <div style={{
           display: 'flex',
           position: 'relative',
+          flexWrap: 'wrap',
         }}>
           <FeatureBox side="left" backgroundColor="darkBlue">
-            <h1 className="h3">Minneapolis Web Developer</h1>
-            <h2>Matt Gregg</h2>
-            <Img alt="matt gregg" fixed={profileImg.childImageSharp.fixed}/>
-            <p>I’m a full stack web engineer and I want to help you craft amazing, modern web experiences.</p>
+            <h2 className="h3" style={{marginBottom: '50px'}}>Minneapolis Web Developer</h2>
+            <h1>Matt Gregg</h1>
+            <div style={{display: 'flex'}}>
+              <Img
+                alt="matt gregg"
+                fixed={profileImg.childImageSharp.fixed}
+                style={{flexShrink: '0', marginRight:'25px'}}
+/>
+              <div>
+                <p>I’m a full stack web engineer and I want to help you craft amazing, modern experiences.</p>
+                <Link to="#contact" style={{
+                  color: 'white',
+                  fontWeight: '700',
+                  textDecoration: 'none'
+                }}>Contact Me</Link>
+              </div>
+            </div>
           </FeatureBox>
           <FeatureBox side="right" backgroundColor="lightBlue">
-            <h1>Note: Site Under Construction!</h1>
-            <h3>Latest Blog Post</h3>
-            <h2>
-              <Link to={latestPost.fields.slug} style={{color: 'white'}}>{latestPost.frontmatter.title}</Link>
+            <h3 style={{marginBottom: '50px'}}>Latest Blog Post</h3>
+            <h2 className="h1 font_default">
+              <Link to={latestPost.fields.slug} style={{
+                color: 'white',
+                textDecoration: 'none'
+              }}>{latestPost.frontmatter.title}</Link>
             </h2>
+            <p>
+              {latestPost.excerpt}
+            </p>
+            <Link to={latestPost.fields.slug} style={{
+              color: 'white',
+              fontWeight: '700',
+              textDecoration: 'none'
+            }}>Read More</Link>
           </FeatureBox>
           <img
             src={shape}
-            alt="logo"
+            alt=""
             style={{
               position: 'absolute',
               bottom: 0,
               left: '50%',
-              transform: 'translateX(-50%)'
-            }} />
+              transform: 'translateX(-50%) scaleX(1.1)',
+              pointerEvents: 'none'
+            }}/>
         </div>
         <Container>
           <div style={{
-            textAlign: 'center'
+            textAlign: 'center',
+            margin: '70px 0'
           }}>
             <h2>Clarity</h2>
             <h2>Efficiency</h2>
@@ -59,11 +85,9 @@ class IndexPage extends React.Component {
             <h2>Beauty</h2>
             <p style={{
               maxWidth: '525px',
-              margin: 'auto'
+              margin: 'auto',
             }}>
-              The web is an incredible tool for bringing ideas to life and making them accessible to everyone.
-              I believe in creating pragmatic, performant solutions to everyday problems through beautiful
-              and simple web interfaces.
+              The web is an incredible tool for bringing ideas to life and making them accessible to everyone. I believe in creating pragmatic, performant solutions to everyday problems through beautiful and simple web interfaces.
             </p>
           </div>
           <Tech></Tech>
@@ -76,7 +100,7 @@ class IndexPage extends React.Component {
           }}
         >
           <Container>
-            <h2 style={{textAlign: 'center'}}>Contact Me</h2>
+            <h2 className="text_center">Contact Me</h2>
             <ContactForm></ContactForm>
           </Container>
         </div>

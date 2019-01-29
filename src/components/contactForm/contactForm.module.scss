@@ -1,9 +1,9 @@
 .contactForm {
   display: grid;
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 15px;
+  grid-gap: 25px;
   position: relative;
 
   input, textarea {

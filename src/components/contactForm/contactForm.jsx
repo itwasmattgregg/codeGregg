@@ -34,7 +34,6 @@ class ContactForm extends React.Component {
       name: '',
       email: '',
       message: '',
-      submitting: false,
       success: false,
     }
   }
@@ -53,12 +52,10 @@ class ContactForm extends React.Component {
     })
       .then(() => {
         this.setState({ success: true })
-        this.setState({ submitting: false })
         this.resetForm();
       })
       .catch(error => {
         alert(error)
-        this.setState({ submitting: false })
       })
 
     e.preventDefault()
@@ -69,6 +66,7 @@ class ContactForm extends React.Component {
     email: '',
     message: '',
   });
+
   handleChange = e => this.setState({ [e.target.name]: e.target.value })
 
   render() {

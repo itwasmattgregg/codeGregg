@@ -1,20 +1,13 @@
 import React from 'react'
 
-// Import typefaces
-import 'typeface-montserrat'
-import 'typeface-merriweather'
-
-// import profilePic from './profile-pic.jpg'
+import twitter from '../images/twitter.svg'
 
 const Bio = () => (
-  <div
-    style={{
-      display: 'flex',
-    }}
-  >
+  <div>
     <p>
       Written by <strong>Matt Gregg</strong> who lives and works in Minneapolis, MN
     </p>
+    <p>Have something to say about this post? Reach out to me on <a href="#" style={{margin: '0 10px'}}><img src={twitter} alt="twitter" /></a></p>
   </div>
 )
 

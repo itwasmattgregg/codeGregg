@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import get from 'lodash/get'
 
 import Layout from '../components/layout/layout'
@@ -12,17 +12,18 @@ class Blog extends React.Component {
     return (
       <Layout>
         <Container>
-          <h1 className="text_center">The Blog</h1>
+          <h1 className="text_center">Blog</h1>
           {posts.map(({ node }) => {
-            const title = get(node, 'frontmatter.title') || node.fields.slug
+            const post = get(node, 'frontmatter') || node.fields.slug
             return (
-              <div key={node.fields.slug}>
+              <div key={node.fields.slug} style={{marginBottom: '75px'}}>
                 <h3>
                   <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
-                    {title}
+                    {post.title}
                   </Link>
                 </h3>
-                <small>{node.frontmatter.date}</small>
+                <div><small>{post.date}</small></div>
+                <Link to={`/category/${post.category}`}><small>#{post.category}</small></Link>
                 <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
               </div>
             )

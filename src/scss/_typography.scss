@@ -2,18 +2,26 @@
   text-align: center;
 }
 
-.font-default {
+.text_bold {
+  font-weight: 700;
+}
+
+.font_default {
   font-family: Montserrat, sans-serif;
 }
 
-.font-monad {
+.font_monad {
   font-family: Monad, Helvetica, Arial, sans-serif;
 }
 
 .h1 {
-  font-size: 2.5rem;
+  font-size: 2.222rem;
 }
 
 .h2 {
+  font-size: 1.61453rem;
+}
 
+.h3 {
+  font-size: 1.37625rem;
 }

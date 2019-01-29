@@ -6,4 +6,8 @@
 
 .appContainer {
   flex: 1;
+
+  &_paddingTop {
+    padding-top: 100px;
+  }
 }

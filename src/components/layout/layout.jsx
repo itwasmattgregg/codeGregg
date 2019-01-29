@@ -9,7 +9,7 @@ import '../../scss/main.scss'
 import styles from './layout.module.scss'
 import Footer from '../footer';
 
-const Layout = ({ children }) => (
+const Layout = ({ children, paddingTop }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -39,7 +39,7 @@ const Layout = ({ children }) => (
           siteTitle={data.site.siteMetadata.title}
           menuLinks={data.site.siteMetadata.menuLinks}
         />
-        <div className={styles.appContainer}>
+        <div className={`${styles.appContainer} ${paddingTop ? styles.appContainer_paddingTop : ''}`}>
           {children}
         </div>
         <Footer></Footer>
@@ -50,6 +50,11 @@ const Layout = ({ children }) => (
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  paddingTop: PropTypes.bool,
+}
+
+Layout.defaultProps = {
+  paddingTop: true,
 }
 
 export default Layout

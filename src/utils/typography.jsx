@@ -3,18 +3,20 @@ import Typography from "typography"
 const typography = new Typography({
   baseFontSize: "18px",
   bodyFontFamily: ["Montserrat", "Sans-serif"],
-  scaleRatio: 2.5,
+  scaleRatio: 2.222,
   headerFontFamily: [
     "Monad",
     "Helvetica",
     "Arial",
     "sans-serif",
   ],
+  headerWeight: 500,
   googleFonts: [
     {
       name: 'Montserrat',
       styles: [
         '400',
+        '500',
         '700',
       ],
     }

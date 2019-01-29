@@ -1,7 +1,7 @@
 import React from "react";
 import Helmet from "react-helmet";
 import get from 'lodash/get'
-import { Link } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import Layout from '../components/layout/layout';
 import Container from '../components/container';
 

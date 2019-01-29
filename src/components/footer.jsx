@@ -17,6 +17,7 @@ const Footer = () => (
       <div style={{
         display: 'flex',
         justifyContent: 'center',
+        alignItems: 'flex-end',
       }}>
         <a href="#" style={{margin: '0 10px'}}><img src={codepen} alt="codepen" /></a>
         <a href="#" style={{margin: '0 10px'}}><img src={github} alt="github" /></a>
