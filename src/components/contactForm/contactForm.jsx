@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
 import posed from 'react-pose';
 
-import styles from './contactForm.module.scss'
+import styles from './contactForm.module.scss';
 
 const encode = data => {
   return Object.keys(data)
     .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-    .join('&')
-}
+    .join('&');
+};
 
 const Button = posed.button({
   open: {
@@ -17,29 +17,29 @@ const Button = posed.button({
     backgroundColor: 'limegreen',
     top: 0,
     left: 0,
-    flip: true
+    flip: true,
   },
   closed: {
     height: 'inherit',
     width: 'inherit',
     position: 'static',
-    flip: true
-  }
+    flip: true,
+  },
 });
 
 class ContactForm extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       name: '',
       email: '',
       message: '',
       success: false,
-    }
+    };
   }
 
   handleSubmit = e => {
-    this.setState({ submitting: true })
+    this.setState({ submitting: true });
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -51,26 +51,27 @@ class ContactForm extends React.Component {
       }),
     })
       .then(() => {
-        this.setState({ success: true })
+        this.setState({ success: true });
         this.resetForm();
       })
       .catch(error => {
-        alert(error)
-      })
+        alert(error);
+      });
 
-    e.preventDefault()
-  }
+    e.preventDefault();
+  };
 
-  resetForm = () => this.setState({
-    name: '',
-    email: '',
-    message: '',
-  });
+  resetForm = () =>
+    this.setState({
+      name: '',
+      email: '',
+      message: '',
+    });
 
-  handleChange = e => this.setState({ [e.target.name]: e.target.value })
+  handleChange = e => this.setState({ [e.target.name]: e.target.value });
 
   render() {
-    const { name, email, message, submitting, success } = this.state
+    const { name, email, message, submitting, success } = this.state;
 
     return (
       <form
@@ -111,16 +112,13 @@ class ContactForm extends React.Component {
           />
         </label>
         <div className={styles.buttonColumn}>
-          <Button
-            type="submit"
-            pose={success ? 'open' : 'closed'}
-          >
+          <Button type="submit" pose={success ? 'open' : 'closed'}>
             {success ? 'Sent!' : 'Send It'}
           </Button>
         </div>
       </form>
-    )
+    );
   }
 }
 
-export default ContactForm
+export default ContactForm;

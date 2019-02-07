@@ -1,12 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
-import { StaticQuery, graphql } from 'gatsby'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
+import { StaticQuery, graphql } from 'gatsby';
 
-import Header from '../header/header'
-import '../../scss/main.scss'
+import Header from '../header/header';
+import '../../scss/main.scss';
 
-import styles from './layout.module.scss'
+import styles from './layout.module.scss';
 import Footer from '../footer';
 
 const Layout = ({ children, paddingTop }) => (
@@ -39,22 +39,26 @@ const Layout = ({ children, paddingTop }) => (
           siteTitle={data.site.siteMetadata.title}
           menuLinks={data.site.siteMetadata.menuLinks}
         />
-        <div className={`${styles.appContainer} ${paddingTop ? styles.appContainer_paddingTop : ''}`}>
+        <div
+          className={`${styles.appContainer} ${
+            paddingTop ? styles.appContainer_paddingTop : ''
+          }`}
+        >
           {children}
         </div>
-        <Footer></Footer>
+        <Footer />
       </div>
     )}
   />
-)
+);
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
   paddingTop: PropTypes.bool,
-}
+};
 
 Layout.defaultProps = {
   paddingTop: true,
-}
+};
 
-export default Layout
+export default Layout;
