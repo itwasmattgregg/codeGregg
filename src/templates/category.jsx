@@ -1,6 +1,6 @@
-import React from "react";
-import Helmet from "react-helmet";
-import get from 'lodash/get'
+import React from 'react';
+import Helmet from 'react-helmet';
+import get from 'lodash/get';
 import { graphql, Link } from 'gatsby';
 import Layout from '../components/layout/layout';
 import Container from '../components/container';
@@ -13,14 +13,12 @@ class CategoryTemplate extends React.Component {
     const postCount = get(this.props, 'data.allMarkdownRemark.totalCount');
     return (
       <Layout>
-        <Helmet
-          title={`Posts in category "${category}" | ${siteTitle}`}
-        />
+        <Helmet title={`Posts in category "${category}" | ${siteTitle}`} />
         <Container>
           <h1 className="text_center">The {category} Category</h1>
           <h5>Total Posts: {postCount}</h5>
           {posts.map(({ node }) => {
-            const title = get(node, 'frontmatter.title') || node.fields.slug
+            const title = get(node, 'frontmatter.title') || node.fields.slug;
             return (
               <div key={node.fields.slug}>
                 <h3>
@@ -31,7 +29,7 @@ class CategoryTemplate extends React.Component {
                 <small>{node.frontmatter.date}</small>
                 <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
               </div>
-            )
+            );
           })}
         </Container>
       </Layout>
