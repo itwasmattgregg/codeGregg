@@ -1,10 +1,10 @@
 ---
 title: Rainy Days Dos
 category: webdev
-date: "2018-10-02T14:55:33Z"
+date: '2018-10-02T14:55:33Z'
 ---
 
-Let's make some edits.
+This blog is still under construction. This blog post is completely a test. It will be removed later
 
 ![Umbrella](./freddy-do-1082674-unsplash.jpg)
 
