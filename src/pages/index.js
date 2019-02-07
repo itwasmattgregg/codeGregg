@@ -17,7 +17,7 @@ class IndexPage extends React.Component {
     const profileImg = get(this, 'props.data.profileImg');
 
     return (
-      <Layout paddingTop={false}>
+      <Layout>
         <div
           style={{
             display: 'flex',
@@ -25,14 +25,14 @@ class IndexPage extends React.Component {
             flexWrap: 'wrap',
           }}
         >
-          <FeatureBox side="left" backgroundColor="darkBlue">
-            <h2 className="h3" style={{ marginBottom: '50px' }}>
+          <FeatureBox side='left' backgroundColor='darkBlue'>
+            <h2 className='h3' style={{ marginBottom: '50px' }}>
               Minneapolis Web Developer
             </h2>
             <h1>Matt Gregg</h1>
             <div style={{ display: 'flex' }}>
               <Img
-                alt="matt gregg"
+                alt='matt gregg'
                 fixed={profileImg.childImageSharp.fixed}
                 style={{ flexShrink: '0', marginRight: '25px' }}
               />
@@ -42,7 +42,7 @@ class IndexPage extends React.Component {
                   amazing, modern experiences.
                 </p>
                 <Link
-                  to="#contact"
+                  to='#contact'
                   style={{
                     color: 'white',
                     fontWeight: '700',
@@ -54,9 +54,9 @@ class IndexPage extends React.Component {
               </div>
             </div>
           </FeatureBox>
-          <FeatureBox side="right" backgroundColor="lightBlue">
+          <FeatureBox side='right' backgroundColor='lightBlue'>
             <h3 style={{ marginBottom: '50px' }}>Latest Blog Post</h3>
-            <h2 className="h1 font_default">
+            <h2 className='h1 font_default'>
               <Link
                 to={latestPost.fields.slug}
                 style={{
@@ -81,7 +81,7 @@ class IndexPage extends React.Component {
           </FeatureBox>
           <img
             src={shape}
-            alt=""
+            alt=''
             style={{
               position: 'absolute',
               bottom: 0,
@@ -124,7 +124,7 @@ class IndexPage extends React.Component {
           }}
         >
           <Container>
-            <h2 className="text_center">Contact Me</h2>
+            <h2 className='text_center'>Contact Me</h2>
             <ContactForm />
           </Container>
         </div>
