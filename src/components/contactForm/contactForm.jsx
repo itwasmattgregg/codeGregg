@@ -71,23 +71,23 @@ class ContactForm extends React.Component {
   handleChange = e => this.setState({ [e.target.name]: e.target.value });
 
   render() {
-    const { name, email, message, submitting, success } = this.state;
+    const { name, email, message, success } = this.state;
 
     return (
       <form
         className={styles.contactForm}
-        name="contact"
+        name='contact'
         onSubmit={this.handleSubmit}
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
+        data-netlify='true'
+        data-netlify-honeypot='bot-field'
       >
-        <input type="hidden" name="bot-field" />
+        <input type='hidden' name='bot-field' />
         <label className={styles.nameField}>
           Name
           <input
             required
-            type="text"
-            name="name"
+            type='text'
+            name='name'
             value={name}
             onChange={this.handleChange}
           />
@@ -96,8 +96,8 @@ class ContactForm extends React.Component {
           Email
           <input
             required
-            type="email"
-            name="email"
+            type='email'
+            name='email'
             value={email}
             onChange={this.handleChange}
           />
@@ -106,13 +106,13 @@ class ContactForm extends React.Component {
           Message
           <textarea
             required
-            name="message"
+            name='message'
             value={message}
             onChange={this.handleChange}
           />
         </label>
         <div className={styles.buttonColumn}>
-          <Button type="submit" pose={success ? 'open' : 'closed'}>
+          <Button type='submit' pose={success ? 'open' : 'closed'}>
             {success ? 'Sent!' : 'Send It'}
           </Button>
         </div>

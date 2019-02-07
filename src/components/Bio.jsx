@@ -10,8 +10,8 @@ const Bio = () => (
     </p>
     <p>
       Have something to say about this post? Reach out to me on{' '}
-      <a href="#" style={{ margin: '0 10px' }}>
-        <img src={twitter} alt="twitter" />
+      <a href='https://twitter.com/ItWasMattGregg' style={{ margin: '0 10px' }}>
+        <img src={twitter} alt='twitter' />
       </a>
     </p>
   </div>
