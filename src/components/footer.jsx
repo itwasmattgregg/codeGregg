@@ -23,23 +23,41 @@ const Footer = () => (
           alignItems: 'flex-end',
         }}
       >
-        <a href="#" style={{ margin: '0 10px' }}>
-          <img src={codepen} alt="codepen" />
+        <a
+          href='https://codepen.io/itwasmattgregg/'
+          style={{ margin: '0 10px' }}
+        >
+          <img src={codepen} alt='codepen' />
         </a>
-        <a href="#" style={{ margin: '0 10px' }}>
-          <img src={github} alt="github" />
+        <a
+          href='https://github.com/itwasmattgregg'
+          style={{ margin: '0 10px' }}
+        >
+          <img src={github} alt='github' />
         </a>
-        <a href="#" style={{ margin: '0 10px' }}>
-          <img src={linkedin} alt="linkedin" />
+        <a
+          href='https://www.linkedin.com/in/mattdgregg/'
+          style={{ margin: '0 10px' }}
+        >
+          <img src={linkedin} alt='linkedin' />
         </a>
-        <a href="#" style={{ margin: '0 10px' }}>
-          <img src={spotify} alt="spotify" />
+        <a
+          href='https://open.spotify.com/user/1248248872?si=qDPkzMvSRD-IV0FLrm3TQA'
+          style={{ margin: '0 10px' }}
+        >
+          <img src={spotify} alt='spotify' />
         </a>
-        <a href="#" style={{ margin: '0 10px' }}>
-          <img src={twitter} alt="twitter" />
+        <a
+          href='https://twitter.com/ItWasMattGregg'
+          style={{ margin: '0 10px' }}
+        >
+          <img src={twitter} alt='twitter' />
         </a>
-        <a href="#" style={{ margin: '0 10px' }}>
-          <img src={facebook} alt="facebook" />
+        <a
+          href='https://www.facebook.com/mattdgregg'
+          style={{ margin: '0 10px' }}
+        >
+          <img src={facebook} alt='facebook' />
         </a>
       </div>
     </Container>
