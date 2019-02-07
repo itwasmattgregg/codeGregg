@@ -12,7 +12,16 @@ class Blog extends React.Component {
     return (
       <Layout>
         <Container>
-          <h1 className="text_center">Blog</h1>
+          <h1 className='text_center'>Blog</h1>
+          <p
+            className='text_center'
+            style={{ maxWidth: '700px', margin: '20px auto' }}
+          >
+            This is a place for my thoughts on many of the things I love in
+            life. From web development, to restaurant reveiws and recipes, to
+            woodworking. These thoughts are my own for the world to hopefully
+            learn a little more about me.
+          </p>
           {posts.map(({ node }) => {
             const post = get(node, 'frontmatter') || node.fields.slug;
             return (
