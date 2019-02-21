@@ -1,6 +1,7 @@
 @import '../../scss/variables';
 
 .featureBox {
+  align-items: center;
   flex: 1;
   background: $dark_blue;
   flex-basis: 100%;
@@ -21,13 +22,13 @@
 
   @media(min-width: 901px) {
     flex-basis: 50%;
-    min-height: 450px;
+    min-height: 600px;
   }
 }
 
 .featureBoxContent {
   flex: 1;
-  padding: 0px 1.0875rem;
+  padding: 0 1.0875rem;
 
   @media(min-width: 901px) {
     max-width: 540px;

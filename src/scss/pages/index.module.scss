@@ -1,0 +1,32 @@
+@import '../../scss/variables';
+
+.processList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 60px;
+}
+
+.processItem {
+  margin: 0 10px;
+}
+
+.processItemDivider {
+  width: 0;
+  height: 0;
+  border: 3px solid transparent;
+  border-bottom: 5px solid $main_color;
+  position: relative;
+  top: 7px;
+  margin-right: 5px;
+  &:after {
+    content: '';
+    position: absolute;
+    left: -3px;
+    top: 5px;
+    width: 0;
+    height: 0;
+    border: 3px solid transparent;
+    border-top: 5px solid $main_color;
+  }
+}
