@@ -44,7 +44,7 @@ class IndexPage extends React.Component {
 />
               <div>
                 <p>
-                  I’m a full stack web engineer and I want to help you craft amazing, modern experiences.
+                  I’m a full stack web engineer and I strive to craft amazing, modern, inclusive experiences.
                 </p>
                 <Link
                   to='#contact'
@@ -118,7 +118,7 @@ class IndexPage extends React.Component {
                 margin: 'auto',
               }}
             >
-              The web is an incredible tool for bringing ideas to life and making them accessible to everyone. I believe in creating pragmatic, performant solutions to everyday problems through beautiful and simple web interfaces. If you would like to work with me please use the contact form below.
+              The web is an incredible tool for bringing ideas to life and making them accessible to everyone. I believe in creating pragmatic, performant solutions to everyday problems through beautiful and simple web interfaces. If you jive with this please use the form below to contact me.
             </p>
           </div>
           <Tech/>
