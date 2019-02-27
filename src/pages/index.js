@@ -91,10 +91,10 @@ class IndexPage extends React.Component {
               position: 'absolute',
               bottom: 0,
               left: '50%',
-              transform: 'translateX(-50%) scaleX(1.1)',
+              height: '90px',
+              transform: 'translateX(-50%) scaleX(1.4)',
               pointerEvents: 'none',
-            }}
-/>
+            }}/>
         </div>
         <Container>
           <div
@@ -118,7 +118,7 @@ class IndexPage extends React.Component {
                 margin: 'auto',
               }}
             >
-              The web is an incredible tool for bringing ideas to life and making them accessible to everyone. I believe in creating pragmatic, performant solutions to everyday problems through beautiful and simple web interfaces. If you jive with this please use the form below to contact me.
+              The web is an incredible tool for bringing ideas to life and making them accessible to everyone. I believe in creating pragmatic, performant solutions to everyday problems through elegant web interfaces. If you jive with this please use the form below to contact me.
             </p>
           </div>
           <Tech/>

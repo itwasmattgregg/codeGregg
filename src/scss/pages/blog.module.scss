@@ -1,0 +1,59 @@
+@import '../variables';
+
+.blog_title {
+  background: $background;
+  display: inline-block;
+  padding: 10px 20px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: $main_color;
+  z-index: 1;
+}
+
+.blog_featureSections {
+  display: flex;
+}
+
+.blog_featureSections_block {
+  height: 500px;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+@mixin title {
+  margin: 30px;
+  font-size: 40px;
+  font-weight: bold;
+  align-self: end;
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.blog_featureSections_devTitle {
+  @include title;
+
+  justify-self: end;
+}
+
+.blog_featureSections_foodTitle {
+  @include title;
+
+  justify-self: start;
+}
+
+.blog_featureSections_overlayLink {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.blog_featureSections_overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: $main_color;
+  opacity: 0.4;
+  z-index: -1;
+}
