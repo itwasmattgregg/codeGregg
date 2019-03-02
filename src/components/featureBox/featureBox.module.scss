@@ -1,14 +1,13 @@
 @import '../../scss/variables';
 
 .featureBox {
-  align-items: center;
   flex: 1;
   background: $dark_blue;
   flex-basis: 100%;
   display: flex;
   justify-content: flex-end;
   color: white;
-  padding: 40px 0;
+  padding: 50px 0;
 
   &.rightBox {
     justify-content: flex-start;
@@ -20,9 +19,10 @@
     background-color: $light_blue;
   }
 
-  @media(min-width: 901px) {
+  @media(min-width: $gfb) {
     flex-basis: 50%;
     min-height: 500px;
+    padding: 80px 0;
   }
 }
 
@@ -30,7 +30,7 @@
   flex: 1;
   padding: 0 1.0875rem;
 
-  @media(min-width: 901px) {
+  @media(min-width: $gfb) {
     max-width: 540px;
   }
 }

@@ -29,48 +29,38 @@ const Icon = posed.div({
 });
 
 const Tech = () => (
-  <div className="text_center">
+  <div className='text_center'>
     <p>Some of the technologies I'm passionate about...</p>
-    <div
-      style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(5, minmax(min-content, 150px))',
-        gridGap: '20px',
-        gridAutoRows: '1fr',
-        justifyContent: 'center',
-        perspective: '1000px',
-        marginBottom: '50px',
-      }}
-    >
+    <div className={styles.techContainer}>
       <Icon className={styles.techLogo}>
-        <img src={firebase} alt="firebase" title="firebase" />
+        <img src={firebase} alt='firebase' title='firebase' />
       </Icon>
       <Icon className={styles.techLogo}>
-        <img src={gatsby} alt="gatsby" title="gatsby" />
+        <img src={gatsby} alt='gatsby' title='gatsby' />
       </Icon>
       <Icon className={styles.techLogo}>
-        <img src={javascript} alt="javascript" title="javascript" />
+        <img src={javascript} alt='javascript' title='javascript' />
       </Icon>
       <Icon className={styles.techLogo}>
-        <img src={laravel} alt="laravel" title="laravel" />
+        <img src={vue} alt='vue' title='vue' />
       </Icon>
       <Icon className={styles.techLogo}>
-        <img src={nodejs} alt="nodejs" title="nodejs" />
+        <img src={nodejs} alt='nodejs' title='nodejs' />
       </Icon>
       <Icon className={styles.techLogo}>
-        <img src={react} alt="react" title="react" />
+        <img src={react} alt='react' title='react' />
       </Icon>
       <Icon className={styles.techLogo}>
-        <img src={redux} alt="redux" title="redux" />
+        <img src={redux} alt='redux' title='redux' />
       </Icon>
       <Icon className={styles.techLogo}>
-        <img src={sass} alt="sass" title="sass" />
+        <img src={sass} alt='sass' title='sass' />
       </Icon>
       <Icon className={styles.techLogo}>
-        <img src={vue} alt="vue" title="vue" />
+        <img src={laravel} alt='laravel' title='laravel' />
       </Icon>
       <Icon className={styles.techLogo}>
-        <img src={webpack} alt="webpack" title="webpack" />
+        <img src={webpack} alt='webpack' title='webpack' />
       </Icon>
     </div>
   </div>

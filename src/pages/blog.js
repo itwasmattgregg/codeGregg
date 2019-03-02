@@ -42,22 +42,19 @@ class Blog extends React.Component {
           </BackgroundImage>
         </div>
         <Container>
-          <p
-            className='text_center'
-            style={{ maxWidth: '700px', margin: '20px auto' }}
-          >
+          <p className={styles.pageDescription}>
             This is a place for my thoughts on many of the things I love in life. From web development, to restaurant reveiws and recipes, to woodworking. These thoughts are my own for the world to hopefully learn a little more about me.
           </p>
-          <h2>Latest Posts</h2>
+          <h2 className={styles.latestPosts}>Latest Posts</h2>
           {
             posts.map(({node}) => {
               const post = get(node,
                 'frontmatter'
               ) || node.fields.slug;
               return (
-                <div key={node.fields.slug} style={{ marginBottom: '75px' }}>
+                <div key={node.fields.slug} style={{ maxWidth: '750px', margin: '75px auto' }}>
                   <h3>
-                    <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
+                    <Link className="font_default" style={{ boxShadow: 'none' }} to={node.fields.slug}>
                       {post.title}
                     </Link>
                   </h3>

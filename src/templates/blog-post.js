@@ -1,6 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import { Link, graphql } from 'gatsby';
+import {Link, graphql} from 'gatsby';
 import get from 'lodash/get';
 
 import Bio from '../components/Bio';
@@ -10,9 +10,11 @@ import Container from '../components/container';
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark;
-    const siteTitle = get(this.props, 'data.site.siteMetadata.title');
+    const siteTitle = get(this.props,
+      'data.site.siteMetadata.title'
+    );
     const siteDescription = post.excerpt;
-    const { previous, next } = this.props.pageContext;
+    const {previous, next} = this.props.pageContext;
 
     return (
       <Layout>
@@ -20,22 +22,26 @@ class BlogPostTemplate extends React.Component {
           htmlAttributes={{ lang: 'en' }}
           meta={[{ name: 'description', content: siteDescription }]}
           title={`${post.frontmatter.title} | ${siteTitle}`}
-        />
+/>
         <Container>
-          <h1>{post.frontmatter.title}</h1>
-          <Link to={`/category/${post.frontmatter.category}`}>
-            #{post.frontmatter.category}
-          </Link>
-          <p
-            style={{
-              display: 'block',
-            }}
-          >
-            {post.frontmatter.date}
-          </p>
-          <div dangerouslySetInnerHTML={{ __html: post.html }} />
-          <hr />
-          <Bio />
+          <div style={{}}>
+            <h1>{post.frontmatter.title}</h1>
+          </div>
+          <div style={{maxWidth: '740px', margin: '0 auto'}}>
+            <Link to={`/category/${post.frontmatter.category}`}>
+              #{post.frontmatter.category}
+            </Link>
+            <p
+              style={{
+                display: 'block',
+              }}
+            >
+              {post.frontmatter.date}
+            </p>
+            <div dangerouslySetInnerHTML={{ __html: post.html }}/>
+          </div>
+          <hr/>
+          <Bio/>
 
           <ul
             style={{
@@ -47,18 +53,23 @@ class BlogPostTemplate extends React.Component {
             }}
           >
             <li>
-              {previous && (
-                <Link to={previous.fields.slug} rel="prev">
-                  ← {previous.frontmatter.title}
-                </Link>
-              )}
+              {
+                previous && (
+                  <Link to={previous.fields.slug} rel="prev">
+                    ← {previous.frontmatter.title}
+                  </Link>
+                )
+              }
             </li>
             <li>
-              {next && (
-                <Link to={next.fields.slug} rel="next">
-                  {next.frontmatter.title} →
-                </Link>
-              )}
+              {
+                next && (
+                  <Link to={next.fields.slug} rel="next">
+                    {next.frontmatter.title}
+                    →
+                  </Link>
+                )
+              }
             </li>
           </ul>
         </Container>
@@ -69,7 +80,7 @@ class BlogPostTemplate extends React.Component {
 
 export default BlogPostTemplate;
 
-export const pageQuery = graphql`
+export const pageQuery = graphql `
   query BlogPostBySlug($slug: String!) {
     site {
       siteMetadata {

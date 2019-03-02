@@ -1,3 +1,5 @@
+@import '../../scss/variables';
+
 .techLogo {
   display: flex;
   height: 0;
@@ -11,5 +13,19 @@
     max-height: 100%;
     top: 50%;
     transform: translateY(-50%);
+  }
+}
+
+.techContainer {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(min-content, 150px));
+  grid-gap: 20px;
+  grid-auto-rows: 1fr;
+  justify-content: center;
+  perspective: 1000px;
+  margin-bottom: 50px;
+
+  @media(min-width: 501px) {
+    grid-template-columns: repeat(5, minmax(min-content, 150px));
   }
 }

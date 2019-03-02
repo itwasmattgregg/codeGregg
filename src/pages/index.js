@@ -9,7 +9,7 @@ import Tech from '../components/tech/tech';
 import Container from '../components/container';
 import ContactForm from '../components/contactForm/contactForm';
 
-import shape from '../images/shape.svg';
+import shape from '../images/weird-homepage-shape.svg';
 
 import styles from '../scss/pages/index.module.scss';
 
@@ -87,14 +87,7 @@ class IndexPage extends React.Component {
           <img
             src={shape}
             alt=''
-            style={{
-              position: 'absolute',
-              bottom: 0,
-              left: '50%',
-              height: '90px',
-              transform: 'translateX(-50%) scaleX(1.4)',
-              pointerEvents: 'none',
-            }}/>
+            className={styles.weirdShape}/>
         </div>
         <Container>
           <div
@@ -115,23 +108,23 @@ class IndexPage extends React.Component {
             <p
               style={{
                 maxWidth: '525px',
-                margin: 'auto',
+                margin: '50px auto',
               }}
             >
               The web is an incredible tool for bringing ideas to life and making them accessible to everyone. I believe in creating pragmatic, performant solutions to everyday problems through elegant web interfaces. If you jive with this please use the form below to contact me.
             </p>
+            <Tech/>
           </div>
-          <Tech/>
         </Container>
         <div
           style={{
             backgroundColor: 'white',
-            padding: '50px 0',
+            padding: '70px 0',
             boxShadow: '0px 0px 3px 0 rgba(0,0,0,0.4)',
           }}
         >
           <Container>
-            <h2 className='text_center'>Contact Me</h2>
+            <h2 className='text_center h1'>Contact Me</h2>
             <ContactForm/>
           </Container>
         </div>

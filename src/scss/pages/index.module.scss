@@ -30,3 +30,16 @@
     border-top: 5px solid $main_color;
   }
 }
+
+.weirdShape {
+  position: absolute;
+  left: 50%;
+  height: 90px;
+  pointer-events: none;
+  bottom: -45px;
+  transform: translateX(-50%) scale(2.4, 2);
+
+  @media(max-width: $gfb) {
+    display: none;
+  }
+}
