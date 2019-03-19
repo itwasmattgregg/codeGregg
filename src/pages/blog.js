@@ -1,5 +1,5 @@
 import React from 'react';
-import {graphql, Link} from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import get from 'lodash/get';
 import BackgroundImage from 'gatsby-background-image';
 
@@ -29,7 +29,7 @@ class Blog extends React.Component {
               <div className={styles.blog_featureSections_overlay}></div>
             </Link>
             <h2 className={styles.blog_featureSections_devTitle}>
-              <Link to={`/category/dev`} style={{textDecoration: 'none', color: 'white'}}>Dev</Link>
+              <Link to={`/category/dev`} style={{ textDecoration: 'none', color: 'white' }}>Dev</Link>
             </h2>
           </BackgroundImage>
           <BackgroundImage Tag="div" fluid={foodBackground} className={styles.blog_featureSections_block} backgroundColor={`#040e18`}>
@@ -37,7 +37,7 @@ class Blog extends React.Component {
               <div className={styles.blog_featureSections_overlay}></div>
             </Link>
             <h2 className={styles.blog_featureSections_foodTitle}>
-              <Link to={`/category/food`} style={{textDecoration: 'none', color: 'white'}}>Food</Link>
+              <Link to={`/category/food`} style={{ textDecoration: 'none', color: 'white' }}>Food</Link>
             </h2>
           </BackgroundImage>
         </div>
@@ -47,7 +47,7 @@ class Blog extends React.Component {
           </p>
           <h2 className={styles.latestPosts}>Latest Posts</h2>
           {
-            posts.map(({node}) => {
+            posts.map(({ node }) => {
               const post = get(node,
                 'frontmatter'
               ) || node.fields.slug;
@@ -64,7 +64,7 @@ class Blog extends React.Component {
                   <Link to={`/category/${post.category}`}>
                     <small>#{post.category}</small>
                   </Link>
-                  <p dangerouslySetInnerHTML={{ __html: node.excerpt }}/>
+                  <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
                 </div>
               );
             })
@@ -77,7 +77,7 @@ class Blog extends React.Component {
 
 export default Blog;
 
-export const pageQuery = graphql `
+export const pageQuery = graphql`
   query {
     site {
       siteMetadata {
@@ -94,7 +94,7 @@ export const pageQuery = graphql `
     }
     foodBackground: file(relativePath: {eq: "eaters-collective-109596-unsplash.jpg"}) {
       childImageSharp {
-        fluid(quality: 100, maxWidth: 4160) {
+        fluid(maxWidth: 4160) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }

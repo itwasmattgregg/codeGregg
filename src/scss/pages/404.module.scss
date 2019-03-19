@@ -1,0 +1,14 @@
+.lostImage {
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding-top: 100px;
+    width: 100%;
+
+    &:before, &:after {
+        background-position: center;
+    }
+}

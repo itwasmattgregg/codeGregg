@@ -2,7 +2,7 @@ import React from 'react';
 
 export default class Bio extends React.Component {
   componentDidMount() {
-    window.twttr = (function(d, s, id) {
+    window.twttr = (function (d, s, id) {
       let js;
       const fjs = d.getElementsByTagName(s)[0];
       const t = window.twttr || {};
@@ -13,7 +13,7 @@ export default class Bio extends React.Component {
       fjs.parentNode.insertBefore(js, fjs);
 
       t._e = [];
-      t.ready = function(f) {
+      t.ready = function (f) {
         t._e.push(f);
       };
 
@@ -35,7 +35,7 @@ export default class Bio extends React.Component {
           <a
             href='https://twitter.com/intent/tweet?screen_name=itwasmattgregg&ref_src=twsrc%5Etfw'
             className='twitter-mention-button'
-            data-text={`${window.location}`}
+            data-text={`${this.props.location}`}
             data-show-count='true'
           >
             @itwasmattgregg

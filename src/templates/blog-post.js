@@ -1,6 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import {Link, graphql} from 'gatsby';
+import { Link, graphql } from 'gatsby';
 import get from 'lodash/get';
 
 import Bio from '../components/Bio';
@@ -13,8 +13,10 @@ class BlogPostTemplate extends React.Component {
     const siteTitle = get(this.props,
       'data.site.siteMetadata.title'
     );
+    const location = get(this.props,
+      'location.href');
     const siteDescription = post.excerpt;
-    const {previous, next} = this.props.pageContext;
+    const { previous, next } = this.props.pageContext;
 
     return (
       <Layout>
@@ -22,12 +24,12 @@ class BlogPostTemplate extends React.Component {
           htmlAttributes={{ lang: 'en' }}
           meta={[{ name: 'description', content: siteDescription }]}
           title={`${post.frontmatter.title} | ${siteTitle}`}
-/>
+        />
         <Container>
           <div style={{}}>
             <h1>{post.frontmatter.title}</h1>
           </div>
-          <div style={{maxWidth: '740px', margin: '0 auto'}}>
+          <div style={{ maxWidth: '740px', margin: '0 auto' }}>
             <Link to={`/category/${post.frontmatter.category}`}>
               #{post.frontmatter.category}
             </Link>
@@ -38,10 +40,10 @@ class BlogPostTemplate extends React.Component {
             >
               {post.frontmatter.date}
             </p>
-            <div dangerouslySetInnerHTML={{ __html: post.html }}/>
+            <div dangerouslySetInnerHTML={{ __html: post.html }} />
           </div>
-          <hr/>
-          <Bio/>
+          <hr />
+          <Bio location={location} />
 
           <ul
             style={{
@@ -80,7 +82,7 @@ class BlogPostTemplate extends React.Component {
 
 export default BlogPostTemplate;
 
-export const pageQuery = graphql `
+export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     site {
       siteMetadata {
