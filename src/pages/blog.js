@@ -87,7 +87,7 @@ export const pageQuery = graphql`
     }
     devBackground: file(relativePath: {eq: "markus-spiske-148030-unsplash.jpg"}) {
       childImageSharp {
-        fluid(quality: 100, maxWidth: 4160) {
+        fluid(maxWidth: 4160) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
