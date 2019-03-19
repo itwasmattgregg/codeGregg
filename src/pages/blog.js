@@ -25,11 +25,11 @@ class Blog extends React.Component {
         <h1 className={`text_center ${styles.blog_title}`}>Blog</h1>
         <div className={styles.blog_featureSections}>
           <BackgroundImage Tag="div" fluid={devBackground} className={styles.blog_featureSections_block} backgroundColor={`#040e18`}>
-            <Link to={`/category/dev`} className={styles.blog_featureSections_overlayLink}>
+            <Link to={`/category/webdev`} className={styles.blog_featureSections_overlayLink}>
               <div className={styles.blog_featureSections_overlay}></div>
             </Link>
             <h2 className={styles.blog_featureSections_devTitle}>
-              <Link to={`/category/dev`} style={{ textDecoration: 'none', color: 'white' }}>Dev</Link>
+              <Link to={`/category/webdev`} style={{ textDecoration: 'none', color: 'white' }}>Dev</Link>
             </h2>
           </BackgroundImage>
           <BackgroundImage Tag="div" fluid={foodBackground} className={styles.blog_featureSections_block} backgroundColor={`#040e18`}>
