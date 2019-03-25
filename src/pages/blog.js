@@ -1,7 +1,8 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import {graphql, Link} from 'gatsby';
 import get from 'lodash/get';
 import BackgroundImage from 'gatsby-background-image';
+import _ from 'lodash';
 
 import Layout from '../components/layout/layout';
 import Container from '../components/container';
@@ -25,11 +26,11 @@ class Blog extends React.Component {
         <h1 className={`text_center ${styles.blog_title}`}>Blog</h1>
         <div className={styles.blog_featureSections}>
           <BackgroundImage Tag="div" fluid={devBackground} className={styles.blog_featureSections_block} backgroundColor={`#040e18`}>
-            <Link to={`/category/webdev`} className={styles.blog_featureSections_overlayLink}>
+            <Link to={`/category/dev`} className={styles.blog_featureSections_overlayLink}>
               <div className={styles.blog_featureSections_overlay}></div>
             </Link>
             <h2 className={styles.blog_featureSections_devTitle}>
-              <Link to={`/category/webdev`} style={{ textDecoration: 'none', color: 'white' }}>Dev</Link>
+              <Link to={`/category/dev`} style={{ textDecoration: 'none', color: 'white' }}>Dev</Link>
             </h2>
           </BackgroundImage>
           <BackgroundImage Tag="div" fluid={foodBackground} className={styles.blog_featureSections_block} backgroundColor={`#040e18`}>
@@ -47,7 +48,7 @@ class Blog extends React.Component {
           </p>
           <h2 className={styles.latestPosts}>Latest Posts</h2>
           {
-            posts.map(({ node }) => {
+            posts.map(({node}) => {
               const post = get(node,
                 'frontmatter'
               ) || node.fields.slug;
@@ -61,10 +62,20 @@ class Blog extends React.Component {
                   <div>
                     <small>{post.date}</small>
                   </div>
-                  <Link to={`/category/${post.category}`}>
-                    <small>#{post.category}</small>
-                  </Link>
-                  <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+                  <div className="post-tag-container">
+                    {
+                      post.frontmatter && post.frontmatter.tags && post.frontmatter.tags.map(category => (
+                        <Link
+                          key={category}
+                          style={{ textDecoration: "none" }}
+                          to={`/category/${_.kebabCase(category)}`}
+                        >
+                          {category}
+                        </Link>
+                      ))
+                    }
+                  </div>
+                  <p dangerouslySetInnerHTML={{ __html: node.excerpt }}/>
                 </div>
               );
             })
@@ -77,7 +88,7 @@ class Blog extends React.Component {
 
 export default Blog;
 
-export const pageQuery = graphql`
+export const pageQuery = graphql `
   query {
     site {
       siteMetadata {
@@ -109,7 +120,7 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "DD MMMM, YYYY h:mm A")
             title
-            category
+            tags
           }
         }
       }

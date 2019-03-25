@@ -7,7 +7,7 @@ import Container from '../components/container';
 
 class CategoryTemplate extends React.Component {
   render() {
-    const category = this.props.pathContext.category;
+    const category = this.props.pathContext.tags;
     const siteTitle = get(this.props, 'data.site.siteMetadata.title');
     const posts = get(this.props, 'data.allMarkdownRemark.edges');
     const postCount = get(this.props, 'data.allMarkdownRemark.totalCount');
@@ -43,7 +43,7 @@ class CategoryTemplate extends React.Component {
 
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
-  query CategoryPage($category: String) {
+  query CategoryPage($tag: String) {
     site {
       siteMetadata {
         title
@@ -53,7 +53,7 @@ export const pageQuery = graphql`
     allMarkdownRemark(
       limit: 1000
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { category: { eq: $category } } }
+      filter: { frontmatter: { tags: { eq: $tag } } }
     ) {
       totalCount
       edges {

@@ -1,7 +1,8 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import { Link, graphql } from 'gatsby';
+import {Link, graphql} from 'gatsby';
 import get from 'lodash/get';
+import _ from 'lodash';
 
 import Bio from '../components/Bio';
 import Layout from '../components/layout/layout';
@@ -14,9 +15,10 @@ class BlogPostTemplate extends React.Component {
       'data.site.siteMetadata.title'
     );
     const location = get(this.props,
-      'location.href');
+      'location.href'
+    );
     const siteDescription = post.excerpt;
-    const { previous, next } = this.props.pageContext;
+    const {previous, next} = this.props.pageContext;
 
     return (
       <Layout>
@@ -24,15 +26,25 @@ class BlogPostTemplate extends React.Component {
           htmlAttributes={{ lang: 'en' }}
           meta={[{ name: 'description', content: siteDescription }]}
           title={`${post.frontmatter.title} | ${siteTitle}`}
-        />
+/>
         <Container>
           <div style={{}}>
             <h1>{post.frontmatter.title}</h1>
           </div>
           <div style={{ maxWidth: '740px', margin: '0 auto' }}>
-            <Link to={`/category/${post.frontmatter.category}`}>
-              #{post.frontmatter.category}
-            </Link>
+            <div className="post-tag-container">
+              {
+                post.frontmatter.tags && post.frontmatter.tags.map(category => (
+                  <Link
+                    key={category}
+                    style={{ marginRight: '10px' }}
+                    to={`/category/${_.kebabCase(category)}`}
+                  >
+                    #{category}
+                  </Link>
+                ))
+              }
+            </div>
             <p
               style={{
                 display: 'block',
@@ -40,10 +52,10 @@ class BlogPostTemplate extends React.Component {
             >
               {post.frontmatter.date}
             </p>
-            <div dangerouslySetInnerHTML={{ __html: post.html }} />
+            <div dangerouslySetInnerHTML={{ __html: post.html }}/>
           </div>
-          <hr />
-          <Bio location={location} />
+          <hr/>
+          <Bio location={location}/>
 
           <ul
             style={{
@@ -82,7 +94,7 @@ class BlogPostTemplate extends React.Component {
 
 export default BlogPostTemplate;
 
-export const pageQuery = graphql`
+export const pageQuery = graphql `
   query BlogPostBySlug($slug: String!) {
     site {
       siteMetadata {
@@ -94,9 +106,10 @@ export const pageQuery = graphql`
       id
       excerpt
       html
+      timeToRead
       frontmatter {
         title
-        category
+        tags
         date(formatString: "MMMM DD, YYYY")
       }
     }

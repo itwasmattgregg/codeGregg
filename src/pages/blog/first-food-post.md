@@ -1,6 +1,7 @@
 ---
 title: Food Tastes so good
-category: food
+tags:
+  - food
 date: '2019-02-07T14:55:33Z'
 ---
 
