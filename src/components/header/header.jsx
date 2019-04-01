@@ -9,12 +9,12 @@ const Header = ({ siteTitle, menuLinks }) => (
     <div className={styles.headerContent}>
       <h1 className={styles.logo}>
         <Link
-          to="/"
+          to='/'
           style={{
             textDecoration: 'none',
           }}
         >
-          <img src={logo} alt="codegregg logo" />
+          <img src={logo} alt='codegregg logo' />
         </Link>
       </h1>
       <nav className={styles.nav}>
