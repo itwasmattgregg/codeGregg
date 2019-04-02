@@ -23,10 +23,12 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
+  border-bottom: 1px solid white;
 
   @media(min-width: $gfb) {
     height: 400px;
     flex-basis: 50%;
+    border: none;
   }
 }
 

@@ -3,18 +3,23 @@ import Img from 'gatsby-image';
 
 import Layout from '../components/layout/layout';
 import FeatureBox from '../components/featureBox/featureBox';
-import { graphql, Link } from 'gatsby';
+import {graphql, Link} from 'gatsby';
 import get from 'lodash/get';
 import Tech from '../components/tech/tech';
 import Container from '../components/container';
 import ContactForm from '../components/contactForm/contactForm';
 
 import shape from '../images/shape.svg';
+import styles from '../scss/pages/index.module.scss';
 
 class IndexPage extends React.Component {
   render() {
-    const latestPost = get(this, 'props.data.allMarkdownRemark.edges[0].node');
-    const profileImg = get(this, 'props.data.profileImg');
+    const latestPost = get(this,
+      'props.data.allMarkdownRemark.edges[0].node'
+    );
+    const profileImg = get(this,
+      'props.data.profileImg'
+    );
 
     return (
       <Layout>
@@ -35,11 +40,10 @@ class IndexPage extends React.Component {
                 alt='matt gregg'
                 fixed={profileImg.childImageSharp.fixed}
                 style={{ flexShrink: '0', marginRight: '25px' }}
-              />
+/>
               <div>
                 <p>
-                  I’m a full stack web engineer and I want to help you craft
-                  amazing, modern experiences.
+                  I’m a full stack web engineer and I want to help you craft amazing, modern experiences.
                 </p>
                 <Link
                   to='/#contact'
@@ -89,7 +93,7 @@ class IndexPage extends React.Component {
               transform: 'translateX(-50%) scaleX(1.1)',
               pointerEvents: 'none',
             }}
-          />
+/>
         </div>
         <Container>
           <div
@@ -98,23 +102,25 @@ class IndexPage extends React.Component {
               margin: '70px 0',
             }}
           >
-            <h2>Clarity</h2>
-            <h2>Efficiency</h2>
-            <h2>Consistency</h2>
-            <h2>Beauty</h2>
+            <div className={styles.processList}>
+              <h2 className={styles.processItem}>Clarity</h2>
+              <span class={styles.processItemDivider}></span>
+              <h2 className={styles.processItem}>Efficiency</h2>
+              <span class={styles.processItemDivider}></span>
+              <h2 className={styles.processItem}>Consistency</h2>
+              <span class={styles.processItemDivider}></span>
+              <h2 className={styles.processItem}>Beauty</h2>
+            </div>
             <p
               style={{
                 maxWidth: '525px',
                 margin: 'auto',
               }}
             >
-              The web is an incredible tool for bringing ideas to life and
-              making them accessible to everyone. I believe in creating
-              pragmatic, performant solutions to everyday problems through
-              beautiful and simple web interfaces.
+              The web is an incredible tool for bringing ideas to life and making them accessible to everyone. I believe in creating pragmatic, performant solutions to everyday problems through beautiful and simple web interfaces.
             </p>
           </div>
-          <Tech />
+          <Tech/>
         </Container>
         <div
           style={{
@@ -125,7 +131,7 @@ class IndexPage extends React.Component {
         >
           <Container>
             <h2 className='text_center'>Contact Me</h2>
-            <ContactForm />
+            <ContactForm/>
           </Container>
         </div>
       </Layout>
@@ -135,7 +141,7 @@ class IndexPage extends React.Component {
 
 export default IndexPage;
 
-export const query = graphql`
+export const query = graphql `
   query {
     profileImg: file(relativePath: { eq: "Matt-Gregg-square-9961.jpg" }) {
       childImageSharp {
