@@ -6,13 +6,13 @@ module.exports = {
     siteUrl: 'https://codegregg.com',
     menuLinks: [
       {
-        "name": "Blog",
-        "link": "/blog"
+        name: 'Blog',
+        link: '/blog',
       },
       {
-        "name": "Contact",
-        "link": "#contact"
-      }
+        name: 'Contact',
+        link: '/#contact',
+      },
     ],
   },
   plugins: [
@@ -54,7 +54,7 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 620,
-              sizeByPixelDensity: true
+              sizeByPixelDensity: true,
             },
           },
           'gatsby-remark-prismjs',
@@ -81,4 +81,4 @@ module.exports = {
     },
     `gatsby-plugin-netlify`,
   ],
-}
+};

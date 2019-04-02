@@ -42,7 +42,7 @@ class IndexPage extends React.Component {
                   amazing, modern experiences.
                 </p>
                 <Link
-                  to='#contact'
+                  to='/#contact'
                   style={{
                     color: 'white',
                     fontWeight: '700',
