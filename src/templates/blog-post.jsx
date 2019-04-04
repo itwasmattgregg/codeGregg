@@ -1,24 +1,26 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import {Link, graphql} from 'gatsby';
+import { Link, graphql } from 'gatsby';
 import get from 'lodash/get';
 import _ from 'lodash';
+import BackgroundImage from 'gatsby-background-image';
 
 import Bio from '../components/Bio';
 import Layout from '../components/layout/layout';
 import Container from '../components/container';
+import styles from '../scss/templates/blog-post.module.scss';
 
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark;
-    const siteTitle = get(this.props,
-      'data.site.siteMetadata.title'
-    );
-    const location = get(this.props,
-      'location.href'
-    );
+    const siteTitle = get(this.props, 'data.site.siteMetadata.title');
+    const location = get(this.props, 'location.href');
     const siteDescription = post.excerpt;
-    const {previous, next} = this.props.pageContext;
+    const { previous, next } = this.props.pageContext;
+    const featuredImage = get(
+      this,
+      'props.data.markdownRemark.frontmatter.featuredImage.childImageSharp.fluid'
+    );
 
     return (
       <Layout>
@@ -26,15 +28,23 @@ class BlogPostTemplate extends React.Component {
           htmlAttributes={{ lang: 'en' }}
           meta={[{ name: 'description', content: siteDescription }]}
           title={`${post.frontmatter.title} | ${siteTitle}`}
-/>
-        <Container>
+        />
+        {featuredImage && (
           <div style={{}}>
-            <h1>{post.frontmatter.title}</h1>
+            <BackgroundImage
+              Tag='div'
+              fluid={featuredImage}
+              className={styles.featuredImage}
+              backgroundColor={`#040e18`}
+            />
           </div>
+        )}
+        <Container>
+          <h1>{post.frontmatter.title}</h1>
           <div style={{ maxWidth: '740px', margin: '0 auto' }}>
-            <div className="post-tag-container">
-              {
-                post.frontmatter.tags && post.frontmatter.tags.map(category => (
+            <div className='post-tag-container'>
+              {post.frontmatter.tags &&
+                post.frontmatter.tags.map(category => (
                   <Link
                     key={category}
                     style={{ marginRight: '10px' }}
@@ -42,8 +52,7 @@ class BlogPostTemplate extends React.Component {
                   >
                     #{category}
                   </Link>
-                ))
-              }
+                ))}
             </div>
             <p
               style={{
@@ -52,10 +61,10 @@ class BlogPostTemplate extends React.Component {
             >
               {post.frontmatter.date}
             </p>
-            <div dangerouslySetInnerHTML={{ __html: post.html }}/>
+            <div dangerouslySetInnerHTML={{ __html: post.html }} />
           </div>
-          <hr/>
-          <Bio location={location}/>
+          <hr />
+          <Bio location={location} />
 
           <ul
             style={{
@@ -67,23 +76,18 @@ class BlogPostTemplate extends React.Component {
             }}
           >
             <li>
-              {
-                previous && (
-                  <Link to={previous.fields.slug} rel="prev">
-                    ← {previous.frontmatter.title}
-                  </Link>
-                )
-              }
+              {previous && (
+                <Link to={previous.fields.slug} rel='prev'>
+                  ← {previous.frontmatter.title}
+                </Link>
+              )}
             </li>
             <li>
-              {
-                next && (
-                  <Link to={next.fields.slug} rel="next">
-                    {next.frontmatter.title}
-                    →
-                  </Link>
-                )
-              }
+              {next && (
+                <Link to={next.fields.slug} rel='next'>
+                  {next.frontmatter.title}→
+                </Link>
+              )}
             </li>
           </ul>
         </Container>
@@ -94,7 +98,7 @@ class BlogPostTemplate extends React.Component {
 
 export default BlogPostTemplate;
 
-export const pageQuery = graphql `
+export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     site {
       siteMetadata {
@@ -111,6 +115,13 @@ export const pageQuery = graphql `
         title
         tags
         date(formatString: "MMMM DD, YYYY")
+        featuredImage {
+          childImageSharp {
+            fluid(maxWidth: 4160) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
       }
     }
   }
