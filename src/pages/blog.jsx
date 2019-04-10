@@ -83,7 +83,7 @@ class Blog extends React.Component {
                 key={node.fields.slug}
                 style={{ maxWidth: '750px', margin: '75px auto' }}
               >
-                <h3>
+                <h3 style={{ marginBottom: '1rem' }}>
                   <Link
                     className='font_default'
                     style={{ boxShadow: 'none' }}
@@ -96,15 +96,14 @@ class Blog extends React.Component {
                   <small>{post.date}</small>
                 </div>
                 <div>
-                  {post.frontmatter &&
-                    post.frontmatter.tags &&
-                    post.frontmatter.tags.map(category => (
+                  {post.tags &&
+                    post.tags.map(category => (
                       <Link
                         key={category}
-                        style={{ textDecoration: 'none' }}
+                        style={{ textDecoration: 'none', marginRight: '10px' }}
                         to={`/category/${_.kebabCase(category)}`}
                       >
-                        {category}
+                        #{category}
                       </Link>
                     ))}
                 </div>
