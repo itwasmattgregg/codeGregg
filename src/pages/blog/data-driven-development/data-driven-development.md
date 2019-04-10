@@ -3,7 +3,8 @@ title: Research Driven Development
 tags:
   - dev
   - ux
-date: '2019-02-28T22:58:13Z'
+date: '2019-03-28T22:58:13Z'
+visible: false
 ---
 
 Title ideas: success, research, data, user

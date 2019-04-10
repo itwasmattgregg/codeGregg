@@ -11,7 +11,11 @@ exports.createPages = ({graphql, actions}) => {
     const tagPage = path.resolve("src/templates/category.jsx")
     resolve(graphql(`
           {
-            allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+            allMarkdownRemark(
+              sort: { fields: [frontmatter___date], order: DESC },
+              filter: {
+                frontmatter: {visible: {ne: false}}
+              }) {
               edges {
                 node {
                   fields {

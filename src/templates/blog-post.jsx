@@ -6,8 +6,8 @@ import _ from 'lodash';
 import BackgroundImage from 'gatsby-background-image';
 
 import Bio from '../components/Bio';
-import Layout from '../components/layout/layout';
 import Container from '../components/container';
+import Layout from '../components/layout/layout';
 import styles from '../scss/templates/blog-post.module.scss';
 
 class BlogPostTemplate extends React.Component {
@@ -108,8 +108,8 @@ export const pageQuery = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       excerpt
-      html
       timeToRead
+      html
       frontmatter {
         title
         tags

@@ -30,7 +30,7 @@ const Icon = posed.div({
 
 const Tech = () => (
   <div className='text_center'>
-    <p>Some of the technologies I'm passionate about...</p>
+    <p>Some of the technologies I'm most passionate about...</p>
     <div className={styles.techContainer}>
       <Icon className={styles.techLogo}>
         <img src={firebase} alt='firebase' title='firebase' />

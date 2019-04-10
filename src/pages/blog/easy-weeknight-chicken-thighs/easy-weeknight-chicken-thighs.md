@@ -3,8 +3,38 @@ title: Easy Weeknight Chicken Thighs
 tags:
   - food
   - recipes
-date: '2019-02-28T22:58:13Z'
-featuredImage: './oven-baked-honey-mistard-chicken-thighs.jpg'
+date: '2019-04-09T22:58:13Z'
 ---
 
-Yo
+![Chicken](./oven-baked-honey-mistard-chicken-thighs.jpg)
+
+_prep time: 5min_ /
+_cooking time: 30-40min_
+
+Been really loving how easy and delicious this recipe is from [cookinglsl](http://cookinglsl.com/easy-oven-baked-honey-mustard-chicken-thighs-recipe/)
+
+## Ingredients
+
+- 2 lb boneless skinless chicken thighs
+- 1/4 cup Dijon mustard
+- 1/4 cup honey
+- 1 tbsp olive oil
+- 1/2 tsp salt
+- 1/4 tsp black pepper
+- 1/2 tsp oregano
+- 1/16 tsp cayenne pepper (optional) or a few dashes
+  of your favorite hot sauce
+
+## Instructions
+
+1. Preheat oven to 350F
+
+2. In a small bowl, combine Dijon mustard, honey,
+   olive oil, salt, pepper, oregano, and cayenne pepper.
+
+3. Place chicken on a greased cookie sheet or baking pan.
+   Pour the sauce over it. Make sure it is evenly coated.
+
+4. Bake chicken uncovered for 30-40 minutes,
+   until the top is golden and the internal temperature
+   of the meat is 165F.

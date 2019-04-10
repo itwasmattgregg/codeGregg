@@ -54,9 +54,8 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      limit: 1000
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { tags: { eq: $tag } } }
+      filter: { frontmatter: { visible: { ne: false }, tags: { eq: $tag } } }
     ) {
       totalCount
       edges {
@@ -67,8 +66,8 @@ export const pageQuery = graphql`
           excerpt
           timeToRead
           frontmatter {
+            date(formatString: "DD MMMM, YYYY h:mm A")
             title
-            date(formatString: "MMMM DD, YYYY h:mm A")
           }
         }
       }

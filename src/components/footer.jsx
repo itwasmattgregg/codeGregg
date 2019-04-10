@@ -60,6 +60,9 @@ const Footer = () => (
           <img src={facebook} alt='facebook' />
         </a>
       </div>
+      <div className='text_center'>
+        <small>mattdgregg@gmail.com</small>
+      </div>
     </Container>
   </div>
 );
