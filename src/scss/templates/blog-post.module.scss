@@ -1,4 +1,24 @@
+@import '../variables';
+
 .featuredImage {
   height: 350px;
-  margin-bottom: 40px;
+}
+
+.blogTitle {
+  margin-top: 40px;
+  margin-bottom: 1rem;
+}
+
+.tagItem {
+  color: white;
+  background-color: $main_color;
+  padding: 5px 10px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.date {
+  font-style: italic;
+  font-size: 20px;
 }

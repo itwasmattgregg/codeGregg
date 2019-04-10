@@ -62,7 +62,7 @@ class Blog extends React.Component {
                   <div>
                     <small>{post.date}</small>
                   </div>
-                  <div className="post-tag-container">
+                  <div>
                     {
                       post.frontmatter && post.frontmatter.tags && post.frontmatter.tags.map(category => (
                         <Link

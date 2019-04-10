@@ -7,7 +7,7 @@ import Container from '../components/container';
 
 class CategoryTemplate extends React.Component {
   render() {
-    const category = this.props.pathContext.tags;
+    const category = this.props.pathContext.tag;
     const siteTitle = get(this.props, 'data.site.siteMetadata.title');
     const posts = get(this.props, 'data.allMarkdownRemark.edges');
     const postCount = get(this.props, 'data.allMarkdownRemark.totalCount');
@@ -16,7 +16,10 @@ class CategoryTemplate extends React.Component {
         <Helmet title={`Posts in category "${category}" | ${siteTitle}`} />
         <Container>
           <div style={{ maxWidth: '740px', margin: '0 auto' }}>
-            <h1 className='text_center' style={{ textTransform: 'capitalize' }}>
+            <h1
+              className='text_center'
+              style={{ textTransform: 'capitalize', marginTop: '40px' }}
+            >
               {category}
             </h1>
             <h5>Total Posts: {postCount}</h5>

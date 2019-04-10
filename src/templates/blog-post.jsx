@@ -40,13 +40,16 @@ class BlogPostTemplate extends React.Component {
           </div>
         )}
         <Container>
-          <h1>{post.frontmatter.title}</h1>
-          <div style={{ maxWidth: '740px', margin: '0 auto' }}>
-            <div className='post-tag-container'>
+          <div className='text_center'>
+            <h1 className={`${styles.blogTitle} text_center`}>
+              {post.frontmatter.title}
+            </h1>
+            <div>
               {post.frontmatter.tags &&
                 post.frontmatter.tags.map(category => (
                   <Link
                     key={category}
+                    className={styles.tagItem}
                     style={{ marginRight: '10px' }}
                     to={`/category/${_.kebabCase(category)}`}
                   >
@@ -54,13 +57,9 @@ class BlogPostTemplate extends React.Component {
                   </Link>
                 ))}
             </div>
-            <p
-              style={{
-                display: 'block',
-              }}
-            >
-              {post.frontmatter.date}
-            </p>
+            <p className={styles.date}>{post.frontmatter.date}</p>
+          </div>
+          <div style={{ maxWidth: '740px', margin: '0 auto' }}>
             <div dangerouslySetInnerHTML={{ __html: post.html }} />
           </div>
           <hr />

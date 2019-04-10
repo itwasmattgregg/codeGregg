@@ -4,7 +4,6 @@ tags:
   - dev
   - ux
 date: '2019-02-28T22:58:13Z'
-featuredImage: './hello-world/salty_egg.jpg'
 ---
 
 Title ideas: success, research, data, user
