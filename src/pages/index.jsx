@@ -68,6 +68,12 @@ class IndexPage extends React.Component {
                 {latestPost.frontmatter.title}
               </Link>
             </h2>
+            <div>
+              <em>
+                #{latestPost.frontmatter.tags[0]} -{' '}
+                {latestPost.frontmatter.date}
+              </em>
+            </div>
             <p>{latestPost.excerpt}</p>
             <Link
               to={latestPost.fields.slug}
@@ -87,8 +93,9 @@ class IndexPage extends React.Component {
               position: 'absolute',
               bottom: 0,
               left: '50%',
-              transform: 'translateX(-50%) scaleX(1.1)',
+              transform: 'translateX(-50%) scaleX(1.3)',
               pointerEvents: 'none',
+              opacity: 0.4,
             }}
           />
         </div>
@@ -171,7 +178,7 @@ export const query = graphql`
             slug
           }
           frontmatter {
-            date(formatString: "DD MMMM, YYYY")
+            date(formatString: "MMMM DD YYYY")
             title
             tags
           }
