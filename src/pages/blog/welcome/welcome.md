@@ -1,5 +1,5 @@
 ---
-title: Welcome
+title: Welcome!
 tags:
   - dev
   - ux
@@ -8,4 +8,6 @@ date: '2019-04-09T23:15:31Z'
 featuredImage: './charles-koh-550122-unsplash.jpg'
 ---
 
-Welcome to my blog.
+I've always wanted to have a blog but have just never gotten around to it until now. I think it will be a good practice for me to put in writing the things I learn professionally as well as on the side. I have many hobbies and passions and would love to share the things I learn with the world. Even though I know well that almost none of my ideas will be original to the internet, I have decided to share them anyways.
+
+The first thing you should know about me is that I am on a constant hunt to learn new things. Whether it's in web development, cooking, photography, music, sailing, or woodworking, I could never be satsified not pushing myself to know more. This causes me to have quite a large number of interests but I will say it keeps my life interesting. I am driven to know, to know why, and to use that knowledge to better the lives of those around me.
