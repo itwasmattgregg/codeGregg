@@ -9125,6 +9125,7 @@ sharp@^0.21.3:
 sharp@^0.22.0:
   version "0.22.0"
   resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.22.0.tgz#cf4cfcb019941fd06ac24555d9f5bc84536d29be"
+  integrity sha512-yInpiWYvVbE0hJylso2Q2A7QaYFBxGdSlVVHGeUf1F9JsQNAUpmaqdnX54TImgKbSCy9mQpEAoGm1pcKCZhCsQ==
   dependencies:
     bindings "^1.5.0"
     color "^3.1.0"
