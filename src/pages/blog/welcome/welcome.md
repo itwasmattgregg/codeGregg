@@ -6,6 +6,7 @@ tags:
   - general
 date: '2019-04-09T23:15:31Z'
 featuredImage: './charles-koh-550122-unsplash.jpg'
+visible: false
 ---
 
 I've always wanted to have a blog but have just never gotten around to it until now. I think it will be a good practice for me to put in writing the things I learn professionally as well as on the side. I have many hobbies and passions and would love to share the things I learn with the world. Even though I know well that almost none of my ideas will be original to the internet, I have decided to share them anyways.
