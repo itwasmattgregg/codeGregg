@@ -9,8 +9,8 @@ class CategoryTemplate extends React.Component {
   render() {
     const category = this.props.pathContext.tag;
     const siteTitle = get(this.props, 'data.site.siteMetadata.title');
-    const posts = get(this.props, 'data.allMarkdownRemark.edges');
-    const postCount = get(this.props, 'data.allMarkdownRemark.totalCount');
+    const posts = get(this.props, 'data.allMdx.edges');
+    const postCount = get(this.props, 'data.allMdx.totalCount');
     return (
       <Layout>
         <Helmet title={`Posts in category "${category}" | ${siteTitle}`} />
@@ -53,7 +53,7 @@ export const pageQuery = graphql`
         author
       }
     }
-    allMarkdownRemark(
+    allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { visible: { ne: false }, tags: { eq: $tag } } }
     ) {

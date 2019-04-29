@@ -17,6 +17,8 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sass',
+    'gatsby-plugin-offline',
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -29,8 +31,21 @@ module.exports = {
         icon: 'src/images/favicon.png', // This path is relative to the root of the site.
       },
     },
-    'gatsby-plugin-offline',
-    'gatsby-plugin-sass',
+    {
+      resolve: `gatsby-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 620,
+              sizeByPixelDensity: true,
+            },
+          },
+          `gatsby-remark-smartypants`
+        ]
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -41,26 +56,15 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
+        name: `posts`,
+        path: `${__dirname}/src/posts`,
       },
     },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: `gatsby-source-filesystem`,
       options: {
-        plugins: [
-          'gatsby-remark-copy-linked-files',
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 620,
-              sizeByPixelDensity: true,
-            },
-          },
-          'gatsby-remark-prismjs',
-          'gatsby-remark-smartypants',
-          'gatsby-plugin-catch-links',
-        ],
+        name: `images`,
+        path: `${__dirname}/src/images`,
       },
     },
     `gatsby-transformer-sharp`,

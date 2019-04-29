@@ -4,6 +4,7 @@ import { Link, graphql } from 'gatsby';
 import get from 'lodash/get';
 import _ from 'lodash';
 import BackgroundImage from 'gatsby-background-image';
+import MDXRenderer from 'gatsby-mdx/mdx-renderer';
 
 import Bio from '../components/Bio';
 import Container from '../components/container';
@@ -12,14 +13,14 @@ import styles from '../scss/templates/blog-post.module.scss';
 
 class BlogPostTemplate extends React.Component {
   render() {
-    const post = this.props.data.markdownRemark;
+    const post = get(this.props, 'data.mdx');
     const siteTitle = get(this.props, 'data.site.siteMetadata.title');
     const location = get(this.props, 'location.href');
     const siteDescription = post.excerpt;
     const { previous, next } = this.props.pageContext;
     const featuredImage = get(
       this,
-      'props.data.markdownRemark.frontmatter.featuredImage.childImageSharp.fluid'
+      'props.data.mdx.frontmatter.featuredImage.childImageSharp.fluid'
     );
 
     return (
@@ -60,7 +61,7 @@ class BlogPostTemplate extends React.Component {
             <p className={styles.date}>{post.frontmatter.date}</p>
           </div>
           <div style={{ maxWidth: '740px', margin: '0 auto' }}>
-            <div dangerouslySetInnerHTML={{ __html: post.html }} />
+            <MDXRenderer>{post.code.body}</MDXRenderer>
           </div>
           <hr />
           <Bio location={location} />
@@ -105,11 +106,13 @@ export const pageQuery = graphql`
         author
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    mdx(fields: { slug: { eq: $slug } }) {
       id
       excerpt
       timeToRead
-      html
+      code {
+        body
+      }
       frontmatter {
         title
         tags

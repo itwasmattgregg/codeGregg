@@ -14,7 +14,7 @@ import styles from '../scss/pages/index.module.scss';
 
 class IndexPage extends React.Component {
   render() {
-    const latestPost = get(this, 'props.data.allMarkdownRemark.edges[0].node');
+    const latestPost = get(this, 'props.data.allMdx.edges[0].node');
     const profileImg = get(this, 'props.data.profileImg');
 
     return (
@@ -39,7 +39,7 @@ class IndexPage extends React.Component {
               />
               <div>
                 <p>
-                  I’m a full stack web engineer and I want to help you craft
+                  I’m a front end web engineer and I want to help you craft
                   amazing, modern experiences.
                 </p>
                 <Link
@@ -89,6 +89,7 @@ class IndexPage extends React.Component {
           <img
             src={shape}
             alt=''
+            role='presentation'
             style={{
               position: 'absolute',
               bottom: 0,
@@ -166,7 +167,7 @@ export const query = graphql`
       }
     }
 
-    allMarkdownRemark(
+    allMdx(
       limit: 1
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { visible: { ne: false } } }
