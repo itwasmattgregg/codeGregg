@@ -93,6 +93,7 @@ class IndexPage extends React.Component {
               position: 'absolute',
               bottom: 0,
               left: '50%',
+              maxWidth: '100%',
               transform: 'translateX(-50%) scaleX(1.3)',
               pointerEvents: 'none',
               opacity: 0.4,
