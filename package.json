@@ -11,7 +11,6 @@
     "gatsby-background-image": "0.2.9",
     "gatsby-image": "^2.0.13",
     "gatsby-mdx": "^0.6.2",
-    "gatsby-plugin-feed": "^2.0.5",
     "gatsby-plugin-google-analytics": "^2.0.5",
     "gatsby-plugin-manifest": "^2.0.2",
     "gatsby-plugin-netlify": "^2.0.7",
