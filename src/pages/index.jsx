@@ -40,7 +40,7 @@ class IndexPage extends React.Component {
               <div>
                 <p>
                   I’m a front end web engineer and I want to help you craft
-                  amazing, modern experiences.
+                  beautiful, modern experiences.
                 </p>
                 <Link
                   to='/#contact'
