@@ -32,21 +32,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-mdx`,
-      options: {
-        gatsbyRemarkPlugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 620,
-              sizeByPixelDensity: true,
-            },
-          },
-          `gatsby-remark-smartypants`
-        ]
-      }
-    },
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: 'pages',
@@ -69,6 +54,21 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 620,
+              sizeByPixelDensity: true,
+            },
+          },
+          `gatsby-remark-smartypants`
+        ]
+      }
+    },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
