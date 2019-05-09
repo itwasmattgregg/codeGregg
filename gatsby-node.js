@@ -5,38 +5,31 @@ const {createFilePath} = require('gatsby-source-filesystem')
 
 exports.createPages = ({graphql, actions}) => {
   const {createPage} = actions
-
   return new Promise((resolve, reject) => {
-    const blogPost = path.resolve('./src/templates/blog-post.jsx')
-    const tagPage = path.resolve("src/templates/category.jsx")
     resolve(graphql(`
-          {
-            allMarkdownRemark(
-              sort: { fields: [frontmatter___date], order: DESC },
-              filter: {
-                frontmatter: {visible: {ne: false}}
-              }) {
-              edges {
-                node {
-                  fields {
-                    slug
-                  }
-                  frontmatter {
-                    title
-                    tags
-                  }
+        {
+          allMdx {
+            edges {
+              node {
+                id
+                fields {
+                  slug
+                }
+                frontmatter {
+                  tags
                 }
               }
             }
           }
-        `).then(result => {
+        }
+      `).then(result => {
+      // this is some boilerlate to handle errors
       if (result.errors) {
-        console.log(result.errors)
-        reject(result.errors)
+        console.error(result.errors);
+        reject(result.errors);
       }
-
-      // Create blog posts pages.
-      const posts = result.data.allMarkdownRemark.edges;
+      const posts = result.data.allMdx.edges;
+      const tagPage = path.resolve("src/templates/category.jsx")
 
       _.each(posts, (post, index) => {
         const previous = index === posts.length - 1
@@ -49,17 +42,17 @@ exports.createPages = ({graphql, actions}) => {
 
         createPage({
           path: post.node.fields.slug,
-          component: blogPost,
+          component: path.resolve(`./src/templates/blog-post.jsx`),
           context: {
             slug: post.node.fields.slug,
             previous,
             next
           }
         })
-      })
+      });
 
       const tagSet = new Set();
-      result.data.allMarkdownRemark.edges.forEach(edge => {
+      result.data.allMdx.edges.forEach(edge => {
         if (edge.node.frontmatter.tags) {
           edge.node.frontmatter.tags.forEach(tag => {
             tagSet.add(tag);
@@ -74,14 +67,14 @@ exports.createPages = ({graphql, actions}) => {
           }});
       });
     }))
-  })
+  });
 }
 
 exports.onCreateNode = ({node, actions, getNode}) => {
   const {createNodeField} = actions
 
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({node, getNode})
-    createNodeField({name: `slug`, node, value})
+  if (node.internal.type === "Mdx") {
+    const value = createFilePath({node, getNode});
+    createNodeField({name: "slug", node, value: `/blog${value}`});
   }
 }

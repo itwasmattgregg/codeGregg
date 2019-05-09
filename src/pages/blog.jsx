@@ -11,7 +11,7 @@ import styles from '../scss/pages/blog.module.scss';
 
 class Blog extends React.Component {
   render() {
-    const posts = get(this, 'props.data.allMarkdownRemark.edges');
+    const posts = get(this, 'props.data.allMdx.edges');
     const devBackground = get(
       this,
       'props.data.devBackground.childImageSharp.fluid'
@@ -145,7 +145,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMarkdownRemark(
+    allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { visible: { ne: false } } }
     ) {
