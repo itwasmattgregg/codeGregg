@@ -65,9 +65,9 @@ module.exports = {
               sizeByPixelDensity: true,
             },
           },
-          `gatsby-remark-smartypants`
-        ]
-      }
+          `gatsby-remark-smartypants`,
+        ],
+      },
     },
     {
       resolve: `gatsby-plugin-google-analytics`,
@@ -82,6 +82,7 @@ module.exports = {
         pathToConfigModule: 'src/utils/typography',
       },
     },
+    // keep this at the bottom
     `gatsby-plugin-netlify`,
   ],
 };
