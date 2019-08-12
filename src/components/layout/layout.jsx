@@ -49,9 +49,12 @@ const Layout = ({ children }) => (
           />
           <meta
             property='og:description'
-            content='Minneapolis-based UI engineer consultant.'
+            content='Minneapolis-based UI engineer consultant'
           />
-          <meta property='og:image' content='/src/images/codeGregg.svg' />
+          <meta
+            property='og:image'
+            content='https://codegregg.com/images/codeGregg.svg'
+          />
 
           {/* <!-- Twitter --> */}
           <meta property='twitter:card' content='summary_large_image' />
@@ -64,7 +67,10 @@ const Layout = ({ children }) => (
             property='twitter:description'
             content='Minneapolis-based UI engineer consultant.'
           />
-          <meta property='twitter:image' content='/src/images/codeGregg.svg' />
+          <meta
+            property='twitter:image'
+            content='https://codegregg.com/images/codeGregg.svg'
+          />
         </Helmet>
         <Header
           siteTitle={data.site.siteMetadata.title}
