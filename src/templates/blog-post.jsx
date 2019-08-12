@@ -45,7 +45,10 @@ class BlogPostTemplate extends React.Component {
             property='og:description'
             content={[{ name: 'description', content: excerpt }]}
           />
-          <meta property='og:image' content={featuredImagePublicURL} />
+          <meta
+            property='og:image'
+            content={`https://codegregg.com${featuredImagePublicURL}`}
+          />
 
           {/* <!-- Twitter --> */}
           <meta property='twitter:card' content='summary_large_image' />
@@ -58,7 +61,10 @@ class BlogPostTemplate extends React.Component {
             property='twitter:description'
             content={[{ name: 'description', content: excerpt }]}
           />
-          <meta property='twitter:image' content={featuredImagePublicURL} />
+          <meta
+            property='twitter:image'
+            content={`https://codegregg.com${featuredImagePublicURL}`}
+          />
         </Helmet>
         {featuredImage && (
           <div style={{}}>
