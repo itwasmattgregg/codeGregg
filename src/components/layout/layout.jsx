@@ -40,6 +40,31 @@ const Layout = ({ children }) => (
           ]}
         >
           <html lang='en' />
+          {/* <!-- Open Graph / Facebook --> */}
+          <meta property='og:type' content='website' />
+          <meta property='og:url' content='https://codegregg.com/' />
+          <meta
+            property='og:title'
+            content='Code Gregg: Minneapolis Web Development'
+          />
+          <meta
+            property='og:description'
+            content='Minneapolis-based UI engineer consultant.'
+          />
+          <meta property='og:image' content='/src/images/codeGregg.svg' />
+
+          {/* <!-- Twitter --> */}
+          <meta property='twitter:card' content='summary_large_image' />
+          <meta property='twitter:url' content='https://codegregg.com/' />
+          <meta
+            property='twitter:title'
+            content='Code Gregg: Minneapolis Web Development'
+          />
+          <meta
+            property='twitter:description'
+            content='Minneapolis-based UI engineer consultant.'
+          />
+          <meta property='twitter:image' content='/src/images/codeGregg.svg' />
         </Helmet>
         <Header
           siteTitle={data.site.siteMetadata.title}
