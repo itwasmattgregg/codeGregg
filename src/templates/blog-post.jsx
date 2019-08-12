@@ -16,20 +16,50 @@ class BlogPostTemplate extends React.Component {
     const post = get(this.props, 'data.mdx');
     const siteTitle = get(this.props, 'data.site.siteMetadata.title');
     const location = get(this.props, 'location.href');
-    const siteDescription = post.excerpt;
+    const excerpt = post.excerpt;
     const { previous, next } = this.props.pageContext;
     const featuredImage = get(
       this,
       'props.data.mdx.frontmatter.featuredImage.childImageSharp.fluid'
+    );
+    const featuredImagePublicURL = get(
+      this,
+      'props.data.mdx.frontmatter.featuredImage.publicURL'
     );
 
     return (
       <Layout>
         <Helmet
           htmlAttributes={{ lang: 'en' }}
-          meta={[{ name: 'description', content: siteDescription }]}
+          meta={[{ name: 'description', content: excerpt }]}
           title={`${post.frontmatter.title} | ${siteTitle}`}
-        />
+        >
+          {/* <!-- Open Graph / Facebook --> */}
+          <meta property='og:type' content='website' />
+          <meta property='og:url' content='https://codegregg.com/' />
+          <meta
+            property='og:title'
+            content={`${post.frontmatter.title} | ${siteTitle}`}
+          />
+          <meta
+            property='og:description'
+            content={[{ name: 'description', content: excerpt }]}
+          />
+          <meta property='og:image' content={featuredImagePublicURL} />
+
+          {/* <!-- Twitter --> */}
+          <meta property='twitter:card' content='summary_large_image' />
+          <meta property='twitter:url' content='https://codegregg.com/' />
+          <meta
+            property='twitter:title'
+            content={`${post.frontmatter.title} | ${siteTitle}`}
+          />
+          <meta
+            property='twitter:description'
+            content={[{ name: 'description', content: excerpt }]}
+          />
+          <meta property='twitter:image' content={featuredImagePublicURL} />
+        </Helmet>
         {featuredImage && (
           <div style={{}}>
             <BackgroundImage
@@ -118,6 +148,7 @@ export const pageQuery = graphql`
         tags
         date(formatString: "MMMM DD, YYYY")
         featuredImage {
+          publicURL
           childImageSharp {
             fluid(maxWidth: 4160) {
               ...GatsbyImageSharpFluid_withWebp

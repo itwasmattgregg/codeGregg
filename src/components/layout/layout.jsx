@@ -31,7 +31,8 @@ const Layout = ({ children }) => (
           meta={[
             {
               name: 'description',
-              content: 'Minneapolis-based UI engineer consultant.',
+              content:
+                'Minneapolis-based UI engineer; many-stack artisinal crafter of the internet.',
             },
             {
               name: 'keywords',
@@ -49,7 +50,7 @@ const Layout = ({ children }) => (
           />
           <meta
             property='og:description'
-            content='Minneapolis-based UI engineer consultant'
+            content='Minneapolis-based UI engineer; many-stack artisinal crafter of the internet.'
           />
           <meta
             property='og:image'
@@ -65,7 +66,7 @@ const Layout = ({ children }) => (
           />
           <meta
             property='twitter:description'
-            content='Minneapolis-based UI engineer consultant.'
+            content='Minneapolis-based UI engineer; many-stack artisinal crafter of the internet.'
           />
           <meta
             property='twitter:image'

@@ -131,9 +131,10 @@ class IndexPage extends React.Component {
                 beautiful and simple web interfaces.
               </p>
               <p>
-                I've worked with some amazing companies like Google, Verizon,
-                Cargill, Deloitte, the NYC MTA, and many others. If you would
-                like to hear how I can help your company, contact me below.
+                I've worked with some amazing companies like Google, Cargill,
+                Deloitte, the NYC MTA, and many others. If you would like to
+                hear how I can help your company, use the form below to contact
+                me.
               </p>
             </div>
           </div>
