@@ -29,8 +29,14 @@ const Layout = ({ children }) => (
         <Helmet
           title={data.site.siteMetadata.title}
           meta={[
-            { name: 'description', content: 'Sample' },
-            { name: 'keywords', content: 'sample, something' },
+            {
+              name: 'description',
+              content: 'Minneapolis-based UI engineer consultant.',
+            },
+            {
+              name: 'keywords',
+              content: 'front end, developer, minneapolis, UX, UI',
+            },
           ]}
         >
           <html lang='en' />
@@ -39,7 +45,7 @@ const Layout = ({ children }) => (
           siteTitle={data.site.siteMetadata.title}
           menuLinks={data.site.siteMetadata.menuLinks}
         />
-        <div className={`${styles.appContainer}`}>{children}</div>
+        <div className={styles.appContainer}>{children}</div>
         <Footer />
       </div>
     )}
