@@ -31,9 +31,9 @@ class BlogPostTemplate extends React.Component {
       <Layout>
         <Helmet
           htmlAttributes={{ lang: 'en' }}
-          meta={[{ name: 'description', content: excerpt }]}
           title={`${post.frontmatter.title} | ${siteTitle}`}
         >
+          <meta property='description' content='excerpt' />
           {/* <!-- Open Graph / Facebook --> */}
           <meta property='og:type' content='website' />
           <meta property='og:url' content='https://codegregg.com/' />
@@ -41,10 +41,7 @@ class BlogPostTemplate extends React.Component {
             property='og:title'
             content={`${post.frontmatter.title} | ${siteTitle}`}
           />
-          <meta
-            property='og:description'
-            content={[{ name: 'description', content: excerpt }]}
-          />
+          <meta property='og:description' content={excerpt} />
           <meta
             property='og:image'
             content={`https://codegregg.com${featuredImagePublicURL}`}
@@ -57,10 +54,7 @@ class BlogPostTemplate extends React.Component {
             property='twitter:title'
             content={`${post.frontmatter.title} | ${siteTitle}`}
           />
-          <meta
-            property='twitter:description'
-            content={[{ name: 'description', content: excerpt }]}
-          />
+          <meta property='twitter:description' content={excerpt} />
           <meta
             property='twitter:image'
             content={`https://codegregg.com${featuredImagePublicURL}`}

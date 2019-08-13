@@ -28,19 +28,10 @@ const Layout = ({ children }) => (
       <div className={styles.appLayout}>
         <Helmet
           title={data.site.siteMetadata.title}
-          meta={[
-            {
-              name: 'description',
-              content:
-                'Minneapolis-based UI engineer; many-stack artisinal crafter of the internet.',
-            },
-            {
-              name: 'keywords',
-              content: 'front end, developer, minneapolis, UX, UI',
-            },
-          ]}
         >
           <html lang='en' />
+          <meta name="description" content="Minneapolis-based UI engineer; many-stack artisinal crafter of the internet." />
+          <meta name="keywords" content="front end, developer, minneapolis, UX, UI" />
           {/* <!-- Open Graph / Facebook --> */}
           <meta property='og:type' content='website' />
           <meta property='og:url' content='https://codegregg.com/' />

@@ -13,7 +13,7 @@ class CategoryTemplate extends React.Component {
     const postCount = get(this.props, 'data.allMdx.totalCount');
     return (
       <Layout>
-        <Helmet title={`Posts in category "${category}" | ${siteTitle}`} />
+        <Helmet title={`${category} | ${siteTitle}`} />
         <Container>
           <div style={{ maxWidth: '740px', margin: '0 auto' }}>
             <h1

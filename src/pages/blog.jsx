@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 import get from 'lodash/get';
 import BackgroundImage from 'gatsby-background-image';
+import { Helmet } from 'react-helmet';
 import _ from 'lodash';
 
 import Layout from '../components/layout/layout';
@@ -12,6 +13,7 @@ import styles from '../scss/pages/blog.module.scss';
 class Blog extends React.Component {
   render() {
     const posts = get(this, 'props.data.allMdx.edges');
+    const siteTitle = get(this.props, 'data.site.siteMetadata.title');
     const devBackground = get(
       this,
       'props.data.devBackground.childImageSharp.fluid'
@@ -23,6 +25,7 @@ class Blog extends React.Component {
 
     return (
       <Layout>
+        <Helmet title={`Blog | ${siteTitle}`} />
         <h1 className={`text_center ${styles.blog_title}`}>Blog</h1>
         <div className={styles.blog_featureSections}>
           <BackgroundImage
@@ -124,7 +127,6 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
-        description
       }
     }
     devBackground: file(
