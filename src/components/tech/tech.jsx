@@ -18,48 +18,91 @@ const Icon = posed.div({
   init: {
     scale: 1,
     rotateY: 0,
+    y: 0,
   },
   hover: {
     scale: 1.1,
+    rotateY: 30,
   },
   press: {
-    rotateY: 30,
-    scale: 1.1,
+    rotateY: 720,
+    y: -20,
+    transition: { type: 'spring', stiffness: 5 },
   },
 });
 
-const Tech = () => (
+const Tech = ({ onStart, onEnd }) => (
   <div className='text_center'>
     <p>Some of the technologies I'm most passionate about...</p>
     <div className={styles.techContainer}>
-      <Icon className={styles.techLogo}>
+      <Icon
+        className={styles.techLogo}
+        onPressStart={onStart}
+        onPressEnd={onEnd}
+      >
         <img src={firebase} alt='firebase' title='firebase' />
       </Icon>
-      <Icon className={styles.techLogo}>
+      <Icon
+        className={styles.techLogo}
+        onPressStart={onStart}
+        onPressEnd={onEnd}
+      >
         <img src={gatsby} alt='gatsby' title='gatsby' />
       </Icon>
-      <Icon className={styles.techLogo}>
+      <Icon
+        className={styles.techLogo}
+        onPressStart={onStart}
+        onPressEnd={onEnd}
+      >
         <img src={javascript} alt='javascript' title='javascript' />
       </Icon>
-      <Icon className={styles.techLogo}>
+      <Icon
+        className={styles.techLogo}
+        onPressStart={onStart}
+        onPressEnd={onEnd}
+      >
         <img src={vue} alt='vue' title='vue' />
       </Icon>
-      <Icon className={styles.techLogo}>
+      <Icon
+        className={styles.techLogo}
+        onPressStart={onStart}
+        onPressEnd={onEnd}
+      >
         <img src={nodejs} alt='nodejs' title='nodejs' />
       </Icon>
-      <Icon className={styles.techLogo}>
+      <Icon
+        className={styles.techLogo}
+        onPressStart={onStart}
+        onPressEnd={onEnd}
+      >
         <img src={react} alt='react' title='react' />
       </Icon>
-      <Icon className={styles.techLogo}>
+      <Icon
+        className={styles.techLogo}
+        onPressStart={onStart}
+        onPressEnd={onEnd}
+      >
         <img src={redux} alt='redux' title='redux' />
       </Icon>
-      <Icon className={styles.techLogo}>
+      <Icon
+        className={styles.techLogo}
+        onPressStart={onStart}
+        onPressEnd={onEnd}
+      >
         <img src={sass} alt='sass' title='sass' />
       </Icon>
-      <Icon className={styles.techLogo}>
+      <Icon
+        className={styles.techLogo}
+        onPressStart={onStart}
+        onPressEnd={onEnd}
+      >
         <img src={laravel} alt='laravel' title='laravel' />
       </Icon>
-      <Icon className={styles.techLogo}>
+      <Icon
+        className={styles.techLogo}
+        onPressStart={onStart}
+        onPressEnd={onEnd}
+      >
         <img src={webpack} alt='webpack' title='webpack' />
       </Icon>
     </div>
