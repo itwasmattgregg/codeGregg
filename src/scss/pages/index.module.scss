@@ -29,6 +29,10 @@
     border: 3px solid transparent;
     border-top: 5px solid $main_color;
   }
+
+  @media (max-width: 382px) {
+    display: none;
+  }
 }
 
 .weirdShape {
@@ -39,7 +43,7 @@
   bottom: -45px;
   transform: translateX(-50%) scale(2.4, 2);
 
-  @media(max-width: $gfb) {
+  @media (max-width: $gfb) {
     display: none;
   }
 }

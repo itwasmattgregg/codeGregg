@@ -6,7 +6,7 @@
 
 @font-face {
   font-family: 'Monad';
-  src: url("../../static/fonts/Monad.otf") format('opentype');
+  src: url('../../static/fonts/Monad.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
@@ -27,4 +27,5 @@ html {
 body {
   min-height: 100vh;
   background-color: $background;
+  overflow-x: hidden;
 }
