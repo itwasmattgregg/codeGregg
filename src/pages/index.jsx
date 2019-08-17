@@ -39,8 +39,9 @@ class IndexPage extends React.Component {
               />
               <div>
                 <p>
-                  I’m a front end web engineer and I want to help you craft
-                  beautiful, modern experiences.
+                  I’m a Front-end Web Engineer who architects beautiful, modern
+                  experiences. I also enjoy speaking at schools about code,
+                  building my design chops, and learning constantly.
                 </p>
                 <Link
                   to='/#contact'
