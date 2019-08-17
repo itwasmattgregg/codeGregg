@@ -16,10 +16,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  color: $link_color;
-}
-
 html {
   min-height: 100vh;
 }
@@ -28,4 +24,8 @@ body {
   min-height: 100vh;
   background-color: $background;
   overflow-x: hidden;
+}
+
+a {
+  color: $link_color;
 }
