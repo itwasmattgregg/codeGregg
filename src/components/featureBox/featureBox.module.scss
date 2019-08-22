@@ -13,13 +13,13 @@
     justify-content: flex-start;
   }
   &.darkBlue {
-    background-color: $dark_blue;
+    background: linear-gradient(45deg, #0e1b26, #1a344d);
   }
   &.lightBlue {
-    background-color: $light_blue;
+    background: linear-gradient(-45deg, #03325d, #1a344d);
   }
 
-  @media(min-width: $gfb) {
+  @media (min-width: $gfb) {
     flex-basis: 50%;
     min-height: 500px;
     padding: 80px 0;
@@ -30,7 +30,7 @@
   flex: 1;
   padding: 0 1.0875rem;
 
-  @media(min-width: $gfb) {
+  @media (min-width: $gfb) {
     max-width: 540px;
   }
 }

@@ -6,6 +6,7 @@ import facebook from '../images/facebook.svg';
 import codepen from '../images/codepen.svg';
 import github from '../images/github.svg';
 import linkedin from '../images/linkedin2.svg';
+import bitbucket from '../images/bitbucket.svg';
 
 const Footer = () => (
   // Social Icons
@@ -28,6 +29,12 @@ const Footer = () => (
           style={{ margin: '0 10px' }}
         >
           <img src={codepen} alt='codepen' />
+        </a>
+        <a
+          href='https://bitbucket.org/itwasmattgregg'
+          style={{ margin: '0 10px' }}
+        >
+          <img src={bitbucket} alt='bitbucket' />
         </a>
         <a
           href='https://github.com/itwasmattgregg'
