@@ -1,8 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: 'Code Gregg: Minneapolis Web Development',
+    title: 'codeGregg: Minneapolis Web UI Developer',
     author: 'Matt Gregg',
-    description: 'Minneapolis Web Developer',
+    description:
+      'Minneapolis-based UI engineer; many-stack artisinal crafter of the internet.',
     siteUrl: 'https://codegregg.com',
     menuLinks: [
       {

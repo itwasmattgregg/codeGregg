@@ -26,26 +26,30 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <div className={styles.appLayout}>
-        <Helmet
-          title={data.site.siteMetadata.title}
-        >
+        <Helmet title={data.site.siteMetadata.title}>
           <html lang='en' />
-          <meta name="description" content="Minneapolis-based UI engineer; many-stack artisinal crafter of the internet." />
-          <meta name="keywords" content="front end, developer, minneapolis, UX, UI" />
+          <meta
+            name='description'
+            content='Minneapolis-based UI engineer and many-stack, artisinal crafter of the internet.'
+          />
+          <meta
+            name='keywords'
+            content='front end, developer, minneapolis, UX, UI'
+          />
           {/* <!-- Open Graph / Facebook --> */}
           <meta property='og:type' content='website' />
           <meta property='og:url' content='https://codegregg.com/' />
           <meta
             property='og:title'
-            content='Code Gregg: Minneapolis Web Development'
+            content='codeGregg: Minneapolis Web UI Developer'
           />
           <meta
             property='og:description'
-            content='Minneapolis-based UI engineer; many-stack artisinal crafter of the internet.'
+            content='Minneapolis-based UI engineer and many-stack, artisinal crafter of the internet.'
           />
           <meta
             property='og:image'
-            content='https://codegregg.com/images/codeGregg.svg'
+            content='https://codegregg.com/images/codegregg.png'
           />
 
           {/* <!-- Twitter --> */}
@@ -53,15 +57,15 @@ const Layout = ({ children }) => (
           <meta property='twitter:url' content='https://codegregg.com/' />
           <meta
             property='twitter:title'
-            content='Code Gregg: Minneapolis Web Development'
+            content='codeGregg: Minneapolis Web UI Developer'
           />
           <meta
             property='twitter:description'
-            content='Minneapolis-based UI engineer; many-stack artisinal crafter of the internet.'
+            content='Minneapolis-based UI engineer and many-stack, artisinal crafter of the internet.'
           />
           <meta
             property='twitter:image'
-            content='https://codegregg.com/images/codeGregg.svg'
+            content='https://codegregg.com/images/codegregg.png'
           />
         </Helmet>
         <Header
