@@ -13,6 +13,9 @@ const typography = new Typography({
     },
   ],
   overrideStyles: () => ({
+    html: {
+      overflowY: 'initial',
+    },
     h1: {
       fontFamily: ['Montserrat', 'sans-serif'].join(','),
     },
