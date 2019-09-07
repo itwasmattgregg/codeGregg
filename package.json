@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "author": "Matt Gregg <mattdgregg@gmail.com>",
   "dependencies": {
-    "@mdx-js/mdx": "^1.0.0-rc.4",
-    "@mdx-js/react": "^1.0.0-rc.5",
+    "@mdx-js/mdx": "^1.4.4",
+    "@mdx-js/react": "^1.4.4",
     "@mdx-js/tag": "^0.20.3",
     "gatsby": "^2.15.9",
     "gatsby-background-image": "0.2.9",
@@ -44,7 +44,9 @@
     "typography": "^0.16.17",
     "typography-theme-wordpress-2016": "^0.16.18"
   },
-  "keywords": ["codegregg"],
+  "keywords": [
+    "codegregg"
+  ],
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
