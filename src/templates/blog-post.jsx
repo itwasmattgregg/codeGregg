@@ -90,7 +90,7 @@ class BlogPostTemplate extends React.Component {
             </div>
             <p className={styles.date}>{post.frontmatter.date}</p>
           </div>
-          <div style={{ maxWidth: '740px', margin: '0 auto 100px' }}>
+          <div style={{ maxWidth: '800px', margin: '0 auto 100px' }}>
             <MDXRenderer>{post.body}</MDXRenderer>
           </div>
           <hr />
