@@ -1,0 +1,239 @@
+---
+title: Netlify Dev + Serverless Functions + Mailchimp Subscribe Form Tutorial
+tags:
+  - dev
+  - netlify
+  - serverless functions
+  - tutorials
+date: '2019-08-25T20:25:29Z'
+featuredImage: '../images/charles-koh-550122-unsplash.jpg'
+visible: true
+---
+
+You've probably heard about [Netlify](https://www.netlify.com/), the amazing static host that literally
+makes everything about static website hosting feel like a walk on the beach.
+They've brought us automatic PR branch deploys, server-side [analytics](https://www.netlify.com/products/analytics/),
+[form submissions](https://www.netlify.com/products/forms/) without a server or even serverless
+function, and even identity management. I do not work for Netlify but I would rarely choose
+to use any other service for hosting static sites.
+By the end of this tutorial you will have a working serverless function hosted on Netlify,
+automatically built and deployed every time you push to git, that you can use on your static
+site to add subscriber emails directly to Mailchimp.
+
+Now they've brought us a tool called [Netlify Dev](https://www.netlify.com/products/dev/),
+and in this tutorial I will show you how
+to use Netlify Dev to build and deploy a simple serverless function on Netlify for adding
+emails to a mailchimp subscriber list through their API. The key benefit to using Netlify Dev is that
+you can be sure what you test locally will be handled exactly the same way by Netlify's service
+once it's deployed. Through their CLI they give you the exact same deployment tools that Netlify
+uses on their end to deploy your site through the dashboard and of course, they make it super easy.
+You won't have to run any deployment scripts locally to get your serverless function to Netlify, you'll
+only need to push the prebuilt code to git. Plus, you get logs for your functions right in your terminal.
+
+A quick note here on serverless functions if you don't know why we need them, if you know then
+you can skip this paragraph. When we build static sites with Create React App(CRA), Vue, or Gatsby,
+we are shipping all our code to the front end. This is great until you need to communicate with
+a service that requires you to store and use private keys to gain access to their APIs. It would
+be very bad to ship these to the client-side. Very bad. So instead we can use small Node-based
+serverless (lambda) functions that we can call from our front end, and that relay our information
+on to the external service. You can host these functions on many platforms like AWS, GCP, or many
+others but if you're already hosting your site on Netlify why not keep everything simple?
+
+<br />
+
+## Getting Started
+
+To start we're going to need a few things. You can use whatever front end framework you want
+to build your client-side app. We won't focus on that right now but to start create, an app with Gatsby CLI
+or the Vue CLI or CRA. You will need a Netlify account, a mailchimp account, and the latest version of the
+Netlify CLI. This will allow you to run `netlify dev` from your project root, which will do a few things:
+
+- Detect and run your site generator
+- Makes environment vars from your netlify dashboard available locally on `process.env`
+- Uses routing rules from Nelify or local netlify config file
+- Compiles and runs cloud functions
+
+Since we're trying to create a cloud function to connect an email submission form to mailchimp,
+we'll need to create the cloud function locally. The easiest way to generate a cloud function is with
+the netlify create function CLI tool like this: `netlify functions:create --name test`. This is a super
+awesome command and there are a number of starter templates you can use in there
+but I'm going to walk you through creating a custom one instead.
+
+<br />
+
+First, create this directory structure in your site root
+
+```shell
+/.netlify
+  /functions
+    /subscribe
+      subscribe.js
+...
+[other site files]
+```
+
+Then navigate to the folder that contains subscribe.js and run the command:
+
+```shell
+npm init
+```
+
+Click through the setup process and at the end you will have a package.json file. We will be committing
+this file because netlify can be told to recursively run `npm install` inside function directories, which
+honestly is pretty cool. Most other serverless function hosts require you to compile your function locally
+before deploying. Then let's install the packages we need:
+
+```shell
+npm i -S base-64 node-fetch
+```
+
+<br />
+
+And your subscribe.js file should look like this:
+
+```js
+const fetch = require('node-fetch');
+const base64 = require('base-64');
+
+exports.handler = async (event, context) => {
+  // Only allow POST
+  if (event.httpMethod !== 'POST') {
+    return { statusCode: 405, body: 'Method Not Allowed' };
+  }
+
+  const errorGen = msg => {
+    return { statusCode: 500, body: msg };
+  };
+
+  try {
+    const { email } = JSON.parse(event.body);
+
+    if (!email) {
+      return errorGen('Missing Email');
+    }
+
+    const subscriber = {
+      email_address: email,
+      status: 'subscribed',
+    };
+    const creds = `any:${process.env.MAILCHIMP_KEY}`;
+    const response = await fetch(
+      'https://{data_center}.api.mailchimp.com/3.0/lists/{list_id}/members/',
+      {
+        method: 'POST',
+        headers: {
+          Accept: '*/*',
+          'Content-Type': 'application/json',
+          Authorization: `Basic ${base64.encode(creds)}`,
+        },
+        body: JSON.stringify(subscriber),
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      // NOT res.status >= 200 && res.status < 300
+      return { statusCode: data.status, body: data.detail };
+    }
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        msg: "You've signed up to the mailing list!",
+        detail: data,
+      }),
+    };
+  } catch (err) {
+    console.log(err); // output to netlify function log
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ msg: err.message }), // Could be a custom message or object i.e. JSON.stringify(err)
+    };
+  }
+};
+```
+
+You'll need to fill in a few things at this point. Make sure you've generated an API key
+on your Mailchimp account. Replace the {data_center} part of the fetch URL with the very last part
+of your API key after the dash. It will be something like `us6` but will be different for everyone.
+Then replace {list_id} with the Audience ID of the list you want to add subscribers to. This can be
+found in the Audience Name settings page in the Audience section of Mailchimp. The last thing you need
+to do is add the full API key to your Netlify dashboard, which is under domain settings. Add an environment
+variable called MAILCHIMP_KEY with your API key as the value.
+
+Next, run this command from your project root to link your site to netlify and generate the necessary state.json file.
+
+```shell
+netlify init
+```
+
+The two last things we need to do are create a netlify.toml file in the site root that looks like this:
+
+```toml
+[build]
+  publish = "dist"
+  functions = './.netlify/functions/'
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+```
+
+This tells netlify where your functions will be located and will automatically redirect requests to /api/\*
+to that directory. This is just a convenience and isn't necessary.
+
+And you need to install `netlify-lambda` to your project root with npm and add a postinstall script to that
+package.json so that netlify knows to run npm install inside of function directories at build time. The changes
+to your package.json will look like this:
+
+```json
+"scripts": {
+  ...
+  "postinstall": "netlify-lambda install",
+},
+"dependencies": {
+  ...
+  "netlify-lambda": "^1.6.2",
+}
+```
+
+(note: if you just install netlify-lambda with the command line you'll get the latest version. do that.)
+
+Then just run
+
+```shell
+npm install
+```
+
+## Running Netlify locally
+
+Now finally if everything was done right you can run this command to get Netlify up and running locally.
+
+```shell
+netlify dev
+```
+
+It will build and start serving your site at `localhost:8888`. You now have your site built the same way
+Netlify does on their services and you can call your functions locally as well. The function we wrote above can
+be called at `localhost:8888/api/subscribe` with a POST request and a json body of:
+
+```json
+{
+  "email": "yourEmail@gmail.com"
+}
+```
+
+Go ahead and test it with postman and let me know if you have any issues.
+
+The `netlify dev` command will also take care of hot reloading both the functions as well as the build of your site
+since it just runs whatever script your app uses to develop locally (serve for Vue). It's pretty awesome running a
+single command and having it hot reload both the server-side scripts as well as the front end application. The hot reloading
+though will only be available at whatever that CLI hosts it at though not on the :8888 server without a refresh on the browser.
+
+## Conclusion
+
+That's about it. You can now push your code to github or whatever you have your site connected to Netlify with
+and your API function as well as your front end application will be built and hosted on Netlify. Double-check
+to make sure you have git setup to ignore node_modules and you aren't committing any API keys. Again, let me know on twitter
+if you have any issues or I need to update any part of this guide. Good luck out there.
