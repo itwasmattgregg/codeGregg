@@ -4,7 +4,7 @@ import { Link, graphql } from 'gatsby';
 import get from 'lodash/get';
 import _ from 'lodash';
 import BackgroundImage from 'gatsby-background-image';
-import MDXRenderer from 'gatsby-mdx/mdx-renderer';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import Bio from '../components/Bio';
 import Container from '../components/container';
@@ -91,7 +91,7 @@ class BlogPostTemplate extends React.Component {
             <p className={styles.date}>{post.frontmatter.date}</p>
           </div>
           <div style={{ maxWidth: '740px', margin: '0 auto 100px' }}>
-            <MDXRenderer>{post.code.body}</MDXRenderer>
+            <MDXRenderer>{post.body}</MDXRenderer>
           </div>
           <hr />
           <Bio location={location} />
@@ -140,9 +140,7 @@ export const pageQuery = graphql`
       id
       excerpt
       timeToRead
-      code {
-        body
-      }
+      body
       frontmatter {
         title
         tags
