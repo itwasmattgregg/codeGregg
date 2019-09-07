@@ -67,6 +67,7 @@ module.exports = {
           },
           `gatsby-remark-smartypants`,
         ],
+        plugins: [`gatsby-remark-images`],
       },
     },
     {
