@@ -81,7 +81,10 @@ npm init
 Click through the setup process and at the end you will have a package.json file. We will be committing
 this file because netlify can be told to recursively run `npm install` inside function directories, which
 honestly is pretty cool. Most other serverless function hosts require you to compile your function locally
-before deploying. Then let's install the packages we need:
+before deploying.
+
+Now we need to install 2 packages inside our subscribe directory to make our mailchimp subscribe function
+work.
 
 ```bash
 npm i -S base-64 node-fetch
