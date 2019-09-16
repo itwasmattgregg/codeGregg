@@ -2,5 +2,5 @@
   publish = "public"
 [[redirects]]
   from = "https://tinywins.codegregg.com/*"
-  to = "https://codegregg.com/tiny-wins/:splat"
+  to = "/tiny-wins/:splat"
   status = 200
