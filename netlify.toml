@@ -1,6 +1,0 @@
-[build]
-  publish = "public"
-[[redirects]]
-  from = "https://tinywins.codegregg.com/*"
-  to = "/tiny-wins/:splat"
-  status = 200
