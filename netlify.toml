@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "tinywins.codegregg.com"
+  to = "codegregg.com/tiny-wins/:splat"
+  status = 301
