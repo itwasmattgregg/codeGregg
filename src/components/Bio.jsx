@@ -25,7 +25,7 @@ export default class Bio extends React.Component {
     return (
       <div>
         <p>
-          Written by <strong>Matt Gregg</strong>, an engineer who lives and
+          Written by <strong>Matt Gregg</strong>, a UI engineer who lives and
           works in Minneapolis, MN
         </p>
         <p>
