@@ -35,7 +35,7 @@ class IndexPage extends React.Component {
               <Img
                 alt='matt gregg'
                 fixed={profileImg.childImageSharp.fixed}
-                style={{ flexShrink: '0', marginRight: '25px' }}
+                className={styles.profileImg}
               />
               <div>
                 <p>

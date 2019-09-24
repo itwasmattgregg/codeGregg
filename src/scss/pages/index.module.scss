@@ -1,5 +1,14 @@
 @import '../../scss/variables';
 
+.profileImg {
+  margin-right: 25px;
+  flex-shrink: 0;
+
+  @media (max-width: 500px) {
+    display: none !important;
+  }
+}
+
 .processList {
   display: flex;
   flex-wrap: wrap;
