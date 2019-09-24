@@ -45,6 +45,7 @@ module: {
 ```
 
 The final trick is to make sure to include the `publicPath` in your webpack output config object.
+_This is honestly the key to this entire post._
 It will look something like this for wordpress:
 
 ```json
@@ -55,8 +56,12 @@ output: {
 },
 ```
 
-We have to not only let webpack know where to output assets from the build but also where to access them within
-the grand scheme of the application (from the root path of the web server).
+We have to not only let webpack know where to output assets from the build but also where
+to access them within the grand scheme of the application (from the root path of the web server).
+If you're not using wordpress, just make sure that path leads to the directory where the images
+you import are built. After you call import on an image file in one of your js files, you should
+see the images being copied to your build directory. If not then you may have a problem with your
+webpack config file-loader.
 
 With publicPath added in there you can now call things like this in your Vue.js components.
 
