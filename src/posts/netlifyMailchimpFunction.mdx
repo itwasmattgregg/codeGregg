@@ -180,7 +180,7 @@ The two last things we need to do are create a netlify.toml file in the site roo
   functions = './functions/'
 [[redirects]]
   from = "/api/*"
-  to = "/functions/:splat"
+  to = "/.netlify/functions/:splat"
   status = 200
 ```
 
