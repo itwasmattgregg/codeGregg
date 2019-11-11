@@ -37,16 +37,21 @@ a service that requires you to store and use private keys to gain access to thei
 be very bad to ship these to the client-side. Very bad. So instead we can use small Node-based
 serverless (lambda) functions that we can call from our front end, and that relay our information
 on to the external service. You can host these functions on many platforms like AWS, GCP, or many
-others but if you're already hosting your site on Netlify why not keep everything simple?
+others but if you're already hosting your site on Netlify why not keep everything simple and use Netlify functions?
 
 <br />
 
 ## Getting Started
 
-To start we're going to need a few things. You can use whatever front end framework you want
-to build your client-side app. We won't focus on that right now but to start create, an app with Gatsby CLI
-or the Vue CLI or CRA. You will need a Netlify account, a mailchimp account, and the latest version of the
-Netlify CLI. This will allow you to run `netlify dev` from your project root, which will do a few things:
+To start we're going to need a few things:
+
+- A Netlify account
+- A Mailchimp account
+- The netlify CLI `npm i -g netlify-cli`
+- An application you want to deploy to netlify along with the function (I used VueJS but CRA,
+  Gatsby and many others will work)
+
+You can then run `netlify dev` from your project root, which will do a few things:
 
 - Detect and run your site generator
 - Makes environment vars from your netlify dashboard available locally on `process.env`
@@ -54,20 +59,16 @@ Netlify CLI. This will allow you to run `netlify dev` from your project root, wh
 - Compiles and runs cloud functions
 
 Since we're trying to create a cloud function to connect an email submission form to mailchimp,
-we'll need to create the cloud function locally. The easiest way to generate a cloud function is with
-the netlify create function CLI tool like this: `netlify functions:create --name test`. This is a super
-awesome command and there are a number of starter templates you can use in there
-but I'm going to walk you through creating a custom one instead.
+we'll need to create the cloud function locally.
 
 <br />
 
 First, create this directory structure in your site root
 
 ```markup
-/.netlify
-  /functions
-    /subscribe
-      subscribe.js
+/functions
+  /subscribe
+    subscribe.js
 ...
 [other site files]
 ```
@@ -176,17 +177,17 @@ The two last things we need to do are create a netlify.toml file in the site roo
 ```yaml
 [build]
   publish = "dist"
-  functions = './.netlify/functions/'
+  functions = './functions/'
 [[redirects]]
   from = "/api/*"
-  to = "/.netlify/functions/:splat"
+  to = "/functions/:splat"
   status = 200
 ```
 
 This tells netlify where your functions will be located and will automatically redirect requests to /api/\*
-to that directory. This is just a convenience and isn't necessary.
+to that directory. (Note: This redirect is just a convenience and isn't necessary.)
 
-And you need to install `netlify-lambda` to your project root with npm and add a postinstall script to that
+You also need to install `netlify-lambda` to your project root with npm and add a postinstall script to that
 package.json so that netlify knows to run npm install inside of function directories at build time. The changes
 to your package.json will look like this:
 
@@ -201,9 +202,9 @@ to your package.json will look like this:
 }
 ```
 
-(note: if you just install netlify-lambda with the command line you'll get the latest version. do that.)
+(note: if you install netlify-lambda with the command line you'll get the latest version. do that.)
 
-Then just run
+Then run
 
 ```bash
 npm install
@@ -240,7 +241,7 @@ though will only be available at whatever that CLI hosts it at though not on the
 
 ## Conclusion
 
-That's about it. You can now push your code to github or whatever you have your site connected to Netlify with
+That's it! You can now push your code to github or whatever you have your site connected to Netlify with
 and your API function as well as your front end application will be built and hosted on Netlify. Double-check
 to make sure you have git setup to ignore node_modules and you aren't committing any API keys. Again, let me know on twitter
 if you have any issues or I need to update any part of this guide. Good luck out there.
