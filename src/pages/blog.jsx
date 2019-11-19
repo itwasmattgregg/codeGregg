@@ -12,7 +12,7 @@ import styles from '../scss/pages/blog.module.scss';
 
 class Blog extends React.Component {
   render() {
-    const posts = get(this, 'props.data.allMdx.edges');
+    const posts = get(this, 'props.data.allFile.edges');
     const siteTitle = get(this.props, 'data.site.siteMetadata.title');
     const devBackground = get(
       this,
@@ -80,7 +80,7 @@ class Blog extends React.Component {
           </p>
           <h2 className={styles.latestPosts}>Latest Posts</h2>
           {posts.map(({ node }) => {
-            const post = get(node, 'frontmatter') || node.fields.slug;
+            const post = get(node, 'childMdx.frontmatter');
             return (
               <div
                 key={node.fields.slug}
@@ -147,20 +147,25 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMdx(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { visible: { ne: false } } }
+    allFile(
+      sort: { fields: [childMdx___frontmatter___date], order: DESC }
+      filter: {
+        sourceInstanceName: { eq: "posts" }
+        childMdx: { frontmatter: { visible: { eq: true } } }
+      }
     ) {
       edges {
         node {
           fields {
             slug
           }
-          excerpt
-          frontmatter {
-            date(formatString: "DD MMMM, YYYY h:mm A")
-            title
-            tags
+          childMdx {
+            excerpt
+            frontmatter {
+              date(formatString: "DD MMMM, YYYY h:mm A")
+              title
+              tags
+            }
           }
         }
       }

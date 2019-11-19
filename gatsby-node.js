@@ -5,19 +5,26 @@ const { createFilePath } = require('gatsby-source-filesystem');
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
-  return new Promise((resolve, reject) => {
+  const mdx = new Promise((resolve, reject) => {
     resolve(
       graphql(`
         {
-          allMdx(filter: { frontmatter: { visible: { ne: false } } }) {
+          allFile(
+            filter: {
+              sourceInstanceName: { eq: "posts" }
+              childMdx: { frontmatter: { visible: { eq: true } } }
+            }
+          ) {
             edges {
               node {
-                id
                 fields {
                   slug
                 }
-                frontmatter {
-                  tags
+                childMdx {
+                  id
+                  frontmatter {
+                    tags
+                  }
                 }
               }
             }
@@ -29,7 +36,7 @@ exports.createPages = ({ graphql, actions }) => {
           console.error(result.errors);
           reject(result.errors);
         }
-        const posts = result.data.allMdx.edges;
+        const posts = result.data.allFile.edges;
         const tagPage = path.resolve('src/templates/category.jsx');
 
         _.each(posts, (post, index) => {
@@ -49,9 +56,9 @@ exports.createPages = ({ graphql, actions }) => {
         });
 
         const tagSet = new Set();
-        result.data.allMdx.edges.forEach(edge => {
-          if (edge.node.frontmatter.tags) {
-            edge.node.frontmatter.tags.forEach(tag => {
+        result.data.allFile.edges.forEach(edge => {
+          if (edge.node.childMdx.frontmatter.tags) {
+            edge.node.childMdx.frontmatter.tags.forEach(tag => {
               tagSet.add(tag);
             });
           }
@@ -70,12 +77,68 @@ exports.createPages = ({ graphql, actions }) => {
       })
     );
   });
+
+  const tinywins = new Promise((resolve, reject) => {
+    resolve(
+      graphql(`
+        {
+          allFile(filter: { sourceInstanceName: { eq: "tinywins" } }) {
+            edges {
+              node {
+                fields {
+                  slug
+                }
+                childMdx {
+                  id
+                  body
+                  excerpt
+                  frontmatter {
+                    date(formatString: "MMMM DD, YYYY")
+                    title
+                  }
+                }
+              }
+            }
+          }
+        }
+      `).then(result => {
+        if (result.errors) {
+          console.error(result.errors);
+          reject(result.errors);
+        }
+        const wins = result.data.allFile.edges;
+
+        _.each(wins, (win, index) => {
+          const mdx = win.node.childMdx;
+
+          createPage({
+            path: win.node.fields.slug,
+            component: path.resolve(`./src/templates/tiny-win.jsx`),
+            context: {
+              slug: win.node.fields.slug,
+              excerpt: mdx.excerpt,
+              body: mdx.body,
+              date: mdx.frontmatter.date,
+              title: mdx.frontmatter.title,
+            },
+          });
+        });
+      })
+    );
+  });
+
+  return Promise.all([tinywins]);
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
 
-  if (node.internal.type === 'Mdx') {
+  if (node.sourceInstanceName === 'tinywins') {
+    const value = createFilePath({ node, getNode });
+    createNodeField({ name: 'slug', node, value: `/tinywins${value}` });
+  }
+
+  if (node.sourceInstanceName === 'posts') {
     const value = createFilePath({ node, getNode });
     createNodeField({ name: 'slug', node, value: `/blog${value}` });
   }

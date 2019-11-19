@@ -14,7 +14,8 @@ import styles from '../scss/pages/index.module.scss';
 
 class IndexPage extends React.Component {
   render() {
-    const latestPost = get(this, 'props.data.allMdx.edges[0].node');
+    const latestPost = get(this, 'props.data.allFile.edges[0].node');
+    const latestPostMdx = latestPost.childMdx;
     const profileImg = get(this, 'props.data.profileImg');
 
     return (
@@ -66,16 +67,16 @@ class IndexPage extends React.Component {
                   textDecoration: 'none',
                 }}
               >
-                {latestPost.frontmatter.title}
+                {latestPostMdx.frontmatter.title}
               </Link>
             </h2>
             <div>
               <em>
-                #{latestPost.frontmatter.tags[0]} -{' '}
-                {latestPost.frontmatter.date}
+                #{latestPostMdx.frontmatter.tags[0]} -{' '}
+                {latestPostMdx.frontmatter.date}
               </em>
             </div>
-            <p>{latestPost.excerpt}</p>
+            <p>{latestPostMdx.excerpt}</p>
             <Link
               to={latestPost.fields.slug}
               style={{
@@ -170,21 +171,26 @@ export const query = graphql`
       }
     }
 
-    allMdx(
+    allFile(
+      sort: { fields: [childMdx___frontmatter___date], order: DESC }
+      filter: {
+        sourceInstanceName: { eq: "posts" }
+        childMdx: { frontmatter: { visible: { eq: true } } }
+      }
       limit: 1
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { visible: { ne: false } } }
     ) {
       edges {
         node {
-          excerpt
           fields {
             slug
           }
-          frontmatter {
-            date(formatString: "MMMM DD YYYY")
-            title
-            tags
+          childMdx {
+            excerpt
+            frontmatter {
+              date(formatString: "MMMM DD YYYY")
+              title
+              tags
+            }
           }
         }
       }

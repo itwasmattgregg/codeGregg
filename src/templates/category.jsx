@@ -9,8 +9,8 @@ class CategoryTemplate extends React.Component {
   render() {
     const category = this.props.pathContext.tag;
     const siteTitle = get(this.props, 'data.site.siteMetadata.title');
-    const posts = get(this.props, 'data.allMdx.edges');
-    const postCount = get(this.props, 'data.allMdx.totalCount');
+    const posts = get(this.props, 'data.allFile.edges');
+    const postCount = get(this.props, 'data.allFile.totalCount');
     return (
       <Layout>
         <Helmet title={`${category} | ${siteTitle}`} />
@@ -24,7 +24,8 @@ class CategoryTemplate extends React.Component {
             </h1>
             <h5>Total Posts: {postCount}</h5>
             {posts.map(({ node }) => {
-              const title = get(node, 'frontmatter.title') || node.fields.slug;
+              const title =
+                get(node, 'childMdx.frontmatter.title') || node.fields.slug;
               return (
                 <div key={node.fields.slug}>
                   <h3>
@@ -32,8 +33,10 @@ class CategoryTemplate extends React.Component {
                       {title}
                     </Link>
                   </h3>
-                  <small>{node.frontmatter.date}</small>
-                  <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+                  <small>{node.childMdx.frontmatter.date}</small>
+                  <p
+                    dangerouslySetInnerHTML={{ __html: node.childMdx.excerpt }}
+                  />
                 </div>
               );
             })}
@@ -53,9 +56,12 @@ export const pageQuery = graphql`
         author
       }
     }
-    allMdx(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { visible: { ne: false }, tags: { eq: $tag } } }
+    allFile(
+      sort: { fields: [childMdx___frontmatter___date], order: DESC }
+      filter: {
+        sourceInstanceName: { eq: "posts" }
+        childMdx: { frontmatter: { visible: { eq: true }, tags: { eq: $tag } } }
+      }
     ) {
       totalCount
       edges {
@@ -63,11 +69,13 @@ export const pageQuery = graphql`
           fields {
             slug
           }
-          excerpt
-          timeToRead
-          frontmatter {
-            date(formatString: "DD MMMM, YYYY h:mm A")
-            title
+          childMdx {
+            excerpt
+            timeToRead
+            frontmatter {
+              date(formatString: "DD MMMM, YYYY h:mm A")
+              title
+            }
           }
         }
       }
