@@ -8,32 +8,32 @@ const ListItem = styled.li`
 `;
 
 const WinItem = styled(Link)`
-  display: block;
   background: #fff;
   box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.2);
-  text-decoration: none;
+  display: block;
   margin: 10px auto;
   max-width: 500px;
   padding: 30px 30px 42px;
   position: relative;
+  text-decoration: none;
 `;
 
 const WinDate = styled.div`
-  position: absolute;
   bottom: 3px;
-  left: 50%;
-  transform: translateX(-50%);
-  text-transform: uppercase;
+  color: #888;
   font-size: 12px;
   font-weight: 600;
-  color: #888;
+  left: 50%;
+  position: absolute;
+  text-transform: uppercase;
+  transform: translateX(-50%);
 `;
 
 const TinyWinsHomepage = ({ data }) => {
   const wins = data.allFile.edges;
   return (
     <TinyWinsLayout>
-      <h1>Tiny Wins!</h1>
+      <h1>#TinyWins!</h1>
       <ul>
         {wins.map(({ node }) => {
           const mdx = node.childMdx;
