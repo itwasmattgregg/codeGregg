@@ -1,13 +1,12 @@
 const _ = require('lodash');
 const Promise = require('bluebird');
 const path = require('path');
-const { createFilePath } = require('gatsby-source-filesystem');
+const {createFilePath} = require('gatsby-source-filesystem');
 
-exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions;
+exports.createPages = ({graphql, actions}) => {
+  const {createPage} = actions;
   const mdx = new Promise((resolve, reject) => {
-    resolve(
-      graphql(`
+    resolve(graphql(`
         {
           allFile(
             filter: {
@@ -31,56 +30,54 @@ exports.createPages = ({ graphql, actions }) => {
           }
         }
       `).then(result => {
-        // this is some boilerlate to handle errors
-        if (result.errors) {
-          console.error(result.errors);
-          reject(result.errors);
-        }
-        const posts = result.data.allFile.edges;
-        const tagPage = path.resolve('src/templates/category.jsx');
+      // this is some boilerlate to handle errors
+      if (result.errors) {
+        console.error(result.errors);
+        reject(result.errors);
+      }
+      const posts = result.data.allFile.edges;
+      const tagPage = path.resolve('src/templates/category.jsx');
 
-        _.each(posts, (post, index) => {
-          const previous =
-            index === posts.length - 1 ? null : posts[index + 1].node;
-          const next = index === 0 ? null : posts[index - 1].node;
+      _.each(posts, (post, index) => {
+        const previous = index === posts.length - 1
+          ? null
+          : posts[index +
+              1].node;
+        const next = index === 0
+          ? null
+          : posts[index - 1].node;
 
-          createPage({
-            path: post.node.fields.slug,
-            component: path.resolve(`./src/templates/blog-post.jsx`),
-            context: {
-              slug: post.node.fields.slug,
-              previous,
-              next,
-            },
-          });
-        });
-
-        const tagSet = new Set();
-        result.data.allFile.edges.forEach(edge => {
-          if (edge.node.childMdx.frontmatter.tags) {
-            edge.node.childMdx.frontmatter.tags.forEach(tag => {
-              tagSet.add(tag);
-            });
+        createPage({
+          path: post.node.fields.slug,
+          component: path.resolve(`./src/templates/blog-post.jsx`),
+          context: {
+            slug: post.node.fields.slug,
+            previous,
+            next
           }
         });
+      });
 
-        const tagList = Array.from(tagSet);
-        tagList.forEach(tag => {
-          createPage({
-            path: `/category/${_.kebabCase(tag)}/`,
-            component: tagPage,
-            context: {
-              tag,
-            },
+      const tagSet = new Set();
+      result.data.allFile.edges.forEach(edge => {
+        if (edge.node.childMdx.frontmatter.tags) {
+          edge.node.childMdx.frontmatter.tags.forEach(tag => {
+            tagSet.add(tag);
           });
-        });
-      })
-    );
+        }
+      });
+
+      const tagList = Array.from(tagSet);
+      tagList.forEach(tag => {
+        createPage({path: `/category/${_.kebabCase(tag)}/`, component: tagPage, context: {
+            tag
+          }});
+      });
+    }));
   });
 
   const tinywins = new Promise((resolve, reject) => {
-    resolve(
-      graphql(`
+    resolve(graphql(`
         {
           allFile(filter: { sourceInstanceName: { eq: "tinywins" } }) {
             edges {
@@ -102,44 +99,41 @@ exports.createPages = ({ graphql, actions }) => {
           }
         }
       `).then(result => {
-        if (result.errors) {
-          console.error(result.errors);
-          reject(result.errors);
-        }
-        const wins = result.data.allFile.edges;
+      if (result.errors) {
+        console.error(result.errors);
+        reject(result.errors);
+      }
+      const wins = result.data.allFile.edges;
 
-        _.each(wins, (win, index) => {
-          const mdx = win.node.childMdx;
+      _.each(wins, (win, index) => {
+        const mdx = win.node.childMdx;
 
-          createPage({
-            path: win.node.fields.slug,
-            component: path.resolve(`./src/templates/tiny-win.jsx`),
-            context: {
-              slug: win.node.fields.slug,
-              excerpt: mdx.excerpt,
-              body: mdx.body,
-              date: mdx.frontmatter.date,
-              title: mdx.frontmatter.title,
-            },
-          });
+        createPage({
+          path: win.node.fields.slug,
+          component: path.resolve(`./src/templates/tiny-win.jsx`),
+          context: {
+            body: mdx.body,
+            date: mdx.frontmatter.date,
+            title: mdx.frontmatter.title
+          }
         });
-      })
-    );
+      });
+    }));
   });
 
   return Promise.all([tinywins]);
 };
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions;
+exports.onCreateNode = ({node, actions, getNode}) => {
+  const {createNodeField} = actions;
 
   if (node.sourceInstanceName === 'tinywins') {
-    const value = createFilePath({ node, getNode });
-    createNodeField({ name: 'slug', node, value: `/tinywins${value}` });
+    const value = createFilePath({node, getNode});
+    createNodeField({name: 'slug', node, value: `/tinywins${value}`});
   }
 
   if (node.sourceInstanceName === 'posts') {
-    const value = createFilePath({ node, getNode });
-    createNodeField({ name: 'slug', node, value: `/blog${value}` });
+    const value = createFilePath({node, getNode});
+    createNodeField({name: 'slug', node, value: `/blog${value}`});
   }
 };
