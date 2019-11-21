@@ -3,6 +3,10 @@ import { graphql, Link } from 'gatsby';
 import styled from '@emotion/styled';
 import TinyWinsLayout from './layout';
 
+const List = styled.ul`
+  margin: 0 10px;
+`;
+
 const ListItem = styled.li`
   list-style: none;
 `;
@@ -34,7 +38,7 @@ const TinyWinsHomepage = ({ data }) => {
   return (
     <TinyWinsLayout>
       <h1>#TinyWins!</h1>
-      <ul>
+      <List>
         {wins.map(({ node }) => {
           const mdx = node.childMdx;
           return (
@@ -46,7 +50,7 @@ const TinyWinsHomepage = ({ data }) => {
             </ListItem>
           );
         })}
-      </ul>
+      </List>
     </TinyWinsLayout>
   );
 };
