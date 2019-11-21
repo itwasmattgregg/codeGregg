@@ -1,0 +1,9 @@
+---
+title: 'Django Site Url'
+date: '2019-11-21T11:45:20Z'
+---
+
+I solved a nasty bug in django I was having with getting the site_url for
+transactional email. I didn't realize this site_url came from the Site object
+stored in the database and set via the admin panel. I had it set to the
+production url even though it was the UAT site.
