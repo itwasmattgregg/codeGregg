@@ -1,0 +1,93 @@
+---
+title: Conditional Vue Hash Router
+tags:
+  - dev
+  - vue
+date: '2019-12-02T16:28:17Z'
+featuredImage: '../images/vadim-sadovski-Ri8c2qFg32A-unsplash.jpg'
+visible: true
+---
+
+Recently I built a Vue app for a client that existed inside an existing
+Wordpress site. The Vue app was responsible for handling a complex location
+search section of the site and handled routing for a search, results, favorites,
+and compare pages. But there was a problem. Even though I was creating the Vue
+app conditionally based on the existence of root divs on the page, the js bundle
+was being loaded everywhere and instantiating the Vue Router on every page of
+the Wordpress site. This meant every url was appended with `/#/`, which was not
+ideal for the client.
+
+You might think that at this point you could just switch to the history router
+instead of the hash router, but that gets insanely tricky, if not impossible
+with Wordpress. Also, I had 2 main entrypoints for the Vue app. A component
+(that doesn't require routing) that loads on the home page of the Wordpress
+site, and the component I referenced earlier that includes routing for the main
+Vue search app.
+
+## Solution
+
+I got around this issue by dynamically loading the router config only if I found
+the DOM node for mounting the search app on the page. Here's what the code looks
+like for main.js:
+
+```js
+import Vue from 'vue';
+
+import store from '@/store';
+
+import Search from '@/Search.vue';
+import SearchAutocomplete from '@/SearchAutocomplete.vue';
+
+/**
+ * Dynamic loader that will look for registered Vue mounting points
+ * and mount different Vue components
+ */
+function ready(fn) {
+  if (
+    document.attachEvent
+      ? document.readyState === 'complete'
+      : document.readyState !== 'loading'
+  ) {
+    fn();
+  } else {
+    document.addEventListener('DOMContentLoaded', fn);
+  }
+}
+
+const components = {
+  '#vue-search': Search,
+  '#vue-search-autocomplete': SearchAutocomplete,
+};
+
+ready(() => {
+  for (const selector in components) {
+    const elements = document.querySelectorAll(selector);
+
+    Array.prototype.forEach.call(elements, async el => {
+      const thisComponentProps = el.dataset;
+
+      const config = {
+        el,
+        store,
+        render: h =>
+          h(components[selector], {
+            props: {
+              ...thisComponentProps,
+            },
+          }),
+      };
+
+      // Only initialize the router if we are loading the main vue search app.
+      // This is so that the hash tag in the url bar doesn't appear on other wordpress pages.
+      if (el.id === 'vue-search') {
+        const router = await import('./router');
+
+        config.router = router.default;
+      }
+
+      // eslint-disable-next-line no-new
+      new Vue(config);
+    });
+  }
+});
+```

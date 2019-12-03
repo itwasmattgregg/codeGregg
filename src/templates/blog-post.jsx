@@ -18,12 +18,12 @@ export default function BlogPost({ pageContext, data, location }) {
   const excerpt = post.excerpt;
   const { previous, next } = pageContext;
   const featuredImage = get(
-    data,
-    'mdx.frontmatter.featuredImage.childImageSharp.fluid'
+    post,
+    'frontmatter.featuredImage.childImageSharp.fluid'
   );
   const featuredImagePublicURL = get(
-    data,
-    'mdx.frontmatter.featuredImage.publicURL'
+    post,
+    'frontmatter.featuredImage.publicURL'
   );
 
   return (
@@ -60,7 +60,7 @@ export default function BlogPost({ pageContext, data, location }) {
         />
       </Helmet>
       {featuredImage && (
-        <div style={{}}>
+        <div>
           <BackgroundImage
             Tag='div'
             fluid={featuredImage}
