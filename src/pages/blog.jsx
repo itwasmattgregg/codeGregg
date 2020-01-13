@@ -110,7 +110,9 @@ class Blog extends React.Component {
                       </Link>
                     ))}
                 </div>
-                <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+                <p
+                  dangerouslySetInnerHTML={{ __html: node.childMdx.excerpt }}
+                />
               </div>
             );
           })}
