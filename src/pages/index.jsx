@@ -25,6 +25,7 @@ class IndexPage extends React.Component {
             display: 'flex',
             position: 'relative',
             flexWrap: 'wrap',
+            overflow: 'hidden',
           }}
         >
           <FeatureBox side='left' backgroundColor='darkBlue'>
