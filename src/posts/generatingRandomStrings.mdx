@@ -1,0 +1,24 @@
+---
+title: How to Generate a Random ID in Javascript
+tags:
+  - dev
+  - javascript
+date: '2020-02-22T13:34:15Z'
+featuredImage: '../images/andres-medina-499259-unsplash.jpg'
+visible: true
+---
+
+I'm sure this is posted in a ton of places already but I thought I would share a
+method I sometimes use to generate random strings of (numbers + letters) with
+javascript. This function returns the first 6 characters of a randomly generated
+string. Passing 36 to the toString method tells it to return numbers 0-9 and
+every letter in the alphabet, you can adjust the 6 in the substr method if you
+want a longer or shorter ID.
+
+```js
+const id = function() {
+  return Math.random()
+    .toString(36)
+    .substr(2, 6);
+};
+```
