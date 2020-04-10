@@ -37,6 +37,7 @@ const TinyWinsHomepage = ({ data }) => {
   const wins = data.allFile.edges;
   return (
     <TinyWinsLayout>
+      <Helmet title={`Tinywins`} />
       <h1>#TinyWins!</h1>
       <List>
         {wins.map(({ node }) => {
