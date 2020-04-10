@@ -1,0 +1,26 @@
+---
+title: 'Tiny Win Code Snippet'
+date: '2020-04-10T10:44:00Z'
+---
+
+Wrote an awesome VS Code snippet for starting new tiny win files in mdx. This
+snippet takes the filename and capitalizes words as well as removes hyphens and
+replaces them with spaces. It also inserts the current date and time for
+frontmatter.
+
+```json
+{
+  "tiny wins": {
+    "prefix": "tinywin",
+    "body": [
+      "---",
+      "  title: '${1:${TM_FILENAME_BASE/(([\\w]*)([^\\w\\s]*)*(\\-)*)/${2:/capitalize}${3:+ }/g}}'",
+      "  date: '$CURRENT_YEAR-$CURRENT_MONTH-${CURRENT_DATE}T$CURRENT_HOUR:$CURRENT_MINUTE:00Z'",
+      "---",
+      "",
+      "$0"
+    ],
+    "description": "Create a new tiny wins mdx file"
+  }
+}
+```

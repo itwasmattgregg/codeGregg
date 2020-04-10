@@ -1,0 +1,13 @@
+---
+title: 'Django Search'
+date: '2020-04-10T10:43:00Z'
+---
+
+Implemented basic search in django using SearchFilter. You can add something
+this simple to a ViewSet to make fields searchable the search with
+`/apiEndpoint/?search=searchterm`
+
+```py
+filter_backends = [filters.SearchFilter]
+search_fields = ['username', 'email']
+```
