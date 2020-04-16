@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 import styled from '@emotion/styled';
 import TinyWinsLayout from './layout';
+import { Helmet } from 'react-helmet';
 
 const List = styled.ul`
   margin: 0 10px;
