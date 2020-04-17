@@ -80,6 +80,7 @@ class ContactForm extends React.Component {
         onSubmit={this.handleSubmit}
         data-netlify='true'
         data-netlify-honeypot='bot-field'
+        data-netlify-recaptcha='true'
       >
         <input type='hidden' name='bot-field' />
         <label className={styles.nameField}>
@@ -111,6 +112,7 @@ class ContactForm extends React.Component {
             onChange={this.handleChange}
           />
         </label>
+        <div data-netlify-recaptcha='true'></div>
         <div className={styles.buttonColumn}>
           <Button type='submit' pose={success ? 'open' : 'closed'}>
             {success ? 'Sent!' : 'Send It'}
