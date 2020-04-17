@@ -132,7 +132,7 @@ export const pageQuery = graphql`
       }
     }
     devBackground: file(
-      relativePath: { eq: "markus-spiske-148030-unsplash.jpg" }
+      relativePath: { eq: "fatos-bytyqi-535528-unsplash.jpg" }
     ) {
       childImageSharp {
         fluid(maxWidth: 4160) {
