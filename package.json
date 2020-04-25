@@ -46,7 +46,9 @@
     "typography": "^0.16.17",
     "typography-theme-wordpress-2016": "^0.16.18"
   },
-  "keywords": ["codegregg"],
+  "keywords": [
+    "codegregg"
+  ],
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
