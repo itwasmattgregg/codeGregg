@@ -11,6 +11,10 @@ module.exports = {
         link: '/blog',
       },
       {
+        name: 'Resume',
+        link: '/resume',
+      },
+      {
         name: 'Contact',
         link: '/#contact',
       },

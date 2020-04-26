@@ -41,16 +41,16 @@ class IndexPage extends React.Component {
               />
               <div>
                 <p>
-                  I’m a Front-end Web Engineer who architects beautiful, modern
-                  experiences. I also enjoy speaking at schools about code,
-                  building my design chops, and learning constantly.
+                  I’m a Front-end Software Engineer who loves architecting
+                  amazing experiences. I also enjoy speaking at schools about
+                  code, building my design chops, and constantly learning. On
+                  the side I enjoy woodworking, cooking, and playing guitar.
                 </p>
                 <Link
                   to='/#contact'
                   style={{
                     color: 'white',
                     fontWeight: '700',
-                    textDecoration: 'none',
                   }}
                 >
                   Contact Me
@@ -65,7 +65,6 @@ class IndexPage extends React.Component {
                 to={latestPost.fields.slug}
                 style={{
                   color: 'white',
-                  textDecoration: 'none',
                 }}
               >
                 {latestPostMdx.frontmatter.title}
@@ -83,7 +82,6 @@ class IndexPage extends React.Component {
               style={{
                 color: 'white',
                 fontWeight: '700',
-                textDecoration: 'none',
               }}
             >
               Read More

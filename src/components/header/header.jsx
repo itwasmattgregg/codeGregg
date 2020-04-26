@@ -4,16 +4,11 @@ import logo from '../../images/Asset 2.svg';
 
 import styles from './header.module.scss';
 
-const Header = ({ siteTitle, menuLinks }) => (
+const Header = ({ menuLinks }) => (
   <div className={styles.headerContainer}>
     <div className={styles.headerContent}>
       <h1 className={styles.logo}>
-        <Link
-          to='/'
-          style={{
-            textDecoration: 'none',
-          }}
-        >
+        <Link to='/'>
           <img src={logo} alt='codegregg logo' />
         </Link>
       </h1>

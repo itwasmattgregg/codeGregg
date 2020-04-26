@@ -41,10 +41,7 @@ class Blog extends React.Component {
               <div className={styles.blog_featureSections_overlay} />
             </Link>
             <h2 className={styles.blog_featureSections_devTitle}>
-              <Link
-                to={`/category/dev`}
-                style={{ textDecoration: 'none', color: 'white' }}
-              >
+              <Link to={`/category/dev`} style={{ color: 'white' }}>
                 Dev
               </Link>
             </h2>
@@ -62,10 +59,7 @@ class Blog extends React.Component {
               <div className={styles.blog_featureSections_overlay} />
             </Link>
             <h2 className={styles.blog_featureSections_foodTitle}>
-              <Link
-                to={`/category/food`}
-                style={{ textDecoration: 'none', color: 'white' }}
-              >
+              <Link to={`/category/food`} style={{ color: 'white' }}>
                 Food
               </Link>
             </h2>
@@ -96,14 +90,14 @@ class Blog extends React.Component {
                   </Link>
                 </h3>
                 <div>
-                  <small>{post.date}</small>
+                  <small className='font_monad'>{post.date}</small>
                 </div>
                 <div>
                   {post.tags &&
                     post.tags.map(category => (
                       <Link
                         key={category}
-                        style={{ textDecoration: 'none', marginRight: '10px' }}
+                        style={{ marginRight: '10px' }}
                         to={`/category/${_.kebabCase(category)}`}
                       >
                         #{category}
