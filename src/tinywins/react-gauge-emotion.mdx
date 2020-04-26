@@ -1,0 +1,51 @@
+---
+title: 'React Gauge with Emotion Props'
+date: '2020-04-26T12:42:00Z'
+---
+
+Made an awesome React SVG circle gauge with emotion props.
+
+```jsx
+const SkillGauge = styled.svg`
+  width: 120px;
+  height: 120px;
+  grid-column: 1/1;
+  grid-row: 1/1;
+`;
+
+const SkillGaugeCircle = styled.circle`
+  stroke-width: 4px;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  stroke-dasharray: ${props => props.circumference} ${props =>
+      props.circumference};
+  stroke-dashoffset: ${props => props.offset};
+  stroke-linecap: 'round';
+`;
+
+const radius = 58;
+const circumference = radius * 2 * Math.PI;
+const offset = circumference - (xp / 100) * circumference;
+
+const gaugeColor = xp => {
+  if (xp <= 33) {
+    return '#afb6c0';
+  } else if (xp > 33 && xp < 66) {
+    return '#637184';
+  } else {
+    return '#1a344d';
+  }
+};
+
+<SkillGauge>
+  <SkillGaugeCircle
+    stroke={gaugeColor(xp)}
+    fill='transparent'
+    r={radius}
+    circumference={circumference}
+    offset={offset}
+    cx='60'
+    cy='60'
+  />
+</SkillGauge>;
+```
