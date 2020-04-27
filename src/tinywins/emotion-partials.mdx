@@ -1,0 +1,43 @@
+---
+title: 'Emotion Partials'
+date: '2020-04-27T18:31:00Z'
+---
+
+Learned how to add partials to emotion styled components with props. This way
+you can add a bunch of css if a prop is true. Boy is React cool.
+
+<!-- prettier-ignore-start -->
+```js
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
+
+const isAchievementPartial = (props: any) =>
+  props.isAchievement &&
+  css`
+    padding: 20px 5px 5px 5px;
+    border: 2px solid rgb(36, 234, 182);
+    border-radius: 11px;
+    position: relative;
+    overflow: hidden;
+
+    &:before {
+      content: 'Achievement';
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgb(36, 234, 182);
+      font-size: 12px;
+      padding: 1px 6px;
+      font-weight: bold;
+    }
+  `;
+
+const Message = styled.div<any>`
+  display: flex;
+  margin-bottom: 10px;
+  ${isAchievementPartial}
+`;
+
+<Message isAchievement={true} />
+```
+<!-- prettier-ignore-end -->
