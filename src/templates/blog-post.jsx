@@ -13,7 +13,8 @@ import styles from '../scss/templates/blog-post.module.scss';
 
 export default function BlogPost({ pageContext, data, location }) {
   const post = get(data, 'file.childMdx');
-  const siteTitle = get(data, 'site.siteMetadata.title');
+  const { title, siteUrl } = data.site.siteMetadata;
+  const ogImage = post.fields.socialImage.childImageSharp.original.src;
   const url = location.href;
   const excerpt = post.excerpt;
   const { previous, next } = pageContext;
@@ -21,43 +22,33 @@ export default function BlogPost({ pageContext, data, location }) {
     post,
     'frontmatter.featuredImage.childImageSharp.fluid'
   );
-  const featuredImagePublicURL = get(
-    post,
-    'frontmatter.featuredImage.publicURL'
-  );
 
   return (
     <Layout>
       <Helmet
         htmlAttributes={{ lang: 'en' }}
-        title={`${post.frontmatter.title} | ${siteTitle}`}
+        title={`${post.frontmatter.title} | ${title}`}
       >
         <meta property='description' content='excerpt' />
         {/* <!-- Open Graph / Facebook --> */}
         <meta property='og:type' content='website' />
-        <meta property='og:url' content='https://codegregg.com/' />
+        <meta property='og:url' content={siteUrl} />
         <meta
           property='og:title'
-          content={`${post.frontmatter.title} | ${siteTitle}`}
+          content={`${post.frontmatter.title} | ${title}`}
         />
         <meta property='og:description' content={excerpt} />
-        <meta
-          property='og:image'
-          content={`https://codegregg.com${featuredImagePublicURL}`}
-        />
+        <meta property='og:image' content={`${siteUrl}${ogImage}`} />
 
         {/* <!-- Twitter --> */}
         <meta property='twitter:card' content='summary_large_image' />
-        <meta property='twitter:url' content='https://codegregg.com/' />
+        <meta property='twitter:url' content={siteUrl} />
         <meta
           property='twitter:title'
-          content={`${post.frontmatter.title} | ${siteTitle}`}
+          content={`${post.frontmatter.title} | ${title}`}
         />
         <meta property='twitter:description' content={excerpt} />
-        <meta
-          property='twitter:image'
-          content={`https://codegregg.com${featuredImagePublicURL}`}
-        />
+        <meta property='twitter:image' content={`${siteUrl}${ogImage}`} />
       </Helmet>
       {featuredImage && (
         <div>
@@ -130,6 +121,7 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         author
+        siteUrl
       }
     }
     file(fields: { slug: { eq: $slug } }) {
@@ -138,6 +130,17 @@ export const pageQuery = graphql`
         excerpt
         timeToRead
         body
+        fields {
+          socialImage {
+            childImageSharp {
+              original {
+                width
+                height
+                src
+              }
+            }
+          }
+        }
         frontmatter {
           title
           tags
