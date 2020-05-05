@@ -9,7 +9,7 @@ import styled from '@emotion/styled';
 const Win = styled.div`
   background-color: #fff;
   box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.2);
-  margin: 0 auto;
+  margin: 20px auto;
   max-width: 700px;
   padding: 30px;
 `;
@@ -38,7 +38,9 @@ export default function Template({ pageContext, data }) {
         <meta property='twitter:description' content={excerpt} />
         <meta property='twitter:image' content={`${siteUrl}${ogImage}`} />
       </Helmet>
-      <Link to='/tinywins'>Back</Link>
+      <Link to='/tinywins'>
+        <strong>Back</strong>
+      </Link>
       <Win>
         <h1>{title}</h1>
         <p>{date}</p>
