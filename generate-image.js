@@ -40,14 +40,8 @@ async function screenshot(CACHE_DIR, browser, node, type) {
   await page.goto(`file://${filePath}`);
   await page.evaluateHandle('document.fonts.ready');
   page.setViewport({ width: 1200, height: 632 });
-  // await page.setViewport({ width: 2048, height: 1170 });
 
   const file = await page.screenshot({ type: 'png' });
 
   return writeCachedFile(CACHE_DIR, title, file, 'png');
-
-  // await page.setContent(html);
-  // const filePath = path.resolve(`static/og_image/${node.id}.png`);
-  // ensureDirectoryExistence(filePath);
-  // await page.screenshot({ path: filePath });
 }

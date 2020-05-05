@@ -25,6 +25,10 @@ function getCss(theme, fontSize) {
         src: url(data:font/otf;charset=utf-8;base64,${monad}) format('otf');
     }
 
+    body {
+      margin: 0;
+    }
+
     .bodywrapper {
       background: ${background};
       background-image: url("https://codegregg.com/images/matt.jpg");
