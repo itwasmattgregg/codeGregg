@@ -14,7 +14,7 @@ const Win = styled.div`
   padding: 30px;
 `;
 
-export default function Template({ pageContext, data, path }) {
+export default function Template({ pageContext, data }) {
   const { body, title, date, ogImage, excerpt } = pageContext;
   const { siteUrl } = data.site.siteMetadata;
   const { pathname } = useLocation();

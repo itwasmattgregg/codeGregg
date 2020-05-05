@@ -157,7 +157,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
 exports.onPreInit = async () => {
   // Launch a Puppeteer browser at the start of the build
-  browser = await puppeteer.launch({ headless: true });
+  browser = await puppeteer.launch({ headless: false });
 };
 
 exports.onPostBuild = async () => {

@@ -31,7 +31,7 @@ async function screenshot(CACHE_DIR, browser, node, type) {
     typeText: type === 'tinywins' ? 'Tiny Win: ' : '',
     theme: 'light',
     md: true,
-    fontSize: Math.min(11, Math.max(5, Math.floor(100 / title.length))) + 'vw',
+    fontSize: Math.min(11, Math.max(5, Math.floor(160 / title.length))) + 'vw',
   });
 
   const filePath = await writeCachedFile(CACHE_DIR, title, html, 'html');
@@ -39,7 +39,7 @@ async function screenshot(CACHE_DIR, browser, node, type) {
   const page = await browser.newPage();
   await page.goto(`file://${filePath}`);
   await page.evaluateHandle('document.fonts.ready');
-  page.setViewport({ width: 1200, height: 632 });
+  page.setViewport({ width: 1200, height: 624 });
 
   const file = await page.screenshot({ type: 'png' });
 

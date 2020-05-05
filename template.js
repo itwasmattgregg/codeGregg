@@ -4,9 +4,9 @@ const twemoji = require('twemoji');
 const twOptions = { folder: 'svg', ext: '.svg' };
 const emojify = text => twemoji.parse(text, twOptions);
 
-const monad = readFileSync(`${__dirname}/static/fonts/Monad.otf`).toString(
-  'base64'
-);
+// const monad = readFileSync(`${__dirname}/static/fonts/Monad.otf`).toString(
+//   'base64'
+// );
 
 function getCss(theme, fontSize) {
   let background = 'white';
@@ -22,7 +22,7 @@ function getCss(theme, fontSize) {
         font-family: 'Monad';
         font-style:  normal;
         font-weight: normal;
-        src: url(data:font/otf;charset=utf-8;base64,${monad}) format('otf');
+        src: url('https://codegregg.com/fonts/Monad.otf') format('otf');
     }
 
     body {
@@ -86,7 +86,7 @@ function getCss(theme, fontSize) {
 
     .footer {
       font-family: sans-serif;
-      width: 65vw;
+      width: 55vw;
       font-size: 2rem;
       display: flex;
       justify-content: space-between;
