@@ -4,9 +4,8 @@ const twemoji = require('twemoji');
 const twOptions = { folder: 'svg', ext: '.svg' };
 const emojify = text => twemoji.parse(text, twOptions);
 
-// const monad = readFileSync(`${__dirname}/static/fonts/Monad.otf`).toString(
-//   'base64'
-// );
+const monad = readFileSync(`./static/fonts/Monad.otf`).toString('base64');
+console.log(monad);
 
 function getCss(theme, fontSize) {
   let background = 'white';
