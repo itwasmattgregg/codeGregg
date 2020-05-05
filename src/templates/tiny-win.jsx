@@ -13,11 +13,28 @@ const Win = styled.div`
   padding: 30px;
 `;
 
-export default function Template({ pageContext }) {
-  const { body, title, date } = pageContext;
+export default function Template({ pageContext, data }) {
+  const { body, title, date, ogImage, excerpt } = pageContext;
+  const { siteUrl } = data.site.siteMetadata;
   return (
     <TinyWinsLayout>
-      <Helmet title={`Tinywins - ${title}`} />
+      <Helmet title={`Tinywins - ${title}`}>
+        <meta property='og:type' content='website' />
+        <meta property='og:url' content={siteUrl} />
+        <meta property='og:title' content={`${title} | CodeGregg Tinywins`} />
+        <meta property='og:description' content={excerpt} />
+        <meta property='og:image' content={`${siteUrl}${ogImage}`} />
+
+        {/* <!-- Twitter --> */}
+        <meta property='twitter:card' content='summary_large_image' />
+        <meta property='twitter:url' content={siteUrl} />
+        <meta
+          property='twitter:title'
+          content={`${title} | CodeGregg Tinywins`}
+        />
+        <meta property='twitter:description' content={excerpt} />
+        <meta property='twitter:image' content={`${siteUrl}${ogImage}`} />
+      </Helmet>
       <Link to='/tinywins'>Back</Link>
       <Win>
         <h1>{title}</h1>
@@ -27,3 +44,13 @@ export default function Template({ pageContext }) {
     </TinyWinsLayout>
   );
 }
+
+export const pageQuery = graphql`
+  query {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
+  }
+`;

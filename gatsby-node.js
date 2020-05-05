@@ -109,6 +109,15 @@ exports.createPages = async ({ graphql, actions }) => {
                   id
                   body
                   excerpt
+                  fields {
+                    socialImage {
+                      childImageSharp {
+                        original {
+                          src
+                        }
+                      }
+                    }
+                  }
                   frontmatter {
                     date(formatString: "MMMM DD, YYYY")
                     title
@@ -135,6 +144,8 @@ exports.createPages = async ({ graphql, actions }) => {
               body: mdx.body,
               date: mdx.frontmatter.date,
               title: mdx.frontmatter.title,
+              excerpt: mdx.frontmatter.excerpt,
+              ogImage: mdx.fields.socialImage.childImageSharp.original.src,
             },
           });
         });

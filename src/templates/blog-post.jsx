@@ -11,7 +11,7 @@ import Container from '../components/container';
 import Layout from '../components/layout/layout';
 import styles from '../scss/templates/blog-post.module.scss';
 
-export default function BlogPost({ pageContext, data, location }) {
+export default function BlogPost({ pageContext, data, location, path }) {
   const post = get(data, 'file.childMdx');
   const { title, siteUrl } = data.site.siteMetadata;
   const ogImage = post.fields.socialImage.childImageSharp.original.src;
@@ -29,10 +29,10 @@ export default function BlogPost({ pageContext, data, location }) {
         htmlAttributes={{ lang: 'en' }}
         title={`${post.frontmatter.title} | ${title}`}
       >
-        <meta property='description' content='excerpt' />
+        <meta property='description' content={excerpt} />
         {/* <!-- Open Graph / Facebook --> */}
         <meta property='og:type' content='website' />
-        <meta property='og:url' content={siteUrl} />
+        <meta property='og:url' content={`${siteUrl}${path}`} />
         <meta
           property='og:title'
           content={`${post.frontmatter.title} | ${title}`}
@@ -42,7 +42,7 @@ export default function BlogPost({ pageContext, data, location }) {
 
         {/* <!-- Twitter --> */}
         <meta property='twitter:card' content='summary_large_image' />
-        <meta property='twitter:url' content={siteUrl} />
+        <meta property='twitter:url' content={`${siteUrl}${path}`} />
         <meta
           property='twitter:title'
           content={`${post.frontmatter.title} | ${title}`}
