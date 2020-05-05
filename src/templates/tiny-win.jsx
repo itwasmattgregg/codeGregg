@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import TinyWinsLayout from '../pages/tinywins/layout';
