@@ -13,21 +13,21 @@ const Win = styled.div`
   padding: 30px;
 `;
 
-export default function Template({ pageContext, data }) {
+export default function Template({ pageContext, data, path }) {
   const { body, title, date, ogImage, excerpt } = pageContext;
   const { siteUrl } = data.site.siteMetadata;
   return (
     <TinyWinsLayout>
       <Helmet title={`Tinywins - ${title}`} defer={false}>
         <meta property='og:type' content='website' />
-        <meta property='og:url' content={siteUrl} />
+        <meta property='og:url' content={`${siteUrl}${path}`} />
         <meta property='og:title' content={`${title} | CodeGregg Tinywins`} />
         <meta property='og:description' content={excerpt} />
         <meta property='og:image' content={`${siteUrl}${ogImage}`} />
 
         {/* <!-- Twitter --> */}
         <meta property='twitter:card' content='summary_large_image' />
-        <meta property='twitter:url' content={siteUrl} />
+        <meta property='twitter:url' content={`${siteUrl}${path}`} />
         <meta
           property='twitter:title'
           content={`${title} | CodeGregg Tinywins`}

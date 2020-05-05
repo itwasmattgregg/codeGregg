@@ -25,10 +25,6 @@ function getCss(theme, fontSize) {
         src: url(data:font/otf;charset=utf-8;base64,${monad}) format('otf');
     }
 
-    body {
-      margin: 0;
-    }
-
     .bodywrapper {
       background: ${background};
       background-image: url("https://codegregg.com/images/matt.jpg");
@@ -86,8 +82,8 @@ function getCss(theme, fontSize) {
 
     .footer {
       font-family: sans-serif;
-      width: 55vw;
-      font-size: 2.5rem;
+      width: 65vw;
+      font-size: 2rem;
       display: flex;
       justify-content: space-between;
       z-index: 1;

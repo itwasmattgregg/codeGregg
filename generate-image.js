@@ -39,7 +39,7 @@ async function screenshot(CACHE_DIR, browser, node, type) {
   const page = await browser.newPage();
   await page.goto(`file://${filePath}`);
   await page.evaluateHandle('document.fonts.ready');
-  page.setViewport({ width: 1232, height: 616 });
+  page.setViewport({ width: 1264, height: 632 });
   // await page.setViewport({ width: 2048, height: 1170 });
 
   const file = await page.screenshot({ type: 'png' });
