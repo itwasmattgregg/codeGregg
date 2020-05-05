@@ -4,7 +4,7 @@ const twemoji = require('twemoji');
 const twOptions = { folder: 'svg', ext: '.svg' };
 const emojify = text => twemoji.parse(text, twOptions);
 
-const monad = readFileSync(`./static/fonts/Monad.otf`).toString('base64');
+const monad = readFileSync(`./static/fonts/Monad.woff`).toString('base64');
 
 function getCss(theme, fontSize) {
   let background = 'white';
@@ -20,7 +20,7 @@ function getCss(theme, fontSize) {
         font-family: 'Monad';
         font-style:  normal;
         font-weight: normal;
-        src: url(data:font/opentype;charset=utf-8;base64,${monad});
+        src: url(data:font/woff;charset=utf-8;base64,${monad}) format('woff');
     }
 
     body {
