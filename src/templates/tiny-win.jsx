@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
+import { useLocation } from '@reach/router';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import TinyWinsLayout from '../pages/tinywins/layout';
 import styled from '@emotion/styled';
@@ -16,18 +17,20 @@ const Win = styled.div`
 export default function Template({ pageContext, data, path }) {
   const { body, title, date, ogImage, excerpt } = pageContext;
   const { siteUrl } = data.site.siteMetadata;
+  const { pathname } = useLocation();
+  const url = `${siteUrl}${pathname}`;
   return (
     <TinyWinsLayout>
       <Helmet title={`Tinywins - ${title}`} defer={false}>
         <meta property='og:type' content='website' />
-        <meta property='og:url' content={`${siteUrl}${path}`} />
+        <meta property='og:url' content={url} />
         <meta property='og:title' content={`${title} | CodeGregg Tinywins`} />
         <meta property='og:description' content={excerpt} />
         <meta property='og:image' content={`${siteUrl}${ogImage}`} />
 
         {/* <!-- Twitter --> */}
         <meta property='twitter:card' content='summary_large_image' />
-        <meta property='twitter:url' content={`${siteUrl}${path}`} />
+        <meta property='twitter:url' content={url} />
         <meta
           property='twitter:title'
           content={`${title} | CodeGregg Tinywins`}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, graphql } from 'gatsby';
+import { useLocation } from '@reach/router';
 import get from 'lodash/get';
 import _ from 'lodash';
 import BackgroundImage from 'gatsby-background-image';
@@ -11,11 +12,12 @@ import Container from '../components/container';
 import Layout from '../components/layout/layout';
 import styles from '../scss/templates/blog-post.module.scss';
 
-export default function BlogPost({ pageContext, data, location, path }) {
+export default function BlogPost({ pageContext, data }) {
   const post = get(data, 'file.childMdx');
+  const { pathname } = useLocation();
   const { title, siteUrl } = data.site.siteMetadata;
   const ogImage = post.fields.socialImage.childImageSharp.original.src;
-  const url = location.href;
+  const url = `${siteUrl}${pathname}`;
   const excerpt = post.excerpt;
   const { previous, next } = pageContext;
   const featuredImage = get(
@@ -31,7 +33,7 @@ export default function BlogPost({ pageContext, data, location, path }) {
         <meta property='description' content={excerpt} />
         {/* <!-- Open Graph / Facebook --> */}
         <meta property='og:type' content='website' />
-        <meta property='og:url' content={`${siteUrl}${path}`} />
+        <meta property='og:url' content={url} />
         <meta
           property='og:title'
           content={`${post.frontmatter.title} | ${title}`}
@@ -41,7 +43,7 @@ export default function BlogPost({ pageContext, data, location, path }) {
 
         {/* <!-- Twitter --> */}
         <meta property='twitter:card' content='summary_large_image' />
-        <meta property='twitter:url' content={`${siteUrl}${path}`} />
+        <meta property='twitter:url' content={url} />
         <meta
           property='twitter:title'
           content={`${post.frontmatter.title} | ${title}`}
