@@ -31,7 +31,7 @@ function getCss(theme, fontSize) {
       background-size: 600px;
       background-position: right;
       background-repeat: no-repeat;
-      border: 8px solid transparent;
+      border: 12px solid transparent;
       border-image: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
       border-image-slice: 1;
       padding-left: 1rem;
