@@ -1,0 +1,16 @@
+---
+title: 'Gatsby Social Cards'
+date: '2020-05-05T17:01:00Z'
+---
+
+Spent the all of today creating social cards that are generated at build time
+for my Gatsby blog. Most of my frustration came with trying to load a custom
+font into my template loaded by puppeteer. Finally figured out that .otf fonts
+don't like being base64 encoded as much as .woff fonts do. I should have turned
+off my local font file sooner to debug this 🤦‍♂. The other frustration was with
+the facebook debugger which was returning a 404 for the pages I was testing.
+Turns out you don't get the `path` variable in gatsby template files at the
+server rendered phase. Had to switch to using the `useLocation()` hook to concat
+with `siteUrl` for my og:url tag.
+
+Will write a full blog post tutorial at some point.
