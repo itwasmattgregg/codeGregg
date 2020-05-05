@@ -5,7 +5,6 @@ const twOptions = { folder: 'svg', ext: '.svg' };
 const emojify = text => twemoji.parse(text, twOptions);
 
 const monad = readFileSync(`./static/fonts/Monad.otf`).toString('base64');
-console.log(monad);
 
 function getCss(theme, fontSize) {
   let background = 'white';
@@ -21,7 +20,7 @@ function getCss(theme, fontSize) {
         font-family: 'Monad';
         font-style:  normal;
         font-weight: normal;
-        src: url('https://codegregg.com/fonts/Monad.otf') format('otf');
+        src: url(data:font/opentype;charset=utf-8;base64,${monad});
     }
 
     body {
