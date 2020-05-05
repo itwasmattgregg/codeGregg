@@ -25,10 +25,9 @@ export default function BlogPost({ pageContext, data, location, path }) {
 
   return (
     <Layout>
-      <Helmet
-        htmlAttributes={{ lang: 'en' }}
-        title={`${post.frontmatter.title} | ${title}`}
-      >
+      <Helmet defer={false}>
+        <html lang='en' />
+        <title>{`${post.frontmatter.title} | ${title}`}</title>
         <meta property='description' content={excerpt} />
         {/* <!-- Open Graph / Facebook --> */}
         <meta property='og:type' content='website' />

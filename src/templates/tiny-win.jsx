@@ -18,7 +18,7 @@ export default function Template({ pageContext, data }) {
   const { siteUrl } = data.site.siteMetadata;
   return (
     <TinyWinsLayout>
-      <Helmet title={`Tinywins - ${title}`}>
+      <Helmet title={`Tinywins - ${title}`} defer={false}>
         <meta property='og:type' content='website' />
         <meta property='og:url' content={siteUrl} />
         <meta property='og:title' content={`${title} | CodeGregg Tinywins`} />

@@ -26,8 +26,9 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <div className={styles.appLayout}>
-        <Helmet title={data.site.siteMetadata.title}>
+        <Helmet defer={false}>
           <html lang='en' />
+          <title>{data.site.siteMetadata.title}</title>
           <meta
             name='description'
             content='Minneapolis-based UI engineer and many-stack, artisinal crafter of the internet.'
@@ -38,7 +39,7 @@ const Layout = ({ children }) => (
           />
           {/* <!-- Open Graph / Facebook --> */}
           <meta property='og:type' content='website' />
-          <meta property='og:url' content='https://codegregg.com/' />
+          <meta property='og:url' content='https://codegregg.com' />
           <meta
             property='og:title'
             content='codeGregg: Minneapolis Web UI Developer'
@@ -54,7 +55,7 @@ const Layout = ({ children }) => (
 
           {/* <!-- Twitter --> */}
           <meta property='twitter:card' content='summary_large_image' />
-          <meta property='twitter:url' content='https://codegregg.com/' />
+          <meta property='twitter:url' content='https://codegregg.com' />
           <meta
             property='twitter:title'
             content='codeGregg: Minneapolis Web UI Developer'
