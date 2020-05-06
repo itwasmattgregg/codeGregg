@@ -16,7 +16,7 @@ export default function BlogPost({ pageContext, data }) {
   const post = get(data, 'file.childMdx');
   const { pathname } = useLocation();
   const { title, siteUrl } = data.site.siteMetadata;
-  const ogImage = post.fields.socialImage.childImageSharp.original.src;
+  const ogImage = post.fields.socialImage.childImageSharp.original;
   const url = `${siteUrl}${pathname}`;
   const excerpt = post.excerpt;
   const { previous, next } = pageContext;
@@ -39,7 +39,9 @@ export default function BlogPost({ pageContext, data }) {
           content={`${post.frontmatter.title} | ${title}`}
         />
         <meta property='og:description' content={excerpt} />
-        <meta property='og:image' content={`${siteUrl}${ogImage}`} />
+        <meta property='og:image' content={`${siteUrl}${ogImage.url}`} />
+        <meta property='og:image:width' content={ogImage.width} />
+        <meta property='og:image:height' content={ogImage.height} />
 
         {/* <!-- Twitter --> */}
         <meta property='twitter:card' content='summary_large_image' />
@@ -49,7 +51,8 @@ export default function BlogPost({ pageContext, data }) {
           content={`${post.frontmatter.title} | ${title}`}
         />
         <meta property='twitter:description' content={excerpt} />
-        <meta property='twitter:image' content={`${siteUrl}${ogImage}`} />
+        <meta property='twitter:image' content={`${siteUrl}${ogImage.url}`} />
+        <meta property='twitter:image:alt' content={title} />
       </Helmet>
       {featuredImage && (
         <div>

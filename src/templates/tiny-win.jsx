@@ -26,7 +26,9 @@ export default function Template({ pageContext, data }) {
         <meta property='og:url' content={url} />
         <meta property='og:title' content={`${title} | CodeGregg Tinywins`} />
         <meta property='og:description' content={excerpt} />
-        <meta property='og:image' content={`${siteUrl}${ogImage}`} />
+        <meta property='og:image' content={`${siteUrl}${ogImage.url}`} />
+        <meta property='og:image:width' content={ogImage.width} />
+        <meta property='og:image:height' content={ogImage.height} />
 
         {/* <!-- Twitter --> */}
         <meta property='twitter:card' content='summary_large_image' />
@@ -36,7 +38,8 @@ export default function Template({ pageContext, data }) {
           content={`${title} | CodeGregg Tinywins`}
         />
         <meta property='twitter:description' content={excerpt} />
-        <meta property='twitter:image' content={`${siteUrl}${ogImage}`} />
+        <meta property='twitter:image' content={`${siteUrl}${ogImage.url}`} />
+        <meta property='twitter:image:alt' content={`Tiny Win: ${title}`} />
       </Helmet>
       <Link to='/tinywins'>
         <strong>Back</strong>

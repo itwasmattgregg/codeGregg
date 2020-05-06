@@ -114,6 +114,8 @@ exports.createPages = async ({ graphql, actions }) => {
                       childImageSharp {
                         original {
                           src
+                          height
+                          width
                         }
                       }
                     }
@@ -145,7 +147,7 @@ exports.createPages = async ({ graphql, actions }) => {
               date: mdx.frontmatter.date,
               title: mdx.frontmatter.title,
               excerpt: mdx.frontmatter.excerpt,
-              ogImage: mdx.fields.socialImage.childImageSharp.original.src,
+              ogImage: mdx.fields.socialImage.childImageSharp.original,
             },
           });
         });
