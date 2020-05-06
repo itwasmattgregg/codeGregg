@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 
 const SkillWrapper = styled.div`
@@ -31,12 +31,20 @@ const SkillGaugeCircle = styled.circle`
     ${props => props.circumference};
   stroke-dashoffset: ${props => props.offset};
   stroke-linecap: 'round';
+  transition: 1s all ease-out;
 `;
 
 const Skill = ({ icon, name, xp = 0, size = 80 }) => {
   const radius = 58;
   const circumference = radius * 2 * Math.PI;
-  const offset = circumference - (xp / 100) * circumference;
+  const [delayedXp, setDelayedXp] = useState(0);
+  const offset = circumference - (delayedXp / 100) * circumference;
+
+  useEffect(() => {
+    setTimeout(() => {
+      setDelayedXp(xp);
+    }, 100);
+  }, [xp]);
 
   const gaugeColor = xp => {
     if (xp <= 33) {

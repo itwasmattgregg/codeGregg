@@ -77,58 +77,6 @@ const Resume = ({ data }) => {
           </p>
         </div>
         <div className={styles.section}>
-          <h2>Experience</h2>
-          <div>
-            <div>
-              SENIOR SOFTWARE ENGINEER (UI)
-              <br />
-              Nerdery | Oct 2017 - Current
-              <p>
-                Built numerous large scale projects with a broad range of front
-                end frameworks. Interfaced with many high profile clients to
-                create user interface solutions and build better experiences for
-                the web. Took on mentorship role for other front end developers.
-                Received software architecture training.
-              </p>
-            </div>
-            <div>
-              SENIOR WEB DEVELOPER
-              <br />
-              Bright Health (acquired by) | May 2017 - Oct 2017
-              <p>
-                Worked on web applications built on React/Redux with SSR in an
-                agile team. Collaborated with design to build better user
-                experiences through a unitive design system. Helped to manage a
-                complex automated AWS setup for building and deploying our
-                applications.
-              </p>
-            </div>
-            <div>
-              FRONT END DEVELOPER
-              <br />
-              Spyder Trap | Oct 2014 - May 2017
-              <p>
-                Developed client web sites and dynamic applications back end to
-                front on many frameworks. Architected experiences in
-                collaboration with designers, clients, and other devs. Lead
-                developer on numerous projects including consulting roles with
-                our client’s development teams when needed.
-              </p>
-            </div>
-            <div>
-              JAVA SOFTWARE ENGINEER
-              <br />
-              Access Genetics | Aug 2013 - Oct 2014
-              <p>
-                Core developer on large customer facing Java EE medical web
-                application. Redesigned a data driven individualized user
-                dashboard for all customers. Created a zip code based MSSQL
-                search for finding dental services.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className={styles.section}>
           <h2>Skills</h2>
           <p>
             I consider myself tech agnostic. I have my favorites but I always
@@ -150,15 +98,101 @@ const Resume = ({ data }) => {
           </div>
         </div>
         <div className={styles.section}>
+          <h2>Experience</h2>
+          <div>
+            <div>
+              <strong>SENIOR SOFTWARE ENGINEER (UI)</strong>
+              <br />
+              <em>Nerdery | Oct 2017 - Current</em>
+              <p>
+                Built numerous large scale projects with a broad range of front
+                end frameworks. Interfaced with many high profile clients to
+                create user interface solutions and build better experiences for
+                the web. Took on mentorship role for other front end developers.
+                Received software architecture training.
+              </p>
+            </div>
+            <div>
+              <strong>SENIOR WEB DEVELOPER</strong>
+              <br />
+              <em>
+                Bright Health (acquired Spyder Trap) | May 2017 - Oct 2017
+              </em>
+              <p>
+                Worked on web applications built on React/Redux with SSR in an
+                agile team. Collaborated with design to build better user
+                experiences through a unitive design system. Helped to manage a
+                complex automated AWS setup for building and deploying our
+                applications.
+              </p>
+            </div>
+            <div>
+              <strong>FRONT END DEVELOPER</strong>
+              <br />
+              <em>Spyder Trap | Oct 2014 - May 2017</em>
+              <p>
+                Developed client web sites and dynamic applications back end to
+                front on many frameworks. Architected experiences in
+                collaboration with designers, clients, and other devs. Lead
+                developer on numerous projects including consulting roles with
+                our client’s development teams when needed.
+              </p>
+            </div>
+            <div>
+              <strong>JAVA SOFTWARE ENGINEER</strong>
+              <br />
+              <em>Access Genetics | Aug 2013 - Oct 2014</em>
+              <p>
+                Core developer on large customer facing Java EE medical web
+                application. Redesigned a data driven individualized user
+                dashboard for all customers. Created a zip code based MSSQL
+                search for finding dental services.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className={styles.section}>
           <h2>Side Projects</h2>
-          {/* Make each expandable? Or a link if possible? */}
-          <p>Beingful - Django / React</p>
-          <p>Wedding Web App - Laravel / Vue / Algolia / AE</p>
-          <p>Food Truck Finder - Vue / Firebase</p>
-          <p>Gatsby/Wordpress Blog for Stereotype Steve</p>
-          <p>Kitten Critic - Ember / Firebase</p>
-          <p>Balderdash Game for Nerdery - Vue / Firebase</p>
-          <p>Photo Scavenger Hunt App for Nerdery - Vue / Firebase</p>
+          <div className={styles.sideProjectsContainer}>
+            <a href='https://beingful.co' className={styles.sideProject}>
+              <strong>Beingful</strong> <br />
+              Django / React
+            </a>
+            <a
+              href='https://gregg-wedding.herokuapp.com/'
+              className={styles.sideProject}
+            >
+              <strong>Wedding Web App</strong> <br />
+              Laravel / Vue / Algolia / After Effects
+            </a>
+            <a href='https://foodtruckfinder.io' className={styles.sideProject}>
+              <strong>Food Truck Finder</strong> <br />
+              Vue / Firebase / Netlify Lambda Function
+            </a>
+            <a
+              href='https://www.stereotypesteve.com/'
+              className={styles.sideProject}
+            >
+              <strong>Blog for Stereotype Steve</strong> <br />
+              Gatsby / Wordpress
+            </a>
+            <a href='https://allergies.wtf/' className={styles.sideProject}>
+              <strong>WTF Allergies</strong> <br />
+              Vue / Netlify Lambda Function
+            </a>
+            <div className={styles.sideProject}>
+              <strong>Kitten Critic</strong> <br />
+              Ember / Firebase
+            </div>
+            <div className={styles.sideProject}>
+              <strong>Balderdash Game for Nerdery</strong> <br />
+              Vue / Firebase
+            </div>
+            <div className={styles.sideProject}>
+              <strong>Photo Scavenger Hunt App for Nerdery</strong> <br />
+              Vue / Firebase
+            </div>
+          </div>
         </div>
         <div className={styles.section}>
           <h2>Education</h2>
