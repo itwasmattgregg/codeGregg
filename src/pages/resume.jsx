@@ -40,7 +40,6 @@ const Resume = ({ data }) => {
               className={styles.headerImage}
               src={initials}
               alt=''
-              height='150px'
               role='presentation'
             />
             <h1 className={styles.headerName}>
