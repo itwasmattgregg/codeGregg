@@ -68,6 +68,8 @@ const Layout = ({ children }) => (
             property='twitter:image'
             content='https://codegregg.com/images/codegregg.png'
           />
+          <link rel="webmention" href="https://webmention.io/codegregg.com/webmention" />
+          <link rel="pingback" href="https://webmention.io/codegregg.com/xmlrpc" />
         </Helmet>
         <Header
           siteTitle={data.site.siteMetadata.title}
@@ -75,8 +77,6 @@ const Layout = ({ children }) => (
         />
         <div className={styles.appContainer}>{children}</div>
         <Footer />
-        <link rel="webmention" href="https://webmention.io/codegregg.com/webmention" />
-        <link rel="pingback" href="https://webmention.io/codegregg.com/xmlrpc" />
       </div>
     )}
   />
