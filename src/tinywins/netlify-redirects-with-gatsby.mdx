@@ -1,0 +1,25 @@
+---
+title: 'Netlify Redirects With Gatsby'
+date: '2020-05-08T10:20:00Z'
+---
+
+Was having troubles with my functions redirect rule in netlify.toml file with my
+Gatsby site. Originally it looked like this:
+
+```toml
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+```
+
+But gatsby was taking over and serving a 404 for this route. But if you add the
+force key to the redirect everything works fine. Add it like this:
+
+```toml
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+  force = true
+```
