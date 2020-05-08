@@ -31,6 +31,7 @@
     "gatsby-transformer-sharp": "^2.2.13",
     "lodash": "^4.17.11",
     "mdx-utils": "^0.2.0",
+    "netlify-lambda": "^1.6.3",
     "node-sass": "^4.9.3",
     "prism-react-renderer": "^0.1.6",
     "prismjs": "^1.15.0",
@@ -54,6 +55,7 @@
     "build": "gatsby build",
     "develop": "rm -rf .cache/caches/gatsby-plugin-mdx && gatsby develop",
     "format": "prettier --write '**/*.js'",
+    "postinstall": "netlify-lambda install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {

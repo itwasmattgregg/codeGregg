@@ -23,6 +23,10 @@ html {
 body {
   min-height: 100vh;
   background-color: $background;
+
+  @media print {
+    background-color: #fff;
+  }
 }
 
 a {

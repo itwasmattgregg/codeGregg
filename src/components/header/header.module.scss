@@ -45,3 +45,9 @@
     text-decoration: none;
   }
 }
+
+@media print {
+  .headerContainer {
+    display: none;
+  }
+}
