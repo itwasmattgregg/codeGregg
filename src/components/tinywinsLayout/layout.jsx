@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import { Helmet } from 'react-helmet';
 import styled from '@emotion/styled';
 
 const CodeGreggButton = styled(Link)`
