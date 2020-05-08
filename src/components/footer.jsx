@@ -56,6 +56,7 @@ const Footer = () => (
         </a>
         <a
           href='https://twitter.com/ItWasMattGregg'
+          rel="me"
           style={{ margin: '0 10px' }}
         >
           <img src={twitter} alt='twitter' />
