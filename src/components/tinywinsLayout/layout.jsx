@@ -30,6 +30,16 @@ const TinyWinsWrapper = styled.div`
 const TinyWinsLayout = ({ children }) => {
   return (
     <TinyWinsWrapper>
+      <Helmet>
+        <link
+          rel='webmention'
+          href='https://webmention.io/codegregg.com/webmention'
+        />
+        <link
+          rel='pingback'
+          href='https://webmention.io/codegregg.com/xmlrpc'
+        />
+      </Helmet>
       <CodeGreggButton to='/'>Return to CodeGregg</CodeGreggButton>
       {children}
     </TinyWinsWrapper>

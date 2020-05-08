@@ -3,7 +3,7 @@ import { Link, graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import { useLocation } from '@reach/router';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import TinyWinsLayout from '../pages/tinywins/layout';
+import TinyWinsLayout from '../components/tinywinsLayout/layout';
 import styled from '@emotion/styled';
 
 const Win = styled.div`

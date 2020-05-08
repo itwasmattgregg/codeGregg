@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 import styled from '@emotion/styled';
-import TinyWinsLayout from './layout';
+import TinyWinsLayout from '../../components/tinywinsLayout/layout';
 import { Helmet } from 'react-helmet';
 
 const List = styled.ul`
