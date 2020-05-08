@@ -23,7 +23,6 @@ async function getOptions(isDev) {
 }
 
 async function getScreenshot(url, isDev) {
-  // first check if this value has been cached
   const cachedImage = cached.get(url);
   if (cachedImage) {
     return cachedImage;
@@ -44,8 +43,6 @@ async function getScreenshot(url, isDev) {
 exports.handler = async (event, context) => {
   const photoBuffer = await getScreenshot(
     `${process.env.URL || `http://localhost:8888`}/resume`,
-    // Here we need to pass a boolean to say if we are on the server. Netlify has a bug where process.env.NETLIFY is undefiend in functions so I'm using one of the only vars I can find
-    // !process.env.NETLIFY
     process.env.URL.includes('http://localhost')
   );
   return {
