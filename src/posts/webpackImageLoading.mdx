@@ -10,15 +10,17 @@ featuredImage: '../images/fatos-bytyqi-535528-unsplash.jpg'
 visible: true
 ---
 
-Sometimes you have to make a custom webpack config. Whether you're working on making a vue app inside
-a server rendered framework like wordpress or you just decided to roll your own, this might help you
-if you're having issues loading images into your components. My example will be with vue but the principal
-works with other front end libraries. This will assume you already have a webpack setup and are having
-difficulties getting images to import and load.
+Sometimes you have to make a custom webpack config. Whether you're working on
+making a vue app inside a server rendered framework like wordpress or you just
+decided to roll your own, this might help you if you're having issues loading
+images into your components. My example will be with vue but the principal works
+with other front end libraries. This will assume you already have a webpack
+setup and are having difficulties getting images to import and load.
 
 ## Instructions:
 
-Make sure you have file-loader installed along with all your other webpack dev dependencies.
+Make sure you have file-loader installed along with all your other webpack dev
+dependencies.
 
 ```shell
 npm i -D file-loader
@@ -44,9 +46,9 @@ module: {
 }
 ```
 
-The final trick is to make sure to include the `publicPath` in your webpack output config object.
-_This is honestly the key to this entire post._
-It will look something like this for wordpress:
+The final trick is to make sure to include the `publicPath` in your webpack
+output config object. _This is honestly the key to this entire post._ It will
+look something like this for wordpress:
 
 ```json
 output: {
@@ -56,32 +58,33 @@ output: {
 },
 ```
 
-We have to not only let webpack know where to output assets from the build but also where
-to access them within the grand scheme of the application (from the root path of the web server).
-If you're not using wordpress, just make sure that path leads to the directory where the images
-you import are built. After you call import on an image file in one of your js files, you should
-see the images being copied to your build directory. If not then you may have a problem with your
-webpack config file-loader.
+We have to not only let webpack know where to output assets from the build but
+also where to access them within the grand scheme of the application (from the
+root path of the web server). If you're not using wordpress, just make sure that
+path leads to the directory where the images you import are built. After you
+call import on an image file in one of your js files, you should see the images
+being copied to your build directory. If not then you may have a problem with
+your webpack config file-loader.
 
-With publicPath added in there you can now call things like this in your Vue.js components.
+With publicPath added in there you can now call things like this in your Vue.js
+components.
 
-```jsx
+```vue
 <template>
-  <img :src="image" :alt="type">
+  <img :src="image" :alt="type" />
 </template>
 
 <script>
 import icom from '../images/icon.png';
 
 export default {
-  data: function () {
-      return {
-          image: icom
-      }
+  data: function() {
+    return {
+      image: icom,
+    };
   },
-}
+};
 </script>
-
 ```
 
 Good luck out there.

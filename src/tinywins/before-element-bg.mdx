@@ -1,0 +1,51 @@
+---
+title: ':before Element On Top of Background but Behind Text'
+date: '2020-05-10T14:52:00Z'
+---
+
+Sometimes you have content in a before element that you want to appear on top of
+a background image but behind other elements on the page. In my situation I had
+an image with a css triangle used as a mask over the image but wanted text to be
+able to appear on top of the triangle.
+
+The image below shows what I was going for. There is a white triangle masking
+the image and the text is visible on top of the triangle even though it is
+position absolute. The key here is making sure the :before element has
+`z-index: 0` and any of the text elements are either in a `flex` container or
+have `position: relative` with `z-index: 1`.
+
+![Example](../images/tinywins/before-element-example.png)
+
+```html
+<div class="body-wrapper">
+  <h1 class="heading">@itwasmattgregg</h1>
+</div>
+```
+
+```css
+.body-wrapper {
+  background-image: url('https://codegregg.com/images/matt.jpg');
+  background-size: contain;
+  background-position: right;
+  background-repeat: no-repeat;
+  height: 600px;
+  position: relative;
+}
+
+.body-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 0;
+  width: 0;
+  z-index: 0;
+  right: 440px;
+  border-top: 600px solid #fff;
+  border-right: 160px solid transparent;
+}
+
+.heading {
+  z-index: 1;
+  position: relative;
+}
+```
