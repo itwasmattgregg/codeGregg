@@ -117,7 +117,7 @@ const Resume = ({ data }) => {
           <h2>Experience</h2>
           <div>
             <div>
-              <strong>SENIOR SOFTWARE ENGINEER (UI)</strong>
+              <strong>SENIOR SOFTWARE ENGINEER (Front End)</strong>
               <br />
               <em>Nerdery | Oct 2017 - Current</em>
               <p>

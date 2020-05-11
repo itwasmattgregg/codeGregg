@@ -33,6 +33,12 @@
   display: flex;
   align-items: center;
 
+  ul {
+    display: flex;
+    align-items: center;
+    margin: 0;
+  }
+
   li {
     margin-bottom: 0;
     margin-left: 50px;
@@ -46,8 +52,125 @@
   }
 }
 
+.menuToggle {
+  padding: 10px;
+  left: -60px;
+  top: 10px;
+  display: none;
+  position: absolute;
+  transition: background 0.3s ease, left 0.3s ease;
+
+  .hamburger {
+    height: 40px;
+    width: 40px;
+    display: block;
+    position: relative;
+    transform-origin: center;
+    transition: all 0.3s ease;
+
+    &:before,
+    &:after {
+      content: '';
+      background: #fff;
+      height: 10px;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      transform-origin: center;
+      transition: all 0.3s ease;
+    }
+
+    &:before {
+      top: 5px;
+    }
+
+    &:after {
+      bottom: 5px;
+    }
+  }
+}
+
+@media (max-width: 757px) {
+  .nav {
+    position: fixed;
+    right: -250px;
+    width: 250px;
+    background: #fff;
+    height: 100vh;
+    top: 0;
+    z-index: 3;
+    transition: right 0.3s ease;
+    padding: 20px 30px;
+    box-shadow: inset 10px 0 10px -10px rgba(0, 0, 0, 0.8);
+    align-items: flex-start;
+
+    &.open {
+      right: 0;
+
+      & + .backdrop {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: #000;
+        background: rgba(0, 0, 0, 0.7);
+        height: 100%;
+        width: 100%;
+        z-index: 2;
+      }
+
+      .menuToggle {
+        background: #fff;
+        left: -45px;
+        transition: background 0.3s ease, left 0.6s ease;
+      }
+
+      .hamburger {
+        transform: rotate(90deg);
+
+        &:before,
+        &:after {
+          background: $main-color;
+          transform: rotate(45deg);
+        }
+      }
+    }
+
+    .menuToggle {
+      display: block;
+    }
+
+    ul {
+      flex-direction: column;
+      margin: 0;
+      align-items: flex-start;
+    }
+
+    li {
+      margin: 0;
+    }
+
+    a {
+      color: $main-color;
+      display: block;
+      padding: 10px 0;
+    }
+  }
+}
+
 @media print {
   .headerContainer {
     display: none;
   }
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
