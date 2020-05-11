@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'codeGregg: Minneapolis Web UI Developer',
+    title: 'codeGregg: Minneapolis Web Developer',
     author: 'Matt Gregg',
     description:
       'Minneapolis-based UI engineer; many-stack artisinal crafter of the internet.',

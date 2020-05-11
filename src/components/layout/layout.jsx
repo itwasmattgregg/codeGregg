@@ -42,7 +42,7 @@ const Layout = ({ children }) => (
           <meta property='og:url' content='https://codegregg.com' />
           <meta
             property='og:title'
-            content='codeGregg: Minneapolis Web UI Developer'
+            content='codeGregg: Minneapolis Web Developer'
           />
           <meta
             property='og:description'
@@ -58,7 +58,7 @@ const Layout = ({ children }) => (
           <meta property='twitter:url' content='https://codegregg.com' />
           <meta
             property='twitter:title'
-            content='codeGregg: Minneapolis Web UI Developer'
+            content='codeGregg: Minneapolis Web Developer'
           />
           <meta
             property='twitter:description'
