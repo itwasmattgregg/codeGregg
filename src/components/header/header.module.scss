@@ -67,17 +67,19 @@
     position: relative;
     transform-origin: center;
     transition: all 0.3s ease;
+    transition-delay: 0.8s;
 
     &:before,
     &:after {
       content: '';
       background: #fff;
-      height: 10px;
+      height: 6px;
       width: 100%;
       position: absolute;
       left: 0;
       transform-origin: center;
-      transition: all 0.3s ease;
+      transition: background 0.3s ease, transform 0.8s ease;
+      transition-delay: 0s, 0s;
     }
 
     &:before {
@@ -127,11 +129,20 @@
 
       .hamburger {
         transform: rotate(90deg);
+        transition-delay: 0s;
 
         &:before,
         &:after {
           background: $main-color;
           transform: rotate(45deg);
+          transition-delay: 0s, 0.3s;
+        }
+        &:before {
+          top: 17px;
+        }
+        &:after {
+          transform: rotate(-45deg);
+          bottom: 17px;
         }
       }
     }
