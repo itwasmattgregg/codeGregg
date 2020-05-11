@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
+import { saveAs } from 'file-saver';
 
 import Layout from '../components/layout/layout';
 import Container from '../components/container';
@@ -26,6 +27,15 @@ import sketchIcon from '../images/logos/sketch.svg';
 const Resume = ({ data }) => {
   const siteTitle = data.site.siteMetadata.title;
   const headerBackground = data.headerBackground?.childImageSharp.fluid;
+  const [downloading, setDownloading] = useState(false);
+
+  const getPdfDownload = async () => {
+    setDownloading(true);
+    const response = await fetch('/api/get-resume-pdf');
+    const blob = await response.blob();
+    setDownloading(false);
+    saveAs(blob, 'matt-gregg-resume.pdf');
+  };
 
   return (
     <Layout>
@@ -60,6 +70,13 @@ const Resume = ({ data }) => {
             <br />
             <a href='mailto:mattdgregg@gmail.com'>mattdgregg@gmail.com</a>
           </address>
+          <button
+            onClick={getPdfDownload}
+            className={styles.downloadButton}
+            disabled={downloading}
+          >
+            Download PDF
+          </button>
         </Container>
       </BackgroundImage>
       <Container>

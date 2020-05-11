@@ -1,3 +1,5 @@
+@import '../variables';
+
 .headerBackground {
   padding: 200px 0 100px;
   margin-bottom: 50px;
@@ -14,6 +16,21 @@
 
   @media (min-width: 758px) {
     grid-template-columns: 1fr auto;
+  }
+}
+
+.downloadButton {
+  background: #fff;
+  color: $main_color;
+  font-weight: bold;
+  right: 0;
+  margin-top: 40px;
+  margin-right: 1.0875rem;
+
+  @media (min-width: 758px) {
+    position: absolute;
+    bottom: -160px;
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.3);
   }
 }
 
