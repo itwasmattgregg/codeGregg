@@ -50,7 +50,7 @@ const Layout = ({ children }) => (
           />
           <meta
             property='og:image'
-            content='https://codegregg.com/images/codegregg.png'
+            content='https://codegregg.com/images/codegregg-social.png'
           />
 
           {/* <!-- Twitter --> */}
@@ -66,7 +66,7 @@ const Layout = ({ children }) => (
           />
           <meta
             property='twitter:image'
-            content='https://codegregg.com/images/codegregg.png'
+            content='https://codegregg.com/images/codegregg-social.png'
           />
         </Helmet>
         <Header
