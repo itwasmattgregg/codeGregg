@@ -1,0 +1,109 @@
+---
+title: Automate Firebase Hosting with Github Actions
+tags:
+  - dev
+  - firebase
+  - CI/CD
+date: '2020-05-20T18:10:39Z'
+featuredImage: '../images/github-actions.png'
+visible: true
+---
+
+This is a tutorial for quickly setting up a Github action to deploy a site to
+Firebase hosting. This would include sites built with Vue, React, Gatsby, the
+Next.js static generator or any other client-side site. In a few minutes you can
+be set up so every time you push code to master it will automatically be built
+by Github and deployed to Firebase. I'm going to assume you already have your
+code on Github and a firebase project setup. If your project doesn't have a
+`firebase.json` file in the root directory, or if that file doesn't have a
+hosting section you may need to run `firebase init`.
+
+Here's an example of what that file should look like:
+
+```json
+{
+  "hosting": {
+    "site": "site-name",
+    "public": "dist",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
+```
+
+`site-name` should be replaced with the name of the site you want to deploy to,
+and `dist` should be the directory your site gets built to. Usually it's either
+dist or public.
+
+Next you'll need to create a file called `main.yml` at the path
+`.github/workflows/`. That file should have these contents:
+
+```yml
+name: Build and Deploy
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Install Dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Archive Production Artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: dist
+          path: dist
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Download Artifact
+        uses: actions/download-artifact@master
+        with:
+          name: dist
+          path: dist
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting:site-name
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+```
+
+The things you may need to change here are any reference to `dist`, change to
+whatever your build script outputs the final code to, and the `npm run build`
+line can be changed to whatever your build command is. Also make sure to change
+`site-name` to whatever you used in your `firebase.json` file in the last step.
+Note: you can easily swap npm out with yarn, which at this time is available
+globally on the build environment.
+
+This file basically runs two separate jobs: one to build the site files from
+your source code, and one to take that artifact and deploy it to Firebase
+hosting.
+
+The final piece you need here is to add your secret Firebase token to Github so
+it has permission to deploy the site for you. To get this token run
+`firebase login:ci` in your terminal and copy the code generated. You'll paste
+that code in the settings of your Github project on the secrets page. Create a
+new secret with the name `FIREBASE_TOKEN` and paste the code you got from your
+terminal.
+
+Now you can commit both files and push to Github and the Github action will take
+care of the rest. After you push you should be able to see the progress in the
+actions tab in your Github project.
