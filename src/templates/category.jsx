@@ -27,7 +27,7 @@ class CategoryTemplate extends React.Component {
               const title =
                 get(node, 'childMdx.frontmatter.title') || node.fields.slug;
               return (
-                <div key={node.fields.slug}>
+                <div key={node.fields.slug} style={{ marginBottom: '60px' }}>
                   <h3>
                     <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
                       {title}
