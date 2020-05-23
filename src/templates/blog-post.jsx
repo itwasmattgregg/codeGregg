@@ -16,7 +16,7 @@ export default function BlogPost({ pageContext, data }) {
   const post = get(data, 'file.childMdx');
   const { pathname } = useLocation();
   const { title, siteUrl } = data.site.siteMetadata;
-  const ogImage = post.fields.socialImage.childImageSharp.original;
+  const ogImage = get(post, 'fields.socialImage.childImageSharp.original', '');
   const url = `${siteUrl}${pathname}`;
   const excerpt = post.excerpt;
   const { previous, next } = pageContext;

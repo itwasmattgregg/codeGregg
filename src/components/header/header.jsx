@@ -21,8 +21,8 @@ const Header = ({ menuLinks }) => {
             className={styles.menuToggle}
             aria-label='Close main menu'
           >
-            <span class={styles.srOnly}>Toggle main menu</span>
-            <span class={styles.hamburger}></span>
+            <span className={styles.srOnly}>Toggle main menu</span>
+            <span className={styles.hamburger}></span>
           </button>
           <ul>
             {menuLinks.map(link => (
@@ -33,7 +33,7 @@ const Header = ({ menuLinks }) => {
           </ul>
         </nav>
         <div
-          class={styles.backdrop}
+          className={styles.backdrop}
           tabIndex='-1'
           aria-hidden='true'
           onClick={() => setNavOpen(!navOpen)}
