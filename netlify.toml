@@ -6,5 +6,22 @@
   to = "/.netlify/functions/:splat"
   status = 200
   force = true
+[[redirects]]
+  from = "/wp-login.php"
+  to = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  force = true
+[[redirects]]
+  from = "/wp-admin"
+  to = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  force = true
+[[redirects]]
+  from = "/.env"
+  to = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  force = true
+[[redirects]]
+  from = "/admin"
+  to = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  force = true
+
 [[plugins]]
   package = "netlify-plugin-gatsby-cache"
