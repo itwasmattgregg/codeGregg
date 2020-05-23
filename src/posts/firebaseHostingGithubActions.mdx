@@ -16,7 +16,9 @@ be set up so every time you push code to master it will automatically be built
 by Github and deployed to Firebase. I'm going to assume you already have your
 code on Github and a firebase project setup. If your project doesn't have a
 `firebase.json` file in the root directory, or if that file doesn't have a
-hosting section you may need to run `firebase init`.
+hosting section you may need to run `firebase init`. Also make sure you have a
+`.firebaserc` file with your project ID or the deploy function won't work. If
+you run `firebase init` it should be created for you.
 
 Here's an example of what that file should look like:
 
