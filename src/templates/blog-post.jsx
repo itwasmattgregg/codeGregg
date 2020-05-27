@@ -11,6 +11,7 @@ import Bio from '../components/Bio';
 import Container from '../components/container';
 import Layout from '../components/layout/layout';
 import styles from '../scss/templates/blog-post.module.scss';
+import Webmentions from '../components/Webmentions';
 
 export default function BlogPost({ pageContext, data }) {
   const post = get(data, 'file.childMdx');
@@ -89,6 +90,8 @@ export default function BlogPost({ pageContext, data }) {
         </div>
         <hr />
         <Bio location={url} />
+
+        <Webmentions postUrl={url} />
 
         <ul
           style={{

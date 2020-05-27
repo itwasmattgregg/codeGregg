@@ -5,6 +5,7 @@ import { useLocation } from '@reach/router';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import TinyWinsLayout from '../components/tinywinsLayout/layout';
 import styled from '@emotion/styled';
+import Webmentions from '../components/Webmentions';
 
 const Win = styled.div`
   background-color: #fff;
@@ -48,6 +49,7 @@ export default function Template({ pageContext, data }) {
         <h1>{title}</h1>
         <p>{date}</p>
         <MDXRenderer>{body}</MDXRenderer>
+        <Webmentions postUrl={url} />
       </Win>
     </TinyWinsLayout>
   );
