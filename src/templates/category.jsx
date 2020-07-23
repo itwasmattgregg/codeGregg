@@ -28,12 +28,14 @@ class CategoryTemplate extends React.Component {
                 get(node, 'childMdx.frontmatter.title') || node.fields.slug;
               return (
                 <div key={node.fields.slug} style={{ marginBottom: '60px' }}>
-                  <h3>
+                  <h3 style={{ marginBottom: '0.5em' }}>
                     <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
                       {title}
                     </Link>
                   </h3>
-                  <small>{node.childMdx.frontmatter.date}</small>
+                  <p style={{ marginBottom: '0.5em' }}>
+                    <small>{node.childMdx.frontmatter.date}</small>
+                  </p>
                   <p
                     dangerouslySetInnerHTML={{ __html: node.childMdx.excerpt }}
                   />

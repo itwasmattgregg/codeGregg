@@ -80,7 +80,7 @@ class Blog extends React.Component {
                 key={node.fields.slug}
                 style={{ maxWidth: '750px', margin: '75px auto' }}
               >
-                <h3 style={{ marginBottom: '1rem' }}>
+                <h3 style={{ marginBottom: '0.5em' }}>
                   <Link
                     className='font_default'
                     style={{ boxShadow: 'none' }}
@@ -92,7 +92,7 @@ class Blog extends React.Component {
                 <div>
                   <small className='font_monad'>{post.date}</small>
                 </div>
-                <div>
+                <div style={{ marginBottom: '0.5em' }}>
                   {post.tags &&
                     post.tags.map(category => (
                       <Link
