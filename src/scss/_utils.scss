@@ -2,3 +2,7 @@
   font-size: $size; //Fallback in px
   font-size: calculateRem($size);
 }
+
+.hidden {
+  display: none;
+}

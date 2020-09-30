@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import posed from 'react-pose';
 
 import styles from './contactForm.module.scss';
@@ -14,7 +14,7 @@ const Button = posed.button({
     position: 'absolute',
     width: '100%',
     height: '100%',
-    backgroundColor: 'limegreen',
+    backgroundColor: 'rgb(0,0,0)',
     top: 0,
     left: 0,
     flip: true,
@@ -27,98 +27,96 @@ const Button = posed.button({
   },
 });
 
-class ContactForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-      email: '',
-      message: '',
-      success: false,
-    };
-  }
+const ContactForm = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [honeypot, setHoneypot] = useState('');
+  const [success, setSuccess] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-  handleSubmit = e => {
-    this.setState({ submitting: true });
+  const handleSubmit = e => {
+    setSubmitting(true);
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
         'form-name': 'contact',
-        name: this.state.name,
-        email: this.state.email,
-        message: this.state.message,
+        name,
+        email,
+        message,
+        'bot-field': honeypot,
       }),
     })
       .then(() => {
-        this.setState({ success: true });
-        this.resetForm();
+        setSubmitting(false);
+        setSuccess(true);
+        resetForm();
       })
       .catch(error => {
+        setSubmitting(false);
         alert(error);
       });
 
     e.preventDefault();
   };
 
-  resetForm = () =>
-    this.setState({
-      name: '',
-      email: '',
-      message: '',
-    });
+  const resetForm = () => {
+    setName('');
+    setEmail('');
+    setMessage('');
+  };
 
-  handleChange = e => this.setState({ [e.target.name]: e.target.value });
-
-  render() {
-    const { name, email, message, success } = this.state;
-
-    return (
-      <form
-        className={styles.contactForm}
-        name='contact'
-        onSubmit={this.handleSubmit}
-        data-netlify-honeypot='bot-field'
-        data-netlify='true'
-      >
-        <input type='hidden' name='bot-field' />
-        <label className={styles.nameField}>
-          Name
-          <input
-            required
-            type='text'
-            name='name'
-            value={name}
-            onChange={this.handleChange}
-          />
+  return (
+    <form
+      className={styles.contactForm}
+      name='contact'
+      onSubmit={handleSubmit}
+      data-netlify-honeypot='bot-field'
+      data-netlify='true'
+    >
+      <p class='hidden'>
+        <label>
+          Don’t fill this out if you're human:{' '}
+          <input name='bot-field' onChange={e => setHoneypot(e.target.value)} />
         </label>
-        <label className={styles.emailField}>
-          Email
-          <input
-            required
-            type='email'
-            name='email'
-            value={email}
-            onChange={this.handleChange}
-          />
-        </label>
-        <label className={styles.messageField}>
-          Message
-          <textarea
-            required
-            name='message'
-            value={message}
-            onChange={this.handleChange}
-          />
-        </label>
-        <div className={styles.buttonColumn}>
-          <Button type='submit' pose={success ? 'open' : 'closed'}>
-            {success ? 'Sent!' : 'Send It'}
-          </Button>
-        </div>
-      </form>
-    );
-  }
-}
+      </p>
+      <label className={styles.nameField}>
+        Name
+        <input
+          required
+          type='text'
+          name='name'
+          value={name}
+          onChange={e => setName(e.target.value)}
+        />
+      </label>
+      <label className={styles.emailField}>
+        Email
+        <input
+          required
+          type='email'
+          name='email'
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+        />
+      </label>
+      <label className={styles.messageField}>
+        Message
+        <textarea
+          required
+          name='message'
+          value={message}
+          onChange={e => setMessage(e.target.value)}
+        />
+      </label>
+      <div className={styles.buttonColumn}>
+        <Button type='submit' pose={success ? 'open' : 'closed'}>
+          {success ? 'Sent!' : 'Send It'}
+        </Button>
+      </div>
+    </form>
+  );
+};
 
 export default ContactForm;
