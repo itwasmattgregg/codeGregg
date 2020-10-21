@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import posed from 'react-pose';
 
 import styles from './contactForm.module.scss';
@@ -49,13 +49,14 @@ const ContactForm = () => {
       }),
     })
       .then(() => {
-        setSubmitting(false);
         setSuccess(true);
         resetForm();
       })
       .catch(error => {
-        setSubmitting(false);
         alert(error);
+      })
+      .finally(() => {
+        setSubmitting(false);
       });
 
     e.preventDefault();
@@ -112,7 +113,11 @@ const ContactForm = () => {
         />
       </label>
       <div className={styles.buttonColumn}>
-        <Button type='submit' pose={success ? 'open' : 'closed'}>
+        <Button
+          disabled={submitting}
+          type='submit'
+          pose={success ? 'open' : 'closed'}
+        >
           {success ? 'Sent!' : 'Send It'}
         </Button>
       </div>

@@ -1,4 +1,3 @@
-import React from 'react';
 import Container from './container';
 import twitter from '../images/twitter.svg';
 import spotify from '../images/spotify.svg';

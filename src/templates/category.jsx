@@ -1,11 +1,11 @@
-import React from 'react';
+import { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import get from 'lodash/get';
 import { graphql, Link } from 'gatsby';
 import Layout from '../components/layout/layout';
 import Container from '../components/container';
 
-class CategoryTemplate extends React.Component {
+class CategoryTemplate extends Component {
   render() {
     const category = this.props.pathContext.tag;
     const siteTitle = get(this.props, 'data.site.siteMetadata.title');

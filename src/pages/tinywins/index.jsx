@@ -1,4 +1,3 @@
-import React from 'react';
 import { graphql, Link } from 'gatsby';
 import styled from '@emotion/styled';
 import TinyWinsLayout from '../../components/tinywinsLayout/layout';

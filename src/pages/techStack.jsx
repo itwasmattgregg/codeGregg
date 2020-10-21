@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import { graphql } from 'gatsby';
 import get from 'lodash/get';
 import { Helmet } from 'react-helmet';
@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet';
 import Layout from '../components/layout/layout';
 import Container from '../components/container';
 
-class TechStack extends React.Component {
+class TechStack extends Component {
   render() {
     const siteTitle = get(this.props, 'data.site.siteMetadata.title');
 

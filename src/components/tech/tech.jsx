@@ -1,4 +1,3 @@
-import React from 'react';
 import firebase from '../../images/firebase.svg';
 import gatsby from '../../images/gatsby.svg';
 import javascript from '../../images/javascript.svg';

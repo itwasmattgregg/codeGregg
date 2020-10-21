@@ -1,6 +1,6 @@
-import React from 'react';
+import { Component } from 'react';
 
-export default class Bio extends React.Component {
+export default class Bio extends Component {
   componentDidMount() {
     window.twttr = (function(d, s, id) {
       let js;

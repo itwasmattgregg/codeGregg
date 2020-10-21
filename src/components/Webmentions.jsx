@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useState } from 'react';
 
 const Webmentions = ({ postUrl }) => {
@@ -23,11 +23,11 @@ const Webmentions = ({ postUrl }) => {
       } else {
         const data = await counts.json();
         setCountsStatus('success');
-        setCountData({ ...countData, ...data.type });
+        setCountData(c => ({ ...c, ...data.type }));
       }
     };
     fetchCountData();
-  }, []);
+  }, [postUrl]);
 
   return (
     <>
@@ -37,7 +37,13 @@ const Webmentions = ({ postUrl }) => {
       )}
       {countsStatus === 'success' && (
         <div>
-          ❤️ {countData.like + countData.repost} 💬{' '}
+          <span role='img' aria-label='likes'>
+            ❤️
+          </span>{' '}
+          {countData.like + countData.repost}{' '}
+          <span role='img' aria-label='mentions'>
+            💬
+          </span>{' '}
           {countData.mention + countData.reply}
         </div>
       )}

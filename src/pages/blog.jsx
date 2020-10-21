@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import { graphql, Link } from 'gatsby';
 import get from 'lodash/get';
 import BackgroundImage from 'gatsby-background-image';
@@ -10,7 +10,7 @@ import Container from '../components/container';
 
 import styles from '../scss/pages/blog.module.scss';
 
-class Blog extends React.Component {
+class Blog extends Component {
   render() {
     const posts = get(this, 'props.data.allFile.edges');
     const siteTitle = get(this.props, 'data.site.siteMetadata.title');

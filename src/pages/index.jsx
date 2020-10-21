@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import Img from 'gatsby-image';
 
 import Layout from '../components/layout/layout';
@@ -12,7 +12,7 @@ import ContactForm from '../components/contactForm/contactForm';
 import shape from '../images/shape.svg';
 import styles from '../scss/pages/index.module.scss';
 
-class IndexPage extends React.Component {
+class IndexPage extends Component {
   render() {
     const latestPost = get(this, 'props.data.allFile.edges[0].node');
     const latestPostMdx = latestPost.childMdx;
