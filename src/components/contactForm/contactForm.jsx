@@ -69,6 +69,7 @@ const ContactForm = () => {
 
   return (
     <form
+      id='contact'
       className={styles.contactForm}
       name='contact'
       onSubmit={handleSubmit}
