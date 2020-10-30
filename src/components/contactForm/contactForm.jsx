@@ -11,19 +11,19 @@ const encode = data => {
 
 const Button = posed.button({
   open: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'rgb(0,0,0)',
-    top: 0,
-    left: 0,
-    flip: true,
+    scale: 1.4,
+    'background-color': '#00AB66',
   },
-  closed: {
-    height: 'inherit',
-    width: 'inherit',
-    position: 'static',
-    flip: true,
+});
+
+const FormFields = posed.div({
+  waiting: {
+    opacity: 1,
+    height: 'auto',
+  },
+  success: {
+    opacity: 0,
+    height: '0px',
   },
 });
 
@@ -32,11 +32,12 @@ const ContactForm = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [honeypot, setHoneypot] = useState('');
-  const [success, setSuccess] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
+  const [state, setState] = useState('');
 
   const handleSubmit = e => {
-    setSubmitting(true);
+    e.preventDefault();
+
+    setState('submitting');
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -49,23 +50,32 @@ const ContactForm = () => {
       }),
     })
       .then(() => {
-        setSuccess(true);
+        setState('success');
         resetForm();
       })
       .catch(error => {
+        setState('error');
         alert(error);
-      })
-      .finally(() => {
-        setSubmitting(false);
       });
-
-    e.preventDefault();
   };
 
   const resetForm = () => {
     setName('');
     setEmail('');
     setMessage('');
+  };
+
+  const buttonText = () => {
+    switch (state) {
+      case 'submitting':
+        return 'Submitting';
+      case 'success':
+        return 'Success';
+      case 'error':
+        return 'There was an error';
+      default:
+        return 'Send';
+    }
   };
 
   return (
@@ -77,48 +87,65 @@ const ContactForm = () => {
       data-netlify-honeypot='bot-field'
       data-netlify='true'
     >
-      <p class='hidden'>
-        <label>
-          Don’t fill this out if you're human:{' '}
-          <input name='bot-field' onChange={e => setHoneypot(e.target.value)} />
+      <FormFields
+        className={styles.formFields}
+        pose={state === 'success' ? 'success' : 'waiting'}
+      >
+        <p className='hidden'>
+          <label>
+            Don’t fill this out if you're human:{' '}
+            <input
+              name='bot-field'
+              onChange={e => setHoneypot(e.target.value)}
+            />
+          </label>
+        </p>
+        <label className={styles.nameField}>
+          Name
+          <input
+            required
+            type='text'
+            name='name'
+            value={name}
+            onChange={e => setName(e.target.value)}
+          />
         </label>
-      </p>
-      <label className={styles.nameField}>
-        Name
-        <input
-          required
-          type='text'
-          name='name'
-          value={name}
-          onChange={e => setName(e.target.value)}
-        />
-      </label>
-      <label className={styles.emailField}>
-        Email
-        <input
-          required
-          type='email'
-          name='email'
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-        />
-      </label>
-      <label className={styles.messageField}>
-        Message
-        <textarea
-          required
-          name='message'
-          value={message}
-          onChange={e => setMessage(e.target.value)}
-        />
-      </label>
+        <label className={styles.emailField}>
+          Email
+          <input
+            required
+            type='email'
+            name='email'
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+          />
+        </label>
+        <label className={styles.messageField}>
+          Message
+          <textarea
+            required
+            name='message'
+            value={message}
+            onChange={e => setMessage(e.target.value)}
+          />
+        </label>
+      </FormFields>
       <div className={styles.buttonColumn}>
         <Button
-          disabled={submitting}
+          disabled={state === 'submitting' || state === 'success'}
           type='submit'
-          pose={success ? 'open' : 'closed'}
+          pose={state === 'success' ? 'open' : 'closed'}
         >
-          {success ? 'Sent!' : 'Send It'}
+          {buttonText()}
+          {state === 'submitting' && (
+            <svg
+              className={styles.spinner}
+              viewBox='0 0 100 100'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <circle cx='50' cy='50' r='45' />
+            </svg>
+          )}
         </Button>
       </div>
     </form>
