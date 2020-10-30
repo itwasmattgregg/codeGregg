@@ -55,7 +55,7 @@ const Footer = () => (
         </a>
         <a
           href='https://twitter.com/ItWasMattGregg'
-          rel="me"
+          rel='me'
           style={{ margin: '0 10px' }}
         >
           <img src={twitter} alt='twitter' />
@@ -68,7 +68,7 @@ const Footer = () => (
         </a>
       </div>
       <div className='text_center'>
-        <small>mattdgregg@gmail.com</small>
+        <small>matt@codegregg.com</small>
       </div>
     </Container>
   </div>
