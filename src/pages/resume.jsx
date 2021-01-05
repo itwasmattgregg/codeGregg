@@ -117,7 +117,7 @@ const Resume = ({ data }) => {
           <h2>Experience</h2>
           <div>
             <div>
-              <strong>SENIOR SOFTWARE ENGINEER (Front End)</strong>
+              <strong>Senior Software Engineer (Front End)</strong>
               <br />
               <em>Nerdery | Oct 2017 - Current</em>
               <p>
@@ -146,7 +146,7 @@ const Resume = ({ data }) => {
               </p>
             </div>
             <div>
-              <strong>SENIOR WEB DEVELOPER</strong>
+              <strong>Senior Web Developer</strong>
               <br />
               <em>
                 Bright Health (acquired Spyder Trap) | May 2017 - Oct 2017
@@ -160,7 +160,7 @@ const Resume = ({ data }) => {
               </p>
             </div>
             <div>
-              <strong>FRONT END DEVELOPER</strong>
+              <strong>Front End Developer</strong>
               <br />
               <em>Spyder Trap | Oct 2014 - May 2017</em>
               <p>
@@ -172,7 +172,7 @@ const Resume = ({ data }) => {
               </p>
             </div>
             <div>
-              <strong>JAVA SOFTWARE ENGINEER</strong>
+              <strong>Java Software Engineer</strong>
               <br />
               <em>Access Genetics | Aug 2013 - Oct 2014</em>
               <p>
