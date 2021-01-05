@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { graphql, Link } from 'gatsby';
 import get from 'lodash/get';
 import BackgroundImage from 'gatsby-background-image';

@@ -1,3 +1,5 @@
+import React from 'react';
+
 const Container = ({ children, className }) => (
   <div
     className={className}

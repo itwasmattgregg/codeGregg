@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import logo from '../../images/headerLogo.svg';
 

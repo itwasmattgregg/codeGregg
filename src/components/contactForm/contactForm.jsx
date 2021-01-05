@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import posed from 'react-pose';
 
 import styles from './contactForm.module.scss';

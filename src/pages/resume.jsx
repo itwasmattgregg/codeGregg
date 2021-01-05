@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import { saveAs } from 'file-saver';
@@ -121,11 +121,25 @@ const Resume = ({ data }) => {
               <br />
               <em>Nerdery | Oct 2017 - Current</em>
               <p>
-                Built numerous large scale projects with a broad range of front
-                end frameworks. Interfaced with many high profile clients to
-                create user interface solutions and build better experiences for
-                the web. Took on mentorship role for other front end developers.
-                Received software architecture training.
+                Built numerous large scale projects with a broad range of
+                technologies. Have worked with React, Angular, and VueJS to
+                build performant, secure applications. Worked with many high
+                profile clients to create UI solutions and build better
+                experiences for the web. Have experience working on agile teams,
+                working closely with backend engineers, and designers to
+                architect and deliver applications. Was a mentor for other front
+                end developers with. Received software architecture training.
+              </p>
+            </div>
+            <div>
+              <strong>Chief Technology Officer</strong>
+              <br />
+              <em>Beingful | Sep 2019 - Nov 2020</em>
+              <p>
+                Built a social media platform using Django and React. Worked in
+                cycles to deliver updates every week and worked closely with the
+                owner to make design and technical decisions to constantly try
+                to make the app better and fulfill the goals
               </p>
             </div>
             <div>

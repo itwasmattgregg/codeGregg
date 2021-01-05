@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import get from 'lodash/get';
 import { graphql, Link } from 'gatsby';
