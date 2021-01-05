@@ -99,18 +99,18 @@ const Resume = ({ data }) => {
             love uncovering new ones.
           </p>
           <div className={styles.skillGrid}>
-            <Skill icon={javascriptIcon} name='Javascript' xp={80} size={70} />
-            <Skill icon={reactIcon} name='React' xp={75} />
+            <Skill icon={javascriptIcon} name='Javascript' xp={85} size={70} />
+            <Skill icon={reactIcon} name='React' xp={80} />
             <Skill icon={vueIcon} name='Vue' xp={90} />
             <Skill icon={firebaseIcon} name='Firebase' xp={80} />
-            <Skill icon={gatsbyIcon} name='Gatsby' xp={60} />
-            <Skill icon={djangoIcon} name='Django' xp={50} />
+            <Skill icon={gatsbyIcon} name='Gatsby' xp={80} />
+            <Skill icon={djangoIcon} name='Django' xp={60} />
             <Skill icon={laravelIcon} name='Laravel' xp={40} />
-            <Skill icon={angularIcon} name='Angular' xp={30} />
+            <Skill icon={angularIcon} name='Angular' xp={60} />
             <Skill icon={afterEffectsIcon} name='After Effects' xp={35} />
             <Skill icon={dockerIcon} name='Docker' xp={30} />
             <Skill icon={awsIcon} name='AWS' xp={50} />
-            <Skill icon={sketchIcon} name='Sketch' xp={65} />
+            <Skill icon={sketchIcon} name='Sketch' xp={75} />
           </div>
         </div>
         <div className={styles.section}>
