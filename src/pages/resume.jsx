@@ -136,10 +136,13 @@ const Resume = ({ data }) => {
               <br />
               <em>Beingful | Sep 2019 - Nov 2020</em>
               <p>
-                Built a social media platform using Django and React. Worked in
-                cycles to deliver updates every week and worked closely with the
-                owner to make design and technical decisions to constantly try
-                to make the app better and fulfill the goals
+                Built a social media platform using Django and React for a
+                startup as a side project. Worked in cycles to deliver weekly
+                updates and worked closely with the owner to make design and
+                technical decisions to constantly try to make the app better and
+                fulfill the goals of the project. I also interviewed and hired
+                other developers over the length of the project to help work on
+                the codebase.
               </p>
             </div>
             <div>
