@@ -1,0 +1,73 @@
+---
+title: How to find a Database in 2021
+tags:
+  - dev
+  - cloud
+date: '2021-01-14T18:55:33Z'
+featuredImage: '../images/elcarito-MHNjEBeLTgw-unsplash.jpg'
+visible: true
+---
+
+I haven’t been around as long as some, but I’ve been around web development to
+remember the days where everyone had a cpanel and managed their own personal
+site on super cheap shared hosting. The days of clicking a few buttons and
+spinning up a new mysql database, maybe your hosting company even gave you ssh
+access to your shared environment and allowed you to create some of your own
+resources. But we for sure didn’t have cloud infrastructure to manage these
+things or keep them in separate environments from each other, on separate apps
+with separate security keys and service accounts. It definitely wasn’t the best
+thing but most of the time we would host many websites, usually php
+applications, and many databases all on the same linux box. We had our share of
+security scares but honestly it was just a simpler time for working on the bare
+bones infrastructure. I even spent some time at a company where our entire stack
+was in a closet I could see from my desk. Barracuda load balancers and nightly
+tape backups our CTO would literally just take home to his house. I’m not saying
+those were better days, not at all, just different.
+
+Now we have access to 3 major cloud providers (Google, AWS, and Azure) who
+pretty much offer the same set of competing services. Not to mention all the
+independent services that live on top of this infrastructure like Netlify and
+the literally countless others. And these are really great for almost everything
+we do but it’s interesting how some things have become slightly more difficult
+or expensive for demo and dev work.
+
+For example, the other day I was creating a Next.js app and wanted to try out
+Prisma for connecting to a database and having a nice way to define schema,
+handle migrations, and work with auth. For this I needed an external database.
+Mongo and Firebase have always been really nice dev resources for me when
+testing out app ideas, but again I really wanted to try out this Prisma thing
+which required a relational db. In the old days I would have just spun up a db
+on my shared hosting service and connected to it but I don’t have any shared
+hosting anymore with how easy and free things like Netlify and Vercel are. I
+really just wanted somewhere where I could spin up a hosted database for very
+cheap or free. I turned to our old friend Heroku and spun up a postgres database
+there on the free tier. This seemed like exactly what I needed. Free and easy to
+set up. But with the way Next.js connects to the database with serverless
+functions, I was running into the max-connection limit heroic puts on free
+databases just when testing myself. I was hoping to at least be able to test
+this with a few other people and I knew this couldn’t be a viable option. I
+didn’t want to create many rows in the database and didn’t need much storage but
+I definitely needed the concurrent connections for the functions.
+
+I ended up spending about 4 hours researching across AWS and GCP for managed
+database and compute pricing. I tried looking for databases that could spin down
+to 0 when not in use to save money, cheap small databases, and cheap hosting
+where I could add my own container-based database. Everything seemed to be about
+$15/mo. which was just too much for this little hobby project I wanted to try
+out. Why aren’t there any services where I can try out a database with a little
+more heft for free? Is it really that expensive to host a database for testing
+purposes?
+
+Alright, so I’ve ranted enough. If you’re still reading I hope you found this at
+least a semi-fun story to read through. And you’re probably curious, what did I
+end up choosing? I eventually landed on a Google Compute Engine free tier
+f1-tiny box with a postgres VM installed for about $4/mo. It isn’t free but it
+works and I’m not running into the connection error anymore. By the way, I did
+also try mysql on Heroku thinking I could avoid the connection issue but ran
+into the same limitation. Maybe Heroku dbs don’t release connections very fast?
+Who knows. I also set up an AWS RDS serverless db that can spin down to 0 when
+not in use. I plan on trying that out for a little bit in production to compare
+costs. It’s expensive if it’s used all the time but “should” be cheap if it’s
+off a lot.
+
+Thanks for reading. Be peaceful to one another.
