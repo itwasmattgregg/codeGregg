@@ -1,0 +1,10 @@
+---
+  title: 'Postgres Hosted'
+  date: '2021-01-13T17:20:00Z'
+---
+
+Learned that finding a simple (~free) Postgres hosted solution is kinda hard.
+Heroku kinda works but for a Vercel-hosted NextJS app it was running out of
+connections. Finally set up a Docker VM on Google Cloud (GCE) and that worked
+pretty well even though it ended up being about $4/mo. Seems there might be some
+autoscaling spin down to 0 options that might work too.
