@@ -5,10 +5,10 @@ import { saveAs } from 'file-saver';
 
 import Layout from '../components/layout/layout';
 import Container from '../components/container';
-
-import styles from '../scss/pages/resume.module.scss';
 import BackgroundImage from 'gatsby-background-image';
 import Skill from '../components/resume/Skill';
+
+import styles from '../scss/pages/resume.module.scss';
 
 import initials from '../images/initials.svg';
 import firebaseIcon from '../images/firebase.svg';
@@ -88,8 +88,8 @@ const Resume = ({ data }) => {
             code, and creating the best possible experience for the end user.
             Front end guru, UX evangelist, many-stack developer, system
             architect, continuous learner, and pusher of boundaries with the
-            spirit of an entrepreneur. I thrive in stressful situations and
-            impossible challenges.
+            spirit of an entrepreneur. I thrive in stressful situations,
+            impossible challenges and working to build teams and communities.
           </p>
         </div>
         <div className={styles.section}>
@@ -115,73 +115,64 @@ const Resume = ({ data }) => {
         </div>
         <div className={styles.section}>
           <h2>Experience</h2>
-          <div>
-            <div>
-              <strong>Senior Software Engineer (Front End)</strong>
-              <br />
-              <em>Nerdery | Oct 2017 - Current</em>
-              <p>
-                Built numerous large scale projects with a broad range of
-                technologies. Have worked with React, Angular, and VueJS to
-                build performant, secure applications. Worked with many high
-                profile clients to create UI solutions and build better
-                experiences for the web. Have experience working on agile teams,
-                working closely with backend engineers, and designers to
-                architect and deliver applications. Was a mentor for other front
-                end developers with. Received software architecture training.
-              </p>
-            </div>
-            <div>
-              <strong>Chief Technology Officer</strong>
-              <br />
-              <em>Beingful | Sep 2019 - Nov 2020</em>
-              <p>
-                Built a social media platform using Django and React for a
-                startup as a side project. Worked in cycles to deliver weekly
-                updates and worked closely with the owner to make design and
-                technical decisions to constantly try to make the app better and
-                fulfill the goals of the project. I also interviewed and hired
-                other developers over the length of the project to help work on
-                the codebase.
-              </p>
-            </div>
-            <div>
-              <strong>Senior Web Developer</strong>
-              <br />
-              <em>
-                Bright Health (acquired Spyder Trap) | May 2017 - Oct 2017
-              </em>
-              <p>
-                Worked on web applications built on React/Redux with SSR in an
-                agile team. Collaborated with design to build better user
-                experiences through a unitive design system. Helped to manage a
-                complex automated AWS setup for building and deploying our
-                applications.
-              </p>
-            </div>
-            <div>
-              <strong>Front End Developer</strong>
-              <br />
-              <em>Spyder Trap | Oct 2014 - May 2017</em>
-              <p>
-                Developed client web sites and dynamic applications back end to
-                front on many frameworks. Architected experiences in
-                collaboration with designers, clients, and other devs. Lead
-                developer on numerous projects including consulting roles with
-                our client’s development teams when needed.
-              </p>
-            </div>
-            <div>
-              <strong>Java Software Engineer</strong>
-              <br />
-              <em>Access Genetics | Aug 2013 - Oct 2014</em>
-              <p>
-                Core developer on large customer facing Java EE medical web
-                application. Redesigned a data driven individualized user
-                dashboard for all customers. Created a zip code based MSSQL
-                search for finding dental services.
-              </p>
-            </div>
+          <div className={styles.expereienceItem}>
+            <h4>Senior Software Engineer (Front End)</h4>
+            <em>Nerdery | Oct 2017 - Current</em>
+            <p>
+              Built numerous large scale projects with a broad range of
+              technologies. Have worked with React, Angular, and VueJS to build
+              performant, secure applications. Worked with many high profile
+              clients to create UI solutions and build better experiences for
+              the web. Have experience working on agile teams, working closely
+              with backend engineers, and designers to architect and deliver
+              applications. Was a mentor for other front end developers with.
+              Received software architecture training.
+            </p>
+          </div>
+          <div className={styles.expereienceItem}>
+            <h4>Chief Technology Officer</h4>
+            <em>Beingful | Sep 2019 - Nov 2020</em>
+            <p>
+              Built a social media platform using Django and React for a startup
+              as a side project. Worked in cycles to deliver weekly updates and
+              worked closely with the owner to make design and technical
+              decisions to constantly try to make the app better and fulfill the
+              goals of the project. I also interviewed and hired other
+              developers over the length of the project to help work on the
+              codebase.
+            </p>
+          </div>
+          <div className={styles.expereienceItem}>
+            <h4>Senior Web Developer</h4>
+            <em>Bright Health (acquired Spyder Trap) | May 2017 - Oct 2017</em>
+            <p>
+              Worked on web applications built on React/Redux with SSR in an
+              agile team. Collaborated with design to build better user
+              experiences through a unitive design system. Helped to manage a
+              complex automated AWS setup for building and deploying our
+              applications.
+            </p>
+          </div>
+          <div className={styles.expereienceItem}>
+            <h4>Front End Developer</h4>
+            <em>Spyder Trap | Oct 2014 - May 2017</em>
+            <p>
+              Developed client web sites and dynamic applications back end to
+              front on many frameworks. Architected experiences in collaboration
+              with designers, clients, and other devs. Lead developer on
+              numerous projects including consulting roles with our client’s
+              development teams when needed.
+            </p>
+          </div>
+          <div className={styles.expereienceItem}>
+            <h4>Java Software Engineer</h4>
+            <em>Access Genetics | Aug 2013 - Oct 2014</em>
+            <p>
+              Core developer on large customer facing Java EE medical web
+              application. Redesigned a data driven individualized user
+              dashboard for all customers. Created a zip code based MSSQL search
+              for finding dental services.
+            </p>
           </div>
         </div>
         <div className={styles.section}>

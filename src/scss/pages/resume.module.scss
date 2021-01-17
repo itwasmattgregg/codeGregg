@@ -99,6 +99,21 @@
   }
 }
 
+.expereienceItem {
+  margin-bottom: 2.5rem;
+
+  h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+
+  em {
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+}
+
 .sideProjectsContainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
