@@ -18,6 +18,10 @@ module.exports = {
         name: 'Contact',
         link: '/#contact',
       },
+      {
+        name: 'TinyWins',
+        link: '/tinywins',
+      },
     ],
   },
   plugins: [

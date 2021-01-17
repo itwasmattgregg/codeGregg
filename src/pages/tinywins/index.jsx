@@ -5,7 +5,7 @@ import TinyWinsLayout from '../../components/tinywinsLayout/layout';
 import { Helmet } from 'react-helmet';
 
 const List = styled.ul`
-  margin: 0 10px;
+  margin: 0;
 `;
 
 const ListItem = styled.li`
@@ -40,6 +40,11 @@ const TinyWinsHomepage = ({ data }) => {
     <TinyWinsLayout>
       <Helmet title={`Tinywins`} />
       <h1>#TinyWins!</h1>
+      <p>
+        This is a little microsite for recording small personal wins of mine and
+        also small learnings in web development as I go. Almost like a blog but
+        smaller :)
+      </p>
       <List>
         {wins.map(({ node }) => {
           const mdx = node.childMdx;
