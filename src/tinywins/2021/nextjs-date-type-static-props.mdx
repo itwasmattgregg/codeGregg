@@ -1,0 +1,43 @@
+---
+  title: 'How to deal with Date Types in NextJS getStaticProps'
+  date: '2021-01-19T14:55:00Z'
+---
+
+If you're using NextJS you're probably using the getStaticProps function or the
+getServerSideProps function on your pages to fetch data to populate your page
+props. Something I discovered the other day is that you can't pass some types in
+your props object to your React component including the Date type. In my
+particular application I'm using Prisma to get objects from my database that
+include `createdAt` and `updatedAt` dates.
+
+My code looks a little something like this:
+
+```js
+export const getStaticProps: GetStaticProps = async () => {
+  const users = await prisma.user.findMany();
+  return { props: { users }, revalidate: 1 };
+};
+```
+
+However, this was a problem because getStaticProps serializes the returned
+object and Date (along with a few other types) can't be serialized. You'll get
+an error like
+`("[object Date]") cannot be serialized as JSON. Please only return JSON serializable data type`.
+So I found this discussion on the topic
+https://github.com/vercel/next.js/discussions/11498. I ended up installing a
+package called `babel-plugin-superjson-next` and `superjson` and added a
+`.babelrc` file with these contents:
+
+```json
+{
+  "presets": ["next/babel"],
+  "plugins": ["superjson-next"]
+}
+```
+
+This just fixes the issue as described in their docs:
+https://github.com/blitz-js/superjson#using-with-nextjs.
+
+Should also note here you could fix this by manually handling each Date type in
+your getStaticProps method. You could map over each returned object and convert
+the Date to a string before returning that array.
