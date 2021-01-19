@@ -94,7 +94,7 @@ class Blog extends Component {
                 </div>
                 <div style={{ marginBottom: '0.5em' }}>
                   {post.tags &&
-                    post.tags.map(category => (
+                    post.tags.map((category) => (
                       <Link
                         key={category}
                         style={{ marginRight: '10px' }}

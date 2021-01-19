@@ -54,7 +54,6 @@ exports.createPages = async ({ graphql, actions }) => {
           reject(result.errors);
         }
         const posts = result.data.allFile.edges;
-        const tagPage = path.resolve('src/templates/category.jsx');
 
         _.each(posts, (post, index) => {
           const previous =
@@ -80,6 +79,8 @@ exports.createPages = async ({ graphql, actions }) => {
             });
           }
         });
+
+        const tagPage = path.resolve('src/templates/category.jsx');
 
         const tagList = Array.from(tagSet);
         tagList.forEach(tag => {
