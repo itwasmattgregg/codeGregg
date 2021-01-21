@@ -9,6 +9,11 @@ featuredImage: '../images/github-actions.png'
 visible: true
 ---
 
+> UPDATE 01/21/21: Using the `firebase init` command you can now automatically
+> set up deployment from Github through the CLI and you shouldn't have to follow
+> any of this tutorial. Try that first. It should set up an action for merge and
+> one for PRs.
+
 This is a tutorial for quickly setting up a Github action to deploy a site to
 Firebase hosting. This would include sites built with Vue, React, Gatsby, the
 Next.js static generator or any other client-side site. In a few minutes you can
@@ -18,11 +23,25 @@ code on Github and a firebase project setup. If your project doesn't have a
 `firebase.json` file in the root directory, or if that file doesn't have a
 hosting section you may need to run `firebase init`. Also make sure you have a
 `.firebaserc` file with your project ID or the deploy function won't work. If
-you run `firebase init` it should be created for you.
+you run `firebase init` and follow the instructions to set up hosting both files
+should be created for you.
 
-Here's an example of what that file should look like:
+Here's an example of what the files should look like:
 
 ```json
+// .firebaserc
+{
+  "projects": {
+    "default": "project-id"
+  }
+}
+```
+
+`project-id` should be replaced with your project ID from the firebase console.
+This is all done for you if you use the `firebase init` command from the CLI.
+
+```json
+// firebase.json
 {
   "hosting": {
     "site": "site-name",
@@ -38,9 +57,11 @@ Here's an example of what that file should look like:
 }
 ```
 
-`site-name` should be replaced with the name of the site you want to deploy to,
-and `dist` should be the directory your site gets built to. Usually it's either
-dist or public.
+`site-name` should be replaced with the name of the site you want to deploy to
+(...if you want to deploy to a custom named site you created in firebase
+console. If you just want to use the default site then you shouldn't include the
+`site` key), and `dist` should be the directory your site gets built to. Usually
+it's either dist or public.
 
 Next you'll need to create a file called `main.yml` at the path
 `.github/workflows/`. That file should have these contents:
@@ -83,17 +104,16 @@ jobs:
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
-          args: deploy --only hosting:site-name
+          args: deploy --only hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 ```
 
 The things you may need to change here are any reference to `dist`, change to
 whatever your build script outputs the final code to, and the `npm run build`
-line can be changed to whatever your build command is. Also make sure to change
-`site-name` to whatever you used in your `firebase.json` file in the last step.
-Note: you can easily swap npm out with yarn, which at this time is available
-globally on the build environment.
+line can be changed to whatever your build command is. Note: you can easily swap
+npm out with yarn, which at this time is available globally on the build
+environment.
 
 This file basically runs two separate jobs: one to build the site files from
 your source code, and one to take that artifact and deploy it to Firebase
