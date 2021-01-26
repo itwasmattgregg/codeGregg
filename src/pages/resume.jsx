@@ -77,6 +77,14 @@ const Resume = ({ data }) => {
             disabled={downloading}
           >
             Download PDF
+            {downloading && (
+              <div className={styles.loadingSpinner}>
+                <span className={styles.loadingBox}></span>
+                <span className={styles.loadingBox}></span>
+                <span className={styles.loadingBox}></span>
+                <span className={styles.loadingBox}></span>
+              </div>
+            )}
           </button>
         </Container>
       </BackgroundImage>
@@ -195,7 +203,7 @@ const Resume = ({ data }) => {
             </a>
             <a href='https://foodtruckfinder.io' className={styles.sideProject}>
               <strong>Food Truck Finder</strong> <br />
-              Vue / Firebase / Netlify Lambda Function
+              Vue / Firebase / Netlify Lambda Functions
             </a>
             <a
               href='https://www.stereotypesteve.com/'

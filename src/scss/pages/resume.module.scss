@@ -20,17 +20,24 @@
 }
 
 .downloadButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #fff;
   color: $main_color;
   font-weight: bold;
   right: 0;
   margin-top: 40px;
-  margin-right: 1.0875rem;
+
+  &:disabled {
+    color: rgba($main_color, 0.4);
+  }
 
   @media (min-width: 758px) {
     position: absolute;
     bottom: -160px;
     box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.3);
+    margin-right: 1.0875rem;
   }
 
   @media print {
@@ -125,4 +132,53 @@
   padding: 10px;
   background: #fff;
   border-radius: 2px;
+}
+
+// Loading
+.loadingSpinner {
+  margin-left: 15px;
+  width: 20px;
+  height: 20px;
+  display: inline-grid;
+  grid-gap: 2px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  transform: rotate(45deg);
+  animation: spin 2s infinite;
+}
+.loadingBox {
+  opacity: 0.3;
+  background-color: $main_color;
+}
+
+.loadingBox:nth-of-type(4n + 1) {
+  opacity: 1;
+  animation: opacity 2s infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(45deg);
+  }
+  50% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(135deg);
+  }
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0.3;
+  }
+  40% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
 }
