@@ -179,7 +179,7 @@ const Resume = ({ data }) => {
         <div className={styles.section}>
           <h2>Side Projects</h2>
           <div className={styles.sideProjectsContainer}>
-            <SideProject title='Testing' description='Here' />
+            {/* <SideProject title='Testing' description='Here' /> */}
             <div className={styles.sideProject}>
               <a href='https://beingful.co'>
                 <strong>Beingful</strong> <br />
