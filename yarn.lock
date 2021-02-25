@@ -2875,6 +2875,11 @@ babel-extract-comments@^1.0.0:
   dependencies:
     babylon "^6.18.0"
 
+babel-jsx-utils@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/babel-jsx-utils/-/babel-jsx-utils-1.0.1.tgz#f2d171cba526594e7d69e9893d634502cf950f07"
+  integrity sha512-Qph/atlQiSvfmkoIZ9VA+t8dA0ex2TwL37rkhLT9YLJdhaTMZ2HSM2QGzbqjLWanKA+I3wRQJjjhtuIEgesuLw==
+
 babel-loader@^8.1.0:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-8.1.0.tgz#c611d5112bd5209abe8b9fa84c3e4da25275f1c3"
@@ -2939,6 +2944,11 @@ babel-plugin-remove-graphql-queries@^2.14.0:
   version "2.14.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-remove-graphql-queries/-/babel-plugin-remove-graphql-queries-2.14.0.tgz#d34dbc8aaa4eb2b6f11165c63bf3c226b283194b"
   integrity sha512-7uc3CzyMZRuGVU69RZ/vJ4+jYeuyIbT9dTMjX2wu3QJ+TcRAaW3MJVxG5cN7YhCBv0S0/KIqXdh6BpSYswzUkw==
+
+babel-plugin-remove-graphql-queries@^2.17.0-next.0:
+  version "2.17.0-next.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-remove-graphql-queries/-/babel-plugin-remove-graphql-queries-2.17.0-next.0.tgz#f1965901c324997636d833301a6dfed501087c1a"
+  integrity sha512-iEgEAFtNNAoYnmQ+4txDpnWhJ1RoBlZ3e36GTPr3yiS0sIvHO/bJVmT51pK9bsbFPYwutnartcuKOzmb4Kn/4Q==
 
 babel-plugin-syntax-object-rest-spread@^6.8.0:
   version "6.13.0"
@@ -3864,6 +3874,21 @@ chokidar@^3.4.1, chokidar@^3.4.2, chokidar@^3.4.3:
     readdirp "~3.5.0"
   optionalDependencies:
     fsevents "~2.1.2"
+
+chokidar@^3.5.1:
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.5.1.tgz#ee9ce7bbebd2b79f49f304799d5468e31e14e68a"
+  integrity sha512-9+s+Od+W0VJJzawDma/gvBNQqkTiqYTWLuZoyAsivsI4AaWTCzHG06/TMjsf1cYe9Cb97UCEhjz7HvnPk2p/tw==
+  dependencies:
+    anymatch "~3.1.1"
+    braces "~3.0.2"
+    glob-parent "~5.1.0"
+    is-binary-path "~2.1.0"
+    is-glob "~4.0.1"
+    normalize-path "~3.0.0"
+    readdirp "~3.5.0"
+  optionalDependencies:
+    fsevents "~2.3.1"
 
 chownr@^1.1.1, chownr@^1.1.2:
   version "1.1.4"
@@ -6595,6 +6620,11 @@ fsevents@~2.1.2:
   resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.1.3.tgz#fb738703ae8d2f9fe900c33836ddebee8b97f23e"
   integrity sha512-Auw9a4AxqWpa9GUfj370BMPzzyncfBABW8Mab7BGWBYDj4Isgq+cDKtx0i6u9jcX9pQDnswsaaOTgTmA5pEjuQ==
 
+fsevents@~2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.1.tgz#b209ab14c61012636c8863507edf7fb68cc54e9f"
+  integrity sha512-YR47Eg4hChJGAB1O3yEAOkGO+rlzutoICGqGo9EZ4lKWokzZRSyIW1QmTzqjtw8MJdj9srP869CuWw/hyzSiBw==
+
 function-bind@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
@@ -6659,6 +6689,19 @@ gatsby-cli@^2.17.0:
     yargs "^15.4.1"
     yoga-layout-prebuilt "^1.9.6"
     yurnalist "^1.1.2"
+
+gatsby-core-utils@^1.11.0-next.0:
+  version "1.11.0-next.0"
+  resolved "https://registry.yarnpkg.com/gatsby-core-utils/-/gatsby-core-utils-1.11.0-next.0.tgz#0c45f28c89497bfbf2569fe1b453fa49e0b7f232"
+  integrity sha512-gxx+Ifl05NrBFaOOGcoXMjiLoXjuZpe5/0xANJb4HoN7VMu07CRYSrbTI/e1AWfiYEj83Oqs5kFV3Ts2iVUaYA==
+  dependencies:
+    ci-info "2.0.0"
+    configstore "^5.0.1"
+    fs-extra "^8.1.0"
+    node-object-hash "^2.0.0"
+    proper-lockfile "^4.1.1"
+    tmp "^0.2.1"
+    xdg-basedir "^4.0.0"
 
 gatsby-core-utils@^1.8.0:
   version "1.8.0"
@@ -6739,6 +6782,22 @@ gatsby-plugin-google-analytics@^2.0.5:
   dependencies:
     "@babel/runtime" "^7.12.5"
     minimatch "3.0.4"
+
+gatsby-plugin-image@^0.8.0-next.0:
+  version "0.8.0-next.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-image/-/gatsby-plugin-image-0.8.0-next.0.tgz#61a399c4cddf9c170769a8d561e4c3c9d60c26be"
+  integrity sha512-vMQGWzDG+BWwbWM+rRAyoMTXHZyLss4wM/3q2scxmgBv20Y3jCMkyhbCl5cHjW2IZCJRD0vG/UvgcyFagV9zZw==
+  dependencies:
+    "@babel/parser" "^7.12.5"
+    "@babel/traverse" "^7.12.5"
+    babel-jsx-utils "^1.0.1"
+    babel-plugin-remove-graphql-queries "^2.17.0-next.0"
+    camelcase "^5.3.1"
+    chokidar "^3.5.1"
+    fs-extra "^8.1.0"
+    gatsby-core-utils "^1.11.0-next.0"
+    objectFitPolyfill "^2.3.0"
+    prop-types "^15.7.2"
 
 gatsby-plugin-manifest@^2.0.2:
   version "2.10.0"
@@ -10751,6 +10810,11 @@ object.values@^1.1.0, object.values@^1.1.1:
     define-properties "^1.1.3"
     es-abstract "^1.18.0-next.1"
     has "^1.0.3"
+
+objectFitPolyfill@^2.3.0:
+  version "2.3.5"
+  resolved "https://registry.yarnpkg.com/objectFitPolyfill/-/objectFitPolyfill-2.3.5.tgz#be8c83064aabfa4e88780f776c2013c48ce1f745"
+  integrity sha512-8Quz071ZmGi0QWEG4xB3Bv5Lpw6K0Uca87FLoLMKMWjB6qIq9IyBegP3b/VLNxv2WYvIMGoeUQ+c6ibUkNa8TA==
 
 obuf@^1.0.0, obuf@^1.1.2:
   version "1.1.2"

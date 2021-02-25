@@ -119,7 +119,7 @@ class Blog extends Component {
 export default Blog;
 
 export const pageQuery = graphql`
-  query {
+  {
     site {
       siteMetadata {
         title
@@ -129,18 +129,14 @@ export const pageQuery = graphql`
       relativePath: { eq: "fatos-bytyqi-535528-unsplash.jpg" }
     ) {
       childImageSharp {
-        fluid(maxWidth: 4160) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(layout: FLUID)
       }
     }
     foodBackground: file(
       relativePath: { eq: "eaters-collective-109596-unsplash.jpg" }
     ) {
       childImageSharp {
-        fluid(maxWidth: 4160) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(layout: FLUID)
       }
     }
     allFile(

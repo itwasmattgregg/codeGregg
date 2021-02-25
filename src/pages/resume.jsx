@@ -27,7 +27,8 @@ import SideProject from '../components/resume/SideProject';
 
 const Resume = ({ data }) => {
   const siteTitle = data.site.siteMetadata.title;
-  const headerBackground = data.headerBackground?.childImageSharp.fluid;
+  const headerBackground =
+    data.headerBackground?.childImageSharp?.gatsbyImageData;
   const [downloading, setDownloading] = useState(false);
 
   const getPdfDownload = async () => {
@@ -262,7 +263,7 @@ const Resume = ({ data }) => {
 };
 
 export const query = graphql`
-  query {
+  {
     site {
       siteMetadata {
         title
@@ -270,9 +271,7 @@ export const query = graphql`
     }
     headerBackground: file(relativePath: { eq: "DSC_7663_darker.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 4160) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(layout: FLUID)
       }
     }
   }

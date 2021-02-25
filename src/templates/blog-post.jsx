@@ -72,7 +72,7 @@ export default function BlogPost({ pageContext, data }) {
           </h1>
           <div>
             {post.frontmatter.tags &&
-              post.frontmatter.tags.map(category => (
+              post.frontmatter.tags.map((category) => (
                 <Link
                   key={category}
                   className={styles.tagItem}
@@ -155,9 +155,7 @@ export const pageQuery = graphql`
           featuredImage {
             publicURL
             childImageSharp {
-              fluid(maxWidth: 4160) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
+              gatsbyImageData(layout: FLUID)
             }
           }
         }
