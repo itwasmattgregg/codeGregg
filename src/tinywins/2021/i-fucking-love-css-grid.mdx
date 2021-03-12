@@ -1,0 +1,31 @@
+---
+  title: 'I Fucking Love Css Grid'
+  date: '2021-03-12T09:22:00Z'
+---
+
+I love that instead of doing this:
+
+```css
+.container {
+  display: flex;
+
+  & > .mat-card {
+    flex: 1;
+    margin-right: 30px;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}
+```
+
+I can just do this:
+
+```css
+.container {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(3, 1fr);
+}
+```

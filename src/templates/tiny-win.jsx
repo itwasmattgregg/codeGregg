@@ -43,7 +43,7 @@ export default function Template({ pageContext, data }) {
         <meta property='twitter:image:alt' content={`Tiny Win: ${title}`} />
       </Helmet>
       <Link to='/tinywins'>
-        <strong>Back</strong>
+        <strong>Tiny Wins Home</strong>
       </Link>
       <Win>
         <h1>{title}</h1>
