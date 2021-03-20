@@ -9,7 +9,7 @@ import redux from '../../images/redux.svg';
 import sass from '../../images/sass.svg';
 import vue from '../../images/vue.svg';
 import webpack from '../../images/webpack.svg';
-import styles from './tech.module.scss';
+import * as styles from './tech.module.scss';
 import posed from 'react-pose';
 
 const Icon = posed.div({

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import logo from '../../images/headerLogo.svg';
 
-import styles from './header.module.scss';
+import * as styles from './header.module.scss';
 
 const Header = ({ menuLinks }) => {
   const [navOpen, setNavOpen] = useState(false);
@@ -25,7 +25,7 @@ const Header = ({ menuLinks }) => {
             <span className={styles.hamburger}></span>
           </button>
           <ul>
-            {menuLinks.map(link => (
+            {menuLinks.map((link) => (
               <li key={link.name} style={{ listStyleType: 'none' }}>
                 <Link to={link.link}>{link.name}</Link>
               </li>

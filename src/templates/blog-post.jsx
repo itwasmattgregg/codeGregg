@@ -2,29 +2,26 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, graphql } from 'gatsby';
 import { useLocation } from '@reach/router';
-import get from 'lodash/get';
-import _ from 'lodash';
-import BackgroundImage from 'gatsby-background-image';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import Bio from '../components/Bio';
 import Container from '../components/container';
 import Layout from '../components/layout/layout';
-import styles from '../scss/templates/blog-post.module.scss';
+import * as styles from '../scss/templates/blog-post.module.scss';
 import Webmentions from '../components/Webmentions';
+import { getImage } from 'gatsby-plugin-image';
+import { BgImage } from 'gbimage-bridge';
+import kebabCase from 'lodash/kebabCase';
 
 export default function BlogPost({ pageContext, data }) {
-  const post = get(data, 'file.childMdx');
+  const post = data?.file.childMdx;
   const { pathname } = useLocation();
   const { title, siteUrl } = data.site.siteMetadata;
-  const ogImage = get(post, 'fields.socialImage.childImageSharp.original', '');
+  const ogImage = post.fields?.socialImage?.childImageSharp.original;
   const url = `${siteUrl}${pathname}`;
   const excerpt = post.excerpt;
   const { previous, next } = pageContext;
-  const featuredImage = get(
-    post,
-    'frontmatter.featuredImage.childImageSharp.fluid'
-  );
+  const featuredImage = getImage(post.frontmatter.featuredImage);
 
   return (
     <Layout>
@@ -57,9 +54,9 @@ export default function BlogPost({ pageContext, data }) {
       </Helmet>
       {featuredImage && (
         <div>
-          <BackgroundImage
+          <BgImage
             Tag='div'
-            fluid={featuredImage}
+            image={featuredImage}
             className={styles.featuredImage}
             backgroundColor={`#040e18`}
           />
@@ -77,7 +74,7 @@ export default function BlogPost({ pageContext, data }) {
                   key={category}
                   className={styles.tagItem}
                   style={{ marginRight: '10px' }}
-                  to={`/category/${_.kebabCase(category)}`}
+                  to={`/category/${kebabCase(category)}`}
                 >
                   #{category}
                 </Link>
@@ -155,7 +152,7 @@ export const pageQuery = graphql`
           featuredImage {
             publicURL
             childImageSharp {
-              gatsbyImageData(layout: FLUID)
+              gatsbyImageData(width: 1020, placeholder: BLURRED)
             }
           }
         }

@@ -10,7 +10,7 @@ import Container from '../components/container';
 import ContactForm from '../components/contactForm/contactForm';
 
 import shape from '../images/shape.svg';
-import styles from '../scss/pages/index.module.scss';
+import * as styles from '../scss/pages/index.module.scss';
 
 class IndexPage extends Component {
   render() {

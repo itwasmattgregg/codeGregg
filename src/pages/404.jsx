@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 
-import styles from '../scss/pages/404.module.scss';
+import * as styles from '../scss/pages/404.module.scss';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 const NotFoundPage = ({ data }) => {
@@ -28,11 +28,7 @@ export const pageQuery = graphql`
       relativePath: { eq: "daniel-jensen-440210-unsplash.jpg" }
     ) {
       childImageSharp {
-        gatsbyImageData(
-          layout: FLUID
-          placeholder: BLURRED
-          formats: [AUTO, WEBP, AVIF]
-        )
+        gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
       }
     }
   }
