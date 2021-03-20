@@ -6,7 +6,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import Header from '../header/header';
 import '../../scss/main.scss';
 
-import styles from './layout.module.scss';
+import * as styles from './layout.module.scss';
 import Footer from '../footer';
 
 const Layout = ({ children }) => (
@@ -24,7 +24,7 @@ const Layout = ({ children }) => (
         }
       }
     `}
-    render={data => (
+    render={(data) => (
       <div className={styles.appLayout}>
         <Helmet defer={false}>
           <html lang='en' />

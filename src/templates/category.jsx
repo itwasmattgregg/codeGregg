@@ -7,7 +7,7 @@ import Container from '../components/container';
 
 class CategoryTemplate extends Component {
   render() {
-    const category = this.props.pathContext.tag;
+    const category = this.props.pageContext.tag;
     const siteTitle = get(this.props, 'data.site.siteMetadata.title');
     const posts = get(this.props, 'data.allFile.edges');
     const postCount = get(this.props, 'data.allFile.totalCount');

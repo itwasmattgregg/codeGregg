@@ -5,10 +5,11 @@ import { saveAs } from 'file-saver';
 
 import Layout from '../components/layout/layout';
 import Container from '../components/container';
-import BackgroundImage from 'gatsby-background-image';
+import { getImage } from 'gatsby-plugin-image';
+import { BgImage } from 'gbimage-bridge';
 import Skill from '../components/resume/Skill';
 
-import styles from '../scss/pages/resume.module.scss';
+import * as styles from '../scss/pages/resume.module.scss';
 
 import initials from '../images/initials.svg';
 import firebaseIcon from '../images/firebase.svg';
@@ -27,7 +28,7 @@ import SideProject from '../components/resume/SideProject';
 
 const Resume = ({ data }) => {
   const siteTitle = data.site.siteMetadata.title;
-  const headerBackground = data.headerBackground?.childImageSharp.fluid;
+  const headerBackground = getImage(data.headerBackground);
   const [downloading, setDownloading] = useState(false);
 
   const getPdfDownload = async () => {
@@ -41,10 +42,7 @@ const Resume = ({ data }) => {
   return (
     <Layout>
       <Helmet title={`Resume | ${siteTitle}`} />
-      <BackgroundImage
-        fluid={headerBackground}
-        className={styles.headerBackground}
-      >
+      <BgImage image={headerBackground} className={styles.headerBackground}>
         <Container className={styles.headerContainer}>
           <div className={styles.headerNameContainer}>
             <img
@@ -87,7 +85,7 @@ const Resume = ({ data }) => {
             )}
           </button>
         </Container>
-      </BackgroundImage>
+      </BgImage>
       <Container>
         <div className={styles.section}>
           <h2>Biography</h2>
@@ -262,7 +260,7 @@ const Resume = ({ data }) => {
 };
 
 export const query = graphql`
-  query {
+  {
     site {
       siteMetadata {
         title
@@ -270,9 +268,11 @@ export const query = graphql`
     }
     headerBackground: file(relativePath: { eq: "DSC_7663_darker.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 4160) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(
+          width: 2000
+          placeholder: BLURRED
+          formats: [AUTO, WEBP, AVIF]
+        )
       }
     }
   }

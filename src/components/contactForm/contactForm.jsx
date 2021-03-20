@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import posed from 'react-pose';
 
-import styles from './contactForm.module.scss';
+import * as styles from './contactForm.module.scss';
 
-const encode = data => {
+const encode = (data) => {
   return Object.keys(data)
-    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
     .join('&');
 };
 
@@ -34,7 +34,7 @@ const ContactForm = () => {
   const [honeypot, setHoneypot] = useState('');
   const [state, setState] = useState('');
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     setState('submitting');
@@ -53,7 +53,7 @@ const ContactForm = () => {
         setState('success');
         resetForm();
       })
-      .catch(error => {
+      .catch((error) => {
         setState('error');
         alert(error);
       });
@@ -96,7 +96,7 @@ const ContactForm = () => {
             Don’t fill this out if you're human:{' '}
             <input
               name='bot-field'
-              onChange={e => setHoneypot(e.target.value)}
+              onChange={(e) => setHoneypot(e.target.value)}
             />
           </label>
         </p>
@@ -107,7 +107,7 @@ const ContactForm = () => {
             type='text'
             name='name'
             value={name}
-            onChange={e => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
           />
         </label>
         <label className={styles.emailField}>
@@ -117,7 +117,7 @@ const ContactForm = () => {
             type='email'
             name='email'
             value={email}
-            onChange={e => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </label>
         <label className={styles.messageField}>
@@ -126,7 +126,7 @@ const ContactForm = () => {
             required
             name='message'
             value={message}
-            onChange={e => setMessage(e.target.value)}
+            onChange={(e) => setMessage(e.target.value)}
           />
         </label>
       </FormFields>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 import Layout from '../components/layout/layout';
 import FeatureBox from '../components/featureBox/featureBox';
@@ -10,13 +10,13 @@ import Container from '../components/container';
 import ContactForm from '../components/contactForm/contactForm';
 
 import shape from '../images/shape.svg';
-import styles from '../scss/pages/index.module.scss';
+import * as styles from '../scss/pages/index.module.scss';
 
 class IndexPage extends Component {
   render() {
     const latestPost = get(this, 'props.data.allFile.edges[0].node');
     const latestPostMdx = latestPost.childMdx;
-    const profileImg = get(this, 'props.data.profileImg');
+    const profileImg = getImage(this.props.data.profileImg);
 
     return (
       <Layout>
@@ -34,9 +34,9 @@ class IndexPage extends Component {
             </h2>
             <h1>Matt Gregg</h1>
             <div style={{ display: 'flex' }}>
-              <Img
+              <GatsbyImage
+                image={profileImg}
                 alt='matt gregg'
-                fixed={profileImg.childImageSharp.fixed}
                 className={styles.profileImg}
               />
               <div>
@@ -161,15 +161,17 @@ class IndexPage extends Component {
 export default IndexPage;
 
 export const query = graphql`
-  query {
+  {
     profileImg: file(relativePath: { eq: "Matt-Gregg-square-9961.jpg" }) {
       childImageSharp {
-        fixed(width: 140, quality: 70) {
-          ...GatsbyImageSharpFixed
-        }
+        gatsbyImageData(
+          width: 140
+          layout: FIXED
+          placeholder: TRACED_SVG
+          formats: [AUTO, WEBP, AVIF]
+        )
       }
     }
-
     allFile(
       sort: { fields: [childMdx___frontmatter___date], order: DESC }
       filter: {

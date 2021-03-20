@@ -1,36 +1,30 @@
 import React, { Component } from 'react';
 import { graphql, Link } from 'gatsby';
-import get from 'lodash/get';
-import BackgroundImage from 'gatsby-background-image';
+import { getImage } from 'gatsby-plugin-image';
+import { BgImage } from 'gbimage-bridge';
 import { Helmet } from 'react-helmet';
-import _ from 'lodash';
+import kebabCase from 'lodash/kebabCase';
 
 import Layout from '../components/layout/layout';
 import Container from '../components/container';
 
-import styles from '../scss/pages/blog.module.scss';
+import * as styles from '../scss/pages/blog.module.scss';
 
 class Blog extends Component {
   render() {
-    const posts = get(this, 'props.data.allFile.edges');
-    const siteTitle = get(this.props, 'data.site.siteMetadata.title');
-    const devBackground = get(
-      this,
-      'props.data.devBackground.childImageSharp.fluid'
-    );
-    const foodBackground = get(
-      this,
-      'props.data.foodBackground.childImageSharp.fluid'
-    );
+    const posts = this?.props?.data?.allFile?.edges;
+    const siteTitle = this?.props?.data?.site.siteMetadata.title;
+    const devBackground = getImage(this.props.data.devBackground);
+    const foodBackground = getImage(this.props.data.foodBackground);
 
     return (
       <Layout>
         <Helmet title={`Blog | ${siteTitle}`} />
         <h1 className={`text_center ${styles.blog_title}`}>Blog</h1>
         <div className={styles.blog_featureSections}>
-          <BackgroundImage
+          <BgImage
             Tag='div'
-            fluid={devBackground}
+            image={devBackground}
             className={styles.blog_featureSections_block}
             backgroundColor={`#040e18`}
           >
@@ -45,10 +39,10 @@ class Blog extends Component {
                 Dev
               </Link>
             </h2>
-          </BackgroundImage>
-          <BackgroundImage
+          </BgImage>
+          <BgImage
             Tag='div'
-            fluid={foodBackground}
+            image={foodBackground}
             className={styles.blog_featureSections_block}
             backgroundColor={`#040e18`}
           >
@@ -63,7 +57,7 @@ class Blog extends Component {
                 Food
               </Link>
             </h2>
-          </BackgroundImage>
+          </BgImage>
         </div>
         <Container>
           <p className={styles.pageDescription}>
@@ -74,7 +68,7 @@ class Blog extends Component {
           </p>
           <h2 className={styles.latestPosts}>Latest Posts</h2>
           {posts.map(({ node }) => {
-            const post = get(node, 'childMdx.frontmatter');
+            const post = node?.childMdx.frontmatter;
             return (
               <div
                 key={node.fields.slug}
@@ -98,7 +92,7 @@ class Blog extends Component {
                       <Link
                         key={category}
                         style={{ marginRight: '10px' }}
-                        to={`/category/${_.kebabCase(category)}`}
+                        to={`/category/${kebabCase(category)}`}
                       >
                         #{category}
                       </Link>
@@ -119,7 +113,7 @@ class Blog extends Component {
 export default Blog;
 
 export const pageQuery = graphql`
-  query {
+  {
     site {
       siteMetadata {
         title
@@ -129,18 +123,22 @@ export const pageQuery = graphql`
       relativePath: { eq: "fatos-bytyqi-535528-unsplash.jpg" }
     ) {
       childImageSharp {
-        fluid(maxWidth: 4160) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(
+          width: 600
+          placeholder: BLURRED
+          formats: [AUTO, WEBP, AVIF]
+        )
       }
     }
     foodBackground: file(
       relativePath: { eq: "eaters-collective-109596-unsplash.jpg" }
     ) {
       childImageSharp {
-        fluid(maxWidth: 4160) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(
+          width: 600
+          placeholder: BLURRED
+          formats: [AUTO, WEBP, AVIF]
+        )
       }
     }
     allFile(

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './featureBox.module.scss';
+import * as styles from './featureBox.module.scss';
 
 const FeatureBox = ({ side, backgroundColor, children }) => (
   <div
