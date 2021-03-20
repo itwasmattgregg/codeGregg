@@ -8,7 +8,8 @@ import '../scss/pages/uses.scss';
 
 const Uses = ({ data }) => {
   const desk = data?.deskImg?.childImageSharp.fluid;
-  const office = data?.officeImg?.childImageSharp?.fluid;
+  const office = data?.officeImg?.childImageSharp.fluid;
+  const whiskey = data?.whiskeyImg?.childImageSharp.fluid;
 
   return (
     <Layout>
@@ -17,8 +18,8 @@ const Uses = ({ data }) => {
         <h1 className='text_center' style={{ marginTop: '40px' }}>
           What I use
         </h1>
-        <h2>Desk setup</h2>
         <Img fluid={desk} alt='Photo of my desk, 2 monitors and macbook' />
+        <h2>Desk setup</h2>
         <ul>
           <li>MacBook Pro (15-inch, 2017)</li>
           <li>
@@ -87,39 +88,121 @@ const Uses = ({ data }) => {
               href='https://www.target.com/p/12oz-lidded-glass-jar-2-wick-candle-blue-cedar-fig---the-collection-by-chesapeake-bay-candle/-/A-15317999'
               target='_blank'
             >
-              Cedar/Fig Candle
+              Cedar/Fig Candle from Target
             </a>
           </li>
           <li>
-            Gaming Computer (I'll add what I remember. It's close to 10 years
-            old now and still kickin it)
-            <ul>
-              <li></li>
-            </ul>
+            Gaming Computer (It's almost 10 years old at this point so listing
+            the components doesn't really make sense. Let me know if you're
+            curious. It's still cookin)
           </li>
         </ul>
         <Img fluid={office} alt='Photo of office with tons of messy cables' />
         <h2>Software</h2>
         <ul>
           <li>VS Code</li>
-          <li>Night Owl Theme</li>
-          <li>Dank Mono - Font</li>
+          <li>
+            <a
+              href='https://marketplace.visualstudio.com/items?itemName=sdras.night-owl'
+              target='_blank'
+            >
+              Night Owl Theme
+            </a>
+          </li>
+          <li>
+            <a href='https://gumroad.com/l/dank-mono' target='_blank'>
+              Dank Mono
+            </a>{' '}
+            - Font
+          </li>
+          <li>
+            <a href='https://screen.so/home' target='_blank'>
+              Screen.so
+            </a>
+          </li>
           <li>Figma and Sketch - Design</li>
           <li>iTerm and zsh</li>
-          <li>nvm</li>
+          <li>
+            <a href='https://github.com/nvm-sh/nvm' target='_blank'>
+              nvm
+            </a>
+          </li>
+          <li>
+            <a href='https://bear.app/' target='_blank'>
+              Bear App
+            </a>
+          </li>
+          <li>
+            <a href='https://todoist.com/' target='_blank'>
+              Todoist
+            </a>
+          </li>
+          <li>
+            <a href='https://www.postman.com/' target='_blank'>
+              Postman
+            </a>
+          </li>
+          <li>
+            <a href='https://insomnia.rest/' target='_blank'>
+              Insomnia
+            </a>
+          </li>
+          <li>
+            <a href='https://eggerapps.at/postico/' target='_blank'>
+              Postico
+            </a>
+          </li>
         </ul>
         <h2>Music</h2>
         <ul>
-          <li>Morgan DAG15 Amp</li>
-          <li>Gibson Les Paul Studio (White)</li>
-          <li>Gibson J45 (Flamed Maple)</li>
+          <li>
+            <a href='https://www.morganamps.com/' target='_blank'>
+              Morgan DAG15 Amp
+            </a>
+          </li>
+          <li>
+            <a
+              href='https://www.gibson.com/Guitar/USAYNB363/Les-Paul-Studio/Smokehouse-Burst'
+              target='_blank'
+            >
+              Gibson Les Paul Studio
+            </a>{' '}
+            (White)
+          </li>
+          <li>
+            <a
+              href='https://www.gibson.com/Guitar/ACCBTI649/J-45-Standard/Vintage-Sunburst'
+              target='_blank'
+            >
+              Gibson J45
+            </a>{' '}
+            (Flamed Maple)
+          </li>
         </ul>
         <h2>Camera</h2>
         <ul>
           <li>Nikon D600</li>
-          <li></li>
-          <li></li>
-          <li></li>
+          <li>Nikon 18-35mm f/3.5-4.5G ED</li>
+          <li>Nikon 28-300mm f/3.5-5.6G ED VR</li>
+          <li>Nikon 50mm f/1.8G</li>
+        </ul>
+        <Img fluid={whiskey} />
+        <h2>Whiskey - In somewhat of an order</h2>
+        <ul>
+          <li>Kaiyo - Japanese Whiskey</li>
+          <li>Glenkinchie 12yr</li>
+          <li>Henry McKenna 10yr</li>
+          <li>Glenfarclas 10yr</li>
+          <li>Glen Rothes 21yr - Signatory Bottling</li>
+          <li>Bruichladdich - Classic Laddie</li>
+          <li>Balblair 27yr - 1991</li>
+          <li>Dahlwhinnie 15yr</li>
+          <li>Glenmorangie 18yr</li>
+          <li>Nikka - From the Barrel</li>
+          <li>Aberlour - A'bunadh</li>
+          <li>Wilterness Trail - Bourbon</li>
+          <li>Monkey Shoulder</li>
+          <li>Aberfeldy 12yr</li>
         </ul>
       </Container>
     </Layout>
@@ -140,6 +223,13 @@ export const query = graphql`
     officeImg: file(relativePath: { eq: "office.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1020) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    whiskeyImg: file(relativePath: { eq: "whiskey.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 2040) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
