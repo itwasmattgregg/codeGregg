@@ -25,7 +25,7 @@ export default function BlogPost({ pageContext, data }) {
 
   return (
     <Layout>
-      <Helmet defer={false}>
+      <Helmet>
         <html lang='en' />
         <title>{`${post.frontmatter.title} | ${title}`}</title>
         <meta property='description' content={excerpt} />

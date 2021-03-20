@@ -38,7 +38,7 @@ const TinyWinsHomepage = ({ data }) => {
   const wins = data.allFile.edges;
   return (
     <TinyWinsLayout>
-      <Helmet title={`Tinywins`} />
+      <Helmet title={`TinyWins`} />
       <h1>#TinyWins!</h1>
       <p>
         This is a little microsite for recording small personal wins of mine and

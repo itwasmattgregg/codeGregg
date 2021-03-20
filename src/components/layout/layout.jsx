@@ -26,12 +26,12 @@ const Layout = ({ children }) => (
     `}
     render={(data) => (
       <div className={styles.appLayout}>
-        <Helmet defer={false}>
+        <Helmet>
           <html lang='en' />
           <title>{data.site.siteMetadata.title}</title>
           <meta
             name='description'
-            content='Minneapolis-based UI engineer and many-stack, artisinal crafter of the internet.'
+            content={data.site.siteMetadata.description}
           />
           <meta
             name='keywords'

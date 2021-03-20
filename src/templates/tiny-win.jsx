@@ -22,10 +22,11 @@ export default function Template({ pageContext, data }) {
   const url = `${siteUrl}${pathname}`;
   return (
     <TinyWinsLayout>
-      <Helmet title={`Tinywins - ${title}`} defer={false}>
+      <Helmet title={`TinyWins - ${title}`}>
+        <meta name='description' content={`TinyWin: ${excerpt}`} />
         <meta property='og:type' content='website' />
         <meta property='og:url' content={url} />
-        <meta property='og:title' content={`${title} | CodeGregg Tinywins`} />
+        <meta property='og:title' content={`${title} | CodeGregg TinyWins`} />
         <meta property='og:description' content={excerpt} />
         <meta property='og:image' content={`${siteUrl}${ogImage.src}`} />
         <meta property='og:image:width' content={ogImage.width} />
