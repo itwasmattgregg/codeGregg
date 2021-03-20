@@ -147,7 +147,7 @@ exports.createPages = async ({ graphql, actions }) => {
               body: mdx.body,
               date: mdx.frontmatter.date,
               title: mdx.frontmatter.title,
-              excerpt: mdx.frontmatter.excerpt,
+              excerpt: mdx.excerpt,
               ogImage: mdx.fields.socialImage.childImageSharp.original,
             },
           });
