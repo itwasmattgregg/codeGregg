@@ -269,7 +269,7 @@ export const query = graphql`
     headerBackground: file(relativePath: { eq: "DSC_7663_darker.jpg" }) {
       childImageSharp {
         gatsbyImageData(
-          layout: FULL_WIDTH
+          width: 2000
           placeholder: BLURRED
           formats: [AUTO, WEBP, AVIF]
         )
