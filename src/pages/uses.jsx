@@ -131,7 +131,7 @@ const Uses = () => {
             </a>
           </li>
           <li>Figma and Sketch - Design</li>
-          <li>iTerm and zsh</li>
+          <li>iTerm and ohmyzsh</li>
           <li>
             <a
               href='https://github.com/nvm-sh/nvm'
