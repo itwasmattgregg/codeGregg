@@ -210,7 +210,7 @@ const Uses = () => {
           <li>Nikon 28-300mm f/3.5-5.6G ED VR</li>
           <li>Nikon 50mm f/1.8G</li>
         </ul>
-        <StaticImage src='../images/whiskey.png' alt='Whiskey cabinet' />
+        <StaticImage src='../images/whiskey.jpg' alt='Whiskey cabinet' />
         <h2>Whiskey - In somewhat of an order</h2>
         <ul>
           <li>Kaiyo - Japanese Whiskey</li>
