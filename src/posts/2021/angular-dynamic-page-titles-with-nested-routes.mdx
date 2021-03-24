@@ -8,6 +8,160 @@ date: ''
 visible: false
 ---
 
-```ts
+index.html
 
+```html
+<title>Retail Dashboard</title>
+```
+
+app.component.ts
+
+```ts
+@Component({
+  selector: 'app-root',
+  template: '<router-outlet></router-outlet>',
+})
+export class AppComponent implements OnInit {
+  constructor(
+    private _store$: Store<IAppState>,
+    private titleService: Title,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private matIconRegistry: MatIconRegistry,
+    private domSanitizer: DomSanitizer,
+  ) {
+ngOnInit() {
+    const appTitle = this.titleService.getTitle();
+
+    this.router.events
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        map(() => this.activatedRoute),
+        map((route) => {
+          while (route.firstChild) route = route.firstChild;
+          return route;
+        }),
+        filter((route) => route.outlet === 'primary'),
+        mergeMap((route) => route.data),
+      )
+      .subscribe((event) => {
+        if (event.title) {
+          return this.titleService.setTitle(`${appTitle} | ${event.title}`);
+        }
+        // This is neccessary to unset the more specific title if it was the previous page.
+        return this.titleService.setTitle(appTitle);
+      });
+  }
+  }
+```
+
+routes.ts
+
+```ts
+{
+    path: '',
+    component: WrapperComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'connectivity',
+        component: ConnectivityComponent,
+        data: { title: 'Connectivity' },
+      },
+      // Leaving the leading / off these routes allows them to redirect
+      // like wildcards as well.
+      {
+        path: 'classic-demos',
+        redirectTo: 'content-management/canned-demos',
+      },
+      {
+        path: 'lambo-demos',
+        redirectTo: 'content-management/interactive-demos',
+      },
+      {
+        path: 'sdm-demos',
+        redirectTo: 'content-management/live-demos',
+      },
+      {
+        path: 'content-management',
+        children: [
+          {
+            path: '',
+            component: ContentManagementComponent,
+            data: { title: 'Content Management' },
+          },
+          {
+            path: 'canned-demos',
+            component: DemoManagementComponent,
+            children: [
+              {
+                path: '',
+                component: DemoContainerListingComponent,
+                data: { title: 'Canned Demos' },
+              },
+              {
+                path: ':id',
+                component: DemoContainerDetailsComponent,
+                data: { title: 'Canned Demos | Demo Details' },
+              },
+            ],
+            data: {
+              demoContentType: DemoContentType.CLASSIC,
+            },
+          },
+          {
+            path: 'interactive-demos',
+            component: DemoManagementComponent,
+            children: [
+              {
+                path: '',
+                component: DemoContainerListingComponent,
+                data: { title: 'Interactive Demos' },
+              },
+              {
+                path: ':id',
+                component: DemoContainerDetailsComponent,
+                data: { title: 'Interactive Demos | Demo Details' },
+              },
+            ],
+            data: {
+              demoContentType: DemoContentType.LAMBO,
+            },
+          },
+
+          {
+            path: 'live-demos',
+            component: SdmSettingsComponent,
+            children: [
+              {
+                path: '',
+                component: SettingsContainerListingComponent,
+                data: { title: 'Live Demos' },
+              },
+              {
+                path: ':id',
+                component: SettingsContainerDetailsComponent,
+                data: { title: 'Live Demos | Demo Details' },
+              },
+              {
+                path: ':id/new',
+                component: SettingsVersionComponent,
+                data: { title: 'Live Demos | New Demo Version' },
+              },
+              {
+                path: ':id/:version',
+                component: SettingsVersionComponent,
+                data: { title: 'Live Demos | Demo Version' },
+              },
+            ],
+          },
+        ],
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: '/connectivity',
+      },
+    ],
+  },
 ```
