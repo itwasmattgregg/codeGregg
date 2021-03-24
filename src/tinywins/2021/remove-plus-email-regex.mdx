@@ -1,0 +1,14 @@
+---
+  title: 'Remove Plus Email Regex'
+  date: '2021-03-24T12:01:00Z'
+---
+
+Sometimes you want to strip off gmail + additions from an email. You probably
+don't want to store it this way because people should definitely be allowed to
+use + emails for filtering etc. but you may want to remove it to check for
+duplicates or other use cases. Here's the regex for doing that.
+
+```js
+const regex = /\+(.*)(?=@)/gm;
+const strippedEmail = email.replace(regex, '');
+```
