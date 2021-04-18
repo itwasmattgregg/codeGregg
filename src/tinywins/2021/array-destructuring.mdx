@@ -1,0 +1,21 @@
+---
+  title: 'Array Destructuring'
+  date: '2021-04-18T10:41:00Z'
+---
+
+Learned today that you can skip items when destructuring an array by using
+commas and leaving the index you want to skip over blank. This can be really
+helpful for certain api responses that are structured in an array, but you only
+want the second item.
+
+For example:
+
+```js
+const response = [responseInfo, body, error];
+
+const [, body] = response;
+```
+
+In this destructuring we only want the second item from the array. Doing this
+will avoid linting errors from unused variables just to get to the index you
+wanted.
