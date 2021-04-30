@@ -5,22 +5,30 @@ import TinyWinsLayout from '../../components/tinywinsLayout/layout';
 import { Helmet } from 'react-helmet';
 
 const List = styled.ul`
-  margin: 0;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1em;
+  max-width: 900px;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 const ListItem = styled.li`
   list-style: none;
+  margin-bottom: 0;
 `;
 
 const WinItem = styled(Link)`
   background: #fff;
   box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.2);
   display: block;
-  margin: 10px auto;
-  max-width: 500px;
   padding: 30px 30px 42px;
   position: relative;
   text-decoration: none;
+  height: 100%;
 `;
 
 const WinDate = styled.div`
@@ -51,6 +59,7 @@ const TinyWinsHomepage = ({ data }) => {
           return (
             <ListItem key={node.id}>
               <WinItem to={node.fields.slug}>
+                <h3>{mdx.frontmatter.title}</h3>
                 {mdx.excerpt}
                 <WinDate>{mdx.frontmatter.date}</WinDate>
               </WinItem>
