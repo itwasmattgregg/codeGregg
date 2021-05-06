@@ -21,9 +21,9 @@ function foo(param?: SomeObject) {
 }
 ```
 
-However you'll get an error becuase param could be undefined and TS doesn't like
-you trying to destructure something that's undefined. There are a couple ways
-around this...
+However you'll get an error because `param` could be undefined and TS doesn't
+like you trying to destructure something that's undefined. There are a couple
+ways around this...
 
 Define a fallback in the initializer and don't use the ? optional identifier:
 
