@@ -77,15 +77,6 @@ class IndexPage extends Component {
               </em>
             </div>
             <p>{latestPostMdx.excerpt}</p>
-            <Link
-              to={latestPost.fields.slug}
-              style={{
-                color: 'white',
-                fontWeight: '700',
-              }}
-            >
-              Read More
-            </Link>
           </FeatureBox>
           <img
             src={shape}

@@ -70,35 +70,6 @@ const Footer = () => (
       </div>
       <div className='text_center' style={{ marginTop: '10px' }}>
         <small>matt@codegregg.com</small>
-        <br />
-        <a
-          href='https://www.buymeacoffee.com/29s6gtvjb'
-          target='_blank'
-          rel='noreferrer'
-          className='printHide'
-        >
-          <img
-            src='https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png'
-            alt='Buy Me A Coffee'
-            style={{
-              height: '50px',
-              marginTop: '20px',
-            }}
-          />
-        </a>
-        <script
-          type='text/javascript'
-          src='https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js'
-          data-name='bmc-button'
-          data-slug='29s6gtvjb'
-          data-color='#FF5F5F'
-          data-emoji=''
-          data-font='Cookie'
-          data-text='Buy me a latte'
-          data-outline-color='#000000'
-          data-font-color='#ffffff'
-          data-coffee-color='#FFDD00'
-        ></script>
       </div>
     </Container>
   </div>
