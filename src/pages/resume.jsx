@@ -24,7 +24,6 @@ import awsIcon from '../images/logos/aws.svg';
 import djangoIcon from '../images/logos/django.svg';
 import dockerIcon from '../images/logos/docker.svg';
 import sketchIcon from '../images/logos/sketch.svg';
-import SideProject from '../components/resume/SideProject';
 
 const Resume = ({ data }) => {
   const siteTitle = data.site.siteMetadata.title;
@@ -205,7 +204,6 @@ const Resume = ({ data }) => {
         <div className={styles.section}>
           <h2>Side Projects</h2>
           <div className={styles.sideProjectsContainer}>
-            {/* <SideProject title='Testing' description='Here' /> */}
             <div className={styles.sideProject}>
               <a href='https://beingful.co'>
                 <b>Beingful</b> <br />
