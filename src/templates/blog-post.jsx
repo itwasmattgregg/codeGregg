@@ -37,9 +37,17 @@ export default function BlogPost({ pageContext, data }) {
           content={`${post.frontmatter.title} | ${title}`}
         />
         <meta property='og:description' content={excerpt} />
-        <meta property='og:image' content={`${siteUrl}${ogImage.src}`} />
-        <meta property='og:image:width' content={ogImage.width} />
-        <meta property='og:image:height' content={ogImage.height} />
+        {ogImage && (
+          <>
+            <meta property='og:image' content={`${siteUrl}${ogImage.src}`} />
+            <meta property='og:image:width' content={ogImage.width} />
+            <meta property='og:image:height' content={ogImage.height} />
+            <meta
+              property='twitter:image'
+              content={`${siteUrl}${ogImage.src}`}
+            />
+          </>
+        )}
 
         {/* <!-- Twitter --> */}
         <meta property='twitter:card' content='summary_large_image' />
@@ -49,7 +57,7 @@ export default function BlogPost({ pageContext, data }) {
           content={`${post.frontmatter.title} | ${title}`}
         />
         <meta property='twitter:description' content={excerpt} />
-        <meta property='twitter:image' content={`${siteUrl}${ogImage.src}`} />
+
         <meta property='twitter:image:alt' content={title} />
       </Helmet>
       {featuredImage && (
