@@ -25,6 +25,19 @@ const Footer = () => (
         }}
       >
         <a
+          href='https://github.com/itwasmattgregg'
+          style={{ margin: '0 10px' }}
+        >
+          <img src={github} alt='github' />
+        </a>
+        <a
+          href='https://twitter.com/ItWasMattGregg'
+          rel='me'
+          style={{ margin: '0 10px' }}
+        >
+          <img src={twitter} alt='twitter' />
+        </a>
+        <a
           href='https://codepen.io/itwasmattgregg/'
           style={{ margin: '0 10px' }}
         >
@@ -36,12 +49,7 @@ const Footer = () => (
         >
           <img src={bitbucket} alt='bitbucket' />
         </a>
-        <a
-          href='https://github.com/itwasmattgregg'
-          style={{ margin: '0 10px' }}
-        >
-          <img src={github} alt='github' />
-        </a>
+
         <a
           href='https://www.linkedin.com/in/mattdgregg/'
           style={{ margin: '0 10px' }}
@@ -53,19 +61,6 @@ const Footer = () => (
           style={{ margin: '0 10px' }}
         >
           <img src={spotify} alt='spotify' />
-        </a>
-        <a
-          href='https://twitter.com/ItWasMattGregg'
-          rel='me'
-          style={{ margin: '0 10px' }}
-        >
-          <img src={twitter} alt='twitter' />
-        </a>
-        <a
-          href='https://www.facebook.com/mattdgregg'
-          style={{ margin: '0 10px' }}
-        >
-          <img src={facebook} alt='facebook' />
         </a>
       </div>
       <div className='text_center' style={{ marginTop: '10px' }}>

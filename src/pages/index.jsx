@@ -78,20 +78,6 @@ class IndexPage extends Component {
             </div>
             <p>{latestPostMdx.excerpt}</p>
           </FeatureBox>
-          <img
-            src={shape}
-            alt=''
-            role='presentation'
-            style={{
-              position: 'absolute',
-              bottom: 0,
-              left: '50%',
-              maxWidth: '100%',
-              transform: 'translateX(-50%) scaleX(2)',
-              pointerEvents: 'none',
-              opacity: 0.15,
-            }}
-          />
         </div>
         <Container>
           <div
