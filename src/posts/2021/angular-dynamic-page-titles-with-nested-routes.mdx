@@ -4,33 +4,40 @@ tags:
   - dev
   - angular
   - routing
-date: ''
-visible: false
+date: '2021-09-30T09:21:49Z'
+visible: true
 ---
 
-index.html
+This is a quick demo of one way you can accomplish dynamic page titles in the
+html head tags with Angular. This should work in most recent versions of Angular
+(8+) but let me know on Twitter if it doesn't work or if there are better
+solutions to this problem. I found it semi-frustrating compared to how easy it
+is in Vue and React land. This crazy map and filter stuff is needed for nested
+route structures.
+
+You can define a base title for your application in `index.html`.
 
 ```html
-<title>Retail Dashboard</title>
+<!-- index.html -->
+
+<title>My Fancy Application</title>
 ```
 
-app.component.ts
-
 ```ts
+// app.component.ts
+
 @Component({
   selector: 'app-root',
   template: '<router-outlet></router-outlet>',
 })
 export class AppComponent implements OnInit {
   constructor(
-    private _store$: Store<IAppState>,
     private titleService: Title,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer,
   ) {
 ngOnInit() {
+    // Grab the title from index.html
     const appTitle = this.titleService.getTitle();
 
     this.router.events
@@ -55,112 +62,45 @@ ngOnInit() {
   }
 ```
 
-routes.ts
-
 ```ts
+// routes.ts
+
 {
     path: '',
     component: WrapperComponent,
     canActivate: [AuthGuard],
     children: [
       {
-        path: 'connectivity',
-        component: ConnectivityComponent,
-        data: { title: 'Connectivity' },
-      },
-      // Leaving the leading / off these routes allows them to redirect
-      // like wildcards as well.
-      {
-        path: 'classic-demos',
-        redirectTo: 'content-management/canned-demos',
+        path: 'blog',
+        component: BlogComponent,
+        data: { title: 'Blog' },
       },
       {
-        path: 'lambo-demos',
-        redirectTo: 'content-management/interactive-demos',
-      },
-      {
-        path: 'sdm-demos',
-        redirectTo: 'content-management/live-demos',
-      },
-      {
-        path: 'content-management',
+        path: 'docs',
         children: [
           {
             path: '',
-            component: ContentManagementComponent,
-            data: { title: 'Content Management' },
+            component: DocsComponent,
+            data: { title: 'Docs' },
           },
           {
-            path: 'canned-demos',
-            component: DemoManagementComponent,
+            path: 'examples',
+            component: ExamplesComponent,
             children: [
               {
                 path: '',
-                component: DemoContainerListingComponent,
-                data: { title: 'Canned Demos' },
+                component: ExamplesListingComponent,
+                data: { title: 'Examples' },
               },
               {
                 path: ':id',
-                component: DemoContainerDetailsComponent,
-                data: { title: 'Canned Demos | Demo Details' },
+                component: ExampleDetailsComponent,
+                data: { title: 'Examples | Example Details' },
               },
             ],
-            data: {
-              demoContentType: DemoContentType.CLASSIC,
-            },
-          },
-          {
-            path: 'interactive-demos',
-            component: DemoManagementComponent,
-            children: [
-              {
-                path: '',
-                component: DemoContainerListingComponent,
-                data: { title: 'Interactive Demos' },
-              },
-              {
-                path: ':id',
-                component: DemoContainerDetailsComponent,
-                data: { title: 'Interactive Demos | Demo Details' },
-              },
-            ],
-            data: {
-              demoContentType: DemoContentType.LAMBO,
-            },
           },
 
-          {
-            path: 'live-demos',
-            component: SdmSettingsComponent,
-            children: [
-              {
-                path: '',
-                component: SettingsContainerListingComponent,
-                data: { title: 'Live Demos' },
-              },
-              {
-                path: ':id',
-                component: SettingsContainerDetailsComponent,
-                data: { title: 'Live Demos | Demo Details' },
-              },
-              {
-                path: ':id/new',
-                component: SettingsVersionComponent,
-                data: { title: 'Live Demos | New Demo Version' },
-              },
-              {
-                path: ':id/:version',
-                component: SettingsVersionComponent,
-                data: { title: 'Live Demos | Demo Version' },
-              },
-            ],
-          },
         ],
-      },
-      {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: '/connectivity',
       },
     ],
   },
