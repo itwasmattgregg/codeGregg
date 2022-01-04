@@ -139,6 +139,10 @@ exports.createPages = async ({ graphql, actions }) => {
 
         _.each(wins, (win, index) => {
           const mdx = win.node.childMdx;
+          let ogImage = null;
+          if (mdx.fields && mdx.fields.socialImage) {
+            ogImage = mdx.fields.socialImage.childImageSharp.original;
+          }
 
           createPage({
             path: win.node.fields.slug,
@@ -148,7 +152,7 @@ exports.createPages = async ({ graphql, actions }) => {
               date: mdx.frontmatter.date,
               title: mdx.frontmatter.title,
               excerpt: mdx.excerpt,
-              ogImage: mdx.fields.socialImage.childImageSharp.original,
+              ogImage,
             },
           });
         });

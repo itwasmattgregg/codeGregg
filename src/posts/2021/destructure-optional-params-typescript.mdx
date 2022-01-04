@@ -1,0 +1,52 @@
+---
+  title: 'Destructure Optional Params in Typescript'
+  date: '2021-05-06T14:15:00Z'
+  tags:
+    - dev
+    - typescript
+  visible: true
+---
+
+Sometimes you have a function with an optional Object argument that you want to
+destructure in the function. Like so:
+
+```ts
+interface SomeObject {
+  option1: boolean;
+  stuff: boolean;
+}
+
+function foo(param?: SomeObject) {
+  const { stuff } = param;
+}
+```
+
+However you'll get an error because `param` could be undefined and TS doesn't
+like you trying to destructure something that's undefined. There are a couple
+ways around this...
+
+Define a fallback in the initializer and don't use the ? optional identifier:
+
+```ts
+function foo(param: SomeObject = {}) {
+  const { stuff } = param;
+}
+```
+
+Use nullish coalescence:
+
+```ts
+function foo(param?: SomeObject) {
+  const { stuff } = param ?? {};
+}
+```
+
+Or just call the propery on the parameter directly with optional chaining:
+
+```ts
+function foo(param?: SomeObject) {
+  anotherFunction(param?.stuff);
+}
+```
+
+All of these work and will handle `param` being undefined.

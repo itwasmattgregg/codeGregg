@@ -27,10 +27,12 @@ const TinyWinsWrapper = styled.div`
   }
 `;
 
-const TinyWinsLayout = ({ children }) => {
+const TinyWinsLayout = ({ children, hideBackLink }) => {
   return (
     <TinyWinsWrapper>
-      <CodeGreggButton to='/'>Return to CodeGregg</CodeGreggButton>
+      {!hideBackLink && (
+        <CodeGreggButton to='/'>Return to CodeGregg</CodeGreggButton>
+      )}
       {children}
     </TinyWinsWrapper>
   );

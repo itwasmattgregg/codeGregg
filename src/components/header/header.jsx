@@ -12,7 +12,7 @@ const Header = ({ menuLinks }) => {
       <div className={styles.headerContent}>
         <h1 className={styles.logo}>
           <Link to='/'>
-            <img src={logo} alt='codegregg logo' />
+            <img src={logo} alt='CodeGregg logo' />
           </Link>
         </h1>
         <nav className={`${styles.nav} ${navOpen ? styles.open : ''}`}>

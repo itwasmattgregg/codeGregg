@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'codeGregg: Minneapolis Web Developer',
+    title: 'CodeGregg: Minneapolis Web Developer',
     author: 'Matt Gregg',
     description:
       'Minneapolis-based UI engineer; many-stack artisinal crafter of the internet.',
@@ -31,13 +31,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'code-gregg',
-        short_name: 'codeGregg',
+        name: 'Code Gregg',
+        short_name: 'CodeGregg',
         start_url: '/',
         background_color: '#ffffff',
         theme_color: '#1A344D',
         display: 'minimal-ui',
-        icon: 'src/images/favicon.png', // This path is relative to the root of the site.
+        icon: 'static/images/favicon.png', // This path is relative to the root of the site.
       },
     },
     {
@@ -51,7 +51,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `posts`,
-        path: `${__dirname}/src/posts`,
+        path: `${__dirname}/src/posts/`,
       },
     },
     {
@@ -111,7 +111,7 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMdx } }) => {
-              return allMdx.edges.map(edge => {
+              return allMdx.edges.map((edge) => {
                 return Object.assign({}, edge.node.frontmatter, {
                   description: edge.node.excerpt,
                   date: edge.node.frontmatter.date,

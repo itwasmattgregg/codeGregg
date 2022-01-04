@@ -24,7 +24,6 @@ import awsIcon from '../images/logos/aws.svg';
 import djangoIcon from '../images/logos/django.svg';
 import dockerIcon from '../images/logos/docker.svg';
 import sketchIcon from '../images/logos/sketch.svg';
-import SideProject from '../components/resume/SideProject';
 
 const Resume = ({ data }) => {
   const siteTitle = data.site.siteMetadata.title;
@@ -123,8 +122,20 @@ const Resume = ({ data }) => {
         <div className={styles.section}>
           <h2>Experience</h2>
           <div className={styles.expereienceItem}>
+            <h4>Software Developer (Front End)</h4>
+            <em>
+              <b>Shopify</b> | Mar 2021 - Current
+            </em>
+            <p>
+              Working on the the Capital team building React / Rails / Graphql
+              applications for merchant services.
+            </p>
+          </div>
+          <div className={styles.expereienceItem}>
             <h4>Senior Software Engineer (Front End)</h4>
-            <em>Nerdery | Oct 2017 - Current</em>
+            <em>
+              <b>Nerdery</b> | Oct 2017 - Mar 2021
+            </em>
             <p>
               Built numerous large scale projects with a broad range of
               technologies. Have worked with React, Angular, and VueJS to build
@@ -138,7 +149,9 @@ const Resume = ({ data }) => {
           </div>
           <div className={styles.expereienceItem}>
             <h4>Chief Technology Officer</h4>
-            <em>Beingful | Sep 2019 - Nov 2020</em>
+            <em>
+              <b>Beingful</b> | Sep 2019 - Nov 2020
+            </em>
             <p>
               Built a social media platform using Django and React for a startup
               as a side project. Worked in cycles to deliver weekly updates and
@@ -151,7 +164,9 @@ const Resume = ({ data }) => {
           </div>
           <div className={styles.expereienceItem}>
             <h4>Senior Web Developer</h4>
-            <em>Bright Health (acquired Spyder Trap) | May 2017 - Oct 2017</em>
+            <em>
+              <b>Bright Health</b> (acquired Spyder Trap) | May 2017 - Oct 2017
+            </em>
             <p>
               Worked on web applications built on React/Redux with SSR in an
               agile team. Collaborated with design to build better user
@@ -162,7 +177,9 @@ const Resume = ({ data }) => {
           </div>
           <div className={styles.expereienceItem}>
             <h4>Front End Developer</h4>
-            <em>Spyder Trap | Oct 2014 - May 2017</em>
+            <em>
+              <b>Spyder Trap</b> | Oct 2014 - May 2017
+            </em>
             <p>
               Developed client web sites and dynamic applications back end to
               front on many frameworks. Architected experiences in collaboration
@@ -173,7 +190,9 @@ const Resume = ({ data }) => {
           </div>
           <div className={styles.expereienceItem}>
             <h4>Java Software Engineer</h4>
-            <em>Access Genetics | Aug 2013 - Oct 2014</em>
+            <em>
+              <b>Access Genetics</b> | Aug 2013 - Oct 2014
+            </em>
             <p>
               Core developer on large customer facing Java EE medical web
               application. Redesigned a data driven individualized user
@@ -185,10 +204,9 @@ const Resume = ({ data }) => {
         <div className={styles.section}>
           <h2>Side Projects</h2>
           <div className={styles.sideProjectsContainer}>
-            {/* <SideProject title='Testing' description='Here' /> */}
             <div className={styles.sideProject}>
               <a href='https://beingful.co'>
-                <strong>Beingful</strong> <br />
+                <b>Beingful</b> <br />
                 Django / React
               </a>
             </div>
@@ -196,34 +214,34 @@ const Resume = ({ data }) => {
               href='https://gregg-wedding.herokuapp.com/'
               className={styles.sideProject}
             >
-              <strong>Wedding Web App</strong> <br />
+              <b>Wedding Web App</b> <br />
               Laravel / Vue / Algolia / After Effects
             </a>
             <a href='https://foodtruckfinder.io' className={styles.sideProject}>
-              <strong>Food Truck Finder</strong> <br />
+              <b>Food Truck Finder</b> <br />
               Vue / Firebase / Netlify Lambda Functions
             </a>
             <a
               href='https://www.stereotypesteve.com/'
               className={styles.sideProject}
             >
-              <strong>Blog for Stereotype Steve</strong> <br />
+              <b>Blog for Stereotype Steve</b> <br />
               Gatsby / Wordpress
             </a>
             <a href='https://allergies.wtf/' className={styles.sideProject}>
-              <strong>WTF Allergies</strong> <br />
+              <b>WTF Allergies</b> <br />
               Vue / Netlify Lambda Function
             </a>
             <div className={styles.sideProject}>
-              <strong>Kitten Critic</strong> <br />
+              <b>Kitten Critic</b> <br />
               Ember / Firebase
             </div>
             <div className={styles.sideProject}>
-              <strong>Balderdash Game for Nerdery</strong> <br />
+              <b>Balderdash Game for Nerdery</b> <br />
               Vue / Firebase
             </div>
             <div className={styles.sideProject}>
-              <strong>Photo Scavenger Hunt App for Nerdery</strong> <br />
+              <b>Photo Scavenger Hunt App for Nerdery</b> <br />
               Vue / Firebase
             </div>
           </div>

@@ -1,0 +1,16 @@
+---
+  title: 'JS Add Leading 0 to Single Digit Numbers'
+  date: '2022-01-01T10:41:00Z'
+---
+
+Sometimes you have single digit numbers that your want to add a leading 0 to for whatever reason. 
+For example if you're dealing with dates and aren't using a date library with formatting.
+
+This simple script will take the index of the month you have (where January = 0) and return '01' 
+instead of '1' and will ignore numbers with 2 digits.
+
+```js
+const twoDigitMonth = ("0" + (monthIndex + 1)).slice(-2);
+```
+
+Effectively this adds a 0 at the beginning of the string and returns 2 characters starting from the end of the string.

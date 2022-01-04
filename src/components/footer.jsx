@@ -25,6 +25,19 @@ const Footer = () => (
         }}
       >
         <a
+          href='https://github.com/itwasmattgregg'
+          style={{ margin: '0 10px' }}
+        >
+          <img src={github} alt='github' />
+        </a>
+        <a
+          href='https://twitter.com/ItWasMattGregg'
+          rel='me'
+          style={{ margin: '0 10px' }}
+        >
+          <img src={twitter} alt='twitter' />
+        </a>
+        <a
           href='https://codepen.io/itwasmattgregg/'
           style={{ margin: '0 10px' }}
         >
@@ -36,12 +49,7 @@ const Footer = () => (
         >
           <img src={bitbucket} alt='bitbucket' />
         </a>
-        <a
-          href='https://github.com/itwasmattgregg'
-          style={{ margin: '0 10px' }}
-        >
-          <img src={github} alt='github' />
-        </a>
+
         <a
           href='https://www.linkedin.com/in/mattdgregg/'
           style={{ margin: '0 10px' }}
@@ -54,51 +62,9 @@ const Footer = () => (
         >
           <img src={spotify} alt='spotify' />
         </a>
-        <a
-          href='https://twitter.com/ItWasMattGregg'
-          rel='me'
-          style={{ margin: '0 10px' }}
-        >
-          <img src={twitter} alt='twitter' />
-        </a>
-        <a
-          href='https://www.facebook.com/mattdgregg'
-          style={{ margin: '0 10px' }}
-        >
-          <img src={facebook} alt='facebook' />
-        </a>
       </div>
       <div className='text_center' style={{ marginTop: '10px' }}>
         <small>matt@codegregg.com</small>
-        <br />
-        <a
-          href='https://www.buymeacoffee.com/29s6gtvjb'
-          target='_blank'
-          rel='noreferrer'
-          className='printHide'
-        >
-          <img
-            src='https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png'
-            alt='Buy Me A Coffee'
-            style={{
-              height: '50px',
-              marginTop: '20px',
-            }}
-          />
-        </a>
-        <script
-          type='text/javascript'
-          src='https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js'
-          data-name='bmc-button'
-          data-slug='29s6gtvjb'
-          data-color='#FF5F5F'
-          data-emoji=''
-          data-font='Cookie'
-          data-text='Buy me a latte'
-          data-outline-color='#000000'
-          data-font-color='#ffffff'
-          data-coffee-color='#FFDD00'
-        ></script>
       </div>
     </Container>
   </div>
