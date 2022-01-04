@@ -1,12 +1,12 @@
 import React from 'react';
 import Container from './container';
-import twitter from '../images/twitter.svg';
-import spotify from '../images/spotify.svg';
-import facebook from '../images/facebook.svg';
-import codepen from '../images/codepen.svg';
-import github from '../images/github.svg';
-import linkedin from '../images/linkedin2.svg';
-import bitbucket from '../images/bitbucket.svg';
+import twitter from '../images/logos/twitter.svg';
+import spotify from '../images/logos/spotify.svg';
+import facebook from '../images/logos/facebook.svg';
+import codepen from '../images/logos/codepen.svg';
+import github from '../images/logos/github.svg';
+import linkedin from '../images/logos/linkedin2.svg';
+import bitbucket from '../images/logos/bitbucket.svg';
 
 const Footer = () => (
   // Social Icons

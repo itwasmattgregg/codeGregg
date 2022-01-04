@@ -1,11 +1,11 @@
 import React from 'react';
-import firebase from '../../images/firebase.svg';
-import gatsby from '../../images/gatsby.svg';
-import javascript from '../../images/javascript.svg';
-import nodejs from '../../images/nodejs.svg';
-import react from '../../images/react.svg';
-import sass from '../../images/sass.svg';
-import vue from '../../images/vue.svg';
+import firebase from '../../images/logos/firebase.svg';
+import gatsby from '../../images/logos/gatsby.svg';
+import javascript from '../../images/logos/javascript.svg';
+import nodejs from '../../images/logos/nodejs.svg';
+import react from '../../images/logos/react.svg';
+import sass from '../../images/logos/sass.svg';
+import vue from '../../images/logos/vue.svg';
 import * as styles from './tech.module.scss';
 import posed from 'react-pose';
 
