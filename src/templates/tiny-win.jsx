@@ -24,6 +24,12 @@ export default function Template({ pageContext, data }) {
     <TinyWinsLayout>
       <Helmet title={`TinyWins - ${title}`}>
         <meta name='description' content={`TinyWin: ${excerpt}`} />
+        {date && (
+          <meta
+            property='article:published_time'
+            content={new Date(date).toISOString()}
+          />
+        )}
         <meta property='og:type' content='website' />
         <meta property='og:url' content={url} />
         <meta property='og:title' content={`${title} | CodeGregg TinyWins`} />

@@ -47,7 +47,7 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
-      `).then(result => {
+      `).then((result) => {
         // this is some boilerlate to handle errors
         if (result.errors) {
           console.error(result.errors);
@@ -72,9 +72,9 @@ exports.createPages = async ({ graphql, actions }) => {
         });
 
         const tagSet = new Set();
-        result.data.allFile.edges.forEach(edge => {
+        result.data.allFile.edges.forEach((edge) => {
           if (edge.node.childMdx.frontmatter.tags) {
-            edge.node.childMdx.frontmatter.tags.forEach(tag => {
+            edge.node.childMdx.frontmatter.tags.forEach((tag) => {
               tagSet.add(tag);
             });
           }
@@ -83,7 +83,7 @@ exports.createPages = async ({ graphql, actions }) => {
         const tagPage = path.resolve('src/templates/category.jsx');
 
         const tagList = Array.from(tagSet);
-        tagList.forEach(tag => {
+        tagList.forEach((tag) => {
           createPage({
             path: `/category/${_.kebabCase(tag)}/`,
             component: tagPage,
@@ -130,7 +130,7 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
-      `).then(result => {
+      `).then((result) => {
         if (result.errors) {
           console.error(result.errors);
           reject(result.errors);

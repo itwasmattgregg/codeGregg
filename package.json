@@ -10,7 +10,7 @@
     "@mdx-js/mdx": "^1.6.1",
     "@mdx-js/react": "^1.6.1",
     "@mdx-js/tag": "^0.20.3",
-    "chrome-aws-lambda": "^2.1.1",
+    "chrome-aws-lambda": "^8.0.2",
     "cross-env": "^7.0.3",
     "file-saver": "^2.0.2",
     "gatsby": "^3.1.1",
@@ -36,17 +36,17 @@
     "gbimage-bridge": "^0.1.1",
     "lodash": "^4.17.11",
     "mdx-utils": "^0.2.0",
-    "node-sass": "^5.0.0",
     "prism-react-renderer": "^1.1.1",
     "prismjs": "^1.15.0",
-    "puppeteer-core": "^3.0.3",
+    "puppeteer-core": "^9.0.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-helmet": "^6.0.0",
     "react-pose": "^4.0.6",
     "react-typography": "^0.16.13",
     "rehype-react": "^6.1.0",
-    "sharp": "^0.27.0",
+    "sass": "^1.32.11",
+    "sharp": "^0.28.1",
     "typeface-merriweather": "1.1.13",
     "typeface-montserrat": "1.1.13",
     "typography": "^0.16.17",
@@ -58,7 +58,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "develop": "rm -rf .cache/caches/gatsby-plugin-mdx && gatsby develop",
+    "develop": "gatsby develop",
     "format": "prettier --write '**/*.js'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -68,7 +68,7 @@
     "marked": "^2.0.0",
     "prettier": "^2.2.1",
     "promisify": "^0.0.3",
-    "puppeteer": "^8.0.0",
+    "puppeteer": "^9.0.0",
     "twemoji": "^13.0.1"
   }
 }

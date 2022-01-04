@@ -11,11 +11,7 @@ async function writeCachedFile(CACHE_DIR, key, contents, extension) {
   // thing which impacts the final image. If you were to have something
   // more elaborate, you should just use the HTML as the hash instead.
   const fileName =
-    createHash('md5')
-      .update(key)
-      .digest('hex') +
-    '.' +
-    extension;
+    createHash('md5').update(key).digest('hex') + '.' + extension;
   const absolutePath = resolve(CACHE_DIR, fileName);
   await writeFileAsync(absolutePath, contents);
   return absolutePath;
