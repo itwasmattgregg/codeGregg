@@ -134,6 +134,7 @@ exports.createPages = async ({ graphql, actions }) => {
         if (result.errors) {
           console.error(result.errors);
           reject(result.errors);
+          return;
         }
         const wins = result.data.allFile.edges;
 

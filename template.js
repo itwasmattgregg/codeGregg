@@ -2,7 +2,7 @@ const marked = require('marked');
 const { readFileSync } = require('fs');
 const twemoji = require('twemoji');
 const twOptions = { folder: 'svg', ext: '.svg' };
-const emojify = text => twemoji.parse(text, twOptions);
+const emojify = (text) => twemoji.parse(text, twOptions);
 
 const monad = readFileSync(`./static/fonts/Monad.woff`).toString('base64');
 
@@ -107,7 +107,7 @@ module.exports = function getHtml(parsedReq) {
     <body>
       <div class="bodywrapper">
         <div class="heading">${emojify(
-          md ? marked(typeText + text) : sanitizeHtml(typeText + text)
+          md ? marked.parse(typeText + text) : sanitizeHtml(typeText + text)
         )}</div>
         <div class="footer">
         <div>codegregg.com</div>
@@ -128,5 +128,5 @@ const entityMap = {
 };
 
 function sanitizeHtml(html) {
-  return String(html).replace(/[&<>"'\/]/g, key => entityMap[key]);
+  return String(html).replace(/[&<>"'\/]/g, (key) => entityMap[key]);
 }
