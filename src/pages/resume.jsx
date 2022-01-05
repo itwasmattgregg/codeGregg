@@ -12,12 +12,12 @@ import Skill from '../components/resume/Skill';
 import * as styles from '../scss/pages/resume.module.scss';
 
 import initials from '../images/initials.svg';
-import firebaseIcon from '../images/firebase.svg';
-import gatsbyIcon from '../images/gatsby.svg';
-import javascriptIcon from '../images/javascript.svg';
-import laravelIcon from '../images/laravel.svg';
-import reactIcon from '../images/react.svg';
-import vueIcon from '../images/vue-centered.svg';
+import firebaseIcon from '../images/logos/firebase.svg';
+import gatsbyIcon from '../images/logos/gatsby.svg';
+import javascriptIcon from '../images/logos/javascript.svg';
+import laravelIcon from '../images/logos/laravel.svg';
+import reactIcon from '../images/logos/react.svg';
+import vueIcon from '../images/logos/vue-centered.svg';
 import afterEffectsIcon from '../images/logos/after-effects.svg';
 import angularIcon from '../images/logos/angular.svg';
 import awsIcon from '../images/logos/aws.svg';
