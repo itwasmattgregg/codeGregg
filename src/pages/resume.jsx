@@ -121,6 +121,8 @@ const Resume = ({ data }) => {
         </div>
         <div className={styles.section}>
           <h2>Experience</h2>
+          {/* Talk about what I've accomplished (numbers) not what I did.
+           Job duties don't matter */}
           <div className={styles.expereienceItem}>
             <h4>Software Developer (Front End)</h4>
             <em>

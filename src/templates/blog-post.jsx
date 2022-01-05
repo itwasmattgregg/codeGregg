@@ -37,17 +37,17 @@ export default function BlogPost({ pageContext, data }) {
           content={`${post.frontmatter.title} | ${title}`}
         />
         <meta property='og:description' content={excerpt} />
-        {ogImage ? (
-          <>
-            <meta property='og:image' content={`${siteUrl}${ogImage.src}`} />
-            <meta property='og:image:width' content={ogImage.width} />
-            <meta property='og:image:height' content={ogImage.height} />
-            <meta
-              property='twitter:image'
-              content={`${siteUrl}${ogImage.src}`}
-            />
-          </>
-        ) : null}
+        {ogImage
+          ? [
+              <meta property='og:image' content={`${siteUrl}${ogImage.src}`} />,
+              <meta property='og:image:width' content={ogImage.width} />,
+              <meta property='og:image:height' content={ogImage.height} />,
+              <meta
+                property='twitter:image'
+                content={`${siteUrl}${ogImage.src}`}
+              />,
+            ]
+          : null}
 
         {/* <!-- Twitter --> */}
         <meta property='twitter:card' content='summary_large_image' />
