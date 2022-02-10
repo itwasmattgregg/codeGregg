@@ -16,7 +16,7 @@ const Win = styled.div`
 `;
 
 export default function Template({ pageContext, data }) {
-  const { body, title, date, ogImage, excerpt } = pageContext;
+  const { body, title, date, excerpt } = pageContext;
   const { siteUrl } = data.site.siteMetadata;
   const { pathname } = useLocation();
   const url = `${siteUrl}${pathname}`;

@@ -2,23 +2,6 @@ const _ = require('lodash');
 const Promise = require('bluebird');
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
-const puppeteer = require('puppeteer');
-const fs = require('fs-extra');
-const screenshot = require('./generate-image');
-const {
-  createFileNode: baseCreateFileNode,
-} = require(`gatsby-source-filesystem/create-file-node`);
-
-let browser = null;
-
-async function createFileNode(path, createNode, createNodeId, parentNodeId) {
-  const fileNode = await baseCreateFileNode(path, createNodeId);
-  fileNode.parent = parentNodeId;
-  createNode(fileNode, {
-    name: `gatsby-source-filesystem`,
-  });
-  return fileNode;
-}
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
@@ -110,17 +93,6 @@ exports.createPages = async ({ graphql, actions }) => {
                   id
                   body
                   excerpt
-                  fields {
-                    socialImage {
-                      childImageSharp {
-                        original {
-                          src
-                          height
-                          width
-                        }
-                      }
-                    }
-                  }
                   frontmatter {
                     date(formatString: "MMMM DD, YYYY")
                     title
@@ -140,10 +112,6 @@ exports.createPages = async ({ graphql, actions }) => {
 
         _.each(wins, (win, index) => {
           const mdx = win.node.childMdx;
-          let ogImage = null;
-          if (mdx.fields && mdx.fields.socialImage) {
-            ogImage = mdx.fields.socialImage.childImageSharp.original;
-          }
 
           createPage({
             path: win.node.fields.slug,
@@ -153,7 +121,6 @@ exports.createPages = async ({ graphql, actions }) => {
               date: mdx.frontmatter.date,
               title: mdx.frontmatter.title,
               excerpt: mdx.excerpt,
-              ogImage,
             },
           });
         });
@@ -163,52 +130,8 @@ exports.createPages = async ({ graphql, actions }) => {
   return Promise.all([tinywins, mdx]);
 };
 
-exports.onPreInit = async () => {
-  // Launch a Puppeteer browser at the start of the build
-  browser = await puppeteer.launch({ headless: true });
-};
-
-exports.onPostBuild = async () => {
-  // Close the browser at the end
-  await browser.close();
-};
-
-exports.onCreateNode = async ({
-  node,
-  actions,
-  getNode,
-  createNodeId,
-  store,
-}) => {
-  const { createNodeField, createNode } = actions;
-
-  const program = store.getState().program;
-  const CACHE_DIR = path.resolve(`${program.directory}/.cache/social/`);
-  await fs.ensureDir(CACHE_DIR);
-
-  if (node.internal.type === `Mdx`) {
-    try {
-      // Generate our image from the node
-      const parentNode = getNode(node.parent);
-      const postType = parentNode.sourceInstanceName;
-      const ogImage = await screenshot(CACHE_DIR, browser, node, postType);
-      // Create the file node for the image
-      const ogImageNode = await createFileNode(
-        ogImage,
-        createNode,
-        createNodeId,
-        node.id
-      );
-      // Attach the image to our Mdx node
-      createNodeField({
-        name: 'socialImage___NODE',
-        node,
-        value: ogImageNode.id,
-      });
-    } catch (e) {
-      console.log(e);
-    }
-  }
+exports.onCreateNode = async ({ node, actions, getNode }) => {
+  const { createNodeField } = actions;
 
   if (node.sourceInstanceName === 'tinywins') {
     const value = createFilePath({ node, getNode });

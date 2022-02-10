@@ -17,7 +17,6 @@ export default function BlogPost({ pageContext, data }) {
   const post = data?.file.childMdx;
   const { pathname } = useLocation();
   const { title, siteUrl } = data.site.siteMetadata;
-  const ogImage = post.fields?.socialImage?.childImageSharp.original;
   const url = `${siteUrl}${pathname}`;
   const excerpt = post.excerpt;
   const { previous, next } = pageContext;
@@ -142,17 +141,6 @@ export const pageQuery = graphql`
         excerpt
         timeToRead
         body
-        fields {
-          socialImage {
-            childImageSharp {
-              original {
-                width
-                height
-                src
-              }
-            }
-          }
-        }
         frontmatter {
           title
           tags
