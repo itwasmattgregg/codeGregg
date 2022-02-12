@@ -65,7 +65,7 @@
   "devDependencies": {
     "@babel/register": "^7.9.0",
     "crypto": "^1.0.1",
-    "marked": "^4.0.8",
+    "marked": "^4.0.10",
     "prettier": "^2.2.1",
     "promisify": "^0.0.3",
     "puppeteer": "^13.0.1",
