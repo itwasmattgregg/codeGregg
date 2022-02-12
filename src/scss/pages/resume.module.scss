@@ -3,10 +3,20 @@
 .headerBackground {
   padding: 200px 0 100px;
   margin-bottom: 50px;
+  position: relative;
 
   @media (min-width: 758px) {
     padding: 150px 0;
   }
+}
+
+.headerBackgroundImage {
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }
 
 .headerContainer {

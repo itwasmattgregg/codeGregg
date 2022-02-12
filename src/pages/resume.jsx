@@ -41,7 +41,11 @@ const Resume = ({ data }) => {
     <Layout>
       <Helmet title={`Resume | ${siteTitle}`} />
       <div className={styles.headerBackground}>
-        <GatsbyImage image={headerBackground} alt='' />
+        <GatsbyImage
+          image={headerBackground}
+          className={styles.headerBackgroundImage}
+          alt=''
+        />
         <Container className={styles.headerContainer}>
           <div className={styles.headerNameContainer}>
             <img
