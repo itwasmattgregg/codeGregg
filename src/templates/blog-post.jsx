@@ -3,15 +3,16 @@ import { Helmet } from 'react-helmet';
 import { Link, graphql } from 'gatsby';
 import { useLocation } from '@reach/router';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { getImage } from 'gatsby-plugin-image';
+import { BgImage } from 'gbimage-bridge';
+import kebabCase from 'lodash/kebabCase';
 
 import Bio from '../components/Bio';
 import Container from '../components/container';
 import Layout from '../components/layout/layout';
 import * as styles from '../scss/templates/blog-post.module.scss';
 import Webmentions from '../components/Webmentions';
-import { getImage } from 'gatsby-plugin-image';
-import { BgImage } from 'gbimage-bridge';
-import kebabCase from 'lodash/kebabCase';
+import OpenGraph from '../utils/openGraph';
 
 export default function BlogPost({ pageContext, data }) {
   const post = data?.file.childMdx;
@@ -36,18 +37,14 @@ export default function BlogPost({ pageContext, data }) {
           content={`${post.frontmatter.title} | ${title}`}
         />
         <meta property='og:description' content={excerpt} />
-        {ogImage
-          ? [
-              <meta property='og:image' content={`${siteUrl}${ogImage.src}`} />,
-              <meta property='og:image:width' content={ogImage.width} />,
-              <meta property='og:image:height' content={ogImage.height} />,
-              <meta
-                property='twitter:image'
-                content={`${siteUrl}${ogImage.src}`}
-              />,
-            ]
-          : null}
-
+        <meta
+          property='og:image'
+          content={OpenGraph.generateImageUrl(post.frontmatter.title)}
+        />
+        <meta
+          property='twitter:image'
+          content={OpenGraph.generateImageUrl(post.frontmatter.title)}
+        />
         {/* <!-- Twitter --> */}
         <meta property='twitter:card' content='summary_large_image' />
         <meta property='twitter:url' content={url} />
@@ -56,7 +53,6 @@ export default function BlogPost({ pageContext, data }) {
           content={`${post.frontmatter.title} | ${title}`}
         />
         <meta property='twitter:description' content={excerpt} />
-
         <meta property='twitter:image:alt' content={title} />
       </Helmet>
       {featuredImage && (

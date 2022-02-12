@@ -3,8 +3,10 @@ import { Link, graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import { useLocation } from '@reach/router';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import TinyWinsLayout from '../components/tinywinsLayout/layout';
 import styled from '@emotion/styled';
+
+import OpenGraph from '../utils/openGraph';
+import TinyWinsLayout from '../components/tinywinsLayout/layout';
 import Webmentions from '../components/Webmentions';
 
 const Win = styled.div`
@@ -34,9 +36,10 @@ export default function Template({ pageContext, data }) {
         <meta property='og:url' content={url} />
         <meta property='og:title' content={`${title} | CodeGregg TinyWins`} />
         <meta property='og:description' content={excerpt} />
-        <meta property='og:image' content={`${siteUrl}${ogImage?.src}`} />
-        <meta property='og:image:width' content={ogImage?.width} />
-        <meta property='og:image:height' content={ogImage?.height} />
+        <meta
+          property='og:image'
+          content={OpenGraph.generateImageUrl(`**TinyWins:** ${title}`)}
+        />
 
         {/* <!-- Twitter --> */}
         <meta property='twitter:card' content='summary_large_image' />
@@ -46,7 +49,10 @@ export default function Template({ pageContext, data }) {
           content={`${title} | CodeGregg Tinywins`}
         />
         <meta property='twitter:description' content={excerpt} />
-        <meta property='twitter:image' content={`${siteUrl}${ogImage?.src}`} />
+        <meta
+          property='twitter:image'
+          content={OpenGraph.generateImageUrl(title)}
+        />
         <meta property='twitter:image:alt' content={`Tiny Win: ${title}`} />
       </Helmet>
       <Link to='/tinywins'>
