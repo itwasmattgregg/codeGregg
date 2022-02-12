@@ -1,6 +1,6 @@
 const React = require('react');
 
-exports.onRenderBody = ({ setHeadComponents }, pluginOptions) => {
+exports.onRenderBody = ({ setHeadComponents }) => {
   setHeadComponents([
     <link
       rel='webmention'

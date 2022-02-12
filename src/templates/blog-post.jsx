@@ -3,16 +3,16 @@ import { Helmet } from 'react-helmet';
 import { Link, graphql } from 'gatsby';
 import { useLocation } from '@reach/router';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { getImage } from 'gatsby-plugin-image';
-import { BgImage } from 'gbimage-bridge';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import kebabCase from 'lodash/kebabCase';
 
 import Bio from '../components/Bio';
 import Container from '../components/container';
 import Layout from '../components/layout/layout';
-import * as styles from '../scss/templates/blog-post.module.scss';
 import Webmentions from '../components/Webmentions';
 import OpenGraph from '../utils/openGraph';
+
+import * as styles from '../scss/templates/blog-post.module.scss';
 
 export default function BlogPost({ pageContext, data }) {
   const post = data?.file.childMdx;
@@ -57,11 +57,10 @@ export default function BlogPost({ pageContext, data }) {
       </Helmet>
       {featuredImage && (
         <div>
-          <BgImage
-            Tag='div'
+          <GatsbyImage
             image={featuredImage}
             className={styles.featuredImage}
-            backgroundColor={`#040e18`}
+            alt=''
           />
         </div>
       )}
@@ -144,7 +143,11 @@ export const pageQuery = graphql`
           featuredImage {
             publicURL
             childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+              gatsbyImageData(
+                layout: FULL_WIDTH
+                placeholder: BLURRED
+                formats: [AUTO, WEBP, AVIF]
+              )
             }
           }
         }

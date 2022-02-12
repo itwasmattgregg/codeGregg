@@ -24,12 +24,20 @@
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   border-bottom: 1px solid white;
+  position: relative;
 
-  @media(min-width: $gfb) {
+  @media (min-width: $gfb) {
     height: 400px;
     flex-basis: 50%;
     border: none;
   }
+}
+
+.blog_featureSection_image {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: -1;
 }
 
 @mixin title {

@@ -5,8 +5,7 @@ import { saveAs } from 'file-saver';
 
 import Layout from '../components/layout/layout';
 import Container from '../components/container';
-import { getImage } from 'gatsby-plugin-image';
-import { BgImage } from 'gbimage-bridge';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import Skill from '../components/resume/Skill';
 
 import * as styles from '../scss/pages/resume.module.scss';
@@ -41,7 +40,8 @@ const Resume = ({ data }) => {
   return (
     <Layout>
       <Helmet title={`Resume | ${siteTitle}`} />
-      <BgImage image={headerBackground} className={styles.headerBackground}>
+      <div className={styles.headerBackground}>
+        <GatsbyImage image={headerBackground} alt='' />
         <Container className={styles.headerContainer}>
           <div className={styles.headerNameContainer}>
             <img
@@ -84,7 +84,7 @@ const Resume = ({ data }) => {
             )}
           </button>
         </Container>
-      </BgImage>
+      </div>
       <Container>
         <div className={styles.section}>
           <h2>Biography</h2>
@@ -289,7 +289,7 @@ export const query = graphql`
     headerBackground: file(relativePath: { eq: "DSC_7663_darker.jpg" }) {
       childImageSharp {
         gatsbyImageData(
-          width: 2000
+          layout: FULL_WIDTH
           placeholder: BLURRED
           formats: [AUTO, WEBP, AVIF]
         )

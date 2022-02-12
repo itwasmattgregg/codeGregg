@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { graphql, Link } from 'gatsby';
-import { getImage } from 'gatsby-plugin-image';
-import { BgImage } from 'gbimage-bridge';
+import { getImage, GatsbyImage } from 'gatsby-plugin-image';
 import { Helmet } from 'react-helmet';
 import kebabCase from 'lodash/kebabCase';
 
@@ -22,12 +21,11 @@ class Blog extends Component {
         <Helmet title={`Blog | ${siteTitle}`} />
         <h1 className={`text_center ${styles.blog_title}`}>Blog</h1>
         <div className={styles.blog_featureSections}>
-          <BgImage
-            Tag='div'
-            image={devBackground}
-            className={styles.blog_featureSections_block}
-            backgroundColor={`#040e18`}
-          >
+          <div className={styles.blog_featureSections_block}>
+            <GatsbyImage
+              image={devBackground}
+              className={styles.blog_featureSection_image}
+            />
             <Link
               to={`/category/dev`}
               className={styles.blog_featureSections_overlayLink}
@@ -39,13 +37,13 @@ class Blog extends Component {
                 Dev
               </Link>
             </h2>
-          </BgImage>
-          <BgImage
-            Tag='div'
-            image={foodBackground}
-            className={styles.blog_featureSections_block}
-            backgroundColor={`#040e18`}
-          >
+          </div>
+          <div className={styles.blog_featureSections_block}>
+            <GatsbyImage
+              Tag='div'
+              image={foodBackground}
+              className={styles.blog_featureSection_image}
+            />
             <Link
               to={`/category/food`}
               className={styles.blog_featureSections_overlayLink}
@@ -57,7 +55,7 @@ class Blog extends Component {
                 Food
               </Link>
             </h2>
-          </BgImage>
+          </div>
         </div>
         <Container>
           <p className={styles.pageDescription}>
