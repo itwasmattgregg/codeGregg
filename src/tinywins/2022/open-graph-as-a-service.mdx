@@ -1,0 +1,24 @@
+---
+  title: 'Open Graph As A Service'
+  date: '2022-02-13T10:20:00Z'
+---
+
+The other day I was looking through a repo and stumbled across someone using
+Vercel's open graph image generator (https://og-image.vercel.app/), something I
+had no idea existed. I was able to set it up and replace my own implementation
+of something similar on my blog in an evening. My implementation involved
+generating images at build time with Gatsby, why I ever thought that was a good
+idea is beyond me.
+
+This allows you generate unique open graph images for each one of your blog
+posts or pages and set it in meta tags.
+
+Small tip here is to fork and deploy your own version of this repo so you can
+change the default image. Change this line:
+` if (!images[0].startsWith('https://assets.vercel.com/') && !images[0].startsWith('https://assets.zeit.co/')) {`
+in `api/_lib/parser.ts`.
+
+P.S. Also a friendly reminder that this will not work if your pages are not
+viewable server-side meaning you're using straight Vue or React to render your
+entire site. Each page needs to have a viewable html file stored, this is static
+generation or server side generation.
