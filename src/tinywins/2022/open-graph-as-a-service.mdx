@@ -11,7 +11,15 @@ generating images at build time with Gatsby, why I ever thought that was a good
 idea is beyond me.
 
 This allows you generate unique open graph images for each one of your blog
-posts or pages and set it in meta tags.
+posts or pages and set it in meta tags. The meta tag in my blog posts now looks
+like this:
+
+```ts
+<meta
+  property='og:image'
+  content={OpenGraph.generateImageUrl(post.frontmatter.title)}
+/>
+```
 
 Small tip here is to fork and deploy your own version of this repo so you can
 change the default image. Change this line:
