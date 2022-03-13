@@ -3,8 +3,8 @@ title: Sorting One Array With Another in JavaScript
 tags:
   - dev
   - js
-date: ''
-visible: false
+date: '2022-03-13T09:55:42Z'
+visible: true
 ---
 
 Recently I needed to sort one array I had no control of to show specific
@@ -13,7 +13,32 @@ not specified in my order array I needed to go at the end of my list. No other
 order mattered.
 
 I solved this with a simple JS sort function with a little extra code for
+handling items not in the list.
 
 ```js
+const categoriesArray = [
+  { category: 'stuff' },
+  { category: 'things' },
+  { category: 'unknown' },
+  { category: 'important' },
+];
+const order = ['important', 'things', 'stuff'];
 
+const sortedArray = categoriesArray
+  .slice()
+  .sort(({ category: categoryA }, { category: categoryB }) => {
+    const indexA = order.indexOf(categoryA);
+    const indexB = order.indexOf(categoryB);
+    return (
+      (indexA > -1 ? indexA : Infinity) - (indexB > -1 ? indexB : Infinity)
+    );
+  });
+
+// Returns:
+// ​[
+//  { category: "important" },
+// ​ { category: "things" },
+// ​ { category: "stuff" },
+// ​ { category: "unknown" }
+// ]
 ```
