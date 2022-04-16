@@ -1,0 +1,19 @@
+---
+  title: 'Regex find and replace for VSCode'
+  date: '2022-04-16T14:48:14Z'
+---
+
+The other day I learned a neat trick. Note this will work in many other editors as well. 
+I needed to remove the type case at the end of an object in TypeScript (JavaScript) so I
+created a regex to find what I wanted, an `export default {`, then whatever including line breaks,
+then `} as Meta`. I grouped the part before the `as Meta` and used the group identifier `$1` in 
+the VSCode replace box to replace all occurrences of my regex with everything before the `as Meta`.
+
+Here's my find:
+```
+(export default \{(.|\n)*\})( as Meta)
+```
+
+Notice the parentheses around the whole first part separating it from the ` as Meta`.
+
+Then in the replace just put `$1` to replace all occurrences with the content of the first group.
