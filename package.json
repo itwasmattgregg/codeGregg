@@ -44,7 +44,7 @@
     "react-typography": "^0.16.20",
     "rehype-react": "^7.0.3",
     "sass": "^1.32.11",
-    "sharp": "^0.29.3",
+    "sharp": "^0.30.5",
     "typeface-merriweather": "1.1.13",
     "typeface-montserrat": "1.1.13",
     "typography": "^0.16.17",
