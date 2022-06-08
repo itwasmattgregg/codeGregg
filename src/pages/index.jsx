@@ -9,7 +9,6 @@ import Tech from '../components/tech/tech';
 import Container from '../components/container';
 import ContactForm from '../components/contactForm/contactForm';
 
-import shape from '../images/shape.svg';
 import * as styles from '../scss/pages/index.module.scss';
 
 class IndexPage extends Component {
@@ -139,7 +138,7 @@ export default IndexPage;
 
 export const query = graphql`
   {
-    profileImg: file(relativePath: { eq: "Matt-Gregg-square-9961.jpg" }) {
+    profileImg: file(relativePath: { eq: "matt_white_bg.png" }) {
       childImageSharp {
         gatsbyImageData(
           width: 140
