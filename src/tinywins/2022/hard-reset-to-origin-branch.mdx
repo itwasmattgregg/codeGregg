@@ -1,0 +1,12 @@
+---
+  title: 'Hard Reset To Origin Branch'
+  date: '2022-06-07T19:26:00Z'
+---
+
+If you have force pushed changes to a git branch on the remote and want 
+to pull that branch into your local you can do it in two commands.
+
+`git fetch && git reset --hard @{u}`
+
+This will fetch the latest changes then reset the current branch with the 
+latest of that same branch from the origin.
