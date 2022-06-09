@@ -1,0 +1,42 @@
+---
+  title: 'Connect To fly.io Sqlite Production Database'
+  tags:
+  - dev
+  - sqlite
+  - fly.io
+  date: '2022-06-08T22:46:00Z'
+  visible: true
+---
+
+Gonna give a quick how to for connecting to and getting your sqlite database
+from your production app on fly.io. It can be a bit confusing but once you get
+your ssh connection set up and openssh installed on your fly.io server, it's
+much easier to replicate. In this tutorial we will be connecting to your fly.io
+instance via wireguard and ssh, then insalling openssh on your instance so we
+can use `scp` from your local computer to copy the sqlite db file for viewing
+locally.
+
+Start by downloading Wireguard [here](https://www.wireguard.com/install/).
+You'll also need flyctl which I'm assuming you already have, but if you don't it
+can be downloaded [here](https://fly.io/docs/flyctl/installing/).
+
+You'll need to connect wireguard to fly.io by creating a wireguard config file
+with the fly CLI. Use `flyctl wireguard create` to create a file called
+`wireguard.conf`. Then open wireguard and import that file and activate that ssh
+tunnel.
+
+Next you're going to connect to your fly instance via ssh. Type
+`fly ssh issue --agent` then `fly ssh console` to ssh into your instance.
+
+Once you're in you'll need to install openssh on the instance to be able to
+securely copy files from your instance to your local computer. Do this with the
+command: `apt-get install openssh-client`.
+
+Exit ssh with `exit`;
+
+Now you can copy your sqlite db file to your local computer with
+`scp root@[app-name].internal:/data/sqlite.db sqlite.db`.
+
+Don't forget to fill in the name of your app on fly.io and change the path to
+wherever your sqlite db is stored on the server. Mine happened to be at
+`/data/sqlite.db`.
