@@ -25,6 +25,7 @@ class Blog extends Component {
             <GatsbyImage
               image={devBackground}
               className={styles.blog_featureSection_image}
+              style={{ position: 'absolute' }}
             />
             <Link
               to={`/category/dev`}

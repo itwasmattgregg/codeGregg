@@ -45,6 +45,7 @@ const Resume = ({ data }) => {
           image={headerBackground}
           className={styles.headerBackgroundImage}
           alt=''
+          style={{ position: 'absolute' }}
         />
         <Container className={styles.headerContainer}>
           <div className={styles.headerNameContainer}>
