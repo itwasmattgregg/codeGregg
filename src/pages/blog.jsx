@@ -44,6 +44,7 @@ class Blog extends Component {
               Tag='div'
               image={foodBackground}
               className={styles.blog_featureSection_image}
+              style={{ position: 'absolute' }}
             />
             <Link
               to={`/category/food`}
