@@ -32,11 +32,24 @@ Once you're in you'll need to install openssh on the instance to be able to
 securely copy files from your instance to your local computer. Do this with the
 command: `apt-get install openssh-client`.
 
+At this stage you'll want to create a backup of your database to copy to your
+local machine so nothing goes wrong trying to copy the file while a transaction
+is happening. You can do this in one of 2 ways:
+
+`sqlite3 data/sqlite.db '.backup data/backup.db'`
+
+OR
+
+`sqlite3 data/sqlite.db "VACUUM INTO 'data/backup.db'"`
+
+You may have to change the path to your database, mine was in the data
+directory.
+
 Exit ssh with `exit`;
 
 Now you can copy your sqlite db file to your local computer with
-`scp root@[app-name].internal:/data/sqlite.db sqlite.db`.
+`scp root@[app-name].internal:/data/backup.db fly_backup.db`.
 
 Don't forget to fill in the name of your app on fly.io and change the path to
-wherever your sqlite db is stored on the server. Mine happened to be at
-`/data/sqlite.db`.
+wherever you backed up your sqlite db on your server. Mine is at
+`/data/backup.db`.
