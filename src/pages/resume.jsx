@@ -110,8 +110,8 @@ const Resume = ({ data }) => {
             love uncovering new ones.
           </p>
           <div className={styles.skillGrid}>
-            <Skill icon={javascriptIcon} name='Javascript' xp={85} size={70} />
-            <Skill icon={reactIcon} name='React' xp={80} />
+            <Skill icon={javascriptIcon} name='Javascript' xp={95} size={70} />
+            <Skill icon={reactIcon} name='React' xp={95} />
             <Skill icon={vueIcon} name='Vue' xp={90} />
             <Skill icon={firebaseIcon} name='Firebase' xp={80} />
             <Skill icon={gatsbyIcon} name='Gatsby' xp={80} />
@@ -235,14 +235,24 @@ const Resume = ({ data }) => {
               <b>Blog for Stereotype Steve</b> <br />
               Gatsby / Wordpress
             </a>
-            <a href='https://allergies.wtf/' className={styles.sideProject}>
+            <a
+              href='https://wtf-allergies.netlify.app'
+              className={styles.sideProject}
+            >
               <b>WTF Allergies</b> <br />
               Vue / Netlify Lambda Function
             </a>
-            <div className={styles.sideProject}>
+            <a href='https://kittencritic.com/' className={styles.sideProject}>
               <b>Kitten Critic</b> <br />
               Ember / Firebase
-            </div>
+            </a>
+            <a
+              href='https://isitfridayyet.netlify.app/'
+              className={styles.sideProject}
+            >
+              <b>Is it Friday yet?</b> <br />
+              JS
+            </a>
             <div className={styles.sideProject}>
               <b>Balderdash Game for Nerdery</b> <br />
               Vue / Firebase
