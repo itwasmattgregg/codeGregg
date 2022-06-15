@@ -131,7 +131,7 @@ const Resume = ({ data }) => {
           <div className={styles.expereienceItem}>
             <h4>Software Developer (Front End)</h4>
             <em>
-              <b>Shopify</b> | Mar 2021 - Current
+              <strong>Shopify</strong> | Mar 2021 - Current
             </em>
             <p>
               Working on the the Capital team building React / Rails / Graphql
@@ -141,7 +141,7 @@ const Resume = ({ data }) => {
           <div className={styles.expereienceItem}>
             <h4>Senior Software Engineer (Front End)</h4>
             <em>
-              <b>Nerdery</b> | Oct 2017 - Mar 2021
+              <strong>Nerdery</strong> | Oct 2017 - Mar 2021
             </em>
             <p>
               Built numerous large scale projects with a broad range of
@@ -157,7 +157,7 @@ const Resume = ({ data }) => {
           <div className={styles.expereienceItem}>
             <h4>Chief Technology Officer</h4>
             <em>
-              <b>Beingful</b> | Sep 2019 - Nov 2020
+              <strong>Beingful</strong> | Sep 2019 - Nov 2020
             </em>
             <p>
               Built a social media platform using Django and React for a startup
@@ -172,7 +172,8 @@ const Resume = ({ data }) => {
           <div className={styles.expereienceItem}>
             <h4>Senior Web Developer</h4>
             <em>
-              <b>Bright Health</b> (acquired Spyder Trap) | May 2017 - Oct 2017
+              <strong>Bright Health</strong> (acquired Spyder Trap) | May 2017 -
+              Oct 2017
             </em>
             <p>
               Worked on web applications built on React/Redux with SSR in an
@@ -185,7 +186,7 @@ const Resume = ({ data }) => {
           <div className={styles.expereienceItem}>
             <h4>Front End Developer</h4>
             <em>
-              <b>Spyder Trap</b> | Oct 2014 - May 2017
+              <strong>Spyder Trap</strong> | Oct 2014 - May 2017
             </em>
             <p>
               Developed client web sites and dynamic applications back end to
@@ -198,7 +199,7 @@ const Resume = ({ data }) => {
           <div className={styles.expereienceItem}>
             <h4>Java Software Engineer</h4>
             <em>
-              <b>Access Genetics</b> | Aug 2013 - Oct 2014
+              <strong>Access Genetics</strong> | Aug 2013 - Oct 2014
             </em>
             <p>
               Core developer on large customer facing Java EE medical web
@@ -211,9 +212,16 @@ const Resume = ({ data }) => {
         <div className={styles.section}>
           <h2>Side Projects</h2>
           <div className={styles.sideProjectsContainer}>
+            <a
+              href='https://yeastyboysbread.com/'
+              className={styles.sideProject}
+            >
+              <strong>Yeasty Boys Bread</strong> <br />
+              NextJS / MongoDB
+            </a>
             <div className={styles.sideProject}>
               <a href='https://beingful.co'>
-                <b>Beingful</b> <br />
+                <strong>Beingful</strong> <br />
                 Django / React
               </a>
             </div>
@@ -221,44 +229,51 @@ const Resume = ({ data }) => {
               href='https://gregg-wedding.herokuapp.com/'
               className={styles.sideProject}
             >
-              <b>Wedding Web App</b> <br />
+              <strong>Wedding Web App</strong> <br />
               Laravel / Vue / Algolia / After Effects
             </a>
             <a href='https://foodtruckfinder.io' className={styles.sideProject}>
-              <b>Food Truck Finder</b> <br />
+              <strong>Food Truck Finder</strong> <br />
               Vue / Firebase / Netlify Lambda Functions
             </a>
             <a
               href='https://www.stereotypesteve.com/'
               className={styles.sideProject}
             >
-              <b>Blog for Stereotype Steve</b> <br />
+              <strong>Blog for Stereotype Steve</strong> <br />
               Gatsby / Wordpress
             </a>
             <a
               href='https://wtf-allergies.netlify.app'
               className={styles.sideProject}
             >
-              <b>WTF Allergies</b> <br />
+              <strong>WTF Allergies</strong> <br />
               Vue / Netlify Lambda Function
             </a>
             <a href='https://kittencritic.com/' className={styles.sideProject}>
-              <b>Kitten Critic</b> <br />
-              Ember / Firebase
+              <strong>Kitten Critic</strong> <br />
+              Remix / sqlite
             </a>
             <a
               href='https://isitfridayyet.netlify.app/'
               className={styles.sideProject}
             >
-              <b>Is it Friday yet?</b> <br />
+              <strong>Is it Friday yet?</strong> <br />
               JS
             </a>
+            <a
+              href='https://shouldiuseamodal.com/'
+              className={styles.sideProject}
+            >
+              <strong>Should I use a modal?</strong> <br />
+              Svelte
+            </a>
             <div className={styles.sideProject}>
-              <b>Balderdash Game for Nerdery</b> <br />
+              <strong>Balderdash Game</strong> <br />
               Vue / Firebase
             </div>
             <div className={styles.sideProject}>
-              <b>Photo Scavenger Hunt App for Nerdery</b> <br />
+              <strong>Photo Scavenger Hunt App</strong> <br />
               Vue / Firebase
             </div>
           </div>
@@ -284,7 +299,7 @@ const Resume = ({ data }) => {
             Contact me for contact info
           </p>
           <p>
-            Jim Schofield | Front End Engineer
+            Jim Schofield | Senior Front End Engineer
             <br />
             Contact me for contact info
           </p>
