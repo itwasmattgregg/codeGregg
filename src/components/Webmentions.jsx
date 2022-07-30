@@ -13,16 +13,23 @@ const Webmentions = ({ postUrl }) => {
     const fetchCountData = async () => {
       setCountsStatus('loading');
 
-      const counts = await fetch(
-        `https://webmention.io/api/count.json?target=${postUrl}`
-      );
-      if (!counts.ok) {
+      let counts;
+      try {
+        counts = await fetch(
+          `https://webmention.io/api/count.json?target=${postUrl}`
+        );
+      } catch (err) {
+        console.error(err);
+        setCountsStatus('error');
+        return;
+      }
+      if (counts && !counts.ok) {
         setCountsStatus('error');
         throw new Error(`HTTP error! status: ${counts.status}`);
       } else {
         const data = await counts.json();
         setCountsStatus('success');
-        setCountData(c => ({ ...c, ...data.type }));
+        setCountData((c) => ({ ...c, ...data.type }));
       }
     };
     fetchCountData();
