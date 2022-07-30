@@ -28,7 +28,7 @@ class IndexPage extends Component {
           }}
         >
           <FeatureBox side='left' backgroundColor='darkBlue'>
-            <h2 className='h3' style={{ marginBottom: '50px' }}>
+          <h2 className='h3' style={{ marginTop: 0, marginBottom: '50px' }}>
               Minneapolis Web Developer
             </h2>
             <h1>Matt Gregg</h1>
