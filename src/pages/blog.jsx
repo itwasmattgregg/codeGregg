@@ -26,6 +26,7 @@ class Blog extends Component {
               image={devBackground}
               className={styles.blog_featureSection_image}
               style={{ position: 'absolute' }}
+              alt='Computer with code on the screen'
             />
             <Link
               to={`/category/dev`}
@@ -41,10 +42,10 @@ class Blog extends Component {
           </div>
           <div className={styles.blog_featureSections_block}>
             <GatsbyImage
-              Tag='div'
               image={foodBackground}
               className={styles.blog_featureSection_image}
               style={{ position: 'absolute' }}
+              alt='Glass of cognac and cheesy baked pasta'
             />
             <Link
               to={`/category/food`}
