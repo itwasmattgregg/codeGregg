@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'gatsby';
 import logo from '../../images/logos/headerLogo.svg';
 
 import * as styles from './header.module.scss';
+import { NightDayToggle } from '../NightDayToggle';
+import { DarkModeContext } from '../../context/DarkModeContext';
 
 const Header = ({ menuLinks }) => {
   const [navOpen, setNavOpen] = useState(false);
+  const { isDark, setDarkMode } = useContext(DarkModeContext);
 
   return (
     <div className={styles.headerContainer}>
@@ -39,6 +42,10 @@ const Header = ({ menuLinks }) => {
           onClick={() => setNavOpen(!navOpen)}
           hidden
         ></div>
+        <NightDayToggle
+          checked={isDark}
+          onChange={() => setDarkMode(!isDark)}
+        />
       </div>
     </div>
   );
