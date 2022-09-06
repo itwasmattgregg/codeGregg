@@ -30,6 +30,15 @@ body {
   }
 }
 
+::selection {
+  background-color: #333;
+  color: white;
+  -webkit-text-fill-color: white !important;
+  background-image: none !important;
+  background-clip: revert !important;
+  text-shadow: none !important;
+}
+
 .printHide {
   @media print {
     display: none;
