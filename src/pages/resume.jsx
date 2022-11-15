@@ -135,7 +135,14 @@ const Resume = ({ data }) => {
             </em>
             <p>
               Working on the the Capital team building React / Rails / Graphql
-              applications for merchant services.
+              applications for merchant services. Our primary application was 
+              responsible for lending billions of dollars to hundreds of 
+              thousands of merchants to help grow their businesses.
+            </p>
+            <p>
+              I also worked across the organization on FE infrastructure
+              initiatives and building community through tooling, documentation,
+              and presentations.
             </p>
           </div>
           <div className={styles.expereienceItem}>
