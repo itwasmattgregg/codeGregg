@@ -62,7 +62,7 @@ const Footer = () => (
         >
           <img src={spotify} alt='spotify' />
         </a>
-        <a rel="me" href="https://c.im/@itwasmattgregg" style={{ margin: '0 10px' }}>M</a>
+        <a rel="me" href="https://hachyderm.io/@itwasmattgregg">Mastodon</a>
       </div>
       <div className='text_center' style={{ marginTop: '10px' }}>
         <small>matt@codegregg.com</small>
