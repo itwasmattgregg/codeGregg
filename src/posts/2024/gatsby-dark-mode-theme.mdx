@@ -1,0 +1,115 @@
+---
+title: Gatsby Dark Mode with Themes
+tags:
+  - dev
+  - gatsby
+date: ''
+visible: false
+---
+
+# Implementing Dark Mode in GatsbyJS 4.7
+
+With the recent release of GatsbyJS 4.7, developers now have more tools and features at their disposal to create dynamic and responsive websites. One popular feature that can significantly enhance user experience is the ability to toggle between light and dark modes. This feature not only adds aesthetic appeal but also helps reduce eye strain and conserve battery power. In this blog post, we will explore how to implement a dark mode in GatsbyJS 4.7, using React context, local storage, and CSS transitions.
+
+## Setup
+
+We will start by defining the context for our dark mode. In the `RootLayout.js` file, we add a new context provider `DarkModeContextProvider`. This provider is used to pass down the dark mode state and the function to toggle it to other components in the application.
+
+```js
+import React from 'react';
+import { DarkModeContextProvider } from './context/DarkModeContext';
+
+export default function RootLayout({ children }) {
+  return (
+    <DarkModeContextProvider>
+      {children}
+    </DarkModeContextProvider>
+  );
+}
+```
+
+## Themes Definition
+
+We define two theme styles for light and dark modes in `theme.js`. Each theme style includes the text and background colors, among others, as shown below:
+
+```js
+import * as colors from './colors';
+
+export const themeLight = {
+  theme: 'light',
+  text: colors.textDark,
+  background: '#fff',
+  cardBackground: '#0000001a',
+  shadow: '#0000001a',
+};
+
+export const themeDark = {
+  theme: 'dark',
+  text: '#fff',
+  background: colors.dark,
+  cardBackground: '#ffffff2f',
+  shadow: '#FFC836',
+};
+```
+
+## Creating the Context for Dark Mode
+
+We create a new context `DarkModeContext` in `DarkModeContext.js` and use a state variable `isDark` to keep track of whether the dark mode is enabled. The `setDarkMode` function changes the `isDark` state and stores the user's preference in `localStorage`.
+
+```js
+import React, { createContext, useState, useEffect } from 'react';
+import { ThemeProvider } from '@emotion/react';
+import { themeDark, themeLight } from '../styles/theme';
+
+export const DarkModeContext = createContext();
+
+export function DarkModeContextProvider({ children }) {
+  const [isDark, setIsDark] = useState(false);
+
+  const setDarkMode = (darkness) => {
+    setIsDark(darkness);
+    localStorage.setItem('dark-mode', darkness ? 'dark' : 'light');
+  };
+//...
+}
+```
+
+## Toggling Between Light and Dark Modes
+
+In the `NightDayToggle.js` file, we create a component that toggles between light and dark modes. The `checked` prop determines whether the toggle is in the on (dark mode) or off (light mode) state. The `changed` prop is a function that handles the user's interaction with the toggle.
+
+```js
+import React from 'react';
+
+import './styles.css';
+
+export const NightDayToggle = ({ checked, changed }) => {
+  return (
+    <div className='toggle'>
+      <label className='visually-hidden' htmlFor='dark-toggle'>
+        Toggle between dark and light mode
+      </label>
+      <input
+        id='dark-toggle'
+        className='toggle-input'
+        type='checkbox'
+        checked={checked}
+        onChange={changed}
+      />
+      <div className='toggle-bg'></div>
+      <div className='toggle-switch'>
+        <div className='toggle-switch-figure'></div>
+        <div className='toggle-switch-figureAlt'></div>
+      </div>
+    </div>
+  );
+};
+```
+
+## Styling the Toggle
+
+Finally, we style the toggle by creating a `style.css` file. The CSS in this file is responsible for the appearance of the toggle button and the transition between light and dark modes.
+
+## Conclusion
+
+With these steps, we have successfully added a functional dark mode to our GatsbyJS 4.7 application. This not only makes the application more user-friendly but also adds a modern touch to its design. The implementation of the dark mode feature showcases how GatsbyJS 4.7, coupled with React context and local storage, can be used to enhance the user interface and experience of an application.
