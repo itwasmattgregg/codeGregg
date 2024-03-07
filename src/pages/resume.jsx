@@ -73,21 +73,6 @@ const Resume = ({ data }) => {
             <br />
             <a href='mailto:mattdgregg@gmail.com'>mattdgregg@gmail.com</a>
           </address>
-          <button
-            onClick={getPdfDownload}
-            className={styles.downloadButton}
-            disabled={downloading}
-          >
-            Download PDF
-            {downloading && (
-              <div className={styles.loadingSpinner}>
-                <span className={styles.loadingBox}></span>
-                <span className={styles.loadingBox}></span>
-                <span className={styles.loadingBox}></span>
-                <span className={styles.loadingBox}></span>
-              </div>
-            )}
-          </button>
         </Container>
       </div>
       <Container>
@@ -135,8 +120,8 @@ const Resume = ({ data }) => {
             </em>
             <p>
               Working on the the Capital team building React / Rails / Graphql
-              applications for merchant services. Our primary application was 
-              responsible for lending billions of dollars to hundreds of 
+              applications for merchant services. Our primary application was
+              responsible for lending billions of dollars to hundreds of
               thousands of merchants to help grow their businesses.
             </p>
             <p>
