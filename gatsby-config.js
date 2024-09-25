@@ -25,6 +25,7 @@ module.exports = {
     ],
   },
   plugins: [
+    `gatsby-plugin-pnpm`,
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
     {
