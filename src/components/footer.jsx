@@ -2,11 +2,9 @@ import React from 'react';
 import Container from './container';
 import twitter from '../images/logos/twitter.svg';
 import spotify from '../images/logos/spotify.svg';
-import facebook from '../images/logos/facebook.svg';
 import codepen from '../images/logos/codepen.svg';
 import github from '../images/logos/github.svg';
 import linkedin from '../images/logos/linkedin2.svg';
-import bitbucket from '../images/logos/bitbucket.svg';
 
 const Footer = () => (
   // Social Icons
@@ -44,13 +42,6 @@ const Footer = () => (
           <img src={codepen} alt='codepen' />
         </a>
         <a
-          href='https://bitbucket.org/itwasmattgregg'
-          style={{ margin: '0 10px' }}
-        >
-          <img src={bitbucket} alt='bitbucket' />
-        </a>
-
-        <a
           href='https://www.linkedin.com/in/mattdgregg/'
           style={{ margin: '0 10px' }}
         >
@@ -62,7 +53,9 @@ const Footer = () => (
         >
           <img src={spotify} alt='spotify' />
         </a>
-        <a rel="me" href="https://hachyderm.io/@itwasmattgregg">Mastodon</a>
+        <a rel='me' href='https://hachyderm.io/@itwasmattgregg'>
+          Mastodon
+        </a>
       </div>
       <div className='text_center' style={{ marginTop: '10px' }}>
         <small>matt@codegregg.com</small>
