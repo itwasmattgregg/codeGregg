@@ -1,6 +1,5 @@
 import React from 'react';
 import Container from './container';
-import twitter from '../images/logos/twitter.svg';
 import spotify from '../images/logos/spotify.svg';
 import codepen from '../images/logos/codepen.svg';
 import github from '../images/logos/github.svg';
@@ -29,13 +28,6 @@ const Footer = () => (
           <img src={github} alt='github' />
         </a>
         <a
-          href='https://twitter.com/ItWasMattGregg'
-          rel='me'
-          style={{ margin: '0 10px' }}
-        >
-          <img src={twitter} alt='twitter' />
-        </a>
-        <a
           href='https://codepen.io/itwasmattgregg/'
           style={{ margin: '0 10px' }}
         >
@@ -52,9 +44,6 @@ const Footer = () => (
           style={{ margin: '0 10px' }}
         >
           <img src={spotify} alt='spotify' />
-        </a>
-        <a rel='me' href='https://hachyderm.io/@itwasmattgregg'>
-          Mastodon
         </a>
       </div>
       <div className='text_center' style={{ marginTop: '10px' }}>
