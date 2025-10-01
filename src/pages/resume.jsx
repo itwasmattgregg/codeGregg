@@ -6,23 +6,10 @@ import { saveAs } from 'file-saver';
 import Layout from '../components/layout/layout';
 import Container from '../components/container';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import Skill from '../components/resume/Skill';
 
 import * as styles from '../scss/pages/resume.module.scss';
 
 import initials from '../images/initials.svg';
-import firebaseIcon from '../images/logos/firebase.svg';
-import gatsbyIcon from '../images/logos/gatsby.svg';
-import javascriptIcon from '../images/logos/javascript.svg';
-import laravelIcon from '../images/logos/laravel.svg';
-import reactIcon from '../images/logos/react.svg';
-import vueIcon from '../images/logos/vue-centered.svg';
-import afterEffectsIcon from '../images/logos/after-effects.svg';
-import angularIcon from '../images/logos/angular.svg';
-import awsIcon from '../images/logos/aws.svg';
-import djangoIcon from '../images/logos/django.svg';
-import dockerIcon from '../images/logos/docker.svg';
-import sketchIcon from '../images/logos/sketch.svg';
 
 const Resume = ({ data }) => {
   const siteTitle = data.site.siteMetadata.title;
@@ -87,27 +74,6 @@ const Resume = ({ data }) => {
             spirit of an entrepreneur. I thrive in stressful situations,
             impossible challenges and working to build teams and communities.
           </p>
-        </div>
-        <div className={styles.section}>
-          <h2>Skills</h2>
-          <p>
-            I consider myself tech agnostic. I have my favorites but I always
-            love uncovering new ones.
-          </p>
-          <div className={styles.skillGrid}>
-            <Skill icon={javascriptIcon} name='Javascript' xp={95} size={70} />
-            <Skill icon={reactIcon} name='React' xp={95} />
-            <Skill icon={vueIcon} name='Vue' xp={90} />
-            <Skill icon={firebaseIcon} name='Firebase' xp={80} />
-            <Skill icon={gatsbyIcon} name='Gatsby' xp={80} />
-            <Skill icon={djangoIcon} name='Django' xp={60} />
-            <Skill icon={laravelIcon} name='Laravel' xp={40} />
-            <Skill icon={angularIcon} name='Angular' xp={60} />
-            <Skill icon={afterEffectsIcon} name='After Effects' xp={35} />
-            <Skill icon={dockerIcon} name='Docker' xp={30} />
-            <Skill icon={awsIcon} name='AWS' xp={50} />
-            <Skill icon={sketchIcon} name='Sketch' xp={75} />
-          </div>
         </div>
         <div className={styles.section}>
           <h2>Experience</h2>
@@ -212,28 +178,16 @@ const Resume = ({ data }) => {
               NextJS / MongoDB
             </a>
             <div className={styles.sideProject}>
-              <a href='https://beingful.co'>
-                <strong>Beingful</strong> <br />
-                Django / React
-              </a>
+              <strong>Beingful</strong> <br />
+              Django / React
             </div>
-            <a
-              href='https://gregg-wedding.herokuapp.com/'
-              className={styles.sideProject}
-            >
+            <div className={styles.sideProject}>
               <strong>Wedding Web App</strong> <br />
               Laravel / Vue / Algolia / After Effects
-            </a>
+            </div>
             <a href='https://foodtruckfinder.io' className={styles.sideProject}>
               <strong>Food Truck Finder</strong> <br />
               Vue / Firebase / Netlify Lambda Functions
-            </a>
-            <a
-              href='https://www.stereotypesteve.com/'
-              className={styles.sideProject}
-            >
-              <strong>Blog for Stereotype Steve</strong> <br />
-              Gatsby / Wordpress
             </a>
             <a
               href='https://wtf-allergies.netlify.app'
