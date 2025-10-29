@@ -1,0 +1,60 @@
+---
+import TinyWinsLayout from '../../layouts/TinyWinsLayout.astro';
+import { getTinyWins, getTinyWinBySlug } from '../../utils/getTinyWins';
+import { remark } from 'remark';
+import remarkGfm from 'remark-gfm';
+import remarkRehype from 'remark-rehype';
+import rehypeStringify from 'rehype-stringify';
+import Webmentions from '../../components/Webmentions.jsx';
+import OpenGraph from '../../utils/openGraph';
+
+export async function getStaticPaths() {
+  const wins = getTinyWins();
+  return wins.map((win) => ({
+    params: { slug: win.slug.replace('/tinywins/', '').split('/') },
+    props: { win },
+  }));
+}
+
+const { win } = Astro.props;
+const { pathname } = Astro.url;
+const siteUrl = 'https://codegregg.com';
+const url = `${siteUrl}${pathname}`;
+
+// Process MDX content
+let htmlContent = '';
+try {
+  const result = await remark()
+    .use(remarkGfm)
+    .use(remarkRehype)
+    .use(rehypeStringify)
+    .process(win.body);
+  htmlContent = String(result);
+} catch (error) {
+  console.error('Error processing MDX:', error);
+  htmlContent = win.body;
+}
+
+const formatDate = (dateString) => {
+  if (!dateString) return '';
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+};
+---
+
+<TinyWinsLayout hideBackLink>
+  <a href="/tinywins">
+    <strong>Tiny Wins Home</strong>
+  </a>
+  <div style="background-color: #fff; box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.2); margin: 20px auto; max-width: 700px; padding: 30px;">
+    <h1>{win.frontmatter.title}</h1>
+    {win.frontmatter.date && <p>{formatDate(win.frontmatter.date)}</p>}
+    <article set:html={htmlContent} />
+    <Webmentions client:load postUrl={url} />
+  </div>
+</TinyWinsLayout>
+

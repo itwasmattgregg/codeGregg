@@ -1,0 +1,14 @@
+---
+import styles from './featureBox/featureBox.module.scss';
+
+const { side, backgroundColor } = Astro.props;
+---
+
+<div
+  class={`${styles.featureBox} ${side === 'right' ? styles.rightBox : ''} ${backgroundColor ? styles[backgroundColor] : ''}`}
+>
+  <div class={styles.featureBoxContent}>
+    <slot />
+  </div>
+</div>
+

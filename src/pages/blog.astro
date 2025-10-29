@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Container from '../components/Container.astro';
+import { getPosts } from '../utils/getPosts';
+import { Image } from 'astro:assets';
+import devBackgroundSrc from '../images/fatos-bytyqi-535528-unsplash.jpg';
+import foodBackgroundSrc from '../images/eaters-collective-109596-unsplash.jpg';
+import styles from '../scss/pages/blog.module.scss';
+
+const posts = getPosts();
+
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+  });
+};
+
+const kebabCase = (str) => {
+  return str
+    .replace(/([a-z])([A-Z])/g, '$1-$2')
+    .replace(/[\s_]+/g, '-')
+    .toLowerCase();
+};
+---
+
+<Layout title={`Blog | CodeGregg`}>
+  <h1 class={`text_center ${styles.blog_title}`}>Blog</h1>
+  <div class={styles.blog_featureSections}>
+    <div class={styles.blog_featureSections_block}>
+      <Image
+        src={devBackgroundSrc}
+        alt="Computer with code on the screen"
+        class={styles.blog_featureSection_image}
+        style={{ position: 'absolute' }}
+      />
+      <a
+        href="/category/dev"
+        class={styles.blog_featureSections_overlayLink}
+      >
+        <div class={styles.blog_featureSections_overlay} />
+      </a>
+      <h2 class={styles.blog_featureSections_devTitle}>
+        <a href="/category/dev" style="color: white;">
+          Dev
+        </a>
+      </h2>
+    </div>
+    <div class={styles.blog_featureSections_block}>
+      <Image
+        src={foodBackgroundSrc}
+        alt="Glass of cognac and cheesy baked pasta"
+        class={styles.blog_featureSection_image}
+        style={{ position: 'absolute' }}
+      />
+      <a
+        href="/category/food"
+        class={styles.blog_featureSections_overlayLink}
+      >
+        <div class={styles.blog_featureSections_overlay} />
+      </a>
+      <h2 class={styles.blog_featureSections_foodTitle}>
+        <a href="/category/food" style="color: white;">
+          Food
+        </a>
+      </h2>
+    </div>
+  </div>
+  <Container>
+    <p class={styles.pageDescription}>
+      This is a place for my thoughts on many of the things I love in
+      life. From web development, to restaurant reviews and recipes, to
+      woodworking. These thoughts are my own for the world to hopefully
+      learn a little more about me.
+    </p>
+    <h2 class={styles.latestPosts}>Latest Posts</h2>
+    {posts.map((post) => (
+      <div
+        key={post.slug}
+        style="max-width: 750px; margin: 75px auto;"
+      >
+        <h3 style="margin-bottom: 0.5em;">
+          <a
+            class="font_default"
+            style="box-shadow: none;"
+            href={post.slug}
+          >
+            {post.frontmatter.title}
+          </a>
+        </h3>
+        <div>
+          <small class="font_monad">{formatDate(post.frontmatter.date)}</small>
+        </div>
+        <div style="margin-bottom: 0.5em;">
+          {post.frontmatter.tags?.map((category) => (
+            <a
+              key={category}
+              style="margin-right: 10px;"
+              href={`/category/${kebabCase(category)}`}
+            >
+              #{category}
+            </a>
+          ))}
+        </div>
+        <p set:html={post.excerpt} />
+      </div>
+    ))}
+  </Container>
+</Layout>
+

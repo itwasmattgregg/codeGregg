@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import backgroundSrc from '../images/daniel-jensen-440210-unsplash.jpg';
+import styles from '../scss/pages/404.module.scss';
+---
+
+<Layout title="404 - Not Found | CodeGregg">
+  <div class={styles.container}>
+    <Image class={styles.lostImage} src={backgroundSrc} alt="" />
+    <h1>Are you lost?</h1>
+    <p>You just hit a page that doesn't exist... the sadness.</p>
+    <a href="/" class="button">
+      Return Home
+    </a>
+  </div>
+</Layout>
+

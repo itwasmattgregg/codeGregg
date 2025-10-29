@@ -6,8 +6,6 @@
  * This is an Open Graph meta tag that provides a url to an image that is used to represent the web page.
  * <meta property="og:image" content="https://example.com/image.png" />
  *
- * You can find all Open Graph meta tags in @components/PageMeta.
- *
  * The example code uses a serverless service that generates dynamic Open Graph
  * images that you can embed in your <meta> tags.
  *

@@ -43,11 +43,11 @@ const Webmentions = ({ postUrl }) => {
       )}
       {countsStatus === 'success' && (
         <div>
-          <span role='img' aria-label='likes'>
+          <span role="img" aria-label="likes">
             ❤️
           </span>{' '}
           {countData.like + countData.repost}{' '}
-          <span role='img' aria-label='mentions'>
+          <span role="img" aria-label="mentions">
             💬
           </span>{' '}
           {countData.mention + countData.reply}
@@ -58,13 +58,3 @@ const Webmentions = ({ postUrl }) => {
 };
 
 export default Webmentions;
-
-// {#await counts}
-//   <p>loading counts</p>
-// {:then data}
-//   {#if data === undefined}
-//     Failed to load...
-//   {:else}
-//     ❤️ {data.like + data.repost || 0} 💬 {data.mention + data.reply || 0}
-//   {/if}
-// {/await}

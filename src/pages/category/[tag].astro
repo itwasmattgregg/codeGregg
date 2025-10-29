@@ -1,0 +1,61 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Container from '../../components/Container.astro';
+import { getPostsByTag, getAllTags } from '../../utils/getPosts';
+
+export async function getStaticPaths() {
+  const tags = getAllTags();
+  return tags.map((tag) => ({
+    params: { tag },
+    props: { tag, posts: getPostsByTag(tag) },
+  }));
+}
+
+const { tag, posts } = Astro.props;
+
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+  });
+};
+
+const kebabCase = (str) => {
+  return str
+    .replace(/([a-z])([A-Z])/g, '$1-$2')
+    .replace(/[\s_]+/g, '-')
+    .toLowerCase();
+};
+---
+
+<Layout title={`${tag} authored | CodeGregg`}>
+  <Container>
+    <div style="max-width: 740px; margin: 0 auto;">
+      <h1
+        class="text_center"
+        style="text-transform: capitalize; margin-top: 40px;"
+      >
+        {tag}
+      </h1>
+      <h5>Total Posts: {posts.length}</h5>
+      {posts.map((post) => (
+        <div key={post.slug} style="margin-bottom: 60px;">
+          <h3 style="margin-bottom: 0.5em;">
+            <a style="box-shadow: none;" href={post.slug}>
+              {post.frontmatter.title}
+            </a>
+          </h3>
+          <p style="margin-bottom: 0.5em;">
+            <small>{formatDate(post.frontmatter.date)}</small>
+          </p>
+          <p set:html={post.excerpt} />
+        </div>
+      ))}
+    </div>
+  </Container>
+</Layout>
+

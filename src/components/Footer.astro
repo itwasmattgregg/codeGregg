@@ -1,0 +1,30 @@
+---
+import Container from './Container.astro';
+import spotify from '../images/logos/spotify.svg';
+import codepen from '../images/logos/codepen.svg';
+import github from '../images/logos/github.svg';
+import linkedin from '../images/logos/linkedin2.svg';
+---
+
+<div style="background: white; padding: 10px 0;">
+  <Container>
+    <div style="display: flex; justify-content: center; align-items: flex-end;">
+      <a href="https://github.com/itwasmattgregg" style="margin: 0 10px;">
+        <img src={github} alt="github" />
+      </a>
+      <a href="https://codepen.io/itwasmattgregg/" style="margin: 0 10px;">
+        <img src={codepen} alt="codepen" />
+      </a>
+      <a href="https://www.linkedin.com/in/mattdgregg/" style="margin: 0 10px;">
+        <img src={linkedin} alt="linkedin" />
+      </a>
+      <a href="https://open.spotify.com/user/1248248872?si=qDPkzMvSRD-IV0FLrm3TQA" style="margin: 0 10px;">
+        <img src={spotify} alt="spotify" />
+      </a>
+    </div>
+    <div class="text_center" style="margin-top: 10px;">
+      <small>matt@codegregg.com</small>
+    </div>
+  </Container>
+</div>
+

@@ -1,0 +1,120 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Container from '../../components/Container.astro';
+import { getPostBySlug, getPosts } from '../../utils/getPosts';
+import { compile } from '@mdx-js/mdx';
+import { remark } from 'remark';
+import remarkGfm from 'remark-gfm';
+import remarkRehype from 'remark-rehype';
+import rehypeStringify from 'rehype-stringify';
+import Bio from '../../components/Bio.astro';
+import Webmentions from '../../components/Webmentions.jsx';
+import OpenGraph from '../../utils/openGraph';
+import kebabCase from 'lodash/kebabCase';
+import styles from '../../scss/templates/blog-post.module.scss';
+
+export async function getStaticPaths() {
+  const posts = getPosts();
+  return posts.map((post) => ({
+    params: { slug: post.slug.replace('/blog/', '').split('/') },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { pathname } = Astro.url;
+const siteUrl = 'https://codegregg.com';
+const url = `${siteUrl}${pathname}`;
+const excerpt = post.excerpt;
+
+// Process MDX content
+let htmlContent = '';
+try {
+  const result = await remark()
+    .use(remarkGfm)
+    .use(remarkRehype)
+    .use(rehypeStringify)
+    .process(post.content);
+  htmlContent = String(result);
+} catch (error) {
+  console.error('Error processing MDX:', error);
+  htmlContent = post.content;
+}
+
+// Get previous and next posts
+const allPosts = getPosts();
+const currentIndex = allPosts.findIndex(p => p.slug === post.slug);
+const previous = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
+const next = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
+
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+};
+---
+
+<Layout 
+  title={`${post.frontmatter.title} | CodeGregg`}
+  description={excerpt}
+  image={post.frontmatter.featuredImage ? `${siteUrl}${post.frontmatter.featuredImage}` : OpenGraph.generateImageUrl(post.frontmatter.title)}
+  type="article"
+>
+  {post.frontmatter.featuredImage && (
+    <div>
+      <img
+        src={post.frontmatter.featuredImage}
+        class={styles.featuredImage}
+        alt=""
+      />
+    </div>
+  )}
+  <Container>
+    <div class="text_center">
+      <h1 class={`${styles.blogTitle} text_center`}>
+        {post.frontmatter.title}
+      </h1>
+      <div>
+        {post.frontmatter.tags?.map((category) => (
+          <a
+            key={category}
+            class={styles.tagItem}
+            style="margin-right: 10px;"
+            href={`/category/${kebabCase(category)}`}
+          >
+            #{category}
+          </a>
+        ))}
+      </div>
+      <p class={styles.date}>{formatDate(post.frontmatter.date)}</p>
+    </div>
+    <div style="max-width: 800px; margin: 0 auto 100px;">
+      <article set:html={htmlContent} />
+    </div>
+    <hr />
+    <Bio location={url} />
+
+    <Webmentions client:load postUrl={url} />
+
+    <ul style="display: flex; flex-wrap: wrap; justify-content: space-between; list-style: none; padding: 0;">
+      <li>
+        {previous && (
+          <a href={previous.slug} rel="prev">
+            ← {previous.frontmatter.title}
+          </a>
+        )}
+      </li>
+      <li>
+        {next && (
+          <a href={next.slug} rel="next">
+            {next.frontmatter.title} →
+          </a>
+        )}
+      </li>
+    </ul>
+  </Container>
+</Layout>
+

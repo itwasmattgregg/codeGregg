@@ -1,0 +1,142 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FeatureBox from '../components/FeatureBox.astro';
+import Tech from '../components/Tech.astro';
+import Container from '../components/Container.astro';
+import ContactForm from '../components/ContactForm';
+import { getPosts } from '../utils/getPosts';
+import profileImgSrc from '../images/matt_white_bg.png';
+import styles from '../scss/pages/index.module.scss';
+
+const posts = getPosts();
+const latestPost = posts[0];
+
+if (!latestPost) {
+  throw new Error('No posts found');
+}
+
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+};
+---
+
+<Layout>
+  <div
+    style={{
+      display: 'flex',
+      position: 'relative',
+      flexWrap: 'wrap',
+      overflow: 'hidden',
+    }}
+  >
+    <FeatureBox side="left" backgroundColor="darkBlue">
+      <h2 class="h3" style="margin-top: 0; margin-bottom: 50px;">
+        Minneapolis Web Developer
+      </h2>
+      <h1>Matt Gregg</h1>
+      <div style="display: flex;">
+        <img
+          src={profileImgSrc}
+          alt="matt gregg"
+          class={styles.profileImg}
+          width="140"
+          height="140"
+        />
+        <div>
+          <p>
+            I'm a Front-end Software Engineer who loves architecting
+            amazing experiences. I also enjoy speaking at schools about
+            code, building my design chops, and constantly learning. On
+            the side I enjoy woodworking, cooking, and playing guitar.
+          </p>
+          <a
+            href="/#contact"
+            style={{
+              color: 'white',
+              fontWeight: '700',
+            }}
+          >
+            Contact Me
+          </a>
+        </div>
+      </div>
+    </FeatureBox>
+    <FeatureBox side="right" backgroundColor="lightBlue">
+      <h3 style="margin-bottom: 50px;">Latest Blog Post</h3>
+      <h2 class="h1 font_default">
+        <a
+          href={latestPost.slug}
+          style={{
+            color: 'white',
+          }}
+        >
+          {latestPost.frontmatter.title}
+        </a>
+      </h2>
+      <div>
+        <em>
+          #{latestPost.frontmatter.tags?.[0] || 'blog'} -{' '}
+          {formatDate(latestPost.frontmatter.date)}
+        </em>
+      </div>
+      <p>{latestPost.excerpt}</p>
+    </FeatureBox>
+  </div>
+  <Container>
+    <div
+      style={{
+        textAlign: 'center',
+        margin: '70px 0',
+      }}
+    >
+      <div class={styles.processList}>
+        <h2 class={styles.processItem}>Clarity</h2>
+        <span class={styles.processItemDivider} />
+        <h2 class={styles.processItem}>Efficiency</h2>
+        <span class={styles.processItemDivider} />
+        <h2 class={styles.processItem}>Consistency</h2>
+        <span class={styles.processItemDivider} />
+        <h2 class={styles.processItem}>Beauty</h2>
+      </div>
+      <div
+        style={{
+          maxWidth: '525px',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+        }}
+      >
+        <p>
+          The web is an incredible tool for bringing ideas to life and
+          making them accessible to everyone. I believe in creating
+          pragmatic, performant solutions to everyday problems through
+          beautiful and simple web interfaces.
+        </p>
+        <p>
+          I've worked with some amazing companies like Google, Cargill,
+          Deloitte, the NYC MTA, and many others. If you would like to
+          hear how I can help your company, use the form below to contact
+          me.
+        </p>
+      </div>
+    </div>
+    <Tech />
+  </Container>
+  <div
+    style={{
+      backgroundColor: 'white',
+      padding: '50px 0',
+      boxShadow: '0px 0px 3px 0 rgba(0,0,0,0.4)',
+    }}
+  >
+    <Container>
+      <h2 class="text_center">Contact Me</h2>
+      <ContactForm client:load />
+    </Container>
+  </div>
+</Layout>
+

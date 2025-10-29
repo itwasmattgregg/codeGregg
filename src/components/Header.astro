@@ -1,0 +1,55 @@
+---
+import { menuLinks, siteTitle } = Astro.props;
+import logo from '../images/logos/headerLogo.svg';
+import styles from './header/header.module.scss';
+---
+
+<div class={styles.headerContainer}>
+  <div class={styles.headerContent}>
+    <h1 class={styles.logo}>
+      <a href="/">
+        <img src={logo} alt="CodeGregg logo" />
+      </a>
+    </h1>
+    <nav class={styles.nav} id="main-nav">
+      <button
+        class={styles.menuToggle}
+        aria-label="Toggle main menu"
+        id="menu-toggle"
+      >
+        <span class={styles.srOnly}>Toggle main menu</span>
+        <span class={styles.hamburger}></span>
+      </button>
+      <ul>
+        {menuLinks.map((link) => (
+          <li key={link.name} style={{ listStyleType: 'none' }}>
+            <a href={link.link}>{link.name}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <div
+      class={styles.backdrop}
+      tabIndex="-1"
+      aria-hidden="true"
+      id="nav-backdrop"
+      hidden
+    ></div>
+  </div>
+</div>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const nav = document.getElementById('main-nav');
+  const backdrop = document.getElementById('nav-backdrop');
+
+  function toggleNav() {
+    const isOpen = nav.classList.contains('open');
+    nav.classList.toggle('open');
+    backdrop.hidden = !isOpen;
+  }
+
+  menuToggle?.addEventListener('click', toggleNav);
+  backdrop?.addEventListener('click', toggleNav);
+</script>
+

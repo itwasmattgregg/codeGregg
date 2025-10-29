@@ -1,0 +1,50 @@
+---
+import TinyWinsLayout from '../../layouts/TinyWinsLayout.astro';
+import { getTinyWins } from '../../utils/getTinyWins';
+
+const wins = getTinyWins();
+
+const formatDate = (dateString) => {
+  if (!dateString) return '';
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+};
+---
+
+<TinyWinsLayout>
+ pour <h1>#TinyWins!</h1>
+  <p>
+    This is a little microsite for recording small personal wins of mine and
+    also small learnings in web development as I go. Almost like a blog but
+    smaller :)
+  </p>
+  <ul style="margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 1em; max-width: 900px;">
+    {wins.map((win) => (
+      <li key={win.slug} style="list-style: none; margin-bottom: 0;">
+        <a
+          href={win.slug}
+          style="background: #fff; box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.2); display: block; padding: 30px 30px 42px; position: relative; text-decoration: none; height: 100%;"
+        >
+          <h3>{win.frontmatter.title}</h3>
+          <p set:html={win.excerpt} />
+          <div style="bottom: 3px; color: #888; font-size: 12px; font-weight: 600; left: 50%; position: absolute; text-transform: uppercase; transform: translateX(-50%);">
+            {formatDate(win.frontmatter.date)}
+          </div>
+        </a>
+      </li>
+    ))}
+  </ul>
+</TinyWinsLayout>
+
+<style>
+  @media (min-width: 600px) {
+    ul {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+</style>
+

@@ -1,0 +1,100 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../scss/main.scss';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: string;
+}
+
+const {
+  title = 'CodeGregg: Minneapolis Web Developer',
+  description = 'Minneapolis-based UI engineer; many-stack artisinal crafter of the internet.',
+  image = 'https://codegregg.com/images/codegregg-social.png',
+  type = 'website',
+} = Astro.props;
+
+const siteMetadata = {
+  title: 'CodeGregg: Minneapolis Web Developer',
+  author: 'Matt Gregg',
+  description,
+  siteUrl: 'https://codegregg.com',
+  menuLinks: [
+    { name: 'Blog', link: '/blog' },
+    { name: 'Resume', link: '/resume' },
+    { name: 'Contact', link: '/#contact' },
+    { name: 'TinyWins', link: '/tinywins' },
+  ],
+};
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="front end, developer, minneapolis, UX, UI" />
+    <title>{title}</title>
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
+
+    <!-- Webmention -->
+    <link rel="webmention" href="https://webmention.io/codegregg.com/webmention" />
+    <link rel="pingback" href="https://webmention.io/codegregg.com/xmlrpc" />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T8QKF1EK54"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-T8QKF1EK54', {
+        anonymize_ip: true,
+        cookie_expires: 0,
+        respect_dnt: true
+      });
+    </script>
+  </head>
+  <body>
+    <div class="app-layout">
+      <Header siteTitle={siteMetadata.title} menuLinks={siteMetadata.menuLinks} />
+      <div class="app-container">
+        <slot />
+      </div>
+      <Footer />
+    </div>
+  </body>
+</html>
+
+<style>
+  .app-layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .app-container {
+    flex: 1;
+  }
+</style>
+

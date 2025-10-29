@@ -1,0 +1,53 @@
+---
+import firebase from '../images/logos/firebase.svg';
+import gatsby from '../images/logos/gatsby.svg';
+import javascript from '../images/logos/javascript.svg';
+import nodejs from '../images/logos/nodejs.svg';
+import react from '../images/logos/react.svg';
+import sass from '../images/logos/sass.svg';
+import vue from '../images/logos/vue.svg';
+import styles from './tech/tech.module.scss';
+---
+
+<div class="text_center">
+  <p>Some of the technologies I'm most passionate about...</p>
+  <div class={styles.techContainer}>
+    <div class={styles.techLogo}>
+      <img src={firebase} alt="firebase" title="firebase" />
+    </div>
+    <div class={styles.techLogo}>
+      <img src={gatsby} alt="gatsby" title="gatsby" />
+    </div>
+    <div class={styles.techLogo}>
+      <img src={javascript} alt="javascript" title="javascript" />
+    </div>
+    <div class={styles.techLogo}>
+      <img src={vue} alt="vue" title="vue" />
+    </div>
+    <div class={styles.techLogo}>
+      <img src={nodejs} alt="nodejs" title="nodejs" />
+    </div>
+    <div class={styles.techLogo}>
+      <img src={react} alt="react" title="react" />
+    </div>
+    <div class={styles.techLogo}>
+      <img src={sass} alt="sass" title="sass" />
+    </div>
+  </div>
+</div>
+
+<style>
+  .tech-logo {
+    transition: transform 0.3s ease, rotateY 0.3s ease;
+  }
+  
+  .tech-logo:hover {
+    transform: scale(1.1) rotateY(30deg);
+  }
+  
+  .tech-logo:active {
+    transform: scale(1.1) rotateY(720deg) translateY(-20px);
+    transition: transform 0.6s ease;
+  }
+</style>
+
